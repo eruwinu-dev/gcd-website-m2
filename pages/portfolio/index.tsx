@@ -1,12 +1,19 @@
+import Head from "next/head"
 import React from "react"
+import ProjectMasonry from "../../components/ProjectMasonry"
 
 type Props = {}
 
 const Portfolio = (props: Props) => {
 	return (
-		<div>
-			<h1 className="text-3xl font-bold underline">Hello world!</h1>
-		</div>
+		<>
+			<Head>
+				<title>Portfolio | G Charles Design - Licensed Architectural Services</title>
+			</Head>
+			<div className="portfolio-section">
+				<ProjectMasonry />
+			</div>
+		</>
 	)
 }
 

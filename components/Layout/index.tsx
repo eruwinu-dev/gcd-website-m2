@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react"
+import { Provider } from "../../context/State"
 import Footer from "../Footer"
 import Header from "../Header"
 
@@ -8,11 +9,13 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
 	return (
-		<main>
-			<Header />
-			<main>{children}</main>
-			<Footer />
-		</main>
+		<Provider>
+			<main>
+				<Header />
+				<main>{children}</main>
+				<Footer />
+			</main>
+		</Provider>
 	)
 }
 

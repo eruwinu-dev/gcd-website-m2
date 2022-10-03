@@ -1,6 +1,6 @@
 import fs from "fs"
 import { join } from "path"
-import { TeamType } from "./team"
+import type { ProjectType, TeamType } from "../types"
 
 const directory = join(process.cwd(), "markdown")
 
@@ -9,19 +9,20 @@ export const getMemberText = (member: TeamType) => {
 		const realSlug = member.text.replace(/\.md$/, "")
 		const fullPath = join(directory, `${realSlug}.md`)
 		const fileContents = fs.readFileSync(fullPath, "utf8")
-		return `
-			## ${member.name}
-			
-			### ${member.role}
-
-			${fileContents}
-			`
+		return fileContents
 	} catch (error) {
-		return `
-			## ${member.name}
-			
-			### ${member.role}
-		`
+		return ``
+	}
+}
+
+export const getProjectText = (project: ProjectType) => {
+	try {
+		const realSlug = project.text.replace(/\.md$/, "")
+		const fullPath = join(directory, `${realSlug}.md`)
+		const fileContents = fs.readFileSync(fullPath, "utf8")
+		return fileContents
+	} catch (error) {
+		return ``
 	}
 }
 

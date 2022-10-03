@@ -1,14 +1,8 @@
-export interface TeamType {
-	url: string
-	name: string
-	pictures: string[]
-	role: string
-	text: string
-}
+import { TeamType } from "../types"
 
 export const team: TeamType[] = [
 	{
-		url: "glencharlessalcedo",
+		url: "glen-charles-salcedo",
 		name: "Glen Charles Salcedo",
 		pictures: [
 			"https://i.ibb.co/kqqJKMw/gsalcedo3.jpg",
@@ -19,42 +13,42 @@ export const team: TeamType[] = [
 		text: "gsalcedo.md",
 	},
 	{
-		url: "roxannasalcedo",
+		url: "roxanna-salcedo",
 		name: "Roxanna M. Salcedo",
 		pictures: ["https://i.ibb.co/ctmfMBm/rsalcedo1.jpg", "https://i.ibb.co/hZqLMy1/rsalcedo2.jpg"],
 		role: "Project Manager/Vice President",
 		text: "",
 	},
 	{
-		url: "joshuajaynaverette",
+		url: "joshua-jay-naverette",
 		name: "Joshua Jay Navarette",
 		pictures: ["https://i.ibb.co/cbMbk48/navarette1.jpg", "https://i.ibb.co/4J7t8CY/navarette2.jpg"],
 		role: "Project Lead",
 		text: "",
 	},
 	{
-		url: "susanmollasalehi",
+		url: "susan-mollasalehi",
 		name: "Susan Mollasalehi",
 		pictures: ["https://i.ibb.co/8bkdJdQ/mollasalehi1.jpg"],
 		role: "Project Lead",
 		text: "",
 	},
 	{
-		url: "chilespenida",
+		url: "chi-lespenida",
 		name: "Chi Espenida",
 		pictures: ["https://i.ibb.co/kSHWX10/espenida1.jpg"],
 		role: "Project Lead",
 		text: "",
 	},
 	{
-		url: "kristofferjakeyalong",
+		url: "kristoffer-jake-yalong",
 		name: "Kristoffer Jake Yalong",
 		pictures: ["https://i.ibb.co/X2Dtqd2/yalong1.jpg"],
 		role: "Jr. Structural Engineer",
 		text: "",
 	},
 	{
-		url: "tysalcedochalberg",
+		url: "ty-salcedo-chalberg",
 		name: "Ty Salcedo-Chalberg",
 		pictures: ["https://i.ibb.co/WWqfkpn/chalberg1.jpg", "https://i.ibb.co/Nxv0RrV/chalberg2.jpg"],
 		role: "Associate/Business Development",

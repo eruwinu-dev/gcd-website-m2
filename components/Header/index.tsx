@@ -2,7 +2,9 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 
-type Props = {}
+type Props = {
+	inView?: boolean
+}
 
 type LinkType = {
 	name: string
@@ -28,9 +30,9 @@ const links: LinkType[] = [
 	},
 ]
 
-const Header = (props: Props) => {
+const Header = ({ inView }: Props) => {
 	return (
-		<header>
+		<header className={`${!inView ? "bg-transparent" : "bg-white border-b-2 shadow-md"}`}>
 			<div>
 				<Link href="/">
 					<a>

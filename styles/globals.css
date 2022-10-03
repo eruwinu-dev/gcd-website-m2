@@ -3,18 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+	html {
+		@apply scroll-smooth;
+	}
 	main {
 		@apply relative min-h-0;
-		section,
-		footer {
-			@apply -translate-y-[5.1rem];
-		}
+	}
+	main > section {
+		@apply -translate-y-[5.1rem];
 	}
 	section {
 		@apply min-h-screen flex flex-row items-stretch justify-between;
-		div {
-			@apply w-full h-screen flex flex-col items-center justify-center;
-		}
+	}
+	section > div {
+		@apply w-full h-screen flex flex-col items-center justify-center;
 	}
 	input[type="text"],
 	textarea {
@@ -61,10 +63,11 @@
 			}
 		}
 	}
+
 	footer {
 		@apply w-full flex flex-row items-center justify-between border-t-2 static bottom-0 left-0;
 		.logo-container {
-			@apply flex-1 flex flex-col items-start justify-center px-8 py-2;
+			@apply flex-[2] flex flex-col items-start justify-center px-8 py-2;
 		}
 		.contact-list-container {
 			@apply flex-1 flex flex-col items-start justify-center px-8 py-2 space-y-2;
@@ -79,16 +82,21 @@
 		background-size: 100% 100%;
 	}
 	.contact-list {
-		@apply space-y-2;
-		div {
+		@apply max-h-fit space-y-2;
+	}
+	.contact-list > div {
+		@apply flex flex-row items-center justify-start space-x-4;
+		a {
 			@apply flex flex-row items-center justify-start space-x-4;
-			a {
-				@apply flex flex-row items-center justify-start space-x-4;
-			}
 		}
 	}
 	.about-image {
 		background-image: url("https://i.ibb.co/pL4Zry9/contact-sketch.jpg");
+		object-fit: contain;
+		background-size: 100% 100%;
+	}
+	.about-image-2 {
+		background-image: url("https://i.ibb.co/2kCRXP3/rough-sketch.jpg");
 		object-fit: contain;
 		background-size: 100% 100%;
 	}
@@ -113,6 +121,15 @@
 		object-fit: contain;
 		background-size: 100% 100%;
 	}
+	.contact-form-section {
+		@apply flex flex-row items-stretch justify-between;
+		div {
+			@apply flex-1;
+		}
+	}
+	.contact-form-beside {
+		@apply flex flex-col items-center justify-center p-8;
+	}
 	.contact-form {
 		@apply w-[65%] flex flex-col items-center justify-center space-y-2 shadow-2xl p-4 rounded-lg;
 		label,
@@ -129,15 +146,106 @@
 			}
 		}
 	}
-	.markdown {
-		@apply text-lg leading-relaxed;
+	.member-section {
+		@apply translate-y-0 h-full;
 	}
-
-	.markdown p,
-	.markdown ul,
-	.markdown ol,
-	.markdown blockquote {
-		@apply my-6;
+	.member-image {
+		@apply items-end justify-start pt-12 pr-8;
+	}
+	.member-beside {
+		@apply flex flex-col items-start justify-start h-full;
+	}
+	.member-markdown {
+		@apply w-[70%] prose text-justify pb-8 leading-loose;
+	}
+	.image-container {
+		@apply relative h-[60vh] w-[60%];
+	}
+	.portfolio-section {
+		@apply flex flex-col items-center justify-center h-fit;
+	}
+	.project-section {
+		@apply translate-y-0 h-screen flex flex-row items-end justify-center px-2;
+	}
+	.project-landing-container {
+		@apply relative w-[96vw];
+	}
+	.project-bottom-bar {
+		@apply relative w-[80%] h-[10vh];
+	}
+	.project-bottom-bar-link {
+		@apply flex flex-col justify-center absolute top-0 space-y-2;
+		& label {
+			@apply text-sm text-red-600;
+		}
+		& a {
+			@apply flex flex-row items-center space-x-2 hover:underline;
+		}
+	}
+	.project-team {
+		@apply text-center pb-4 border-b-4 flex flex-col items-center justify-center space-y-4;
+		.project-members {
+			@apply w-full grid grid-cols-2 grid-flow-row;
+			div {
+				@apply flex flex-col items-center justify-center space-y-2;
+			}
+			& .odd-child {
+				@apply col-span-2;
+			}
+		}
+	}
+	.project-description {
+		@apply py-16 w-full flex flex-col items-center justify-center space-y-4;
+		& .project-markdown {
+			@apply w-[60%] h-[92.5%] z-[2] space-y-12 flex flex-col items-center justify-center text-black;
+		}
+	}
+	.project-markdown-article {
+		@apply prose text-black text-justify py-8 px-16 leading-loose h-fit min-w-full overflow-y-auto;
+	}
+	.project-gallery {
+		@apply w-[80%] py-16 flex flex-col items-center justify-center space-y-4 text-center;
+		& h1,
+		h3,
+		div {
+			@apply w-full;
+		}
+		& h3 {
+			@apply pb-4 border-b-4;
+		}
+		& .project-gallery-list {
+			@apply gap-8 lg:columns-3 md:columns-2 sm:columns-2 columns-2 h-full p-8;
+		}
+	}
+	.project-story-image {
+		@apply rounded-tl-3xl rounded-br-3xl;
+	}
+	.project-story-div {
+		@apply w-[50%] h-[7.5%] absolute top-0 right-0;
+		& button {
+			@apply p-1 m-4;
+		}
+	}
+	.project-story-team-container {
+		@apply w-[50%] h-full absolute top-0 left-0 z-[2] p-2 space-y-12 bg-black/70 flex flex-col items-center justify-center text-white rounded-tl-3xl;
+	}
+	.project-story-markdown-container {
+		@apply w-[50%] h-[92.5%] absolute bottom-0 right-0 z-[2] space-y-12 bg-white/[92.5%] flex flex-col items-center justify-center text-black rounded-br-3xl shadow-lg;
+	}
+	.project-landing-carousel-container {
+		@apply absolute top-0 left-0 w-full h-full;
+	}
+	.project-carousel-container {
+		@apply relative w-full h-screen border-gray-200 overflow-hidden;
+		& img {
+			@apply absolute w-full h-screen overflow-hidden;
+		}
+		& .carousel-controls {
+			@apply absolute top-0 h-full z-[2] w-[7.5%] hover:w-[5%] bg-black/20 hover:bg-black/40 transition-all duration-300 ease-in-out flex flex-col items-center justify-center cursor-pointer;
+			& button {
+				@apply p-2 text-white;
+			}
+		}
 	}
 }
 

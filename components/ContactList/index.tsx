@@ -5,7 +5,7 @@ type Props = {}
 
 const ContactList = (props: Props) => {
 	return (
-		<div className="contact-list">
+		<div className="contact-list h-fit">
 			<div>
 				<a href="mailto:inquiry@gcharlesdesign.com" target="_blank" rel="noopener noreferrer">
 					<div className="w-6 h-6">

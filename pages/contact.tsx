@@ -2,7 +2,6 @@ import Head from "next/head"
 import React from "react"
 import ContactForm from "../components/ContactForm"
 import ContactList from "../components/ContactList"
-import { MailIcon, MapPinIcon, PhoneIcon } from "../lib/icons"
 
 type Props = {}
 
@@ -23,16 +22,17 @@ const Contact = (props: Props) => {
 							it's a simple design or one that's more involved, we will work with you to find a creative
 							solution that will be approved for construction.
 						</p>
+						<ContactList />
 					</div>
 				</div>
 				<div className="contact-image"></div>
 			</section>
-			<section>
-				<div className="contact-beside"></div>
-				<div className="contact-beside">
+			<div className="contact-form-section">
+				<div className="contact-image"></div>
+				<div className="contact-form-beside">
 					<ContactForm />
 				</div>
-			</section>
+			</div>
 		</>
 	)
 }

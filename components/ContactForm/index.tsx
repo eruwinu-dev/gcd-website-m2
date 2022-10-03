@@ -1,15 +1,9 @@
 import React from "react"
 import * as Yup from "yup"
 import { Formik, Form, Field } from "formik"
+import type { FormType } from "../../types"
 
 type Props = {}
-
-interface FormType {
-	name: string
-	email: string
-	company: string
-	message: string
-}
 
 const schema = Yup.object().shape({
 	name: Yup.string().required("Required"),

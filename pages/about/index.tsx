@@ -37,7 +37,7 @@ const About = (props: Props) => {
 						</p>
 					</div>
 				</div>
-				<div></div>
+				<div className="about-image-2"></div>
 			</section>
 		</>
 	)

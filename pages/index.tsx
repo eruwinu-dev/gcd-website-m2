@@ -1,5 +1,7 @@
 import Head from "next/head"
 import React from "react"
+import { useInView } from "react-intersection-observer"
+import useStateContext from "../context/State"
 
 type Props = {}
 
@@ -14,6 +16,16 @@ const Home = (props: Props) => {
 				<div>
 					<h1>Client Focused, Licensed Architecture Services.</h1>
 				</div>
+			</section>
+			<section>
+				<div className="landing-image"></div>
+				<div>
+					<h1>Client Focused, Licensed Architecture Services.</h1>
+				</div>
+			</section>
+			<section>
+				<div className="landing-image"></div>
+				<div></div>
 			</section>
 		</>
 	)
