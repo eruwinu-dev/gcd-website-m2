@@ -1,5 +1,4 @@
-import * as React from "react"
-import { useState } from "react"
+import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { wrap } from "popmotion"
 
@@ -13,13 +12,15 @@ type Props = {
 }
 
 const ProjectCarousel = ({ project }: Props) => {
-	const { page, direction, setPage } = useStateContext()
+	const { page, direction, setPage, viewMode } = useStateContext()
 
 	const photoIndex = wrap(0, project.photos.length, page)
 
 	const paginate = (newDirection: number) => {
 		setPage([page + newDirection, newDirection])
 	}
+
+	if (viewMode !== "carousel") return <></>
 
 	return (
 		<AnimatePresence>

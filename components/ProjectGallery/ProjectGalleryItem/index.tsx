@@ -13,6 +13,7 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
 		setPage([index, direction])
 		setViewMode("carousel")
+		window.scrollTo(50, 50)
 	}
 
 	return (

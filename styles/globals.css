@@ -27,7 +27,7 @@
 	}
 	a {
 		&:hover {
-			@apply text-blue-500;
+			@apply text-blue-500 underline;
 		}
 	}
 	h1 {
@@ -49,18 +49,15 @@
 		@apply text-base font-semibold;
 	}
 	header {
-		@apply w-full p-2 sticky top-0 left-0 flex flex-row items-center justify-between z-10;
+		@apply w-full px-4 sticky top-0 left-0 flex flex-row items-center justify-between z-10;
 		div:first-child {
-			@apply p-2;
+			@apply py-2;
 			a {
 				@apply relative;
 			}
 		}
 		div:last-child {
-			@apply flex flex-row items-center justify-center space-x-2;
-			a {
-				@apply p-1;
-			}
+			@apply flex flex-row items-center justify-center space-x-2 py-2;
 		}
 	}
 
@@ -76,6 +73,9 @@
 }
 
 @layer components {
+	.generic-transition {
+		@apply transition-all ease-linear duration-200;
+	}
 	.landing-image {
 		background-image: url("https://i.ibb.co/bJX4T0R/landing-house.jpg");
 		object-fit: contain;
@@ -179,7 +179,7 @@
 			@apply text-sm text-red-600;
 		}
 		& a {
-			@apply flex flex-row items-center space-x-2 hover:underline;
+			@apply flex flex-row items-center space-x-2;
 		}
 	}
 	.project-team {

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react"
-import type { ReactNode, Dispatch, SetStateAction } from "react"
+import type { ReactNode } from "react"
 import type { ContextType, ModeType } from "../types"
 
 type Props = {

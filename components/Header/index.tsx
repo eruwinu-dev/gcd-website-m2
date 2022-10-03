@@ -1,10 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import React from "react"
+import React, { useEffect, useState } from "react"
 
-type Props = {
-	inView?: boolean
-}
+type Props = {}
 
 type LinkType = {
 	name: string
@@ -30,10 +28,24 @@ const links: LinkType[] = [
 	},
 ]
 
-const Header = ({ inView }: Props) => {
+const limit: number = 10
+
+const Header = (props: Props) => {
+	const [offset, setOffset] = useState<number>(0)
+
+	useEffect(() => {
+		const options = { passive: true } // options must match add/remove event
+		const scroll = () => {
+			const { scrollY } = window
+			setOffset(scrollY)
+		}
+		document.addEventListener("scroll", scroll, options)
+		return () => document.removeEventListener("scroll", scroll)
+	}, [])
+
 	return (
-		<header className={`${!inView ? "bg-transparent" : "bg-white border-b-2 shadow-md"}`}>
-			<div>
+		<header className={["generic-transition", offset > limit ? "bg-white shadow-xl" : "bg-transparent"].join(" ")}>
+			<div className={["generic-transition", offset > limit ? "px-1" : "px-4"].join(" ")}>
 				<Link href="/">
 					<a>
 						<Image src="/logo-black.png" alt="GLen Charles Design Logo" width={52} height={42} />
@@ -43,7 +55,9 @@ const Header = ({ inView }: Props) => {
 			<div>
 				{links.map((link: LinkType, index: number) => (
 					<Link href={link.url} key={index}>
-						<a>{link.name}</a>
+						<a className={["generic-transition", offset > limit ? "px-1" : "pr-4"].join(" ")}>
+							{link.name}
+						</a>
 					</Link>
 				))}
 			</div>

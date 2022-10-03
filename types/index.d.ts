@@ -1,3 +1,5 @@
+import { MutableRefObject } from "react"
+
 export type ModeType = "story" | "carousel"
 
 export interface TeamType {

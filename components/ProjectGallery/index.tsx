@@ -1,4 +1,4 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import ProjectGalleryItem from "./ProjectGalleryItem"
 
 type Props = {
