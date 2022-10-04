@@ -6,19 +6,16 @@ import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
 
 import type { ProjectType } from "../../types"
 import useStateContext from "../../context/State"
+import CarouselControl from "./CarouselControl"
 
 type Props = {
 	project: ProjectType
 }
 
 const ProjectCarousel = ({ project }: Props) => {
-	const { page, direction, setPage, viewMode } = useStateContext()
+	const { page, direction, viewMode, paginate } = useStateContext()
 
 	const photoIndex = wrap(0, project.photos.length, page)
-
-	const paginate = (newDirection: number) => {
-		setPage([page + newDirection, newDirection])
-	}
 
 	if (viewMode !== "carousel") return <></>
 
@@ -59,16 +56,8 @@ const ProjectCarousel = ({ project }: Props) => {
 							}}
 						/>
 					</AnimatePresence>
-					<div className="carousel-controls left-0" onClick={() => paginate(-1)}>
-						<button type="button" className="p-2 text-white">
-							<ArrowLeftIcon />
-						</button>
-					</div>
-					<div className="carousel-controls right-0" onClick={() => paginate(1)}>
-						<button type="button">
-							<ArrowRightIcon />
-						</button>
-					</div>
+					<CarouselControl side="left" />
+					<CarouselControl side="right" />
 				</div>
 			</motion.div>
 		</AnimatePresence>

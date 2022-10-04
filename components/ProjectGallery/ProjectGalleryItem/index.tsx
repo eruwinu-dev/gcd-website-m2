@@ -13,16 +13,13 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
 		setPage([index, direction])
 		setViewMode("carousel")
-		window.scrollTo(50, 50)
+		window.scrollTo(0, 0)
 	}
 
 	return (
-		<div
-			className="w-full aspect-video inline-block group mb-8 relative cursor-pointer hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl hover:opacity-100 opacity-80"
-			onClick={viewGalleryItem(index)}
-		>
+		<div className="project-gallery-item" onClick={viewGalleryItem(index)}>
 			<div className="relative w-full h-full">
-				<Image className="rounded-xl" layout="fill" src={photo} alt={photo} />
+				<Image layout="fill" src={photo} alt={photo} />
 			</div>
 		</div>
 	)

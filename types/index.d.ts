@@ -39,5 +39,6 @@ export interface ContextType {
 	page: number
 	direction: number
 	setPage: Dispatch<SetStateAction<[number, number]>>
+	paginate: (newDirection: number) => void
 }
 
