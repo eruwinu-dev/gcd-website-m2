@@ -1,5 +1,6 @@
 import Head from "next/head"
 import React from "react"
+import TeamGallery from "../../components/TeamGallery"
 
 type Props = {}
 
@@ -38,6 +39,9 @@ const About = (props: Props) => {
 					</div>
 				</div>
 				<div className="about-image-2"></div>
+			</section>
+			<section className="team-section">
+				<TeamGallery />
 			</section>
 		</>
 	)

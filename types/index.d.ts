@@ -2,7 +2,7 @@ import { MutableRefObject } from "react"
 
 export type ModeType = "story" | "carousel"
 
-export interface TeamType {
+export interface MemberType {
 	url: string
 	name: string
 	pictures: string[]
@@ -10,7 +10,7 @@ export interface TeamType {
 	text: string
 }
 
-export interface TeamMemberType {
+export interface TeamType {
 	name: string
 	role: string
 }
@@ -21,7 +21,7 @@ export interface ProjectType {
 	text: string
 	photos: string[]
 	address: string
-	team: TeamMemberType[]
+	team: TeamType[]
 }
 
 interface FormType {
@@ -29,6 +29,13 @@ interface FormType {
 	email: string
 	company: string
 	message: string
+}
+
+interface ProcessType {
+	phase: string
+	title: string
+	description: string
+	photo: string
 }
 
 export interface ContextType {

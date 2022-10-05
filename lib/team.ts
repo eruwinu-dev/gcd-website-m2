@@ -1,6 +1,6 @@
-import { TeamType } from "../types"
+import { MemberType } from "../types"
 
-export const team: TeamType[] = [
+export const team: MemberType[] = [
 	{
 		url: "glen-charles-salcedo",
 		name: "Glen Charles Salcedo",

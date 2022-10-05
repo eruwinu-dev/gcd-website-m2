@@ -2,8 +2,6 @@ import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { wrap } from "popmotion"
 
-import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
-
 import type { ProjectType } from "../../types"
 import useStateContext from "../../context/State"
 import CarouselControl from "./CarouselControl"

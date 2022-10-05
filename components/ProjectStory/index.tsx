@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from "../../lib/icons"
 import useStateContext from "../../context/State"
 
-import type { ProjectType, TeamMemberType } from "../../types"
+import type { ProjectType, MemberType } from "../../types"
 import ProjectTeam from "../ProjectTeam"
 
 type Props = {

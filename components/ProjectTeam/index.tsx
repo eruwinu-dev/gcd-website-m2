@@ -1,5 +1,5 @@
 import React from "react"
-import type { ProjectType, TeamMemberType } from "../../types"
+import type { ProjectType, MemberType } from "../../types"
 
 type Props = {
 	project: ProjectType
@@ -11,7 +11,7 @@ const ProjectTeam = ({ project }: Props) => {
 			<h1>{project.name}</h1>
 			<span className="italic tracking-wider">{project.address}</span>
 			<div className="project-members">
-				{project.team.map((team: TeamMemberType, index: number) => (
+				{project.team.map((team: MemberType, index: number) => (
 					<div
 						key={index}
 						className={[

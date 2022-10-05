@@ -1,24 +1,71 @@
 import type { InferGetStaticPropsType, GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 import Image from "next/image"
-import React from "react"
+import React, { MouseEvent, useEffect, useState } from "react"
 import { getMemberText } from "../../lib/api"
-import { TeamType, team } from "../../lib/team"
+import { team } from "../../lib/team"
 import mdToHtml from "../../lib/mdToHtml"
+
+import { wrap } from "popmotion"
+import { motion } from "framer-motion"
+
+import { MemberType } from "../../types"
 
 type Props = {}
 
+const variants = {
+	show: {
+		opacity: 1,
+		transition: {
+			ease: "easeInOut",
+			duration: 0.5,
+		},
+	},
+	hide: {
+		opacity: 0,
+	},
+}
+
 const Member = ({ member, html }: InferGetStaticPropsType<typeof getStaticProps>) => {
+	const [photo, setPhoto] = useState<number>(0)
+
+	const photoIndex = wrap(0, member.pictures.length, photo)
+
+	useEffect(() => {
+		setInterval(() => {
+			setPhoto((photo) => photo + 1)
+		}, 10e3)
+		return () => {}
+	}, [])
+
+	const changePhoto = (event: MouseEvent<HTMLDivElement>) => {
+		if (member.pictures.length === 1) return
+		setPhoto((photo: number) => photo + 1)
+	}
+
 	return (
 		<>
 			<Head>
 				<title>{`${member.name} | G Charles Design - Licensed Architecture Services`}</title>
 			</Head>
 			<section className="member-section">
-				<div className="member-image">
-					<div className="image-container">
-						<Image src={member.pictures[0]} alt={member.name} layout="fill" objectFit="cover" />
-					</div>
+				<div className="member-image-layout">
+					<motion.div
+						className="member-image-container"
+						key={photoIndex}
+						variants={variants}
+						animate={"show"}
+						initial="hide"
+					>
+						<Image
+							src={member.pictures[photoIndex]}
+							alt={member.name}
+							layout="fill"
+							onClick={changePhoto}
+						/>
+					</motion.div>
+					<h3>{member.name}</h3>
+					<div className="italic">{member.role}</div>
 				</div>
 				<div className="member-beside">
 					<article dangerouslySetInnerHTML={{ __html: html }} className="member-markdown" />
@@ -30,13 +77,13 @@ const Member = ({ member, html }: InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	return {
-		paths: team.map((member: TeamType) => ({ params: { member: member.url } })),
+		paths: team.map((member: MemberType) => ({ params: { member: member.url } })),
 		fallback: false,
 	}
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const member: TeamType | undefined = team.find((member: TeamType) => member.url === params?.member)
+	const member: MemberType | undefined = team.find((member: MemberType) => member.url === params?.member)
 	const content = typeof member === "undefined" ? "" : getMemberText(member)
 	const html = await mdToHtml(content || "")
 

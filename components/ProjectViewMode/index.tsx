@@ -6,12 +6,20 @@ import type { ModeType } from "../../types"
 type Props = {}
 
 const ProjectViewMode = (props: Props) => {
-	const { setViewMode } = useStateContext()
+	const { setViewMode, viewMode } = useStateContext()
 
-	const toggleViewMode = (mode: ModeType) => (event: MouseEvent<HTMLButtonElement>) => setViewMode(mode)
+	const toggleViewMode = (mode: ModeType) => (event: MouseEvent<HTMLButtonElement>) => {
+		window.scrollTo(0, 0)
+		setViewMode(mode)
+	}
 
 	return (
-		<div className="absolute bottom-0 left-0 p-4 z-[3] flex flex-row items-center justify-center space-x-4">
+		<div
+			className={[
+				"absolute bottom-2 left-2 px-4 py-3 z-[3] rounded-xl flex flex-row items-center justify-center space-x-4",
+				viewMode === "carousel" ? "bg-black/60" : "bg-transparent",
+			].join(" ")}
+		>
 			<button type="button" className="p-1 text-white/50 hover:text-white" onClick={toggleViewMode("story")}>
 				<BookIcon />
 			</button>

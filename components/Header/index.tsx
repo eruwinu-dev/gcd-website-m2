@@ -37,7 +37,6 @@ const Header = (props: Props) => {
 		const options = { passive: true }
 		const scroll = () => {
 			const { scrollY } = window
-			console.log(scrollY)
 			setOffset(scrollY)
 		}
 		document.addEventListener("scroll", scroll, options)

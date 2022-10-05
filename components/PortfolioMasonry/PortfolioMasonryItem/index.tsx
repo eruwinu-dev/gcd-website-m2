@@ -35,7 +35,7 @@ const PortfolioMasonryItem = ({ project, index }: Props) => {
 					<h3>{project.name}</h3>
 				</motion.div>
 				<motion.div className="image" variants={imageMotion}>
-					<img className={`w-full aspect-[${aspect}] rounded-xl`} src={project.photos[0]} />
+					<img className={["w-full", "aspect-[${aspect}]"].join(" ")} src={project.photos[0]} />
 				</motion.div>
 			</motion.div>
 		</Link>

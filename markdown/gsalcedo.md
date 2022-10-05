@@ -1,7 +1,3 @@
-## Glen Charles Salcedo
-
-### President/Principal Architect
-
 Mr. Salcedo holds both a Bachelor of Architecture and Master of Architecture II from the University of Southern California and University of California Los Angeles respectively. In addition, he holds a Bachelor of Science Minor in Urban Regional Planning from USC. His academic success has earned him the rare distinction of the prestigious Skidmore, Owings and Merrill Foundation Bachelor of Architecture Prize, which is given to 1 graduating senior per year of an accredited architecture program, in the United States. His success in both research and design later earned him a brief publication in **Fifteen Years of Fellows, Skidmore Owings and Merrill Traveling Fellows** in 1996.
 
 Prior to establishing G.Charles Design + Consulting Inc., Mr. Salcedo has worked under the expert tutelage of several prestigious architecture offices in La Jolla, San Diego, and Los Angeles where he gained valuable experience in many phases of the architecture profession. In addition, to supplement his broad experiences, Mr. Salcedo spent several years with a construction defect firm learning the most common problems found in Type V construction.
