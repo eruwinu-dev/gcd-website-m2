@@ -15,7 +15,7 @@ const TeamGalleryItem = ({ member }: Props) => {
 					<Image src={member.pictures[0]} alt={member.name} layout="fill" />
 				</div>
 				<div className="team-text">
-					<h4>{member.name}</h4>
+					<h5>{member.name}</h5>
 					<div className="italic">{member.role}</div>
 				</div>
 			</div>

@@ -1,63 +1,94 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import ProcessTimelineItem from "./ProcessTimelineItem"
 
-import { process } from "../../lib/process"
+import { steps } from "../../lib/steps"
 import { ProcessType } from "../../types"
 import { AnimatePresence, motion } from "framer-motion"
+import { useRect } from "@reach/rect"
 
 type Props = {}
 
-const navWidth: number = 80
-
-const getvwOffsetString = (width: number): string => `${width}vw`
+const circleVariants = {
+	inactive: {
+		border: "2px solid #e5e7eb",
+		backgroundColor: "#fff",
+	},
+	active: {
+		border: "2px solid #dc2626",
+		backgroundColor: "#fff",
+	},
+	current: {
+		border: "2px solid #dc2626",
+		backgroundColor: "#f87171",
+	},
+}
 
 const ProcessTimeline = (props: Props) => {
-	const [step, setStep] = useState<ProcessType>(process[0])
-	const [x, setX] = useState<string>("0vw")
+	const [step, setStep] = useState<number>(0)
+
+	const navRef = useRef<HTMLDivElement | null>(null)
+	const rect = useRect(navRef)
 
 	return (
-		<>
-			<nav className={["relative", `w-[${navWidth}vw]`].join(" ")}>
+		<div className="w-full h-screen flex flex-col items-center justify-center space-y-4">
+			<nav className="w-[70%] flex flex-col items-center justify-center relative" ref={navRef}>
 				<motion.div
-					className="absolute -top-[0.375rem] left-[7.5vw] p-2 bg-red-600 rounded-full z-[3]"
-					animate={{ x }}
-					transition={{ type: "spring", duration: 0.5 }}
+					style={{
+						position: "absolute",
+						top: "0.75rem",
+						height: "0.125rem",
+						backgroundColor: "#dc2626",
+						left: rect ? rect.width / (2 * steps.length) : 0,
+						width: rect ? rect.width * (step / steps.length) : 0,
+						zIndex: 2,
+					}}
+					animate={{
+						width: rect ? rect.width * (step / steps.length) : 0,
+					}}
+					transition={{
+						ease: "easeInOut",
+						duration: 0.5,
+					}}
 				/>
 				<div
-					className={[
-						"h-1 border-2 rounded-lg bg-gray-300 border-gray-300 absolute right-0 left-0 m-auto",
-						`w-[${getvwOffsetString(navWidth * (1 - 1 / process.length))}]`,
-					].join(" ")}
+					style={{
+						position: "absolute",
+						top: "0.75rem",
+						height: "0.125rem",
+						backgroundColor: "#e5e7eb",
+						left: rect ? rect.width / (2 * steps.length) : 0,
+						width: rect ? rect.width * (1 - 1 / steps.length) : 0,
+					}}
 				/>
-				<ul className={["flex flex-row items-center justify-between mt-4", `w-full m-auto`].join(" ")}>
-					{process.map((step: ProcessType, index: number) => (
-						<li key={step.phase} className="w-full flex flex-col items-center">
-							<div
-								className={[
-									"absolute -top-[0.375rem] p-[0.375rem] border-red-300 border-2 bg-white rounded-full z-[2] cursor-pointer",
-									`left-[${getvwOffsetString(7.5 + (index * navWidth) / process.length)}]`,
-								].join(" ")}
-								onClick={() => {
-									setStep(step)
-									setX(getvwOffsetString((navWidth / process.length) * index))
-								}}
+				<ul className="flex flex-row items-center justify-space-between w-full h-fit z-[3]">
+					{steps.map((processItem: ProcessType, index: number) => (
+						<li
+							key={processItem.phase}
+							className={["w-full flex flex-col items-center justify-center"].join(" ")}
+						>
+							<motion.div
+								className="h-6 w-6 border-2 rounded-full cursor-pointer"
+								variants={circleVariants}
+								animate={step === index ? "current" : step > index ? "active" : "inactive"}
+								onClick={() => setStep(index)}
 							/>
-							<motion.button
-								onClick={() => {
-									setStep(step)
-									setX(getvwOffsetString((navWidth / process.length) * index))
-								}}
+							<div
+								onClick={() => setStep(index)}
+								className={[
+									"p-2 cursor-pointer",
+									step === index ? "text-red-700 font-semibold" : "text-black",
+								].join(" ")}
 							>
-								{step.phase}
-							</motion.button>
+								{processItem.phase}
+							</div>
 						</li>
 					))}
 				</ul>
 			</nav>
-			<AnimatePresence exitBeforeEnter>
-				<ProcessTimelineItem process={step} />
+			<AnimatePresence mode="wait">
+				<ProcessTimelineItem process={steps[step]} />
 			</AnimatePresence>
-		</>
+		</div>
 	)
 }
 

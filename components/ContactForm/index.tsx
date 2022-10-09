@@ -29,18 +29,36 @@ const ContactForm = (props: Props) => {
 			}}
 		>
 			{({ values, errors, touched }) => (
-				<Form className="contact-form">
+				<Form className="contact-form border-2 border-gray-400 mx-8">
 					<h4>Talk to an Expert Now.</h4>
-					<label htmlFor="name">Name</label>
-					<Field type="text" as="input" name="name" placeholder="Name" />
+					<label htmlFor="name">Name*</label>
+					<Field
+						type="text"
+						as="input"
+						name="name"
+						placeholder="Name"
+						className={[touched.name && errors.name && "field-error"].join(" ")}
+					/>
 					{touched.name && errors.name ? <span className="error">{errors.name}</span> : null}
-					<label htmlFor="email">Email</label>
-					<Field type="text" as="" name="email" placeholder="Email" />
+					<label htmlFor="email">Email*</label>
+					<Field
+						type="text"
+						as=""
+						name="email"
+						placeholder="Email"
+						className={[touched.name && errors.name && "field-error"].join(" ")}
+					/>
 					{touched.email && errors.email ? <span className="error">{errors.email}</span> : null}
 					<label htmlFor="company">Company</label>
 					<Field type="text" as="" name="company" placeholder="Company" />
-					<label htmlFor="company">Message</label>
-					<Field type="text" as="textarea" name="message" placeholder="Message" />
+					<label htmlFor="company">Message*</label>
+					<Field
+						type="text"
+						as="textarea"
+						name="message"
+						placeholder="Message"
+						className={[touched.name && errors.name && "field-error"].join(" ")}
+					/>
 					{touched.message && errors.message ? <span className="error">{errors.message}</span> : null}
 					<button type="submit">Submit</button>
 				</Form>

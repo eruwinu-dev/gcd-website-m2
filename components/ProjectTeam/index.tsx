@@ -1,17 +1,25 @@
 import React from "react"
-import type { ProjectType, MemberType } from "../../types"
+import useStateContext from "../../context/State"
+import type { ProjectType, TeamType } from "../../types"
 
 type Props = {
 	project: ProjectType
 }
 
 const ProjectTeam = ({ project }: Props) => {
+	const { viewMode } = useStateContext()
+
 	return (
-		<div className="project-team w-[75%]">
-			<h1>{project.name}</h1>
+		<div
+			className={[
+				"project-team",
+				viewMode === "story" ? "items-start text-white text-left" : "items-center text-black text-center",
+			].join(" ")}
+		>
+			<h1 className="text-5xl">{project.name}</h1>
 			<span className="italic tracking-wider">{project.address}</span>
 			<div className="project-members">
-				{project.team.map((team: MemberType, index: number) => (
+				{project.team.map((team: TeamType, index: number) => (
 					<div
 						key={index}
 						className={[

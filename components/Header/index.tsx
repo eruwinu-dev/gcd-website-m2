@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import React, { useEffect, useState } from "react"
+import useStateContext from "../../context/State"
 
 type Props = {}
 
@@ -15,8 +17,8 @@ const links: LinkType[] = [
 		url: "/about",
 	},
 	{
-		name: "Services",
-		url: "/services",
+		name: "Process",
+		url: "/process",
 	},
 	{
 		name: "Contact",
@@ -32,6 +34,16 @@ const limit: number = 10
 
 const Header = (props: Props) => {
 	const [offset, setOffset] = useState<number>(0)
+	const { viewMode } = useStateContext()
+	const { pathname } = useRouter()
+
+	const isWhite = ["/", "/about", "/process", "/portfolio/[project]"].includes(pathname)
+		? pathname === "/portfolio/[project]"
+			? viewMode === "story"
+				? true
+				: false
+			: true
+		: false
 
 	useEffect(() => {
 		const options = { passive: true }
@@ -45,17 +57,35 @@ const Header = (props: Props) => {
 
 	return (
 		<header className={["generic-transition", offset > limit ? "bg-white shadow-xl" : "bg-transparent"].join(" ")}>
-			<div className={["generic-transition", offset > limit ? "px-1" : "px-4"].join(" ")}>
+			<div>
 				<Link href="/">
-					<a>
-						<Image src="/logo-black.png" alt="GLen Charles Design Logo" width={52} height={42} />
-					</a>
+					<div
+						className={[
+							"generic-transition",
+							"relative h-[2.5rem] w-auto aspect-[1.23/1]",
+							offset > limit ? "mx-4" : "mx-1",
+						].join(" ")}
+					>
+						<Image
+							src="/logo-black.png"
+							alt="GLen Charles Design Logo"
+							layout="fill"
+							className="cursor-pointer "
+						/>
+					</div>
 				</Link>
 			</div>
 			<div>
 				{links.map((link: LinkType, index: number) => (
 					<Link href={link.url} key={index}>
-						<a className={["generic-transition", offset > limit ? "px-1" : "pr-4"].join(" ")}>
+						<a
+							className={[
+								"generic-transition",
+								`${
+									offset > limit ? `px-4 text-black` : `px-1 ${isWhite ? `text-white` : `text-black`}`
+								}`,
+							].join(" ")}
+						>
 							{link.name}
 						</a>
 					</Link>

@@ -10,7 +10,7 @@
 		@apply relative min-h-0;
 	}
 	main > section {
-		@apply -translate-y-[5.1rem];
+		@apply -translate-y-[3.5rem];
 	}
 	section {
 		@apply min-h-screen flex flex-row items-stretch justify-between;
@@ -23,12 +23,11 @@
 		@apply w-full py-2 border-b-2 resize-y focus:outline-none;
 	}
 	button {
-		@apply px-4 py-2 rounded-lg;
+		@apply px-4 py-2;
 	}
-	a {
-		&:hover {
-			@apply text-blue-500 underline;
-		}
+
+	a:hover {
+		@apply hover:underline;
 	}
 	h1 {
 		@apply text-4xl font-extrabold;
@@ -50,25 +49,22 @@
 	}
 	header {
 		@apply w-full px-4 sticky top-0 left-0 flex flex-row items-center justify-between z-10;
-		div:first-child {
-			@apply py-2;
-			a {
-				@apply relative;
-			}
-		}
-		div:last-child {
-			@apply flex flex-row items-center justify-center space-x-2 py-2;
-		}
+	}
+	header > div:first-child {
+		@apply py-2;
+	}
+	header > div:last-child {
+		@apply flex flex-row items-center justify-center space-x-2 py-2;
 	}
 
 	footer {
 		@apply w-full flex flex-row items-center justify-between border-t-2 static bottom-0 left-0;
-		.logo-container {
-			@apply flex-[2] flex flex-col items-start justify-center px-8 py-2;
-		}
-		.contact-list-container {
-			@apply flex-1 flex flex-col items-start justify-center px-8 py-2 space-y-2;
-		}
+	}
+	footer > .logo-container {
+		@apply flex-[2] flex flex-col items-start justify-center px-8 py-2;
+	}
+	footer .contact-list-container {
+		@apply flex-1 flex flex-col items-start justify-center px-8 py-2 space-y-2;
 	}
 }
 
@@ -76,106 +72,87 @@
 	.generic-transition {
 		@apply transition-all ease-linear duration-200;
 	}
-	.landing-image {
-		background-image: url("https://i.ibb.co/bJX4T0R/landing-house.jpg");
-		object-fit: contain;
-		background-size: 100% 100%;
+	.custom-scrollbar {
+		@apply scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
 	}
 	.contact-list {
 		@apply max-h-fit space-y-2;
 	}
 	.contact-list > div {
 		@apply flex flex-row items-center justify-start space-x-4;
-		a {
-			@apply flex flex-row items-center justify-start space-x-4;
-		}
 	}
-	.about-image {
-		background-image: url("https://i.ibb.co/pL4Zry9/contact-sketch.jpg");
-		object-fit: contain;
-		background-size: 100% 100%;
+	.contact-list > div > a {
+		@apply flex flex-row items-center justify-start space-x-4;
 	}
-	.about-image-2 {
-		background-image: url("https://i.ibb.co/2kCRXP3/rough-sketch.jpg");
-		object-fit: contain;
-		background-size: 100% 100%;
+	.about-beside > div {
+		@apply w-[80%] space-y-8 leading-loose flex flex-col items-center justify-center;
 	}
-	.about-beside {
-		div {
-			@apply w-[80%] space-y-8 leading-loose flex flex-col items-center justify-center;
-			h1 {
-				@apply text-center;
-			}
-		}
-	}
-
-	.contact-image {
-		background-image: url("https://i.ibb.co/pL4Zry9/contact-sketch.jpg");
-		object-fit: contain;
-		background-size: 100% 100%;
+	.about-beside > div > h1 {
+		@apply text-center;
 	}
 	.contact-form-section {
 		@apply flex flex-row items-stretch justify-between;
-		div {
-			@apply flex-1;
-		}
+	}
+	.contact-form-section > div {
+		@apply flex-1;
 	}
 	.contact-form-beside {
 		@apply flex flex-col items-center justify-center p-8;
 	}
 	.contact-form {
-		@apply w-[80%] flex flex-col items-start justify-center space-y-4 rounded-lg my-8;
-		h4 {
-			@apply w-full text-center;
-		}
-		label,
-		span {
-			@apply w-full text-sm;
-		}
-		span {
-			@apply text-sm text-red-500;
-		}
-		button {
-			@apply bg-blue-500 text-white transition-all ease-in-out duration-300;
-			&:hover {
-				@apply bg-blue-700;
-			}
-		}
+		@apply w-[80%] flex flex-col items-start justify-center space-y-2 my-8 px-8 py-16;
+	}
+	.contact-form > h4 {
+		@apply w-full text-center;
+	}
+	.contact-form > label,
+	span {
+		@apply w-full text-sm;
+	}
+	.contact-form > span {
+		@apply text-sm text-red-700;
+	}
+	.contact-form > button {
+		@apply bg-white text-red-700 transition-all ease-in-out duration-300 border-2 border-red-700 tracking-wider;
+	}
+	.contact-form > button:hover {
+		@apply bg-red-700 text-white;
+	}
+	.field-error {
+		@apply border-red-700;
 	}
 	.team-section {
 		@apply min-h-fit p-4 flex flex-col items-center justify-center space-y-2 mt-[5.2em] mb-[-5.2em];
 	}
 	.team-gallery {
-		@apply w-[80%] h-fit p-4 grid grid-cols-3 grid-flow-row gap-8;
+		@apply w-full h-fit p-8 grid grid-cols-2 grid-flow-row gap-8;
 	}
 	.team-gallery-item {
-		@apply w-full flex flex-col items-center justify-between space-y-2 overflow-hidden mb-4 cursor-pointer;
-		& .team-image-container {
-			@apply w-full relative inline-block overflow-hidden aspect-[5/6];
-		}
-		& .team-text {
-			@apply w-full text-center space-y-2;
-		}
+		@apply w-full flex flex-col items-center justify-between space-y-2 overflow-hidden cursor-pointer;
+	}
+	.team-gallery-item > .team-image-container {
+		@apply w-full h-auto inline-block relative overflow-hidden aspect-[1/1.5];
+	}
+	.team-gallery-item > .team-text {
+		@apply w-full text-center;
 	}
 	.member-section {
 		@apply translate-y-0 h-full;
 	}
 	.member-image-layout {
-		@apply w-full h-full items-end justify-start pt-12 pr-8 space-y-2 sticky top-8 left-0;
-		& h3,
-		.italic {
-			@apply w-[60%] text-center;
-		}
-		& .italic {
-			@apply pb-4;
-		}
+		@apply w-full h-full items-end justify-start pt-8 pr-8 space-y-2 left-0;
+	}
+	.member-image-layout > h3 {
+		@apply w-[55%] text-center;
+	}
+	.member-image-layout > .italic {
+		@apply w-[55%] text-center pb-4;
 	}
 	.member-image-container {
-		@apply w-[60%] relative inline-block overflow-hidden aspect-[5/6];
-
-		& img {
-			@apply transition-all ease-in-out duration-300 hover:scale-110 cursor-pointer;
-		}
+		@apply w-[55%] h-auto relative inline-block overflow-hidden aspect-[1/1.5];
+	}
+	.member-image-container > img {
+		@apply transition-all ease-in-out duration-300 hover:scale-110 cursor-pointer;
 	}
 	.member-beside {
 		@apply flex flex-col items-start justify-start h-full;
@@ -188,24 +165,23 @@
 	}
 	.portfolio-section {
 		@apply flex flex-col items-center justify-center h-fit;
-		& .portfolio-title {
-			@apply w-[75%] text-center mb-4 pb-4 border-b-4;
-		}
 	}
 	.portfolio-masonry {
-		@apply gap-8 grid-flow-col lg:columns-3 md:columns-2 sm:columns-2 columns-2 w-[80%] h-full p-8;
+		@apply gap-4 grid-flow-row lg:columns-3 md:columns-2 sm:columns-2 columns-2 w-full h-full px-8;
 	}
 	.portfolio-masonry-item {
-		@apply w-full inline-block mb-8 relative cursor-pointer overflow-hidden;
+		@apply w-full inline-block mb-4 relative cursor-pointer overflow-hidden;
 	}
 	.portfolio-masonry-item-slider {
-		@apply w-full h-full z-[2] bg-black/75 absolute top-0 left-0 flex flex-col items-center justify-center;
-		& h3 {
-			@apply text-white;
-		}
+		@apply w-full h-full z-[2] bg-black/75 absolute top-0 left-0 flex flex-col items-center justify-center text-white;
+	}
+
+	.portfolio-masonry-item-slider > h3,
+	.portfolio-masonry-item-slider > span {
+		@apply text-center mb-2;
 	}
 	.project-section {
-		@apply translate-y-0 h-screen flex flex-row items-end justify-center px-2;
+		@apply -translate-y-[3.5rem];
 	}
 	.project-landing-container {
 		@apply relative w-[96vw];
@@ -215,86 +191,93 @@
 	}
 	.project-bottom-bar-link {
 		@apply flex flex-col justify-center absolute top-0 space-y-2;
-		& label {
-			@apply text-sm text-red-600;
-		}
-		& a {
-			@apply flex flex-row items-center space-x-2;
-		}
+	}
+	.project-bottom-bar-link > label {
+		@apply text-sm text-red-700;
+	}
+	.project-bottom-bar-link > a {
+		@apply flex flex-row items-center space-x-2;
 	}
 	.project-team {
-		@apply text-center pb-4 border-b-4 flex flex-col items-center justify-center space-y-4;
-		.project-members {
-			@apply w-full grid grid-cols-2 grid-flow-row;
-			div {
-				@apply flex flex-col items-center justify-center space-y-2;
-			}
-			& .odd-child {
-				@apply col-span-2;
-			}
-		}
+		@apply w-full pb-4 flex flex-col justify-center space-y-4;
 	}
+	.project-team > .project-members {
+		@apply w-full grid grid-cols-2 grid-flow-row gap-4 py-4;
+	}
+	.project-team > .project-members > div {
+		@apply space-y-2;
+	}
+	.project-team > .project-members > .odd-child {
+		@apply col-span-2;
+	}
+
 	.project-description {
-		@apply py-16 w-full flex flex-col items-center justify-center space-y-4;
-		& .project-markdown {
-			@apply w-[50%] h-full z-[2] space-y-12 flex flex-col items-center justify-center text-black;
-		}
+		@apply p-8 w-full flex flex-row items-start justify-between space-x-8;
 	}
-	.project-markdown-article {
-		@apply prose text-black text-justify leading-loose h-fit min-w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
+	.project-description > .project-markdown {
+		@apply w-full h-full z-[2] flex flex-col items-center justify-center text-black p-8;
+	}
+	.project-markdown > article {
+		@apply prose text-black leading-loose h-fit w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
 	}
 	.project-gallery {
-		@apply w-[80%] py-16 flex flex-col items-center justify-center space-y-4 text-center;
-		& h1,
-		h3,
-		div {
-			@apply w-full;
-		}
-		& h3 {
-			@apply pb-4 border-b-4;
-		}
-		& .project-gallery-list {
-			@apply gap-8 lg:columns-3 md:columns-2 sm:columns-2 columns-2 h-full p-8;
-		}
+		@apply w-[80%] pb-8 flex flex-col items-center justify-center space-y-4 text-center;
+	}
+	.project-gallery > h1 {
+		@apply w-full;
+	}
+	.project-gallery > div {
+		@apply w-full;
+	}
+	.project-gallery > h3 {
+		@apply w-full pb-4 border-b-4;
+	}
+	.project-gallery > .project-gallery-list {
+		@apply gap-8 lg:columns-3 md:columns-2 sm:columns-2 columns-2 h-full p-8;
 	}
 	.project-gallery-item {
 		@apply w-full aspect-video inline-block mb-8 relative cursor-pointer overflow-hidden;
-		& img {
-			@apply hover:scale-110 transition-transform duration-300 ease-in-out hover:opacity-100 opacity-80;
-		}
 	}
-	.project-story-image {
-		@apply rounded-tl-3xl rounded-br-3xl;
+	.project-gallery-item > img {
+		@apply hover:scale-110 transition-transform duration-300 ease-in-out hover:opacity-100 opacity-80;
 	}
 	.project-story-div {
 		@apply w-[50%] h-[7.5%] absolute top-0 right-0;
-		& button {
-			@apply p-1 m-4;
-		}
+	}
+	.project-story-div > button {
+		@apply p-1 m-4;
 	}
 	.project-story-team-container {
-		@apply w-[50%] h-full absolute top-0 left-0 z-[2] p-2 space-y-12 bg-black/70 flex flex-col items-center justify-center text-white rounded-tl-3xl;
-		& .project-story-relative {
-			@apply relative w-full h-full flex flex-col items-center justify-center;
-			& .animated-div {
-				@apply italic hover:underline z-[2] absolute right-0 top-0;
-			}
-		}
+		@apply w-[50%] h-full absolute top-0 left-0 z-[2] p-2 space-y-12 bg-black/70 flex flex-col items-center justify-center text-white;
+	}
+	.project-story-team-container > .project-story-relative {
+		@apply relative w-full h-full flex flex-col items-center justify-center;
+	}
+	.animated-div-button {
+		@apply italic hover:underline z-[2] relative;
+	}
+	.animated-div-button > button {
+		@apply absolute left-0 m-auto border-2 text-white inline-flex items-center space-x-1;
+	}
+	.animated-div-button > button:hover {
+		@apply generic-transition bg-white text-black;
 	}
 	.project-story-markdown-container {
-		@apply w-[50%] h-full absolute bottom-0 right-0 z-[2] bg-white/[95%] flex flex-col items-center justify-center text-black rounded-br-3xl shadow-lg;
-		& .project-markdown-article {
-			@apply px-16 overflow-y-auto;
-		}
+		@apply top-16 right-8 absolute bg-white overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
+		height: calc(100vh - 6rem);
+		width: calc(100vw / 2 - 2rem);
+	}
+	.project-story-markdown-container > article {
+		@apply prose px-16 leading-loose;
 	}
 	.project-landing-carousel-container {
 		@apply absolute top-0 left-0 w-full h-full;
 	}
 	.project-carousel-container {
 		@apply relative w-full h-screen border-gray-200 overflow-hidden;
-		& img {
-			@apply absolute w-full h-screen overflow-hidden mt-2;
-		}
+	}
+	.project-carousel-container > img {
+		@apply absolute w-full h-screen overflow-hidden mt-2;
 	}
 	.carousel-controls {
 		@apply absolute top-0 h-full z-[2] w-[7.5%] transition-all duration-300 ease-in-out flex flex-col items-center justify-center cursor-pointer;

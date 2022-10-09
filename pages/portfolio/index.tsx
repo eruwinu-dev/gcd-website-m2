@@ -11,7 +11,6 @@ const Portfolio = (props: Props) => {
 				<title>Portfolio | G Charles Design - Licensed Architectural Services</title>
 			</Head>
 			<div className="portfolio-section">
-				<h1 className="portfolio-title">Portfolio</h1>
 				<PortfolioMasonry />
 			</div>
 		</>

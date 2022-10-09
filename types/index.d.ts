@@ -24,18 +24,29 @@ export interface ProjectType {
 	team: TeamType[]
 }
 
-interface FormType {
+export interface FormType {
 	name: string
 	email: string
 	company: string
 	message: string
 }
 
-interface ProcessType {
+export interface ProcessType {
 	phase: string
 	title: string
 	description: string
 	photo: string
+}
+
+export interface ServiceType {
+	title: string
+	description: string
+	photo: string
+}
+
+export interface CollageType {
+	format: string
+	picture: string
 }
 
 export interface ContextType {

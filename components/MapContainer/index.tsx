@@ -8,12 +8,12 @@ const MapContainer = (props: Props) => {
 	return (
 		<>
 			<motion.div
-				className="absolute z-[3] top-[3vh] right-[27vw] w-[9vw] h-fit"
+				className="absolute z-[3] top-[7.5vh] right-[25.5vw] w-[12vw] h-fit"
 				initial={{ y: -50, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ ease: "easeInOut", duration: 0.5 }}
 			>
-				<div className="w-full h-auto relative aspect-square">
+				<div className="w-full h-auto relative aspect-video">
 					<Image src="/gcd-logo-big.png" alt="Glen Charles Design Logo" layout="fill" />
 				</div>
 			</motion.div>

@@ -1,6 +1,6 @@
 import { ProcessType } from "../types"
 
-export const process: ProcessType[] = [
+export const steps: ProcessType[] = [
 	{
 		phase: "I",
 		title: "First Phase",
