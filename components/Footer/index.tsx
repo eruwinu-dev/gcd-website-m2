@@ -8,10 +8,10 @@ const Footer = (props: Props) => {
 	return (
 		<footer>
 			<div className="logo-container">
-				<div>
-					<Image src="/gcd-logo-big.png" alt="Glen Charles Design Logo" width={237} height={124} />
+				<div className="relative w-1/4 h-auto aspect-video">
+					<Image src="/gcd-logo-big.png" alt="Glen Charles Design Logo" layout="fill" />
 				</div>
-				<h6>&copy; 2022 G Charles Design Architecture and Planning</h6>
+				<span className="text-sm italic">&copy; 2022 G Charles Design Architecture and Planning</span>
 			</div>
 			<div className="contact-list-container">
 				<h4>Reach Us</h4>

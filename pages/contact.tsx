@@ -1,42 +1,45 @@
+import { useRect } from "@reach/rect"
 import Head from "next/head"
 import Image from "next/image"
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 import ContactForm from "../components/ContactForm"
 import ContactList from "../components/ContactList"
 import MapContainer from "../components/MapContainer"
+import SocialsList from "../components/SocialsList"
 
 type Props = {}
 
 const Contact = (props: Props) => {
+	const sliderRef = useRef<HTMLDivElement | null>(null)
+	const sliderRect = useRect(sliderRef)
+
 	return (
 		<>
 			<Head>
 				<title>Contact | G Charles Design - Licensed Architectural Services</title>
 			</Head>
-			<section className="project-section relative">
-				<MapContainer />
-				<div className="absolute z-[2] w-[50%] h-full top-0 left-0">
-					<div className="flex flex-col items-center justify-center w-[60%] space-y-8 -translate-y-8">
+			<section className="h-fit translate-y-0 flex flex-row items-start justify-center">
+				<div
+					className="w-full flex flex-col items-center justify-start"
+					style={{ height: sliderRect ? sliderRect.height : 0 }}
+				>
+					<div
+						className={[
+							"sticky flex flex-col items-center justify-center w-4/5 h-auto aspect-square border-2 border-black space-y-8 px-8 mb-8 generic-transition top-24",
+						].join(" ")}
+					>
 						<h1>Get In Touch</h1>
+						<ContactList size="large" />
+						<SocialsList />
+					</div>
+				</div>
 
-						<p>
-							By hiring a licensed architect, you gain creative expertise through the design process
-							coupled with years of experience getting plans approved by various jurisdictions.
-						</p>
-						<ContactList />
-					</div>
-				</div>
-			</section>
-			<div className="contact-form-section">
-				<div className="flex flex-col items-center justify-center">
-					<div className="relative w-[95%] h-auto aspect-video bg-[url(https://i.ibb.co/pL4Zry9/contact-sketch.jpg)] bg-cover">
-						{/* <Image src="" alt="Contact Sketch" layout="fill" /> */}
-					</div>
-				</div>
-				<div className="contact-form-beside">
+				<div className="w-full h-fit flex flex-col items-center justify-start space-y-2 pb-8" ref={sliderRef}>
+					<MapContainer />
 					<ContactForm />
 				</div>
-			</div>
+			</section>
 		</>
 	)
 }

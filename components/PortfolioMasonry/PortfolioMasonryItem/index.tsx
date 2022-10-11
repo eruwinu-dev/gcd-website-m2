@@ -10,8 +10,8 @@ type Props = {
 }
 
 const imageMotion = {
-	rest: { opacity: 1 },
-	hover: { opacity: 1 },
+	rest: { scale: 1 },
+	hover: { scale: 1.05 },
 }
 
 const titleMotion = {
@@ -27,18 +27,15 @@ const titleMotion = {
 }
 
 const PortfolioMasonryItem = ({ project, index }: Props) => {
-	const aspects = ["aspect-[1/1]", "aspect-[1.3/1]", "aspect-[16/9]", "aspect-[3/2]"]
-
-	// const random = Math.floor(Math.random() * 100) % aspects.length
 
 	return (
 		<Link href={`./portfolio/${project.url}`}>
 			<motion.div className="portfolio-masonry-item" initial="rest" whileHover="hover" animate="rest">
 				<motion.div className="portfolio-masonry-item-slider" variants={titleMotion}>
-					<h3>{project.name}</h3>
+					<h4>{project.name}</h4>
 					<span className="italic">{project.address}</span>
 				</motion.div>
-				<motion.div className={["w-full h-auto relative", aspects[0]].join(" ")} variants={imageMotion}>
+				<motion.div className={["w-full h-auto relative aspect-square"].join(" ")} variants={imageMotion}>
 					<Image src={project.photos[0]} alt={project.url} layout="fill" />
 				</motion.div>
 			</motion.div>

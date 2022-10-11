@@ -1,9 +1,11 @@
 import React from "react"
 import { MailIcon, MapPinIcon, PhoneIcon } from "../../lib/icons"
 
-type Props = {}
+type Props = {
+	size?: "large"
+}
 
-const ContactList = (props: Props) => {
+const ContactList = ({ size }: Props) => {
 	return (
 		<div className="contact-list h-fit">
 			<div>
@@ -11,12 +13,12 @@ const ContactList = (props: Props) => {
 					<div className="w-6 h-6">
 						<MailIcon />
 					</div>
-					<span className="contacts-name">inquiry@gcharlesdesign.com</span>
+					<span className={size == "large" ? "text-base" : ""}>inquiry@gcharlesdesign.com</span>
 				</a>
 			</div>
 			<div>
 				<PhoneIcon />
-				<span className="contacts-name">(818) 562-7224</span>
+				<span className={size == "large" ? "text-base" : ""}>(818) 562-7224</span>
 			</div>
 			<div>
 				<a
@@ -25,7 +27,9 @@ const ContactList = (props: Props) => {
 					rel="noopener noreferrer"
 				>
 					<MapPinIcon />
-					<span className="contacts-name">31312 Via Colinas #109, Westlake Village, CA 91362</span>
+					<span className={size == "large" ? "text-base" : ""}>
+						31312 Via Colinas #109, Westlake Village, CA 91362
+					</span>
 				</a>
 			</div>
 		</div>

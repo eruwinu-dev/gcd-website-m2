@@ -25,7 +25,9 @@
 	button {
 		@apply px-4 py-2;
 	}
-
+	a {
+		@apply generic-transition;
+	}
 	a:hover {
 		@apply hover:underline;
 	}
@@ -46,6 +48,9 @@
 	}
 	h6 {
 		@apply text-base font-semibold;
+	}
+	p {
+		@apply leading-loose;
 	}
 	header {
 		@apply w-full px-4 sticky top-0 left-0 flex flex-row items-center justify-between z-10;
@@ -85,7 +90,7 @@
 		@apply flex flex-row items-center justify-start space-x-4;
 	}
 	.about-beside > div {
-		@apply w-[80%] space-y-8 leading-loose flex flex-col items-center justify-center;
+		@apply w-4/5 space-y-8 leading-loose flex flex-col items-center justify-center;
 	}
 	.about-beside > div > h1 {
 		@apply text-center;
@@ -100,7 +105,7 @@
 		@apply flex flex-col items-center justify-center p-8;
 	}
 	.contact-form {
-		@apply w-[80%] flex flex-col items-start justify-center space-y-2 my-8 px-8 py-16;
+		@apply w-4/5 h-auto aspect-square flex flex-col items-start justify-center space-y-2 px-8 py-16;
 	}
 	.contact-form > h4 {
 		@apply w-full text-center;
@@ -125,16 +130,7 @@
 		@apply min-h-fit p-4 flex flex-col items-center justify-center space-y-2 mt-[5.2em] mb-[-5.2em];
 	}
 	.team-gallery {
-		@apply w-full h-fit p-8 grid grid-cols-2 grid-flow-row gap-8;
-	}
-	.team-gallery-item {
-		@apply w-full flex flex-col items-center justify-between space-y-2 overflow-hidden cursor-pointer;
-	}
-	.team-gallery-item > .team-image-container {
-		@apply w-full h-auto inline-block relative overflow-hidden aspect-[1/1.5];
-	}
-	.team-gallery-item > .team-text {
-		@apply w-full text-center;
+		@apply w-full h-fit px-16 pb-8 grid grid-cols-2 grid-flow-row gap-8;
 	}
 	.member-section {
 		@apply translate-y-0 h-full;
@@ -152,7 +148,7 @@
 		@apply w-[55%] h-auto relative inline-block overflow-hidden aspect-[1/1.5];
 	}
 	.member-image-container > img {
-		@apply transition-all ease-in-out duration-300 hover:scale-110 cursor-pointer;
+		@apply transition-all ease-in-out duration-300 hover:scale-105 cursor-pointer;
 	}
 	.member-beside {
 		@apply flex flex-col items-start justify-start h-full;
@@ -161,22 +157,21 @@
 		@apply w-[70%] prose text-justify pb-8 leading-loose;
 	}
 	.image-container {
-		@apply relative w-[60%] h-fit;
+		@apply relative w-3/5 h-fit;
 	}
 	.portfolio-section {
 		@apply flex flex-col items-center justify-center h-fit;
 	}
 	.portfolio-masonry {
-		@apply gap-4 grid-flow-row lg:columns-3 md:columns-2 sm:columns-2 columns-2 w-full h-full px-8;
+		@apply gap-4 grid-flow-row lg:columns-3 md:columns-2 sm:columns-2 columns-2 w-10/12 h-fit py-16;
 	}
 	.portfolio-masonry-item {
 		@apply w-full inline-block mb-4 relative cursor-pointer overflow-hidden;
 	}
 	.portfolio-masonry-item-slider {
-		@apply w-full h-full z-[2] bg-black/75 absolute top-0 left-0 flex flex-col items-center justify-center text-white;
+		@apply w-full h-1/4 z-[2] bg-black/75 absolute bottom-0 left-0 flex flex-col items-center justify-center text-white;
 	}
-
-	.portfolio-masonry-item-slider > h3,
+	.portfolio-masonry-item-slider > h4,
 	.portfolio-masonry-item-slider > span {
 		@apply text-center mb-2;
 	}
@@ -187,7 +182,7 @@
 		@apply relative w-[96vw];
 	}
 	.project-bottom-bar {
-		@apply relative w-[80%] h-[10vh];
+		@apply relative w-4/5 h-[10vh];
 	}
 	.project-bottom-bar-link {
 		@apply flex flex-col justify-center absolute top-0 space-y-2;
@@ -205,7 +200,7 @@
 		@apply w-full grid grid-cols-2 grid-flow-row gap-4 py-4;
 	}
 	.project-team > .project-members > div {
-		@apply space-y-2;
+		@apply space-y-2 flex flex-col items-center justify-center;
 	}
 	.project-team > .project-members > .odd-child {
 		@apply col-span-2;
@@ -221,7 +216,7 @@
 		@apply prose text-black leading-loose h-fit w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
 	}
 	.project-gallery {
-		@apply w-[80%] pb-8 flex flex-col items-center justify-center space-y-4 text-center;
+		@apply w-4/5 pb-8 flex flex-col items-center justify-center space-y-4 text-center;
 	}
 	.project-gallery > h1 {
 		@apply w-full;
@@ -233,13 +228,13 @@
 		@apply w-full pb-4 border-b-4;
 	}
 	.project-gallery > .project-gallery-list {
-		@apply gap-8 lg:columns-3 md:columns-2 sm:columns-2 columns-2 h-full p-8;
+		@apply grid grid-cols-3 grid-flow-row h-full gap-4 p-8;
 	}
 	.project-gallery-item {
-		@apply w-full aspect-video inline-block mb-8 relative cursor-pointer overflow-hidden;
+		@apply w-full aspect-video inline-block mb-2 relative cursor-pointer overflow-hidden;
 	}
 	.project-gallery-item > img {
-		@apply hover:scale-110 transition-transform duration-300 ease-in-out hover:opacity-100 opacity-80;
+		@apply hover:scale-105 transition-transform duration-300 ease-in-out hover:opacity-100 opacity-80;
 	}
 	.project-story-div {
 		@apply w-[50%] h-[7.5%] absolute top-0 right-0;

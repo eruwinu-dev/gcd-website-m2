@@ -45,6 +45,12 @@ const Header = (props: Props) => {
 			: true
 		: false
 
+	const iconPath: "/logo-black.png" | "/logo-white.png" = isWhite
+		? offset > limit
+			? "/logo-black.png"
+			: "/logo-white.png"
+		: "/logo-black.png"
+
 	useEffect(() => {
 		const options = { passive: true }
 		const scroll = () => {
@@ -67,8 +73,8 @@ const Header = (props: Props) => {
 						].join(" ")}
 					>
 						<Image
-							src="/logo-black.png"
-							alt="GLen Charles Design Logo"
+							src={iconPath}
+							alt="Glen Charles Design Logo"
 							layout="fill"
 							className="cursor-pointer "
 						/>
@@ -81,9 +87,9 @@ const Header = (props: Props) => {
 						<a
 							className={[
 								"generic-transition",
-								`${
-									offset > limit ? `px-4 text-black` : `px-1 ${isWhite ? `text-white` : `text-black`}`
-								}`,
+								offset > limit ? "px-4 text-black" : "px-1",
+								isWhite ? "text-white" : "text-black",
+								[link.url, "/"].includes(pathname) ? "opacity-100" : "opacity-50 hover:opacity-100",
 							].join(" ")}
 						>
 							{link.name}

@@ -2,6 +2,7 @@ import Head from "next/head"
 import Link from "next/link"
 import React from "react"
 import AboutCollage from "../../components/AboutCollage"
+import BookConsultButton from "../../components/BookConsultButton"
 import TeamGallery from "../../components/TeamGallery"
 
 type Props = {}
@@ -19,7 +20,7 @@ const About = (props: Props) => {
 						<h1 className="text-5xl text-white mb-4 leading-normal">
 							We design for our clients, not our portfolio.
 						</h1>
-						<p className="text-white w-[60%] text-xl leading-relaxed">
+						<p className="text-white w-3/5 text-xl leading-relaxed">
 							Our knowledge of architecture is informed through years of education and experience.
 						</p>
 					</div>
@@ -38,10 +39,6 @@ const About = (props: Props) => {
 							completed over 900,000 square feet of retail space design both nationally and overseas. Our
 							firm is eager to work with clients from all walks of life.
 						</p>
-						<p>
-							We are not a firm that's only interested in the next big opportunity. We pride ourselves in
-							bringing custom design services to clients that have never had that experience.
-						</p>
 					</div>
 				</div>
 				<AboutCollage />
@@ -55,7 +52,7 @@ const About = (props: Props) => {
 					</p>
 				</div>
 			</div>
-			<section className="h-fit translate-y-0 flex flex-row items-start justify-center p-8">
+			<section className="h-fit translate-y-0 flex flex-row items-start justify-center">
 				<TeamGallery />
 			</section>
 			<section className="relative w-full translate-y-0 aspect-video bg-[url('https://i.ibb.co/HrbGy9v/Michigan-Exterior-3-2.jpg')] bg-fixed bg-cover bg-center">
@@ -65,17 +62,13 @@ const About = (props: Props) => {
 						<h1 className="text-5xl text-white leading-normal text-center">
 							Let's build that dream project together.
 						</h1>
-						<p className="text-white w-[90%] text-lg leading-relaxed text-center">
-							Whether you're still in the rough sketches or you have a fully planned structure in mind,
-							it's never too early to involve us. We'll be with you in every step.
+						<p className="text-white w-11/12 text-lg leading-relaxed text-center">
+							Whether you're still in the rough sketches or you have a full plan in mind, it's never too
+							early to involve us. We'll be with you in every step.
 						</p>
-						<Link href="/contact">
-							<button className="mb-4 generic-transition border-2 border-white text-white hover:text-black hover:bg-white">
-								Book a Consult
-							</button>
-						</Link>
+						<BookConsultButton />
 					</div>
-					<div></div>
+					<div />
 				</div>
 			</section>
 		</>

@@ -18,13 +18,13 @@ const ProcessTimelineItem = ({ process }: Props) => {
 			transition={{ duration: 0.4 }}
 		>
 			<div className="flex flex-col items-end justify-center pr-8">
-				<div className="w-[70%]">
+				<div className="w-3/4">
 					<h3 className="mb-4 w-full text-center">{process.title}</h3>
 					<p className="text-justify leading-relaxed">{process.description}</p>
 				</div>
 			</div>
-			<div className="h-full flex flex-col items-start justify-end pb-4">
-				<div className="relative w-[70%] h-fit aspect-square">
+			<div className="h-full flex flex-col items-start justify-end">
+				<div className="relative w-3/4 h-auto aspect-square">
 					<Image src={process.photo} alt={process.title} layout="fill" />
 				</div>
 			</div>

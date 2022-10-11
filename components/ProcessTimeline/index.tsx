@@ -19,7 +19,7 @@ const circleVariants = {
 	},
 	current: {
 		border: "2px solid #dc2626",
-		backgroundColor: "#f87171",
+		backgroundColor: "#ef4444",
 	},
 }
 
@@ -30,8 +30,8 @@ const ProcessTimeline = (props: Props) => {
 	const rect = useRect(navRef)
 
 	return (
-		<div className="w-full h-screen flex flex-col items-center justify-center space-y-4">
-			<nav className="w-[70%] flex flex-col items-center justify-center relative" ref={navRef}>
+		<div className="w-full min-h-screen max-h-fit flex flex-col items-center justify-center space-y-4">
+			<nav className="w-3/4 flex flex-col items-center justify-center relative" ref={navRef}>
 				<motion.div
 					style={{
 						position: "absolute",
