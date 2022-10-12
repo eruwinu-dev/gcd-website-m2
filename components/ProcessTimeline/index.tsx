@@ -30,8 +30,11 @@ const ProcessTimeline = (props: Props) => {
 	const rect = useRect(navRef)
 
 	return (
-		<div className="w-full min-h-screen max-h-fit flex flex-col items-center justify-center space-y-4">
-			<nav className="w-3/4 flex flex-col items-center justify-center relative" ref={navRef}>
+		<div className="w-full lg:min-h-[60vh] md:min-h-[80vh] min-h-fit max-h-fit flex flex-col items-center justify-start space-y-4 lg:py-16 md:py-8 py-4">
+			<nav
+				className="lg:w-3/4 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative"
+				ref={navRef}
+			>
 				<motion.div
 					style={{
 						position: "absolute",
@@ -60,7 +63,7 @@ const ProcessTimeline = (props: Props) => {
 						width: rect ? rect.width * (1 - 1 / steps.length) : 0,
 					}}
 				/>
-				<ul className="flex flex-row items-center justify-space-between w-full h-fit z-[3]">
+				<ul className="flex flex-row items-center lg:justify-space-between md:justify-space-between justify-start w-full h-fit z-[3]">
 					{steps.map((processItem: ProcessType, index: number) => (
 						<li
 							key={processItem.phase}
@@ -75,8 +78,8 @@ const ProcessTimeline = (props: Props) => {
 							<div
 								onClick={() => setStep(index)}
 								className={[
-									"p-2 cursor-pointer",
-									step === index ? "text-red-700 font-semibold" : "text-black",
+									"p-2 cursor-pointer lg:flex md:flex hidden",
+									step === index ? "text-red-700" : "text-black",
 								].join(" ")}
 							>
 								{processItem.phase}

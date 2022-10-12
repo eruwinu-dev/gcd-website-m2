@@ -12,6 +12,7 @@ export const Provider = ({ children }: Props) => {
 	const [storyOpen, setStoryOpen] = useState<boolean>(false)
 	const [viewMode, setViewMode] = useState<ModeType>("story")
 	const [[page, direction], setPage] = useState([0, 0])
+	const [headerOpen, setHeaderOpen] = useState<boolean>(false)
 
 	const paginate = (newDirection: number) => {
 		setPage([page + newDirection, newDirection])
@@ -26,6 +27,8 @@ export const Provider = ({ children }: Props) => {
 		direction,
 		setPage,
 		paginate,
+		headerOpen,
+		setHeaderOpen,
 	}
 
 	return <Context.Provider value={value}>{children}</Context.Provider>

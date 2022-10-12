@@ -29,7 +29,7 @@ const ContactForm = (props: Props) => {
 			}}
 		>
 			{({ values, errors, touched }) => (
-				<Form className="contact-form border-2 border-gray-400 mx-8">
+				<Form className="contact-form border-2 border-gray-400 lg:mx-8 mx-4">
 					<h4>Talk to an Expert Now.</h4>
 					<label htmlFor="name">Name*</label>
 					<Field

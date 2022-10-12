@@ -11,11 +11,9 @@ type Props = {
 }
 
 const ProjectCarousel = ({ project }: Props) => {
-	const { page, direction, viewMode, paginate } = useStateContext()
+	const { page, direction, paginate } = useStateContext()
 
 	const photoIndex = wrap(0, project.photos.length, page)
-
-	if (viewMode !== "carousel") return <></>
 
 	return (
 		<AnimatePresence>

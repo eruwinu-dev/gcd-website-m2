@@ -1,5 +1,10 @@
 import { MutableRefObject } from "react"
 
+export type LinkType = {
+	name: string
+	url: string
+}
+
 export type ModeType = "story" | "carousel"
 
 export interface MemberType {
@@ -58,5 +63,7 @@ export interface ContextType {
 	direction: number
 	setPage: Dispatch<SetStateAction<[number, number]>>
 	paginate: (newDirection: number) => void
+	headerOpen: boolean
+	setHeaderOpen: Dispatch<SetStateAction<boolean>>
 }
 

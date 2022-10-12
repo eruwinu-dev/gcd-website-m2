@@ -16,7 +16,7 @@ const ProjectTeam = ({ project }: Props) => {
 				viewMode === "story" ? "items-start text-white text-left" : "items-center text-black text-center",
 			].join(" ")}
 		>
-			<h1 className="text-5xl">{project.name}</h1>
+			<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl">{project.name}</h1>
 			<span className="italic tracking-wider">{project.address}</span>
 			<div className="project-members">
 				{project.team.map((team: TeamType, index: number) => (

@@ -3,17 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-	html {
-		@apply scroll-smooth scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
-	}
 	main {
-		@apply relative min-h-0;
+		@apply relative min-h-0 w-full;
 	}
 	main > section {
-		@apply -translate-y-[3.5rem];
+		@apply lg:-translate-y-[3.5rem] md:-translate-y-[3.5] translate-y-0;
 	}
 	section {
-		@apply min-h-screen flex flex-row items-stretch justify-between;
+		@apply flex flex-row items-stretch justify-between;
 	}
 	section > div {
 		@apply w-full h-screen flex flex-col items-center justify-center;
@@ -58,15 +55,12 @@
 	header > div:first-child {
 		@apply py-2;
 	}
-	header > div:last-child {
-		@apply flex flex-row items-center justify-center space-x-2 py-2;
-	}
 
 	footer {
-		@apply w-full flex flex-row items-center justify-between border-t-2 static bottom-0 left-0;
+		@apply w-full flex lg:flex-row md:flex-row flex-col items-center justify-between border-t-2 static bottom-0 left-0;
 	}
 	footer > .logo-container {
-		@apply flex-[2] flex flex-col items-start justify-center px-8 py-2;
+		@apply flex-[2] flex flex-col lg:items-start md:items-start items-center justify-center px-8 py-2;
 	}
 	footer .contact-list-container {
 		@apply flex-1 flex flex-col items-start justify-center px-8 py-2 space-y-2;
@@ -105,7 +99,7 @@
 		@apply flex flex-col items-center justify-center p-8;
 	}
 	.contact-form {
-		@apply w-4/5 h-auto aspect-square flex flex-col items-start justify-center space-y-2 px-8 py-16;
+		@apply lg:w-4/5 w-11/12 h-auto aspect-square flex flex-col items-start justify-center space-y-2 lg:px-8 px-4 lg:py-16 md:py-8 py-4;
 	}
 	.contact-form > h4 {
 		@apply w-full text-center;
@@ -118,7 +112,7 @@
 		@apply text-sm text-red-700;
 	}
 	.contact-form > button {
-		@apply bg-white text-red-700 transition-all ease-in-out duration-300 border-2 border-red-700 tracking-wider;
+		@apply bg-white text-red-700 transition-all ease-in-out duration-300 border-2 border-red-700 tracking-wider lg:px-4 md:px-2 px-1 lg:py-2 py-1 lg:w-fit md:w-fit w-full;
 	}
 	.contact-form > button:hover {
 		@apply bg-red-700 text-white;
@@ -130,31 +124,31 @@
 		@apply min-h-fit p-4 flex flex-col items-center justify-center space-y-2 mt-[5.2em] mb-[-5.2em];
 	}
 	.team-gallery {
-		@apply w-full h-fit px-16 pb-8 grid grid-cols-2 grid-flow-row gap-8;
+		@apply w-full h-fit lg:px-16 md:px-8 px-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row gap-8;
 	}
 	.member-section {
-		@apply translate-y-0 h-full;
+		@apply translate-y-0 h-full lg:flex-row md:flex-row flex-col;
 	}
 	.member-image-layout {
-		@apply w-full h-full items-end justify-start pt-8 pr-8 space-y-2 left-0;
+		@apply w-full h-full flex flex-col lg:items-end md:items-end items-center justify-start lg:pt-8 md:pt-8 pt-0 lg:pr-8 md:pr-8 pr-0 space-y-2 left-0;
 	}
 	.member-image-layout > h3 {
-		@apply w-[55%] text-center;
+		@apply lg:w-3/5 md:w-4/5 w-full text-center;
 	}
 	.member-image-layout > .italic {
-		@apply w-[55%] text-center pb-4;
+		@apply lg:w-3/5 md:w-4/5 w-full text-center lg:pb-4 md:pb-4 pb-0;
 	}
 	.member-image-container {
-		@apply w-[55%] h-auto relative inline-block overflow-hidden aspect-[1/1.5];
+		@apply lg:w-3/5 md:w-4/5 w-full h-auto relative inline-block overflow-hidden aspect-[1/1.5];
 	}
 	.member-image-container > img {
 		@apply transition-all ease-in-out duration-300 hover:scale-105 cursor-pointer;
 	}
 	.member-beside {
-		@apply flex flex-col items-start justify-start h-full;
+		@apply flex flex-col lg:items-start md:items-start items-center justify-start h-full px-4;
 	}
 	.member-markdown {
-		@apply w-[70%] prose text-justify pb-8 leading-loose;
+		@apply lg:w-3/5 md:w-4/5 w-full prose text-justify pb-8 leading-loose;
 	}
 	.image-container {
 		@apply relative w-3/5 h-fit;
@@ -163,10 +157,10 @@
 		@apply flex flex-col items-center justify-center h-fit;
 	}
 	.portfolio-masonry {
-		@apply gap-4 grid-flow-row lg:columns-3 md:columns-2 sm:columns-2 columns-2 w-10/12 h-fit py-16;
+		@apply grid grid-flow-row lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 lg:gap-8 gap-4 w-10/12 h-fit pt-16 pb-8;
 	}
 	.portfolio-masonry-item {
-		@apply w-full inline-block mb-4 relative cursor-pointer overflow-hidden;
+		@apply w-full inline-block relative cursor-pointer overflow-hidden;
 	}
 	.portfolio-masonry-item-slider {
 		@apply w-full h-1/4 z-[2] bg-black/75 absolute bottom-0 left-0 flex flex-col items-center justify-center text-white;
@@ -182,10 +176,10 @@
 		@apply relative w-[96vw];
 	}
 	.project-bottom-bar {
-		@apply relative w-4/5 h-[10vh];
+		@apply relative lg:w-4/5 md:w-4/5 w-full h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row gap-8 py-4;
 	}
 	.project-bottom-bar-link {
-		@apply flex flex-col justify-center absolute top-0 space-y-2;
+		@apply flex flex-col justify-center space-y-2;
 	}
 	.project-bottom-bar-link > label {
 		@apply text-sm text-red-700;
@@ -197,26 +191,26 @@
 		@apply w-full pb-4 flex flex-col justify-center space-y-4;
 	}
 	.project-team > .project-members {
-		@apply w-full grid grid-cols-2 grid-flow-row gap-4 py-4;
+		@apply w-full grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row gap-4 py-4;
 	}
 	.project-team > .project-members > div {
 		@apply space-y-2 flex flex-col items-center justify-center;
 	}
 	.project-team > .project-members > .odd-child {
-		@apply col-span-2;
+		@apply lg:col-span-2 md:col-span-2;
 	}
 
 	.project-description {
-		@apply p-8 w-full flex flex-row items-start justify-between space-x-8;
+		@apply p-8 w-full flex lg:flex-row md:flex-col flex-col lg:items-start md:items-center items-center justify-center lg:space-x-8 space-x-0;
 	}
 	.project-description > .project-markdown {
-		@apply w-full h-full z-[2] flex flex-col items-center justify-center text-black p-8;
+		@apply w-full h-full z-[2] flex flex-col items-center justify-center text-black py-4 lg:px-8 md:px-4 px-0;
 	}
 	.project-markdown > article {
 		@apply prose text-black leading-loose h-fit w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
 	}
 	.project-gallery {
-		@apply w-4/5 pb-8 flex flex-col items-center justify-center space-y-4 text-center;
+		@apply lg:w-4/5 md:w-11/12 w-full pb-8 flex flex-col items-center justify-center space-y-4 text-center;
 	}
 	.project-gallery > h1 {
 		@apply w-full;
@@ -228,7 +222,7 @@
 		@apply w-full pb-4 border-b-4;
 	}
 	.project-gallery > .project-gallery-list {
-		@apply grid grid-cols-3 grid-flow-row h-full gap-4 p-8;
+		@apply grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 grid-flow-row h-full gap-4 p-8;
 	}
 	.project-gallery-item {
 		@apply w-full aspect-video inline-block mb-2 relative cursor-pointer overflow-hidden;
@@ -249,24 +243,24 @@
 		@apply relative w-full h-full flex flex-col items-center justify-center;
 	}
 	.animated-div-button {
-		@apply italic hover:underline z-[2] relative;
+		@apply italic hover:underline z-[2] relative w-full;
 	}
 	.animated-div-button > button {
-		@apply absolute left-0 m-auto border-2 text-white inline-flex items-center space-x-1;
+		@apply absolute left-0 bottom-16 border-2 text-white inline-flex items-center space-x-1;
 	}
 	.animated-div-button > button:hover {
 		@apply generic-transition bg-white text-black;
 	}
 	.project-story-markdown-container {
-		@apply top-16 right-8 absolute bg-white overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
+		@apply top-16 md:right-[1.25rem] absolute bg-white overflow-y-auto;
 		height: calc(100vh - 6rem);
 		width: calc(100vw / 2 - 2rem);
 	}
 	.project-story-markdown-container > article {
-		@apply prose px-16 leading-loose;
+		@apply lg:prose md:prose-sm lg:px-16 md:px-4 leading-loose;
 	}
 	.project-landing-carousel-container {
-		@apply absolute top-0 left-0 w-full h-full;
+		@apply w-full h-full;
 	}
 	.project-carousel-container {
 		@apply relative w-full h-screen border-gray-200 overflow-hidden;

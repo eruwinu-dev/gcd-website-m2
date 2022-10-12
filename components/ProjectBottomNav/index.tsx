@@ -19,36 +19,44 @@ const ProjectBottomNav = ({ project }: Props) => {
 
 	return (
 		<div className="project-bottom-bar">
-			{typeof prevProject === "undefined" ? null : (
-				<div className="project-bottom-bar-link left-0 items-end">
-					<label>Previous Project</label>
-					<Link href={`./${prevProject.url}`}>
-						<a
-							onClick={() => {
-								setStoryOpen(false)
-								setViewMode("story")
-							}}
-						>
-							<ArrowLeftIcon />
-							<div>{prevProject.name}</div>
-						</a>
-					</Link>
+			{typeof prevProject === "undefined" ? (
+				<div />
+			) : (
+				<div className="flex flex-col lg:items-start md:items-start items-center">
+					<div className="project-bottom-bar-link w-fit lg:items-end md:items-end items-center">
+						<label>Previous Project</label>
+						<Link href={`./${prevProject.url}`}>
+							<a
+								onClick={() => {
+									setStoryOpen(false)
+									setViewMode("story")
+								}}
+							>
+								<ArrowLeftIcon />
+								<div>{prevProject.name}</div>
+							</a>
+						</Link>
+					</div>
 				</div>
 			)}
-			{typeof nextProject === "undefined" ? null : (
-				<div className="project-bottom-bar-link right-0 items-start">
-					<label>Next Project</label>
-					<Link href={`./${nextProject.url}`}>
-						<a
-							onClick={() => {
-								setStoryOpen(false)
-								setViewMode("story")
-							}}
-						>
-							<div>{nextProject.name}</div>
-							<ArrowRightIcon />
-						</a>
-					</Link>
+			{typeof nextProject === "undefined" ? (
+				<div />
+			) : (
+				<div className="flex flex-col lg:items-end md:items-end items-center">
+					<div className="project-bottom-bar-link w-fit lg:items-start md:items-start items-center">
+						<label>Next Project</label>
+						<Link href={`./${nextProject.url}`}>
+							<a
+								onClick={() => {
+									setStoryOpen(false)
+									setViewMode("story")
+								}}
+							>
+								<div>{nextProject.name}</div>
+								<ArrowRightIcon />
+							</a>
+						</Link>
+					</div>
 				</div>
 			)}
 		</div>

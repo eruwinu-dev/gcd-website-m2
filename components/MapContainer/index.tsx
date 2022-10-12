@@ -6,7 +6,7 @@ type Props = {}
 const MapContainer = (props: Props) => {
 	return (
 		<>
-			<div className="w-4/5 h-auto relative aspect-square my-8 px-8 py-16">
+			<div className="w-4/5 h-auto relative aspect-square lg:my-8 lg:px-8 px-4 lg:py-16 md:py-8 py-4">
 				<Image
 					src="https://i.ibb.co/HrqHsRJ/gcd-map-no-offset.png"
 					alt="Glen Charles Design Map"

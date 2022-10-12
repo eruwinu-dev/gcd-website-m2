@@ -10,15 +10,12 @@ type Props = {
 }
 
 const ProjectDescription = ({ project, html }: Props) => {
-	const boxRef = useRef<HTMLDivElement | null>(null)
-	const rect = useRect(boxRef)
-
 	return (
 		<div className="project-description">
-			<div className="w-3/4 aspect-square flex flex-col items-center justify-center sticky border-2 border-gray-400 px-16 py-16 mx-8 my-16 top-24 space-y-8">
+			<div className="lg:w-3/5 md:w-4/5 w-full lg:aspect-square aspect-video flex flex-col items-center justify-center lg:sticky static border-2 border-gray-400 px-16 py-16 mx-8 lg:my-16 my-0 lg:top-24 top-0 space-y-8">
 				<ProjectTeam project={project} />
 			</div>
-			<div className="project-markdown" ref={boxRef}>
+			<div className="project-markdown">
 				<article dangerouslySetInnerHTML={{ __html: html }} />
 			</div>
 		</div>
