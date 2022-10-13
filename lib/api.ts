@@ -1,10 +1,10 @@
 import fs from "fs"
 import { join } from "path"
-import type { ProjectType, TeamType } from "../types"
+import type { ProjectType, MemberType } from "../types"
 
 const directory = join(process.cwd(), "markdown")
 
-export const getMemberText = (member: TeamType) => {
+export const getMemberText = (member: MemberType) => {
 	try {
 		const realSlug = member.text.replace(/\.md$/, "")
 		const fullPath = join(directory, `${realSlug}.md`)

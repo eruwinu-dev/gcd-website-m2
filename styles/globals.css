@@ -163,9 +163,9 @@
 		@apply w-full inline-block relative cursor-pointer overflow-hidden;
 	}
 	.portfolio-masonry-item-slider {
-		@apply w-full h-1/4 z-[2] bg-black/75 absolute bottom-0 left-0 flex flex-col items-center justify-center text-white;
+		@apply w-full lg:h-1/4 md:h-1/4 h-1/3 z-[2] bg-black/75 absolute bottom-0 left-0 flex flex-col items-center justify-center text-white;
 	}
-	.portfolio-masonry-item-slider > h4,
+	.portfolio-masonry-item-slider > h5,
 	.portfolio-masonry-item-slider > span {
 		@apply text-center mb-2;
 	}

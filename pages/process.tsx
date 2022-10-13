@@ -15,7 +15,7 @@ const Process = (props: Props) => {
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-end justify-center w-full h-full relative border-2 px-8 lg:text-end md:text-end text-center">
-						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-white mb-4 leading-normal">
+						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white mb-4 leading-normal">
 							Excellence in client satisfaction.
 						</h1>
 						<p className="text-white lg:w-3/5 md:w-11/12 w-11/12 lg:text-xl md:text-lg text-base">

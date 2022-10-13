@@ -74,55 +74,59 @@ const ProjectStory = ({ project, html }: Props) => {
 					<div className="top-16 left-8 absolute grid grid-rows-3 px-8 z-[2] h-[calc(100vh_-_6rem)]  lg:w-[calc(100vw_/_2_-_2rem)] md:w-[calc(100vw_/_2_-_2rem)] w-[calc(100vw_-_4rem)]">
 						<div />
 						<ProjectTeam project={project} />
-						<AnimatePresence>
-							{!storyOpen && (
-								<motion.div
-									className="animated-div-button lg:flex md:flex hidden flex-row items-center"
-									initial={{ opacity: 0, x: -10 }}
-									animate={{ opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.5 } }}
-									exit={{ opacity: 0, x: -10, transition: { duration: 0.5 } }}
-								>
-									<button type="button" onClick={toggleProjectStory}>
-										<div>View Story</div>
-										<ChevronDoubleRightIcon />
-									</button>
-								</motion.div>
-							)}
-						</AnimatePresence>
+						{html && (
+							<AnimatePresence>
+								{!storyOpen && (
+									<motion.div
+										className="animated-div-button lg:flex md:flex hidden flex-row items-center"
+										initial={{ opacity: 0, x: -10 }}
+										animate={{ opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.5 } }}
+										exit={{ opacity: 0, x: -10, transition: { duration: 0.5 } }}
+									>
+										<button type="button" onClick={toggleProjectStory}>
+											<div>View Story</div>
+											<ChevronDoubleRightIcon />
+										</button>
+									</motion.div>
+								)}
+							</AnimatePresence>
+						)}
 					</div>
 
-					<div className="lg:flex md:flex hidden">
-						<AnimatePresence>
-							{storyOpen && (
-								<motion.div
-									className="project-story-markdown-container"
-									variants={storyVariants}
-									initial="closed"
-									animate={storyOpen ? "open" : "closed"}
-								>
-									<AnimatePresence>
-										{storyOpen && (
-											<motion.div
-												className="w-full flex flex-row items-center justify-end pt-2 pr-2 generic-transition text-gray-600 hover:text-gray-800"
-												initial={{ opacity: 0, x: -10 }}
-												animate={{
-													opacity: 1,
-													x: 0,
-													transition: { duration: 0.5, delay: 0.5 },
-												}}
-												exit={{ opacity: 0, x: -10, transition: { duration: 0.5 } }}
-											>
-												<button type="button" onClick={toggleProjectStory}>
-													<CloseIcon />
-												</button>
-											</motion.div>
-										)}
-									</AnimatePresence>
-									<article dangerouslySetInnerHTML={{ __html: html }} />
-								</motion.div>
-							)}
-						</AnimatePresence>
-					</div>
+					{html && (
+						<div className="lg:flex md:flex hidden">
+							<AnimatePresence>
+								{storyOpen && (
+									<motion.div
+										className="project-story-markdown-container"
+										variants={storyVariants}
+										initial="closed"
+										animate={storyOpen ? "open" : "closed"}
+									>
+										<AnimatePresence>
+											{storyOpen && (
+												<motion.div
+													className="w-full flex flex-row items-center justify-end pt-2 pr-2 generic-transition text-gray-600 hover:text-gray-800"
+													initial={{ opacity: 0, x: -10 }}
+													animate={{
+														opacity: 1,
+														x: 0,
+														transition: { duration: 0.5, delay: 0.5 },
+													}}
+													exit={{ opacity: 0, x: -10, transition: { duration: 0.5 } }}
+												>
+													<button type="button" onClick={toggleProjectStory}>
+														<CloseIcon />
+													</button>
+												</motion.div>
+											)}
+										</AnimatePresence>
+										<article dangerouslySetInnerHTML={{ __html: html }} />
+									</motion.div>
+								)}
+							</AnimatePresence>
+						</div>
+					)}
 				</div>
 			</motion.div>
 		</AnimatePresence>

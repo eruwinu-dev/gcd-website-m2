@@ -22,7 +22,7 @@ const ContactList = ({ size }: Props) => {
 			</div>
 			<div>
 				<a
-					href="https://www.google.com/maps/place/Westlake+Village+Industrial+Park,+31312+Via+Colinas+%23109,+Westlake+Village,+CA+91362,+USA/@34.1564555,-118.8096535,17z/data=!3m1!4b1!4m5!3m4!1s0x80e8245959a89a85:0xecd35589a8231181!8m2!3d34.1564555!4d-118.8074648"
+					href="https://www.google.com/maps/place/Westlake+Village+Industrial+Park,+31312+Via+Colinas+%23109,+Westlake+Village,+CA+91362/@34.1564555,-118.8096535,17z/data=!3m1!4b1!4m5!3m4!1s0x80e8245959a89a85:0xecd35589a8231181!8m2!3d34.1564555!4d-118.8074648"
 					target="_blank"
 					rel="noopener noreferrer"
 				>

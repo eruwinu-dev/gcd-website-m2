@@ -7,6 +7,7 @@ import { links } from "../../../lib/links"
 import { LinkType } from "../../../types"
 import ContactList from "../../ContactList"
 import SocialsList from "../../SocialsList"
+import { useRouter } from "next/router"
 
 type Props = {}
 
@@ -33,6 +34,7 @@ const item = {
 
 const HeaderDashboard = (props: Props) => {
 	const { headerOpen, setHeaderOpen } = useStateContext()
+	const { pathname } = useRouter()
 
 	if (!headerOpen) return <></>
 
@@ -56,7 +58,18 @@ const HeaderDashboard = (props: Props) => {
 								}}
 							>
 								<Link href={link.url}>
-									<a>{link.name}</a>
+									<a
+										className={[
+											"generic-transition",
+											[link.url, "/"].includes(pathname) ||
+											(link.url === "/portfolio" && pathname === "/portfolio/[project]") ||
+											(link.url === "/about" && pathname === "/about/[member]")
+												? "opacity-100"
+												: "opacity-50 hover:opacity-100",
+										].join(" ")}
+									>
+										{link.name}
+									</a>
 								</Link>
 							</motion.div>
 						))}
