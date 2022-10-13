@@ -112,10 +112,10 @@ const Home = (props: Props) => {
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 text-center col-span-2 text-white space-y-8">
 						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl">
-							Maximize your project's potential.
+							Maximize your project&apos;s potential.
 						</h1>
 						<p className="leading-relaxed text-white w-11/12 lg:text-xl md:text-lg text-base">
-							Let's build your dream space fit to your wishes. Set up a talk with our architects!
+							Let&apos;s build your dream space fit to your wishes. Set up a talk with our architects!
 						</p>
 						<BookConsultButton />
 					</div>

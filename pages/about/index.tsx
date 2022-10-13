@@ -54,11 +54,11 @@ const About = (props: Props) => {
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 col-span-2 space-y-4">
 						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white">
-							Let's build that dream project together.
+							Let&apos;s build that dream project together.
 						</h1>
 						<p className="leading-relaxed text-white w-11/12 lg:text-xl md:text-lg text-base">
-							Whether you're still in the rough sketches or you have a full plan in mind, it's never too
-							early to involve us. We'll be with you in every step.
+							Whether you&apos;re still in the rough sketches or you have a full plan in mind, it&apos;s
+							never too early to involve us. We&apos;ll be with you in every step.
 						</p>
 						<BookConsultButton />
 					</div>
