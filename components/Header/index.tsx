@@ -27,7 +27,9 @@ const Header = (props: Props) => {
 		: false
 
 	const iconPath: "/logo-black.png" | "/logo-white.png" = isWhite
-		? offset > limit
+		? headerOpen
+			? "/logo-black.png"
+			: offset > limit
 			? "/logo-black.png"
 			: "/logo-white.png"
 		: "/logo-black.png"
@@ -71,7 +73,7 @@ const Header = (props: Props) => {
 								className={[
 									"generic-transition",
 									offset > limit ? "px-4 text-black" : "px-1",
-									isWhite ? "text-white" : "text-black",
+									iconPath === "/logo-black.png" ? "text-black" : "text-white",
 									[link.url, "/"].includes(pathname) ? "opacity-100" : "opacity-50 hover:opacity-100",
 								].join(" ")}
 								onClick={() => setHeaderOpen((open: boolean) => false)}
@@ -87,7 +89,7 @@ const Header = (props: Props) => {
 						className={[
 							"generic-transition",
 							offset > limit ? "px-4 text-black" : "px-1",
-							isWhite ? "text-white" : "text-black",
+							iconPath === "/logo-black.png" ? "text-black" : "text-white",
 						].join(" ")}
 						onClick={() => setHeaderOpen((open: boolean) => !open)}
 					>

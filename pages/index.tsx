@@ -30,7 +30,7 @@ const Home = (props: Props) => {
 					<div className="lg:flex md:flex hidden"></div>
 				</div>
 			</section>
-			<section className="h-fit w-full lg:flex md:flex hidden flex-row items-center justify-center">
+			<section className="h-fit w-full lg:flex md:flex hidden flex-row items-center justify-center pb-16">
 				<div className="w-full h-fit flex flex-col items-center justify-center" ref={sliderRef}>
 					<ServicesList />
 				</div>
@@ -52,11 +52,11 @@ const Home = (props: Props) => {
 					</div>
 				</div>
 			</section>
-			<section className="h-fit w-full lg:hidden md:hidden flex flex-col items-start justify-center px-4 py-16">
+			<section className="h-fit w-full lg:hidden md:hidden flex flex-col items-start justify-center">
 				<div className="w-full h-fit flex flex-col items-center justify-start">
 					<div
 						className={[
-							"sticky flex flex-col items-center justify-center w-11/12 h-auto aspect-square space-y-8 generic-transition top-24",
+							"flex flex-col items-center justify-center w-11/12 h-auto aspect-square space-y-8 generic-transition pb-8",
 						].join(" ")}
 					>
 						<h3>Quality in Service.</h3>
@@ -71,7 +71,7 @@ const Home = (props: Props) => {
 						</p>
 					</div>
 				</div>
-				<div className="w-full h-fit flex flex-col items-center justify-start">
+				<div className="w-full h-fit flex flex-col items-center justify-start pb-16">
 					<ServicesList />
 				</div>
 			</section>

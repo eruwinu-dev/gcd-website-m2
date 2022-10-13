@@ -25,8 +25,7 @@ const Process = (props: Props) => {
 					</div>
 				</div>
 			</section>
-
-			<section className="w-full h-full flex flex-row items-center justify-center bg-gray-700 lg:py-16 md:py-8 py-4">
+			<section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4 -translate-y-[3.5rem]">
 				<div className="lg:w-1/2 md:w-10/12  w-full h-auto flex flex-col items-center justify-center lg:p-16 p-8">
 					<p className="text-white indent-4 text-justify leading-loose tracking-wider text-lg w-full italic">
 						By hiring a licensed architect, you gain creative expertise through the design process coupled

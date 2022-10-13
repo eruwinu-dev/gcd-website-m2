@@ -30,7 +30,7 @@ const ProcessTimeline = (props: Props) => {
 	const rect = useRect(navRef)
 
 	return (
-		<div className="w-full lg:min-h-[60vh] md:min-h-[80vh] min-h-fit max-h-fit flex flex-col items-center justify-start space-y-4 lg:py-16 md:py-8 py-4">
+		<div className="w-full lg:min-h-[60vh] md:min-h-[80vh] min-h-fit max-h-fit flex flex-col items-center justify-start space-y-4 lg:pt-16 md:pt-8 pt-4 pb-16">
 			<nav
 				className="lg:w-3/4 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative"
 				ref={navRef}

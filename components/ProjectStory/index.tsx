@@ -60,7 +60,7 @@ const ProjectStory = ({ project, html }: Props) => {
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0 }}
 				transition={{ duration: 0.5 }}
-				className="relative w-full h-full flex flex-col items-center"
+				className="relative w-full lg:h-screen h-[100vh] lg:translate-y-0 md:-translate-y-[3.5rem] -translate-y-[3.5rem] flex flex-col items-center"
 			>
 				<Image src={project.photos[0]} alt={project.name} layout="fill" />
 				<div className="relative w-full h-full bg-black/60 z-[2]">
@@ -71,13 +71,13 @@ const ProjectStory = ({ project, html }: Props) => {
 						animate={storyOpen ? "open" : "closed"}
 					/>
 					<div className="border-2 top-16 left-8 absolute lg:hidden md:hidden flex flex-col items-start justify-center px-8 h-[calc(100vh_-_6rem)] w-[calc(100vw_-_4rem)]" />
-					<div className="top-16 left-8 absolute grid grid-rows-3 px-8 z-[2] h-[calc(100vh_-_6rem)] lg:w-[calc(100vw_/_2_-_2rem)] md:w-[calc(100vw_/_2_-_2rem)] w-[calc(100vw_-_4rem)]">
+					<div className="top-16 left-8 absolute grid grid-rows-3 px-8 z-[2] h-[calc(100vh_-_6rem)]  lg:w-[calc(100vw_/_2_-_2rem)] md:w-[calc(100vw_/_2_-_2rem)] w-[calc(100vw_-_4rem)]">
 						<div />
 						<ProjectTeam project={project} />
 						<AnimatePresence>
 							{!storyOpen && (
 								<motion.div
-									className="animated-div-button lg:flex md:flex hidden"
+									className="animated-div-button lg:flex md:flex hidden flex-row items-center"
 									initial={{ opacity: 0, x: -10 }}
 									animate={{ opacity: 1, x: 0, transition: { duration: 0.5, delay: 0.5 } }}
 									exit={{ opacity: 0, x: -10, transition: { duration: 0.5 } }}

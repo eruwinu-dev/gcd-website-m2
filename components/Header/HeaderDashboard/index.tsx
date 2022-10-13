@@ -1,5 +1,6 @@
 import React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
 import useStateContext from "../../../context/State"
 import { links } from "../../../lib/links"
@@ -12,12 +13,11 @@ type Props = {}
 const containerVariants = {
 	hidden: {
 		opacity: 0,
-		height: "0vh",
 	},
 	show: {
 		opacity: 1,
-		height: "100vh",
 		transition: {
+			duration: 0.5,
 			type: "tween",
 			ease: "easeInOut",
 			delayChildren: 0.2,
@@ -28,7 +28,7 @@ const containerVariants = {
 
 const item = {
 	hidden: { opacity: 0, y: -10 },
-	show: { opacity: 1, y: 0 },
+	show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 }
 
 const HeaderDashboard = (props: Props) => {
@@ -37,31 +37,45 @@ const HeaderDashboard = (props: Props) => {
 	if (!headerOpen) return <></>
 
 	return (
-		<AnimatePresence>
-			{headerOpen && (
-				<motion.div
-					className="sticky w-full h-screen bg-white z-10 flex flex-col items-center justify-center pb-32 space-y-8"
-					variants={containerVariants}
-					initial="hidden"
-					animate="show"
-					exit="hidden"
-				>
-					{links.map((link: LinkType, index: number) => (
-						<motion.div
-							key={link.name}
-							variants={item}
-							onClick={() => {
-								setHeaderOpen((open: boolean) => !open)
-							}}
-						>
-							<Link href={link.url}>
-								<a>{link.name}</a>
-							</Link>
-						</motion.div>
-					))}
-				</motion.div>
-			)}
-		</AnimatePresence>
+		<div className="sticky w-full h-[calc(100vh_-_3.5rem)] bg-white z-10 grid grid-cols-1 grid-flow-row justify-between">
+			<AnimatePresence>
+				{headerOpen && (
+					<motion.div
+						className="sticky w-full h-full flex flex-col items-center justify-center space-y-8 row-span-2"
+						variants={containerVariants}
+						initial="hidden"
+						animate="show"
+						exit="hidden"
+					>
+						{links.map((link: LinkType, index: number) => (
+							<motion.div
+								key={link.name}
+								variants={item}
+								onClick={() => {
+									setHeaderOpen((open: boolean) => !open)
+								}}
+							>
+								<Link href={link.url}>
+									<a>{link.name}</a>
+								</Link>
+							</motion.div>
+						))}
+					</motion.div>
+				)}
+			</AnimatePresence>
+			<motion.div
+				className="flex flex-col items-center justify-center px-4 space-y-4"
+				initial={{ y: -10, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				transition={{ duration: 0.5 }}
+			>
+				<div className="relative w-5/12 h-auto aspect-video">
+					<Image src="/gcd-logo-big.png" alt="Glen Charles Design Logo" layout="fill" />
+				</div>
+				<ContactList />
+				<SocialsList />
+			</motion.div>
+		</div>
 	)
 }
 

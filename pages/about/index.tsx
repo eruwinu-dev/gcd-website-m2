@@ -39,7 +39,7 @@ const About = (props: Props) => {
 				</div>
 				<AboutCollage />
 			</section>
-			<section className="w-full h-full flex flex-row items-center justify-center bg-black/70 lg:py-16 md:py-8 py-4">
+			<section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4">
 				<div className="lg:w-1/2 md:w-10/12  w-full h-auto flex flex-col items-center justify-center lg:p-16 p-8">
 					<p className="text-white indent-4 text-justify leading-loose tracking-wider text-lg w-full italic">
 						Any style can be emulated, but the truly talented architects are those that can masterfully
