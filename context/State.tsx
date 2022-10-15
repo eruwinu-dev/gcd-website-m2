@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react"
 import type { ReactNode } from "react"
 import type { ContextType, FormType, ModeType } from "../types"
 import Parse from "parse"
+import { initializeParse } from "@parse/react-ssr"
 
 type Props = {
 	children: ReactNode
@@ -23,6 +24,11 @@ export const Provider = ({ children }: Props) => {
 	}
 
 	const addContact = async (values: FormType) => {
+		initializeParse(
+			process!.env!.NEXT_PUBLIC_CUSTOM_URL || "",
+			process.env.NEXT_PUBLIC_APP_ID || "",
+			process.env.NEXT_PUBLIC_JS_KEY || ""
+		)
 		try {
 			setContactLoading(true)
 			setModalOpen(true)
