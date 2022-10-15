@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react"
 import type { ReactNode } from "react"
-import type { ContextType, ModeType } from "../types"
+import type { ContextType, FormType, ModeType } from "../types"
+import Parse from "parse"
 
 type Props = {
 	children: ReactNode
@@ -14,8 +15,24 @@ export const Provider = ({ children }: Props) => {
 	const [[page, direction], setPage] = useState([0, 0])
 	const [headerOpen, setHeaderOpen] = useState<boolean>(false)
 
+	const [contactLoading, setContactLoading] = useState<boolean>(false)
+	const [modalOpen, setModalOpen] = useState<boolean>(false)
+
 	const paginate = (newDirection: number) => {
 		setPage([page + newDirection, newDirection])
+	}
+
+	const addContact = async (values: FormType) => {
+		try {
+			setContactLoading(true)
+			setModalOpen(true)
+			const contact = new Parse.Object("Contact")
+			await contact.save(values)
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setContactLoading(false)
+		}
 	}
 
 	const value: ContextType = {
@@ -29,6 +46,11 @@ export const Provider = ({ children }: Props) => {
 		paginate,
 		headerOpen,
 		setHeaderOpen,
+		addContact,
+		modalOpen,
+		setModalOpen,
+		contactLoading,
+		setContactLoading,
 	}
 
 	return <Context.Provider value={value}>{children}</Context.Provider>

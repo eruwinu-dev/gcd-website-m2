@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@parse/react-ssr": "^0.0.1-alpha.18",
     "@reach/rect": "^0.17.0",
     "@tailwindcss/typography": "^0.5.7",
+    "@types/parse": "^2.18.18",
     "formik": "^2.2.9",
     "framer-motion": "^7.5.1",
     "next": "12.3.1",
+    "parse": "^3.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.4.0",

@@ -65,5 +65,10 @@ export interface ContextType {
 	paginate: (newDirection: number) => void
 	headerOpen: boolean
 	setHeaderOpen: Dispatch<SetStateAction<boolean>>
+	addContact: (values: FormType) => void
+	modalOpen: boolean
+	setModalOpen: Dispatch<SetStateAction<boolean>>
+	contactLoading: boolean
+	setContactLoading: Dispatch<SetStateAction<boolean>>
 }
 

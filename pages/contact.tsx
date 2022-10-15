@@ -3,6 +3,7 @@ import Head from "next/head"
 import React, { useRef } from "react"
 import ContactForm from "../components/ContactForm"
 import ContactList from "../components/ContactList"
+import ContactModal from "../components/ContactModal"
 import MapContainer from "../components/MapContainer"
 import SocialsList from "../components/SocialsList"
 
@@ -47,6 +48,7 @@ const Contact = (props: Props) => {
 				</div>
 				<ContactForm />
 			</section>
+			<ContactModal />
 		</>
 	)
 }
