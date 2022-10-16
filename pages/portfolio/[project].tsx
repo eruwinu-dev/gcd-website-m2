@@ -39,9 +39,9 @@ const Project = ({ project, html }: InferGetStaticPropsType<typeof getStaticProp
 			<Head>
 				<title>{`${project.name} | G Charles Design - Licensed Architecture Services`}</title>
 			</Head>
-			<section className={[viewMode === "carousel" ? "translate-y-0" : "", "generic-transition"].join(" ")}>
+			<section className={[viewMode === "carousel" ? "translate-y-0" : "", "generic-transition h-fit"].join(" ")}>
 				<motion.div
-					className={["w-full h-screen"].join(" ")}
+					className={["w-full h-fit"].join(" ")}
 					variants={sectionVariants}
 					initial="story"
 					animate={viewMode}
@@ -50,7 +50,7 @@ const Project = ({ project, html }: InferGetStaticPropsType<typeof getStaticProp
 						duration: 0.5,
 					}}
 				>
-					<div className="w-full h-full flex flex-col items-center justify-center relative">
+					<div className="w-full h-fit flex flex-col items-center justify-center relative">
 						{viewMode === "story" ? (
 							<ProjectStory project={project} html={html} />
 						) : (

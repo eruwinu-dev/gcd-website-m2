@@ -263,13 +263,13 @@
 		@apply w-full h-full;
 	}
 	.project-carousel-container {
-		@apply relative w-full h-screen border-gray-200 overflow-hidden;
+		@apply relative w-full lg:h-screen md:h-screen h-auto aspect-square border-gray-200 overflow-hidden;
 	}
 	.project-carousel-container > img {
-		@apply absolute w-full h-screen overflow-hidden mt-2;
+		@apply absolute w-full h-full overflow-hidden mt-2;
 	}
 	.carousel-controls {
-		@apply absolute top-0 h-full z-[2] w-[7.5%] transition-all duration-300 ease-in-out flex flex-col items-center justify-center cursor-pointer;
+		@apply absolute my-auto bottom-0 h-[90%] z-[2] w-[7.5%] transition-all duration-300 ease-in-out flex flex-col items-center justify-center cursor-pointer;
 	}
 	.carousel-controls > button {
 		@apply p-2 text-white rounded-full;

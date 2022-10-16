@@ -40,7 +40,7 @@ const ContactModal = (props: Props) => {
 							>
 								<Dialog.Panel className="w-full max-w-md h-auto lg:aspect-video md:aspect-video sm:aspect-video aspect-square transform overflow-hidden bg-white p-6 text-left align-middle shadow-xl transition-all space-y-4 flex flex-col items-center justify-center">
 									{contactLoading ? (
-										<div className="w-full h-auto flex flex-col items-center">
+										<button className="w-full h-auto flex flex-col items-center focus:outline-none">
 											<svg
 												aria-hidden="true"
 												className="mr-2 w-12 h-12 text-white animate-spin fill-red-700"
@@ -57,7 +57,7 @@ const ContactModal = (props: Props) => {
 													fill="currentFill"
 												/>
 											</svg>
-										</div>
+										</button>
 									) : (
 										<>
 											<Dialog.Title as="h3" className="text-xl font-medium text-gray-900">
@@ -73,7 +73,7 @@ const ContactModal = (props: Props) => {
 											<div className="mt-8">
 												<button
 													type="button"
-													className="bg-white text-red-700 transition-all ease-in-out duration-300 border-2 border-red-700 tracking-wider lg:px-4 md:px-2 px-1 lg:py-2 py-1 focus:outline-none hover:bg-red-700 hover:text-white"
+													className="bg-white text-red-700 transition-all ease-in-out duration-300 border-2 border-red-700 tracking-wider lg:px-4 md:px-2 px-1 lg:py-2 py-1 hover:bg-red-700 hover:text-white"
 													onClick={closeModal}
 												>
 													Got it, thanks!

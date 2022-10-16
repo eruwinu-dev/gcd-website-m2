@@ -1,4 +1,4 @@
-import React from "react"
+import React, { MouseEvent } from "react"
 import Link from "next/link"
 import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
 import { projects } from "../../lib/projects"
@@ -17,6 +17,11 @@ const ProjectBottomNav = ({ project }: Props) => {
 	const prevProject: ProjectType | undefined = projects[projectIndex - 1]
 	const nextProject: ProjectType | undefined = projects[projectIndex + 1]
 
+	const resetProjectState = (event: MouseEvent<HTMLAnchorElement>) => {
+		setStoryOpen(false)
+		setViewMode("story")
+	}
+
 	return (
 		<div className="project-bottom-bar">
 			{typeof prevProject === "undefined" ? (
@@ -26,12 +31,7 @@ const ProjectBottomNav = ({ project }: Props) => {
 					<div className="project-bottom-bar-link w-fit lg:items-end md:items-end items-center">
 						<label>Previous Project</label>
 						<Link href={`./${prevProject.url}`}>
-							<a
-								onClick={() => {
-									setStoryOpen(false)
-									setViewMode("story")
-								}}
-							>
+							<a onClick={resetProjectState}>
 								<ArrowLeftIcon />
 								<div>{prevProject.name}</div>
 							</a>
@@ -46,12 +46,7 @@ const ProjectBottomNav = ({ project }: Props) => {
 					<div className="project-bottom-bar-link w-fit lg:items-start md:items-start items-center">
 						<label>Next Project</label>
 						<Link href={`./${nextProject.url}`}>
-							<a
-								onClick={() => {
-									setStoryOpen(false)
-									setViewMode("story")
-								}}
-							>
+							<a onClick={resetProjectState}>
 								<div>{nextProject.name}</div>
 								<ArrowRightIcon />
 							</a>

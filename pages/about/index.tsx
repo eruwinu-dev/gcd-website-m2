@@ -3,6 +3,7 @@ import React from "react"
 import AboutCollage from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
 import TeamGallery from "../../components/TeamGallery"
+import Image from "next/image"
 
 type Props = {}
 
@@ -12,7 +13,16 @@ const About = (props: Props) => {
 			<Head>
 				<title>About | G Charles Design - Licensed Architectural Services</title>
 			</Head>
-			<section className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem] bg-[url('https://i.ibb.co/Zf2c2d2/Staircase-3.jpg')] bg-cover">
+			<section className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]">
+				<Image
+					src="https://i.ibb.co/Zf2c2d2/Staircase-3.jpg"
+					alt="Glen Charles Design About Image"
+					layout="fill"
+					objectFit="cover"
+					objectPosition="left"
+					quality="95"
+					priority
+				/>
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 text-center col-span-2">
@@ -26,7 +36,7 @@ const About = (props: Props) => {
 				</div>
 			</section>
 			<section className="lg:min-h-0 md:min-h-0 min-h-fit max-h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row lg:gap-4 md:gap-4 gap-0">
-				<div className="h-full flex flex-col items-center justify-center space-y-8 px-4 py-16">
+				<div className="h-full flex flex-col items-center justify-center space-y-8 px-4">
 					<p className="lg:w-4/5 md:w-4/5 w-full">
 						Founded in 1999, G. Charles Design has been dedicated to creating authentic and captivating
 						architecture with careful consideration for our clients needs.
@@ -49,7 +59,16 @@ const About = (props: Props) => {
 				</div>
 			</section>
 			<TeamGallery />
-			<section className="relative w-full h-screen translate-y-0 aspect-video bg-[url('https://i.ibb.co/HrbGy9v/Michigan-Exterior-3-2.jpg')] bg-fixed bg-cover bg-center">
+			<section className="relative w-full h-screen translate-y-0 aspect-video">
+				<Image
+					src="https://i.ibb.co/HrbGy9v/Michigan-Exterior-3-2.jpg"
+					alt="Glen Charles Booking Image"
+					layout="fill"
+					objectFit="cover"
+					objectPosition="center"
+					quality="95"
+					priority
+				/>
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 col-span-2 space-y-4">

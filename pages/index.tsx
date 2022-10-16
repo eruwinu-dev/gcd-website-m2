@@ -17,7 +17,16 @@ const Home = (props: Props) => {
 			<Head>
 				<title>G Charles Design - Licensed Architectural Services</title>
 			</Head>
-			<section className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem] bg-[url('https://i.ibb.co/Q6NwFhT/mulholland-front1.jpg')] bg-cover">
+			<section className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]">
+				<Image
+					src="https://i.ibb.co/Q6NwFhT/mulholland-front1.jpg"
+					alt="Glen Charles Design Landing Image"
+					layout="fill"
+					objectFit="cover"
+					objectPosition="left"
+					quality="95"
+					priority
+				/>
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center">
 						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white mb-4 leading-normal">
@@ -107,7 +116,16 @@ const Home = (props: Props) => {
 					<LandingCollage />
 				</div>
 			</section>
-			<section className="translate-y-0 relative w-full h-screen bg-[url('https://i.ibb.co/f0nrwYG/Outside-2.jpg')] bg-fill bg-cover">
+			<section className="translate-y-0 relative w-full h-screen">
+				<Image
+					src="https://i.ibb.co/f0nrwYG/Outside-2.jpg"
+					alt="Glen Charles Design Booking Image"
+					layout="fill"
+					objectFit="cover"
+					objectPosition="center"
+					quality="95"
+					priority
+				/>
 				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 text-center col-span-2 text-white space-y-8">
