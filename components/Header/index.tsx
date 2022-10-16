@@ -52,7 +52,7 @@ const Header = (props: Props) => {
 						<div
 							className={[
 								"generic-transition",
-								"relative h-[2.5rem] w-auto aspect-[1.23/1]",
+								"relative h-[2.5rem] w-auto aspect-[1.32/1]",
 								offset > limit ? "mx-4" : "mx-1",
 							].join(" ")}
 							onClick={() => setHeaderOpen((open: boolean) => false)}
@@ -90,6 +90,8 @@ const Header = (props: Props) => {
 				<div className="lg:hidden md:hidden flex py-2">
 					<button
 						type="button"
+						aria-label="Toggle Navigation Header"
+						aria-required="true"
 						className={[
 							"generic-transition",
 							offset > limit ? "px-4 text-black" : "px-1",
