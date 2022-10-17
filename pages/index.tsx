@@ -48,7 +48,7 @@ const Home = (props: Props) => {
 					style={{ height: sliderRect ? sliderRect.height : 0 }}
 				>
 					<div className="sticky flex flex-col items-center justify-center w-full h-auto aspect-square space-y-8 generic-transition top-24 py-8">
-						<h3>Quality in Service.</h3>
+						<h2 className="text-2xl">Quality in Service.</h2>
 
 						<p className="leading-loose lg:w-4/5 md:w-11/12 w-full">
 							Our approach is built upon the belief that the greater talent of any architect lies in their
@@ -68,7 +68,7 @@ const Home = (props: Props) => {
 							"flex flex-col items-center justify-center w-11/12 h-auto aspect-square space-y-8 generic-transition pb-8",
 						].join(" ")}
 					>
-						<h3>Quality in Service.</h3>
+						<h2 className="text-2xl">Quality in Service.</h2>
 
 						<p className="leading-loose">
 							Our approach is built upon the belief that the greater talent of any architect lies in their
@@ -129,9 +129,9 @@ const Home = (props: Props) => {
 				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 text-center col-span-2 text-white space-y-8">
-						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl">
+						<h4 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl">
 							Maximize your project&apos;s potential.
-						</h1>
+						</h4>
 						<p className="leading-relaxed text-white w-11/12 lg:text-xl md:text-lg text-base">
 							Let&apos;s build your dream space fit to your wishes. Set up a talk with our architects!
 						</p>
