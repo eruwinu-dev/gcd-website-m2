@@ -39,7 +39,11 @@ const HeaderDashboard = (props: Props) => {
 	if (!headerOpen) return <></>
 
 	return (
-		<div className="sticky w-full h-[calc(100vh_-_3.5rem)] bg-white z-10 grid grid-cols-1 grid-flow-row justify-between">
+		<div
+			className="sticky w-full h-[calc(100vh_-_3.5rem)] bg-white z-10 grid grid-cols-1 grid-flow-row justify-between"
+			id="menu"
+			role="menu"
+		>
 			<AnimatePresence>
 				{headerOpen && (
 					<motion.div

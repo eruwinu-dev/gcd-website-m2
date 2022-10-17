@@ -91,7 +91,9 @@ const Header = (props: Props) => {
 					<button
 						type="button"
 						aria-label="Toggle Navigation Header"
-						aria-required="true"
+						role="combobox"
+						aria-haspopup="true"
+						aria-controls="menu"
 						className={[
 							"generic-transition",
 							offset > limit ? "px-4 text-black" : "px-1",
