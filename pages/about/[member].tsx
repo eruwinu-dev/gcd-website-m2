@@ -10,6 +10,7 @@ import { wrap } from "popmotion"
 import { motion } from "framer-motion"
 
 import { MemberType } from "../../types"
+import { headerTitle } from "../../lib/title"
 
 type Props = {}
 
@@ -32,10 +33,12 @@ const Member = ({ member, html }: InferGetStaticPropsType<typeof getStaticProps>
 	const photoIndex = wrap(0, member.pictures.length, photo)
 
 	useEffect(() => {
-		setInterval(() => {
+		const interval = setInterval(() => {
 			setPhoto((photo) => photo + 1)
 		}, 10e3)
-		return () => {}
+		return () => {
+			clearInterval(interval)
+		}
 	}, [])
 
 	const changePhoto = (event: MouseEvent<HTMLDivElement>) => {
@@ -46,7 +49,7 @@ const Member = ({ member, html }: InferGetStaticPropsType<typeof getStaticProps>
 	return (
 		<>
 			<Head>
-				<title>{`${member.name} | G Charles Design - Licensed Architecture Services`}</title>
+				<title>{`${member.name} | ${headerTitle}`}</title>
 			</Head>
 			<section className="member-section">
 				<div className="member-image-layout">

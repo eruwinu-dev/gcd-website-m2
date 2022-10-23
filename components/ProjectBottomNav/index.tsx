@@ -10,7 +10,7 @@ type Props = {
 }
 
 const ProjectBottomNav = ({ project }: Props) => {
-	const { setStoryOpen, setViewMode } = useStateContext()
+	const { setStoryOpen } = useStateContext()
 
 	const projectIndex: number = projects.findIndex((projectItem: ProjectType) => projectItem.url === project.url)
 
@@ -19,7 +19,6 @@ const ProjectBottomNav = ({ project }: Props) => {
 
 	const resetProjectState = (event: MouseEvent<HTMLAnchorElement>) => {
 		setStoryOpen(false)
-		setViewMode("story")
 	}
 
 	return (

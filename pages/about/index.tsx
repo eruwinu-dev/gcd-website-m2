@@ -4,6 +4,7 @@ import AboutCollage from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
 import TeamGallery from "../../components/TeamGallery"
 import Image from "next/image"
+import { headerTitle } from "../../lib/title"
 
 type Props = {}
 
@@ -11,7 +12,7 @@ const About = (props: Props) => {
 	return (
 		<>
 			<Head>
-				<title>About | G Charles Design - Licensed Architectural Services</title>
+				<title>{`About | ${headerTitle}`}</title>
 			</Head>
 			<section className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]">
 				<Image
@@ -72,10 +73,10 @@ const About = (props: Props) => {
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 col-span-2 space-y-4">
-						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white">
+						<h1 className="w-full lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white">
 							Let&apos;s build that dream project together.
 						</h1>
-						<p className="leading-relaxed text-white w-11/12 lg:text-xl md:text-lg text-base">
+						<p className="leading-relaxed text-white w-full lg:text-xl md:text-lg text-base">
 							Whether you&apos;re still in the rough sketches or you have a full plan in mind, it&apos;s
 							never too early to involve us. We&apos;ll be with you in every step.
 						</p>

@@ -10,6 +10,10 @@ export const links: LinkType[] = [
 		url: "/process",
 	},
 	{
+		name: "News",
+		url: "/news",
+	},
+	{
 		name: "Contact",
 		url: "/contact",
 	},

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react"
 import useStateContext from "../../context/State"
 import { BarsIcon, CloseIcon } from "../../lib/icons"
 import { links } from "../../lib/links"
-import { LinkType } from "../../types"
+import { LinkType, ModeType } from "../../types"
 
 type Props = {}
 
@@ -13,8 +13,10 @@ const limit: number = 10
 
 const Header = (props: Props) => {
 	const [offset, setOffset] = useState<number>(0)
-	const { viewMode, setHeaderOpen, headerOpen } = useStateContext()
-	const { pathname } = useRouter()
+	const { setHeaderOpen, headerOpen } = useStateContext()
+	const { pathname, query } = useRouter()
+
+	const viewMode = (query.mode || "story") as ModeType
 
 	const isWhite = ["/", "/about", "/process", "/portfolio/[project]"].includes(pathname)
 		? pathname === "/portfolio/[project]"

@@ -3,7 +3,7 @@ import React from "react"
 import type { InferGetStaticPropsType, GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 
-import type { ProjectType } from "../../types"
+import type { ModeType, ProjectType } from "../../types"
 
 import ProjectStory from "../../components/ProjectStory"
 import ProjectGallery from "../../components/ProjectGallery"
@@ -13,10 +13,11 @@ import ProjectCarousel from "../../components/ProjectCarousel"
 import { getProjectText } from "../../lib/api"
 import mdToHtml from "../../lib/mdToHtml"
 import { projects } from "../../lib/projects"
-import useStateContext from "../../context/State"
 import ProjectBottomNav from "../../components/ProjectBottomNav"
 import ProjectDescription from "../../components/ProjectDescription"
 import { motion } from "framer-motion"
+import { headerTitle } from "../../lib/title"
+import { useRouter } from "next/router"
 
 type Props = {}
 
@@ -32,12 +33,15 @@ const sectionVariants = {
 }
 
 const Project = ({ project, html }: InferGetStaticPropsType<typeof getStaticProps>) => {
-	const { viewMode } = useStateContext()
+	const router = useRouter()
+	const { mode } = router.query
+
+	const viewMode: ModeType = (mode || "story") as ModeType
 
 	return (
 		<>
 			<Head>
-				<title>{`${project.name} | G Charles Design - Licensed Architecture Services`}</title>
+				<title>{`${project.name} | ${headerTitle}`}</title>
 			</Head>
 			<section className={[viewMode === "carousel" ? "translate-y-0" : "", "generic-transition h-fit"].join(" ")}>
 				<motion.div
@@ -56,7 +60,7 @@ const Project = ({ project, html }: InferGetStaticPropsType<typeof getStaticProp
 						) : (
 							<ProjectCarousel project={project} />
 						)}
-						<ProjectViewMode />
+						<ProjectViewMode url={project.url} />
 					</div>
 				</motion.div>
 			</section>

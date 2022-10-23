@@ -7,6 +7,10 @@ export type LinkType = {
 
 export type ModeType = "story" | "carousel"
 
+export type ProjectCategoryType = "single" | "retail" | "multi"
+
+export type ProjectCategoryOptionsType = ProjectCategoryType | "all"
+
 export interface MemberType {
 	url: string
 	name: string
@@ -27,6 +31,12 @@ export interface ProjectType {
 	photos: string[]
 	address: string
 	team: TeamType[]
+	category: ProjectCategoryType
+}
+
+export interface CategoryType {
+	name: string
+	category: ProjectCategoryType | "all"
 }
 
 export interface FormType {
@@ -57,8 +67,6 @@ export interface CollageType {
 export interface ContextType {
 	storyOpen: boolean
 	setStoryOpen: Dispatch<SetStateAction<boolean>>
-	viewMode: ModeType
-	setViewMode: (mode: ModeType) => void
 	page: number
 	direction: number
 	setPage: Dispatch<SetStateAction<[number, number]>>

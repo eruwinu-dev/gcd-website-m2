@@ -2,6 +2,7 @@ import Head from "next/head"
 import React from "react"
 import ProcessTimeline from "../components/ProcessTimeline"
 import Image from "next/image"
+import { headerTitle } from "../lib/title"
 
 type Props = {}
 
@@ -9,7 +10,7 @@ const Process = (props: Props) => {
 	return (
 		<>
 			<Head>
-				<title>Process | G Charles Design - Licensed Architectural Services</title>
+				<title>{`Process | ${headerTitle}`}</title>
 			</Head>
 
 			<section className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]">

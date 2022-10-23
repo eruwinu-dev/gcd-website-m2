@@ -1,13 +1,16 @@
+import { useRouter } from "next/router"
 import React from "react"
-import useStateContext from "../../context/State"
-import type { ProjectType, TeamType } from "../../types"
+import type { ModeType, ProjectType, TeamType } from "../../types"
 
 type Props = {
 	project: ProjectType
 }
 
 const ProjectTeam = ({ project }: Props) => {
-	const { viewMode } = useStateContext()
+	const router = useRouter()
+	const { mode } = router.query
+
+	const viewMode = (mode || "story") as ModeType
 
 	return (
 		<div

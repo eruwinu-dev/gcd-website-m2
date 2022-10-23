@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.7.0",
     "@headlessui/react": "^1.7.3",
     "@parse/react-ssr": "^0.0.1-alpha.18",
     "@reach/rect": "^0.17.0",

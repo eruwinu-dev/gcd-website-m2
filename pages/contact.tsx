@@ -6,6 +6,7 @@ import ContactList from "../components/ContactList"
 import ContactModal from "../components/ContactModal"
 import MapContainer from "../components/MapContainer"
 import SocialsList from "../components/SocialsList"
+import { headerTitle } from "../lib/title"
 
 type Props = {}
 
@@ -16,7 +17,7 @@ const Contact = (props: Props) => {
 	return (
 		<>
 			<Head>
-				<title>Contact | G Charles Design - Licensed Architectural Services</title>
+				<title>{`Contact | ${headerTitle}`}</title>
 			</Head>
 			<section className="h-fit translate-y-0 lg:flex md:flex hidden flex-row items-start justify-center">
 				<div

@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState } from "react"
 import type { ReactNode } from "react"
-import type { ContextType, FormType, ModeType } from "../types"
+import type { ContextType, FormType } from "../types"
 import Parse from "parse"
 import { initializeParse } from "@parse/react-ssr"
+import emailjs from "@emailjs/browser"
 
 type Props = {
 	children: ReactNode
@@ -12,7 +13,6 @@ const Context = createContext<ContextType | null>(null)
 
 export const Provider = ({ children }: Props) => {
 	const [storyOpen, setStoryOpen] = useState<boolean>(false)
-	const [viewMode, setViewMode] = useState<ModeType>("story")
 	const [[page, direction], setPage] = useState([0, 0])
 	const [headerOpen, setHeaderOpen] = useState<boolean>(false)
 
@@ -24,6 +24,8 @@ export const Provider = ({ children }: Props) => {
 	}
 
 	const addContact = async (values: FormType) => {
+		let contactId
+		let emailStatus
 		initializeParse(
 			process!.env!.NEXT_PUBLIC_CUSTOM_URL || "",
 			process.env.NEXT_PUBLIC_APP_ID || "",
@@ -33,10 +35,19 @@ export const Provider = ({ children }: Props) => {
 			setContactLoading(true)
 			setModalOpen(true)
 			const contact = new Parse.Object("Contact")
-			await contact.save(values)
+			const { id } = await contact.save(values)
+			contactId = id
+			const { status } = await emailjs.send(
+				process!.env!.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
+				process!.env!.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
+				{ ...values, id },
+				process!.env!.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ""
+			)
+			emailStatus = status
 		} catch (error) {
 			console.log(error)
 		} finally {
+			if (!contactId || !emailStatus) return
 			setContactLoading(false)
 		}
 	}
@@ -44,8 +55,6 @@ export const Provider = ({ children }: Props) => {
 	const value: ContextType = {
 		storyOpen,
 		setStoryOpen,
-		viewMode,
-		setViewMode,
 		page,
 		direction,
 		setPage,

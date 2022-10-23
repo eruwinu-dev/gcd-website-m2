@@ -10,7 +10,7 @@ const schema = Yup.object().shape({
 	name: Yup.string().required("Required"),
 	email: Yup.string().required("Required").email("Must be a valid email address"),
 	company: Yup.string(),
-	message: Yup.string().required("Required").max(700, "Must be most 700 characters."),
+	message: Yup.string().required("Required").max(2000, "Must be most 2000 characters."),
 })
 
 const initialValues: FormType = {
@@ -63,7 +63,7 @@ const ContactForm = (props: Props) => {
 						type="text"
 						as="textarea"
 						name="message"
-						placeholder="700 characers max"
+						placeholder="2000 characters max"
 						className={[touched.name && errors.name && "field-error"].join(" ")}
 					/>
 					{touched.message && errors.message ? <span className="error">{errors.message}</span> : null}

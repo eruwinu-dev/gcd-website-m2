@@ -201,7 +201,7 @@
 	}
 
 	.project-description {
-		@apply w-full flex lg:flex-row md:flex-col flex-col lg:items-start md:items-center items-center justify-center lg:space-x-8 space-x-0;
+		@apply w-full flex lg:flex-row md:flex-col flex-col lg:items-start md:items-center items-center justify-center lg:space-x-8 space-x-0 py-8;
 	}
 	.project-description > .project-markdown {
 		@apply w-full h-full z-[2] flex flex-col items-center justify-center text-black py-4 lg:px-8 md:px-4 px-0;
@@ -210,7 +210,7 @@
 		@apply prose text-black leading-loose h-fit w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md lg:px-0 md:px-0 px-4;
 	}
 	.project-gallery {
-		@apply lg:w-4/5 md:w-11/12 w-full pb-8 flex flex-col items-center justify-center space-y-4 text-center;
+		@apply lg:w-11/12 md:w-11/12 w-full pb-8 flex flex-col items-center justify-center space-y-4 text-center;
 	}
 	.project-gallery > h1 {
 		@apply w-full;
@@ -273,6 +273,22 @@
 	}
 	.carousel-controls > button {
 		@apply p-2 text-white rounded-full;
+	}
+	.portfolio-nav-tab {
+		@apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto lg:w-4/5 w-full  bg-red-600;
+	}
+	.portfolio-gallery {
+		@apply grid grid-flow-row lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 lg:gap-8 gap-4 w-11/12 h-fit pt-8 pb-16;
+	}
+	.portfolio-gallery-item {
+		@apply w-full inline-block relative cursor-pointer overflow-hidden;
+	}
+	.portfolio-gallery-item-caption {
+		@apply w-full lg:h-1/5 md:h-1/4 h-1/3 z-[2] bg-black/75 absolute bottom-0 left-0 flex flex-col items-center justify-center text-white;
+	}
+	.portfolio-gallery-item-caption > h5,
+	.portfolio-gallery-item-caption > span {
+		@apply text-center mb-2;
 	}
 }
 

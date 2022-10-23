@@ -1,18 +1,32 @@
+import { useRouter } from "next/router"
 import React, { MouseEvent } from "react"
 import useStateContext from "../../context/State"
 import { BookIcon, ColumnsIcon } from "../../lib/icons"
 import type { ModeType } from "../../types"
 
-type Props = {}
+type Props = {
+	url: string
+}
 
-const ProjectViewMode = (props: Props) => {
-	const { setViewMode, viewMode, setStoryOpen } = useStateContext()
+const ProjectViewMode = ({ url }: Props) => {
+	const { setStoryOpen } = useStateContext()
+	const router = useRouter()
+	const { mode } = router.query
 
 	const toggleViewMode = (mode: ModeType) => (event: MouseEvent<HTMLButtonElement>) => {
 		window.scrollTo(0, 0)
-		setViewMode(mode)
 		setStoryOpen((open: boolean) => !open)
+		router.push(
+			{
+				pathname: `/portfolio/${url}`,
+				query: { mode },
+			},
+			undefined,
+			{ shallow: true }
+		)
 	}
+
+	const viewMode: ModeType = (mode || "story") as ModeType
 
 	return (
 		<div

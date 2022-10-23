@@ -34,6 +34,7 @@ export const projects: ProjectType[] = [
 				role: "Project Lead",
 			},
 		],
+		category: "multi",
 	},
 	{
 		url: "the-traditional-shingle",
@@ -72,6 +73,7 @@ export const projects: ProjectType[] = [
 				role: "Project Lead",
 			},
 		],
+		category: "single",
 	},
 	{
 		url: "spanish-revival",
@@ -110,6 +112,7 @@ export const projects: ProjectType[] = [
 				role: "Interior Design Principal",
 			},
 		],
+		category: "retail",
 	},
 	{
 		url: "the-modern-barn",
@@ -158,6 +161,7 @@ export const projects: ProjectType[] = [
 				role: "Project Lead/Designer",
 			},
 		],
+		category: "single",
 	},
 	{
 		url: "the-california-classic",
@@ -174,6 +178,7 @@ export const projects: ProjectType[] = [
 		],
 		address: "Brentwood, CA (Under Construction)",
 		team: [],
+		category: "multi",
 	},
 	{
 		url: "a-piece-of-craftmanship",
@@ -203,6 +208,7 @@ export const projects: ProjectType[] = [
 				role: "Project Lead/Designer",
 			},
 		],
+		category: "retail",
 	},
 	{
 		url: "the-french-mansard",
@@ -241,6 +247,7 @@ export const projects: ProjectType[] = [
 				role: "Principal in Charge",
 			},
 		],
+		category: "single",
 	},
 	{
 		url: "a-montecito-classic",
@@ -294,6 +301,7 @@ export const projects: ProjectType[] = [
 				role: "Project Designer",
 			},
 		],
+		category: "retail",
 	},
 	{
 		url: "the-bernadus-ranch-house",
@@ -378,6 +386,7 @@ export const projects: ProjectType[] = [
 				role: "Principal in Charge",
 			},
 		],
+		category: "multi",
 	},
 	{
 		url: "the-seamless-adu",
@@ -406,6 +415,7 @@ export const projects: ProjectType[] = [
 				role: "Principal in Charge",
 			},
 		],
+		category: "multi",
 	},
 	{
 		url: "the-cyclist",
@@ -451,6 +461,7 @@ export const projects: ProjectType[] = [
 				role: "Project Architect/Designer",
 			},
 		],
+		category: "single",
 	},
 	{
 		url: "the-toscana-influence",
@@ -480,10 +491,11 @@ export const projects: ProjectType[] = [
 				role: "Principal in Charge",
 			},
 		],
+		category: "retail",
 	},
 	{
 		url: "the-music-barn",
-		name: "The Music Barn",
+		name: "The Music Barn (Rendering)",
 		text: "the-music-barn.md",
 		photos: [
 			"https://i.ibb.co/j4mXHwP/Michigan-Exterior-1.jpg",
@@ -499,6 +511,7 @@ export const projects: ProjectType[] = [
 		],
 		address: "Mullet Lake, Michigan",
 		team: [],
+		category: "multi",
 	},
 	{
 		url: "the-andalusian",
@@ -511,6 +524,7 @@ export const projects: ProjectType[] = [
 		],
 		address: "",
 		team: [],
+		category: "single",
 	},
 	{
 		url: "the-framicist",
@@ -519,6 +533,7 @@ export const projects: ProjectType[] = [
 		photos: ["https://i.ibb.co/d7b2z0f/mulholland-front1-1.jpg", "https://i.ibb.co/k1ZJXyG/mulholland-front2.jpg"],
 		address: "",
 		team: [],
+		category: "single",
 	},
 	{
 		url: "cchs-visitors-center",
@@ -541,6 +556,7 @@ export const projects: ProjectType[] = [
 				role: "Project Designer",
 			},
 		],
+		category: "single",
 	},
 	{
 		url: "the-art-deco",
@@ -561,6 +577,7 @@ export const projects: ProjectType[] = [
 				role: "Project Architect/Designer",
 			},
 		],
+		category: "retail",
 	},
 	{
 		url: "monument",
@@ -573,6 +590,7 @@ export const projects: ProjectType[] = [
 		],
 		address: "",
 		team: [],
+		category: "retail",
 	},
 	{
 		url: "adelbert",
@@ -587,6 +605,7 @@ export const projects: ProjectType[] = [
 		],
 		address: "",
 		team: [],
+		category: "retail",
 	},
 	{
 		url: "Vista & Chula Vista Gyms",
@@ -602,6 +621,7 @@ export const projects: ProjectType[] = [
 		],
 		address: "",
 		team: [],
+		category: "retail",
 	},
 ]
 
