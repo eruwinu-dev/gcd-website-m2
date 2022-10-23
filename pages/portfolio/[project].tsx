@@ -60,7 +60,7 @@ const Project = ({ project, html }: InferGetStaticPropsType<typeof getStaticProp
 						) : (
 							<ProjectCarousel project={project} />
 						)}
-						<ProjectViewMode url={project.url} />
+						<ProjectViewMode />
 					</div>
 				</motion.div>
 			</section>

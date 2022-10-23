@@ -4,6 +4,7 @@ import Image from "next/image"
 import { ProjectType } from "../../../../types"
 import { motion } from "framer-motion"
 import { wrap } from "popmotion"
+import useStateContext from "../../../../context/State"
 
 type Props = {
 	project: ProjectType
@@ -29,6 +30,7 @@ const imageVariants = {
 }
 
 const PortfolioGalleryItem = ({ project }: Props) => {
+	const { setPage, setStoryOpen } = useStateContext()
 	const [photo, setPhoto] = useState<number>(0)
 	const [hover, setHover] = useState<boolean>(false)
 
@@ -46,9 +48,14 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 		}
 	}, [hover])
 
+	const setCoverPhoto = (event: MouseEvent<HTMLDivElement>) => {
+		setPage([0, 1])
+		setStoryOpen(false)
+	}
+
 	return (
 		<Link href={`./portfolio/${project.url}`}>
-			<motion.div className="portfolio-gallery-item" variants={galleryItemVariants}>
+			<motion.div className="portfolio-gallery-item" variants={galleryItemVariants} onClick={setCoverPhoto}>
 				<div className="portfolio-gallery-item-caption">
 					<h6>{project.name}</h6>
 					<span className="italic">{project.address}</span>

@@ -2,7 +2,7 @@ import { CategoryType } from "../types"
 
 export const categories: CategoryType[] = [
 	{
-		name: "All",
+		name: "All Projects",
 		category: "all",
 	},
 	{

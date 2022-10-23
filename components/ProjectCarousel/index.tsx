@@ -17,13 +17,7 @@ const ProjectCarousel = ({ project }: Props) => {
 
 	return (
 		<AnimatePresence>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				exit={{ opacity: 0 }}
-				transition={{ duration: 0.5 }}
-				className="project-landing-carousel-container"
-			>
+			<motion.div className="project-landing-carousel-container">
 				<div className="project-carousel-container">
 					<AnimatePresence initial={false} custom={direction}>
 						<motion.img
@@ -62,10 +56,12 @@ const ProjectCarousel = ({ project }: Props) => {
 
 export default ProjectCarousel
 
+const limit = 2000
+
 const variants = {
 	enter: (direction: number) => {
 		return {
-			x: direction > 0 ? 1000 : -1000,
+			x: direction > 0 ? limit : -limit,
 		}
 	},
 	center: {
@@ -75,7 +71,7 @@ const variants = {
 	exit: (direction: number) => {
 		return {
 			zIndex: 0,
-			x: direction < 0 ? 1000 : -1000,
+			x: direction < 0 ? limit : -limit,
 		}
 	},
 }

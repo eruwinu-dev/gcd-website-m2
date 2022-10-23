@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useRouter } from "next/router"
 import React, { MouseEvent } from "react"
 import useStateContext from "../../../context/State"
 
@@ -8,11 +9,20 @@ type Props = {
 }
 
 const ProjectGalleryItem = ({ photo, index }: Props) => {
-	const { setViewMode, setPage, direction } = useStateContext()
+	const { setPage, direction } = useStateContext()
+	const router = useRouter()
+	const { asPath } = router
 
 	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
 		setPage([index, direction])
-		setViewMode("carousel")
+		router.push(
+			{
+				pathname: asPath.split("?")[0],
+				query: { mode: "carousel" },
+			},
+			undefined,
+			{ shallow: true }
+		)
 		window.scrollTo(0, 0)
 	}
 

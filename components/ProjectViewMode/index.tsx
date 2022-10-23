@@ -4,21 +4,20 @@ import useStateContext from "../../context/State"
 import { BookIcon, ColumnsIcon } from "../../lib/icons"
 import type { ModeType } from "../../types"
 
-type Props = {
-	url: string
-}
+type Props = {}
 
-const ProjectViewMode = ({ url }: Props) => {
+const ProjectViewMode = (props: Props) => {
 	const { setStoryOpen } = useStateContext()
 	const router = useRouter()
 	const { mode } = router.query
+	const { asPath } = router
 
 	const toggleViewMode = (mode: ModeType) => (event: MouseEvent<HTMLButtonElement>) => {
 		window.scrollTo(0, 0)
-		setStoryOpen((open: boolean) => !open)
+		setStoryOpen(false)
 		router.push(
 			{
-				pathname: `/portfolio/${url}`,
+				pathname: asPath.split("?")[0],
 				query: { mode },
 			},
 			undefined,
