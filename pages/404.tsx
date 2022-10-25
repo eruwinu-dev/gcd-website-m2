@@ -39,7 +39,7 @@ const NotFound = (props: Props) => {
 			<section className="min-h-screen flex-col">
 				<div className="space-y-4 lg:px-16 md:px-8 px-4 py-8">
 					<h1 className="tracking-wider lg:text-8xl md:text-6xl sm:text-4xl text-2xl">Oops!</h1>
-					<p>Tough luck, we can't find that {pageMap[page as keyof PageMapType] || "page"}.</p>
+					<p>Tough luck, we can&apos;t find that {pageMap[page as keyof PageMapType] || "page"}.</p>
 					<button
 						className="border-2 generic-transition text-red-700 border-red-700 hover:border-transparent hover:text-white hover:bg-red-700"
 						onClick={goBackHandler}
