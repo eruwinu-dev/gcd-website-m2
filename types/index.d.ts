@@ -64,6 +64,15 @@ export interface CollageType {
 	picture: string
 }
 
+export interface ArticleType {
+	url: string
+	title: string
+	cover: string
+	date: string
+	author: string
+	text: string
+}
+
 export interface ContextType {
 	storyOpen: boolean
 	setStoryOpen: Dispatch<SetStateAction<boolean>>

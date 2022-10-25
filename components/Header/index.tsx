@@ -78,11 +78,11 @@ const Header = (props: Props) => {
 									"generic-transition",
 									offset > limit ? "px-4 text-black" : "px-1",
 									iconPath === "/logo-black.png" ? "text-black" : "text-white",
-									[link.url, "/"].includes(pathname) ||
+									[link.url].includes(pathname) ||
 									(link.url === "/portfolio" && pathname === "/portfolio/[project]") ||
 									(link.url === "/about" && pathname === "/about/[member]")
 										? "opacity-100"
-										: "opacity-50 hover:opacity-100",
+										: "opacity-70 hover:opacity-100",
 								].join(" ")}
 								onClick={() => setHeaderOpen((open: boolean) => false)}
 							>

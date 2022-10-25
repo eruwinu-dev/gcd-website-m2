@@ -12,11 +12,15 @@
     "@emailjs/browser": "^3.7.0",
     "@headlessui/react": "^1.7.3",
     "@parse/react-ssr": "^0.0.1-alpha.18",
+    "@portabletext/react": "^1.0.6",
     "@reach/rect": "^0.17.0",
+    "@sanity/client": "^3.4.1",
+    "@sanity/image-url": "^1.0.1",
     "@tailwindcss/typography": "^0.5.7",
     "@types/parse": "^2.18.18",
     "formik": "^2.2.9",
     "framer-motion": "^7.5.1",
+    "groq": "^2.33.2",
     "next": "12.3.1",
     "parse": "^3.4.4",
     "react": "18.2.0",
@@ -29,6 +33,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@sanity/types": "^2.35.0",
     "@types/node": "18.7.23",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",

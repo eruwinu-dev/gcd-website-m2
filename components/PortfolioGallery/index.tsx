@@ -44,7 +44,7 @@ const PortfolioGallery = (props: Props) => {
 									"w-full generic-transition",
 									isSelectedCategory(category.category)
 										? "opacity-100"
-										: "opacity-50 hover:opacity-100",
+										: "opacity-70 hover:opacity-100",
 								].join(" ")}
 							>
 								{category.name}
