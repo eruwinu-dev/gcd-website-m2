@@ -2,7 +2,7 @@ import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { wrap } from "popmotion"
 
-import type { ProjectType } from "../../types"
+import type { ProjectType } from "../../types/project"
 import useStateContext from "../../context/State"
 import CarouselControl from "./CarouselControl"
 

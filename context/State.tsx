@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useState } from "react"
 import type { ReactNode } from "react"
-import type { ContextType, FormType } from "../types"
+import type { ContextType } from "../types/state"
+import type { FormType } from "../types/form"
 import Parse from "parse"
 import { initializeParse } from "@parse/react-ssr"
 import emailjs from "@emailjs/browser"
+import { ModeType } from "../types/project"
 
 type Props = {
 	children: ReactNode

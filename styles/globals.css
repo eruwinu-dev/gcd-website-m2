@@ -277,5 +277,11 @@
 	.portfolio-gallery-item-caption > span {
 		@apply text-center mb-2;
 	}
+	.news-portable-text-component {
+		@apply lg:w-8/12 md:w-8/12 w-full mx-auto mb-8 text-left;
+	}
+	.news-article-text {
+		@apply flex flex-col items-start py-16 w-10/12;
+	}
 }
 

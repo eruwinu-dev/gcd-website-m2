@@ -1,6 +1,6 @@
 import Image from "next/image"
 import React from "react"
-import { ProcessType } from "../../../types"
+import { ProcessType } from "../../../types/process"
 import { motion } from "framer-motion"
 
 type Props = {

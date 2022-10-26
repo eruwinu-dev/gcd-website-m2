@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react"
 import ProcessTimelineItem from "./ProcessTimelineItem"
 
 import { steps } from "../../lib/steps"
-import { ProcessType } from "../../types"
+import { ProcessType } from "../../types/process"
 import { AnimatePresence, motion } from "framer-motion"
 import { useRect } from "@reach/rect"
 

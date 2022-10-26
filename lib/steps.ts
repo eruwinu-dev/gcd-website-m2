@@ -1,4 +1,4 @@
-import { ProcessType } from "../types"
+import { ProcessType } from "../types/process"
 
 export const steps: ProcessType[] = [
 	{

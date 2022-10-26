@@ -1,5 +1,5 @@
 import React from "react"
-import { ProjectCategoryOptionsType, ProjectType } from "../../../types"
+import { ProjectCategoryOptionsType, ProjectType } from "../../../types/state"
 import { motion } from "framer-motion"
 import { projects } from "../../../lib/projects"
 import PortfolioGalleryItem from "./PortfolioGalleryItem"

@@ -1,7 +1,7 @@
 import React, { MouseEvent, useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ProjectType } from "../../../../types"
+import { ProjectType } from "../../../../types/state"
 import { motion } from "framer-motion"
 import { wrap } from "popmotion"
 import useStateContext from "../../../../context/State"

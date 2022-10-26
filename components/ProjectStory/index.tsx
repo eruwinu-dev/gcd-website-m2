@@ -3,7 +3,7 @@ import React, { MouseEvent } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import useStateContext from "../../context/State"
 
-import type { ModeType, ProjectType } from "../../types"
+import type { ModeType, ProjectType } from "../../types/project"
 import ProjectTeam from "../ProjectTeam"
 import { ChevronDoubleRightIcon, CloseIcon } from "../../lib/icons"
 import { useRouter } from "next/router"

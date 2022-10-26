@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
-import { MemberType } from "../../../types"
+import { MemberType } from "../../../types/member"
 
 type Props = {
 	member: MemberType

@@ -1,5 +1,3 @@
-import { CollageType } from "../types"
-
 export const images: string[] = [
 	"https://i.ibb.co/swJY0wT/Outside-3.jpg",
 	"https://i.ibb.co/Q6NwFhT/mulholland-front1.jpg",

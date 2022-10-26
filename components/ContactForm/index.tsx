@@ -1,7 +1,7 @@
 import React from "react"
 import * as Yup from "yup"
 import { Formik, Form, Field } from "formik"
-import type { FormType } from "../../types"
+import type { FormType } from "../../types/form"
 import useStateContext from "../../context/State"
 
 type Props = {}

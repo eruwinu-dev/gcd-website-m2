@@ -3,7 +3,7 @@ import React from "react"
 import type { InferGetStaticPropsType, GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 
-import type { ModeType, ProjectType } from "../../types"
+import type { ModeType, ProjectType } from "../../types/project"
 
 import ProjectStory from "../../components/ProjectStory"
 import ProjectGallery from "../../components/ProjectGallery"
@@ -33,10 +33,11 @@ const sectionVariants = {
 }
 
 const Project = ({ project, html }: InferGetStaticPropsType<typeof getStaticProps>) => {
-	const router = useRouter()
-	const { mode } = router.query
+	const {
+		query: { mode },
+	} = useRouter()
 
-	const viewMode: ModeType = (mode || "story") as ModeType
+	const viewMode = (mode || "story") as ModeType
 
 	return (
 		<>

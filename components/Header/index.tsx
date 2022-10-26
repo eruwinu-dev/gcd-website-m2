@@ -5,7 +5,9 @@ import React, { useEffect, useState } from "react"
 import useStateContext from "../../context/State"
 import { BarsIcon, CloseIcon } from "../../lib/icons"
 import { links } from "../../lib/links"
-import { LinkType, ModeType } from "../../types"
+import { LinkType } from "../../types/link"
+
+import { ModeType } from "../../types/project"
 
 type Props = {}
 
@@ -80,9 +82,10 @@ const Header = (props: Props) => {
 									iconPath === "/logo-black.png" ? "text-black" : "text-white",
 									[link.url].includes(pathname) ||
 									(link.url === "/portfolio" && pathname === "/portfolio/[project]") ||
-									(link.url === "/about" && pathname === "/about/[member]")
+									(link.url === "/about" && pathname === "/about/[member]") ||
+									(link.url === "/news" && pathname === "/news/[slug]")
 										? "opacity-100"
-										: "opacity-70 hover:opacity-100",
+										: "opacity-50 hover:opacity-100",
 								].join(" ")}
 								onClick={() => setHeaderOpen((open: boolean) => false)}
 							>

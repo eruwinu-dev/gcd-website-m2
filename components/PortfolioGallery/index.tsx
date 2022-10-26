@@ -1,9 +1,12 @@
 import React, { MouseEvent } from "react"
-import { CategoryType, ProjectCategoryOptionsType } from "../../types"
 import { motion, AnimatePresence } from "framer-motion"
-import { categories } from "../../lib/categories"
 import { useRouter } from "next/router"
+
+import type { CategoryType, ProjectCategoryOptionsType } from "../../types/project"
+
 import PortfolioGalleryGroup from "./PortfolioGalleryGroup"
+
+import { categories } from "../../lib/categories"
 
 type Props = {}
 
@@ -31,11 +34,11 @@ const PortfolioGallery = (props: Props) => {
 	return (
 		<div className="w-full min-h-screen max-h-fit flex flex-col items-center justify-start">
 			<nav className="lg:w-1/2 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative">
-				<ul className="flex flex-row items-end space-between w-full h-fit mt-16 mb-8">
+				<ul className="flex lg:flex-row md:flex-row flex-col lg:items-end md:items-end items-center space-between w-full h-fit mt-16 mb-8">
 					{categories.map((category: CategoryType, index: number) => (
 						<li
 							key={category.name}
-							className="w-full flex flex-col items-center justify-center relative h-full"
+							className="lg:w-full md:w-full w-1/2 flex flex-col items-center justify-center relative h-full"
 						>
 							<button
 								type="button"

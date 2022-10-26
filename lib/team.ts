@@ -1,4 +1,4 @@
-import { MemberType } from "../types"
+import { MemberType } from "../types/member"
 
 export const team: MemberType[] = [
 	{
@@ -48,7 +48,7 @@ export const team: MemberType[] = [
 		url: "kristoffer-jake-yalong",
 		name: "Kristoffer Jake Yalong",
 		pictures: ["https://i.ibb.co/X2Dtqd2/yalong1.jpg"],
-		role: "Jr. Structural Engineer",
+		role: "Strctural Design Lead",
 		text: "",
 	},
 	{

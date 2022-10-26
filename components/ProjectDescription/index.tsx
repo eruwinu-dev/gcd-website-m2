@@ -1,6 +1,7 @@
 import React from "react"
-import type { ModeType, ProjectType } from "../../types"
 import ProjectTeam from "../ProjectTeam"
+
+import { ModeType, ProjectType } from "../../types/project"
 
 type Props = {
 	project: ProjectType

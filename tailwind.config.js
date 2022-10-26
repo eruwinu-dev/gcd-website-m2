@@ -12,6 +12,10 @@ module.exports = {
 	variants: {
 		extend: {},
 	},
-	plugins: [require("@tailwindcss/typography"), require("tailwind-scrollbar")({ nocompatible: true })],
+	plugins: [
+		require("@tailwindcss/typography"),
+		require("tailwind-scrollbar")({ nocompatible: true }),
+		require("@tailwindcss/line-clamp"),
+	],
 }
 

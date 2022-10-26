@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { team } from "../../lib/team"
-import type { MemberType } from "../../types"
+import type { MemberType } from "../../types/member"
 import { useRect } from "@reach/rect"
 
 import TeamGalleryItem from "./TeamGalleryItem"

@@ -9,7 +9,7 @@ import mdToHtml from "../../lib/mdToHtml"
 import { wrap } from "popmotion"
 import { motion } from "framer-motion"
 
-import { MemberType } from "../../types"
+import { MemberType } from "../../types/member"
 import { headerTitle } from "../../lib/title"
 
 type Props = {}

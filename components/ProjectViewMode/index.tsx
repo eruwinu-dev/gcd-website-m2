@@ -2,15 +2,19 @@ import { useRouter } from "next/router"
 import React, { MouseEvent } from "react"
 import useStateContext from "../../context/State"
 import { BookIcon, ColumnsIcon } from "../../lib/icons"
-import type { ModeType } from "../../types"
+import type { ModeType } from "../../types/project"
 
 type Props = {}
 
 const ProjectViewMode = (props: Props) => {
 	const { setStoryOpen } = useStateContext()
 	const router = useRouter()
-	const { mode } = router.query
-	const { asPath } = router
+	const {
+		asPath,
+		query: { mode },
+	} = router
+
+	const viewMode = (mode || "story") as ModeType
 
 	const toggleViewMode = (mode: ModeType) => (event: MouseEvent<HTMLButtonElement>) => {
 		window.scrollTo(0, 0)
@@ -24,8 +28,6 @@ const ProjectViewMode = (props: Props) => {
 			{ shallow: true }
 		)
 	}
-
-	const viewMode: ModeType = (mode || "story") as ModeType
 
 	return (
 		<div

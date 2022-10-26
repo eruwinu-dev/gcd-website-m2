@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import type { CollageType } from ".././../types"
+import type { CollageType } from ".././../types/collage"
 
 type Props = {}
 

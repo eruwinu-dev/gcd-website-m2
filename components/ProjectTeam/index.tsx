@@ -1,6 +1,7 @@
 import { useRouter } from "next/router"
 import React from "react"
-import type { ModeType, ProjectType, TeamType } from "../../types"
+import type { ModeType, ProjectType } from "../../types/project"
+import type { TeamType } from "../../types/member"
 
 type Props = {
 	project: ProjectType
