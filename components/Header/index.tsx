@@ -55,21 +55,23 @@ const Header = (props: Props) => {
 			>
 				<div>
 					<Link href="/">
-						<div
-							className={[
-								"generic-transition",
-								"relative h-[2.5rem] w-auto aspect-[1.32/1]",
-								offset > limit ? "mx-4" : "mx-1",
-							].join(" ")}
-							onClick={() => setHeaderOpen((open: boolean) => false)}
-						>
-							<Image
-								src={iconPath}
-								alt="Glen Charles Design Logo"
-								layout="fill"
-								className="cursor-pointer "
-							/>
-						</div>
+						{
+							<div
+								className={[
+									"generic-transition",
+									"relative h-[2.5rem] w-auto aspect-[1.32/1]",
+									offset > limit ? "mx-4" : "mx-1",
+								].join(" ")}
+								onClick={() => setHeaderOpen((open: boolean) => false)}
+							>
+								<Image
+									src={iconPath}
+									alt="Glen Charles Design Logo"
+									layout="fill"
+									className="cursor-pointer "
+								/>
+							</div>
+						}
 					</Link>
 				</div>
 				<div className="lg:flex md:flex hidden flex-row items-center justify-center space-x-2 py-2">

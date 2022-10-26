@@ -1,32 +1,16 @@
 import React, { MouseEvent, useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ProjectType } from "../../../../types/state"
+
 import { motion } from "framer-motion"
 import { wrap } from "popmotion"
+
+import type { ProjectType } from "../../../../types/project"
+
 import useStateContext from "../../../../context/State"
 
 type Props = {
 	project: ProjectType
-}
-
-const galleryItemVariants = {
-	start: { y: 20, opacity: 0 },
-	go: { y: 0, opacity: 1, transition: { duration: 0.2 } },
-	end: { y: -20, opacity: 0 },
-}
-
-const imageVariants = {
-	show: {
-		opacity: 1,
-		transition: {
-			ease: "easeInOut",
-			duration: 0.25,
-		},
-	},
-	hide: {
-		opacity: 0,
-	},
 }
 
 const PortfolioGalleryItem = ({ project }: Props) => {
@@ -55,11 +39,12 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 
 	return (
 		<Link href={`./portfolio/${project.url}`}>
-			<motion.div className="portfolio-gallery-item" variants={galleryItemVariants} onClick={setCoverPhoto}>
-				<div className="portfolio-gallery-item-caption">
-					<h6>{project.name}</h6>
-					<span className="italic">{project.address}</span>
-				</div>
+			<motion.div
+				className="w-full h-full flex flex-col items-center justify-start"
+				variants={galleryItemVariants}
+				whileHover="hover"
+				onClick={setCoverPhoto}
+			>
 				<motion.div
 					onMouseEnter={() => {
 						setHover(true)
@@ -67,19 +52,60 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 					onMouseLeave={() => {
 						setHover(false)
 					}}
-					className={[
-						"w-full h-auto relative aspect-square overflow-hidden generic-transition hover:scale-105",
-					].join(" ")}
+					className={["w-full h-auto relative aspect-square overflow-hidden cursor-pointer"].join(" ")}
 					key={photoIndex}
 					variants={imageVariants}
-					animate={"show"}
-					initial="hide"
+					animate="hover"
+					initial="end"
 				>
-					<Image src={project.photos[photoIndex]} alt={project.url} layout="fill" />
+					<Image
+						src={project.photos[photoIndex]}
+						alt={project.url}
+						layout="fill"
+						className="generic-transition hover:scale-105"
+					/>
+				</motion.div>
+				<motion.div className="portfolio-gallery-item-caption" variants={textVariants}>
+					<h5>{project.name}</h5>
+					<span className="italic">{project.address}</span>
 				</motion.div>
 			</motion.div>
 		</Link>
 	)
+}
+
+const galleryItemVariants = {
+	start: { y: 20, opacity: 0 },
+	go: { y: 0, opacity: 1, transition: { duration: 0.2 } },
+	end: { y: -20, opacity: 0 },
+	hover: {},
+}
+
+const imageVariants = {
+	hover: {
+		opacity: 1,
+		transition: {
+			ease: "easeInOut",
+			duration: 0.25,
+		},
+	},
+	end: {
+		opacity: 0,
+	},
+}
+
+const textVariants = {
+	hover: {
+		y: -20,
+		transition: {
+			ease: "easeInOut",
+			duration: 0.25,
+		},
+	},
+	end: {
+		y: 0,
+		opacity: 0,
+	},
 }
 
 export default PortfolioGalleryItem

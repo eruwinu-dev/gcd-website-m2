@@ -268,10 +268,10 @@
 		@apply grid grid-flow-row lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 lg:gap-8 gap-4 w-11/12 h-fit pt-8 pb-16;
 	}
 	.portfolio-gallery-item {
-		@apply w-full inline-block relative cursor-pointer overflow-hidden;
+		@apply w-full h-fit;
 	}
 	.portfolio-gallery-item-caption {
-		@apply w-full lg:h-1/5 md:h-1/4 h-1/3 z-[2] bg-black/75 absolute bottom-0 left-0 flex flex-col items-center justify-center text-white;
+		@apply w-full lg:h-1/4 md:h-1/4 h-1/3 z-[2] bg-white flex flex-col items-center justify-center;
 	}
 	.portfolio-gallery-item-caption > h5,
 	.portfolio-gallery-item-caption > span {

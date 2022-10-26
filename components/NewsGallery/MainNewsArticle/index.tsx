@@ -14,24 +14,27 @@ type Props = {
 const MainNewsArticle = ({ article, side }: Props) => {
 	return (
 		<>
-			<div
-				className={[
-					side === "left" ? "order-first" : "order-last",
-					"bg-gray-200 col-span-2 aspect-video relative",
-					"w-full h-auto",
-					article.mainImage ? " animate-none cursor-hover" : "animate-pulse",
-				].join(" ")}
-			>
-				{article.mainImage && (
-					<Image
-						src={urlFor(article.mainImage).url()}
-						alt={article.title}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-					/>
-				)}
-			</div>
+			<Link href={`./news/${article.slug.current}`}>
+				<div
+					className={[
+						side === "left" ? "order-first" : "order-last",
+						"bg-gray-200 col-span-2 aspect-video relative",
+						"w-full h-auto cursor-pointer overflow-hidden",
+						article.mainImage ? " animate-none cursor-hover" : "animate-pulse",
+					].join(" ")}
+				>
+					{article.mainImage && (
+						<Image
+							src={urlFor(article.mainImage).url()}
+							alt={article.title}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+							className="generic-transition hover:scale-105"
+						/>
+					)}
+				</div>
+			</Link>
 			<div className="col-span-1 w-full h-full flex flex-col items-start justify-center px-8 space-y-4">
 				<div className="text-sm">{Math.round((article?.wordCount || 0) / 180)} minute read</div>
 				<Link href={`./news/${article.slug.current}`}>

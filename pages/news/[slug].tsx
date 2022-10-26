@@ -30,7 +30,7 @@ const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] 
 			<NewsArticleHeader post={post} />
 			<div className="w-11/12 min-h-screen max-h-fit translate-y-0 flex flex-row items-start justify-center mx-auto">
 				<NewsArticleText body={post.body} />
-				<div className="sticky top-16 py-8 w-2/12 flex flex-col items-center justify-center space-y-8">
+				<div className="sticky top-32 py-16 w-2/12 flex flex-col items-center justify-center space-y-8">
 					<SocialMediaShare post={post} />
 				</div>
 			</div>

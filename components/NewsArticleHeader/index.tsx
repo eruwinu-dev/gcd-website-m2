@@ -22,7 +22,7 @@ const NewsArticleHeader = ({ post }: Props) => {
 				<h1 className="text-5xl">{post.title}</h1>
 				<div className="w-1/4 grid grid-cols-2 grid-flow-row">
 					<div className="w-full text-center">{post.name}</div>
-					<div className="w-full text-center">{formatDateFromISO(post?.publishedAt)}</div>
+					<div className="w-full text-center text-gray-500">{formatDateFromISO(post?.publishedAt)}</div>
 				</div>
 			</div>
 			<div className="w-11/12 flex flex-col items-center mx-auto">
