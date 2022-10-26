@@ -1,8 +1,11 @@
 import React, { MouseEvent } from "react"
 import Link from "next/link"
+
+import type { ProjectType } from "../../types/project"
+
 import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
+
 import { projects } from "../../lib/projects"
-import type { ProjectType } from "../../types/state"
 import useStateContext from "../../context/State"
 
 type Props = {
