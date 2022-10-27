@@ -130,10 +130,10 @@ const Home = (props: Props) => {
 				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 text-center col-span-2 px-8 text-white space-y-8">
-						<h4 className="w-full lg:text-5xl md:text-4xl sm:text-3xl text-3xl">
+						<h4 className="w-full lg:text-4xl md:text-4xl sm:text-3xl text-3xl">
 							Maximize your project&apos;s potential.
 						</h4>
-						<p className="leading-relaxed text-white w-full lg:text-lg md:text-lg text-base">
+						<p className="leading-relaxed text-white w-full">
 							Let&apos;s build your dream space fit to your wishes. Set up a talk with our architects!
 						</p>
 						<BookConsultButton />
