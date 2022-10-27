@@ -20,8 +20,6 @@ interface StaticParams extends ParsedUrlQuery {
 }
 
 const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] }) => {
-	if (!post) return <></>
-
 	return (
 		<>
 			<Head>
@@ -46,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const paths = await client.fetch(groq`*[_type == "post" && defined(slug.current)][].slug.current`)
 	return {
 		paths: paths.map((slug: string) => ({ params: { slug } })),
-		fallback: true,
+		fallback: false,
 	}
 }
 

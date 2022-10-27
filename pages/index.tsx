@@ -106,10 +106,10 @@ const Home = (props: Props) => {
 							</p>
 							<div className="lg:w-3/4 md:w-11/12 w-full flex flex-row items-center justify-center">
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[2.38/1] overflow-hidden">
-									<Image src="/aia-logo.png" alt="AIA Logo" layout="fill" />
+									<Image src="/aia-logo.png" alt="AIA Logo" layout="fill" objectFit="contain" />
 								</div>
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[1.60/1] overflow-hidden">
-									<Image src="/ncarb.png" alt="AIA Logo" layout="fill" />
+									<Image src="/ncarb.png" alt="AIA Logo" layout="fill" objectFit="contain" />
 								</div>
 							</div>
 						</div>

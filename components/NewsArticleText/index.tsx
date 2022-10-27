@@ -28,6 +28,8 @@ const portableTextComponents: Partial<PortableTextReactComponents | PortableText
 						loading="lazy"
 						src={urlFor(value).auto("format").url()}
 						layout="fill"
+						objectFit="cover"
+						objectPosition="center"
 					/>
 				</div>
 			)

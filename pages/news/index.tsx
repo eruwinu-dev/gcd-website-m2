@@ -23,10 +23,8 @@ const News = ({ articles }: InferGetStaticPropsType<typeof getStaticProps>) => {
 				<title>{`News | ${headerTitle}`}</title>
 			</Head>
 			<NewsPageHeader />
-			<div className="w-11/12 min-h-screen max-h-fit py-16 mx-auto grid grid-cols-3 grid-flow-row gap-8">
-				<MainNewsArticle article={articles[0]} side="left" />
-				<MainNewsArticle article={articles[1]} side="right" />
-			</div>
+			<MainNewsArticle article={articles[0]} side="left" />
+			<MainNewsArticle article={articles[1]} side="right" />
 			<NewsGallery articles={articles.slice(2, articles.length)} />
 		</>
 	)

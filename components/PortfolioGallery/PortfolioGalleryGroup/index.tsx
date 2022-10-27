@@ -11,28 +11,6 @@ type Props = {
 	category: ProjectCategoryOptionsType
 }
 
-const galleryVariants = {
-	start: {
-		y: 10,
-		opacity: 0,
-	},
-	go: {
-		y: 0,
-		opacity: 1,
-		transition: {
-			staggerChildren: 0.1,
-			duration: 0.4,
-		},
-	},
-	end: {
-		y: -10,
-		opacity: 0,
-		transition: {
-			duration: 0.4,
-		},
-	},
-}
-
 const PortfolioGalleryGroup = ({ category }: Props) => {
 	const selectedProjects: ProjectType[] =
 		category === "all" ? projects : projects.filter((project: ProjectType) => project.category === category)
@@ -43,7 +21,6 @@ const PortfolioGalleryGroup = ({ category }: Props) => {
 			variants={galleryVariants}
 			initial="start"
 			animate="go"
-			exit="end"
 			className="portfolio-gallery"
 		>
 			{selectedProjects.map((project: ProjectType, index: number) => (
@@ -51,6 +28,22 @@ const PortfolioGalleryGroup = ({ category }: Props) => {
 			))}
 		</motion.div>
 	)
+}
+
+const galleryVariants = {
+	start: {
+		y: 10,
+		opacity: 0,
+	},
+	go: {
+		y: 0,
+		opacity: 1,
+		transition: {
+			delay: 0.0001,
+			when: "beforeChildren",
+			staggerChildren: 0.1,
+		},
+	},
 }
 
 export default PortfolioGalleryGroup

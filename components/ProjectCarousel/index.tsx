@@ -18,7 +18,7 @@ const ProjectCarousel = ({ project }: Props) => {
 	return (
 		<AnimatePresence>
 			<motion.div className="project-landing-carousel-container">
-				<div className="project-carousel-container">
+				<div className="project-carousel-container object-cover object-left">
 					<AnimatePresence initial={false} custom={direction}>
 						<motion.img
 							key={page}

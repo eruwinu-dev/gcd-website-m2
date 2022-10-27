@@ -1,10 +1,12 @@
-import { parseISO } from "date-fns"
 import Image from "next/image"
-import Link from "next/link"
 import React from "react"
+
+import Link from "next/link"
+
+import type { AlignMainImageType, ArticleItemType } from "../../../types/article"
+
 import { formatDateFromISO } from "../../../lib/dates"
 import { urlFor } from "../../../lib/urlFor"
-import { AlignMainImageType, ArticleItemType } from "../../../types/article"
 
 type Props = {
 	article: ArticleItemType
@@ -13,7 +15,10 @@ type Props = {
 
 const MainNewsArticle = ({ article, side }: Props) => {
 	return (
-		<>
+		<div
+			className="w-11/12 h-fit mx-auto grid grid-cols-3 grid-flow-row gap-8 pb-8"
+			
+		>
 			<Link href={`./news/${article.slug.current}`}>
 				<div
 					className={[
@@ -55,7 +60,7 @@ const MainNewsArticle = ({ article, side }: Props) => {
 					</Link>
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

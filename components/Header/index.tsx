@@ -68,6 +68,7 @@ const Header = (props: Props) => {
 									src={iconPath}
 									alt="Glen Charles Design Logo"
 									layout="fill"
+									objectFit="contain"
 									className="cursor-pointer "
 								/>
 							</div>

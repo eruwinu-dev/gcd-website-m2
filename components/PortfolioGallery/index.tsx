@@ -33,12 +33,12 @@ const PortfolioGallery = (props: Props) => {
 
 	return (
 		<div className="w-full min-h-screen max-h-fit flex flex-col items-center justify-start">
-			<nav className="lg:w-1/2 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative">
-				<ul className="flex lg:flex-row md:flex-row flex-col lg:items-end md:items-end items-center space-between w-full h-fit mt-16 mb-8">
+			<nav className="mx-auto lg:w-7/12 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative px-2">
+				<ul className="flex flex-row lg:items-end md:items-end items-center space-between h-fit lg:mt-16 md:mt-16 mt-8 lg:mb-8 md:mb-8 mb-4">
 					{categories.map((category: CategoryType, index: number) => (
 						<li
 							key={category.name}
-							className="lg:w-full md:w-full w-1/2 flex flex-col items-center justify-center relative h-full"
+							className="flex flex-col items-center justify-center relative h-full lg:text-base md:text-base sm:text-sm text-xs"
 						>
 							<button
 								type="button"

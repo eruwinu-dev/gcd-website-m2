@@ -11,6 +11,8 @@ const MapContainer = (props: Props) => {
 					src="https://i.ibb.co/HrqHsRJ/gcd-map-no-offset.png"
 					alt="Glen Charles Design Map"
 					layout="fill"
+					objectFit="cover"
+					objectPosition="center"
 					priority
 				/>
 			</div>

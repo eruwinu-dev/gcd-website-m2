@@ -33,13 +33,13 @@ const NewsGalleryItem = ({ article }: Props) => {
 						article?.mainImage ? "animate-none" : "animate-pulse",
 					].join(" ")}
 				>
-			{article.mainImage && (
+					{article.mainImage && (
 						<Image
 							src={urlFor(article.mainImage).url()}
 							alt={article.title}
 							layout="fill"
 							objectFit="cover"
-							objectPosition="left"
+							objectPosition="center"
 							className="generic-transition hover:scale-105"
 						/>
 					)}
@@ -52,8 +52,8 @@ const NewsGalleryItem = ({ article }: Props) => {
 					<></>
 				)}
 				<Link href={redirectPath}>
-					<a className="generic-transition hover:text-red-700">
-						<h3>{article.title}</h3>
+					<a>
+						<motion.h3 variants={headerVariants}>{article.title}</motion.h3>
 					</a>
 				</Link>
 				<div className="w-full grid grid-cols-2">
@@ -73,11 +73,6 @@ const NewsGalleryItem = ({ article }: Props) => {
 						))}
 					</ul>
 				)}
-				<div>
-					<Link href={redirectPath}>
-						<a className="generic-transition text-gray-500 hover:text-red-700">Read more</a>
-					</Link>
-				</div>
 			</motion.div>
 		</motion.div>
 	)
@@ -88,18 +83,34 @@ const containerVariants = {
 	hover: {},
 }
 
+const headerVariants = {
+	rest: {
+		textDecoration: "none",
+		color: "#000",
+		transition: {
+			duration: 0.2,
+		},
+	},
+	hover: {
+		textDecoration: "underline",
+		color: "#b91c1c",
+		transition: {
+			duration: 0.2,
+		},
+	},
+}
+
 const textVariants = {
 	rest: {
-		y: 0,
 		transition: {
-			duration: 0.3,
+			duration: 0.2,
 			ease: "easeInOut",
 		},
 	},
 	hover: {
-		y: -50,
 		transition: {
-			duration: 0.3,
+			duration: 0.2,
+			type: "spring",
 			ease: "easeInOut",
 		},
 	},

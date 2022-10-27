@@ -28,7 +28,13 @@ const NewsArticleHeader = ({ post }: Props) => {
 			<div className="w-11/12 flex flex-col items-center mx-auto">
 				<div className="relative w-full h-auto aspect-[20/9] bg-gray-100">
 					{post.mainImage && (
-						<Image src={urlFor(post.mainImage).url()} alt={`Main image from ${post.title}`} layout="fill" />
+						<Image
+							src={urlFor(post.mainImage).url()}
+							alt={`Main image from ${post.title}`}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
 					)}
 				</div>
 			</div>

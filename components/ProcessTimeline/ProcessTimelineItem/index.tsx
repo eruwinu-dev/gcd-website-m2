@@ -25,7 +25,7 @@ const ProcessTimelineItem = ({ process }: Props) => {
 			</div>
 			<div className="h-full flex flex-col lg:justify-end md:justify-center justify-start lg:items-start md:items-start items-center lg:px-0 md:px-0 px-4">
 				<div className="relative lg:w-3/5 md:w-4/5 w-full h-auto aspect-square">
-					<Image src={process.photo} alt={process.title} layout="fill" />
+					<Image src={process.photo} alt={process.title} layout="fill" objectFit="cover" />
 				</div>
 			</div>
 		</motion.div>

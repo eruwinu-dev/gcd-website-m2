@@ -64,8 +64,11 @@ const Member = ({ member, html }: InferGetStaticPropsType<typeof getStaticProps>
 							src={member.pictures[photoIndex]}
 							alt={member.name}
 							layout="fill"
+							objectFit="cover"
+							objectPosition="bottom"
 							priority
 							onClick={changePhoto}
+							className="cursor-pointer"
 						/>
 					</motion.div>
 					<h3>{member.name}</h3>

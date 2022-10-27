@@ -16,6 +16,8 @@ const TeamGalleryItem = ({ member }: Props) => {
 						src={member.pictures[0]}
 						alt={member.name}
 						layout="fill"
+						objectFit="cover"
+						objectPosition="bottom"
 						className="generic-transition hover:scale-105 cursor-pointer"
 					/>
 				</div>

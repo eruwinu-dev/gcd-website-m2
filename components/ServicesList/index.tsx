@@ -19,6 +19,7 @@ const ServicesList = (props: Props) => {
 							src={service.photo}
 							alt={service.title}
 							layout="fill"
+							objectFit="cover"
 							className="generic-transition hover:scale-105 cursor-pointer"
 						/>
 						<h4 className="absolute bottom-0 left-0 w-full bg-black/60 text-white p-4 text-lg">

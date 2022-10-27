@@ -28,8 +28,8 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 
 	return (
 		<div className="project-gallery-item" onClick={viewGalleryItem(index)}>
-			<div className="relative w-full h-full overflow-hidden generic-transition hover:scale-110">
-				<Image layout="fill" src={photo} alt={photo} />
+			<div className="relative w-full h-full overflow-hidden generic-transition hover:scale-105">
+				<Image src={photo} alt={photo} layout="fill" objectFit="cover" objectPosition="center" />
 			</div>
 		</div>
 	)
