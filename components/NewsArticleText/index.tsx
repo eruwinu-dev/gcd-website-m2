@@ -2,12 +2,14 @@ import { PortableText, PortableTextComponents, PortableTextReactComponents } fro
 import Image from "next/image"
 import React from "react"
 import { urlFor } from "../../lib/urlFor"
+import { AuthorType } from "../../types/article"
 
 export interface Props {
 	body: any
+	author: AuthorType
 }
 
-const NewsArticleText = ({ body }: Props) => {
+const NewsArticleText = ({ body, author }: Props) => {
 	return (
 		<div className="news-article-text">
 			<PortableText value={body} components={portableTextComponents} />
@@ -54,7 +56,7 @@ const portableTextComponents: Partial<PortableTextReactComponents | PortableText
 			)
 		},
 		normal: ({ children }) => {
-			return <p className="news-portable-text-component text-justify leading-loose indent-4">{children}</p>
+			return <p className="news-portable-text-component text-justify indent-4">{children}</p>
 		},
 	},
 	marks: {

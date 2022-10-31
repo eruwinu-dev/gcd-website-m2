@@ -26,13 +26,11 @@ const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] 
 				<title>{`${post.title} - Blog | ${headerTitle}`}</title>
 			</Head>
 			<NewsArticleHeader post={post} />
-			<div className="w-11/12 min-h-screen max-h-fit translate-y-0 flex flex-row items-start justify-center mx-auto">
-				<NewsArticleText body={post.body} />
-				<div className="sticky top-32 py-16 w-2/12 flex flex-col items-center justify-center space-y-8">
-					<SocialMediaShare post={post} />
-				</div>
+			<div className="w-10/12 min-h-screen max-h-fit flex lg:flex-row flex-col items-start justify-center mx-auto">
+				<NewsArticleText body={post.body} author={post.author} />
+				<SocialMediaShare post={post} />
 			</div>
-			<div className="w-11/12 mx-auto space-y-4 flex flex-col items-center">
+			<div className="w-10/12 mx-auto lg:pt-16 pt-8 space-y-4 flex flex-col items-center border-t-2">
 				<h2>You May Also Like</h2>
 				<NewsGallery articles={recos} />
 			</div>

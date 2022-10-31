@@ -1,6 +1,10 @@
-import { useRouter } from "next/router"
 import React from "react"
-import { ArticleItemType } from "../../types/article"
+
+import { useRouter } from "next/router"
+import { motion, AnimatePresence } from "framer-motion"
+
+import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
+
 import NewsGalleryItem from "./NewsGalleryItem"
 
 type Props = {
@@ -8,20 +12,55 @@ type Props = {
 }
 
 const NewsGallery = ({ articles }: Props) => {
-	const { pathname } = useRouter()
+	const {
+		pathname,
+		query: { category },
+	} = useRouter()
+
+	const selectedArticles: ArticleItemType[] = articles.filter((article: ArticleItemType) =>
+		category
+			? article.categories
+				? article.categories.map((category: ArticleCategoryType) => category.title).includes(category as string)
+				: article
+			: article
+	)
 
 	return (
-		<div
-			className={[
-				"w-11/12 min-h-fit max-h-fit mx-auto grid grid-cols-3 grid-flow-row gap-8 pb-16",
-				pathname === "/news" ? "pt-16" : "pt-8",
-			].join(" ")}
-		>
-			{articles.map((article: ArticleItemType) => (
-				<NewsGalleryItem article={article} key={article.slug.current} />
-			))}
-		</div>
+		<AnimatePresence mode="wait">
+			<motion.div
+				variants={galleryVariants}
+				initial="start"
+				animate="go"
+				key={(category as string) || "all"}
+				className={[
+					"min-h-fit max-h-fit mx-auto grid grid-flow-row pb-16 md:grid-cols-2 grid-cols-1",
+					pathname === "/news"
+						? "w-10/12 lg:grid-cols-2 pt-8 px-2 gap-4"
+						: "w-full lg:grid-cols-3 pt-8 gap-8",
+				].join(" ")}
+			>
+				{selectedArticles.map((article: ArticleItemType) => (
+					<NewsGalleryItem article={article} key={article.slug.current} />
+				))}
+			</motion.div>
+		</AnimatePresence>
 	)
+}
+
+const galleryVariants = {
+	start: {
+		y: 10,
+		opacity: 0,
+	},
+	go: {
+		y: 0,
+		opacity: 1,
+		transition: {
+			delay: 0.0001,
+			when: "beforeChildren",
+			staggerChildren: 0.1,
+		},
+	},
 }
 
 export default NewsGallery

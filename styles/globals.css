@@ -278,10 +278,14 @@
 		@apply text-center mb-1;
 	}
 	.news-portable-text-component {
-		@apply lg:w-8/12 md:w-8/12 w-full mx-auto mb-8 text-left;
+		@apply lg:w-9/12 w-full mb-8 text-left leading-9;
 	}
 	.news-article-text {
-		@apply flex flex-col items-start py-16 w-10/12;
+		@apply flex flex-col items-start lg:pt-16 md:pt-8 sm:pt-8 pt-8 mx-auto
+		 lg:w-10/12 md:w-10/12 w-full;
+	}
+	.news-category-tab {
+		@apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto w-full bg-red-600;
 	}
 }
 

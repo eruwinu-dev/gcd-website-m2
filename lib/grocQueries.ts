@@ -7,9 +7,15 @@ export const getArticlesQuery = groq`*[_type == "post"][0..7] {
     slug,
 	description,
 	mainImage,
-	"name": author->name,
-	"categories": categories[]->title,
+	"author": author -> {name, slug, image, "blogBio": blogbio},
+	"categories": categories[] -> {title, description},
     "wordCount": round(length(pt::text(body)) / 5),
+}`
+
+export const getCategoriesQuery = groq`*[_type == "category"]{
+	_id,
+	title,	
+	description,
 }`
 
 export const getArticleBySlug = groq`*[_type == "post" && slug.current == $slug][0]{
@@ -19,8 +25,8 @@ export const getArticleBySlug = groq`*[_type == "post" && slug.current == $slug]
 	slug,
 	description,
 	mainImage,
-	"name": author->name,
-	"categories": categories[]->title,
+	"author": author -> {name, slug, image, "blogBio": blogbio},
+	"categories": categories[] -> {title, description},
 	"otherImages": author->otherImages,
 	body,
 	"wordCount": round(length(pt::text(body)) / 5),

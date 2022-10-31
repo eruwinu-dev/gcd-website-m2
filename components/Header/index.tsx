@@ -50,9 +50,7 @@ const Header = (props: Props) => {
 
 	return (
 		<>
-			<header
-				className={[offset > limit ? "bg-white shadow-xl" : "bg-transparent", "generic-transition"].join(" ")}
-			>
+			<header className={[offset > limit ? "bg-white" : "bg-transparent", "generic-transition"].join(" ")}>
 				<div>
 					<Link href="/">
 						{

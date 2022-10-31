@@ -1,18 +1,15 @@
 import React from "react"
 import Image from "next/image"
-import Link from "next/link"
 
 type Props = {}
 
 const NewsPageHeader = (props: Props) => {
 	return (
-		<div className="w-11/12 mx-auto flex flex-row items-center">
-			<div className="relative lg:w-2/12 md:w-2/12 w-4/12 h-auto aspect-video mx-auto my-8 cursor-pointer">
-				<Link href="/">
-					<Image src="/gcd-logo-big.png" alt="Glen Charles Design Logo" layout="fill" objectFit="contain" />
-				</Link>
+		<div className="w-full h-full mx-auto flex flex-col items-center justify-start space-y-8 pt-16 px-8">
+			<div className="w-2/12 h-auto aspect-video relative">
+				<Image src="/gcd-logo-big.png" alt="GCD Logo" layout="fill" />
 			</div>
-			<div></div>
+			<span className="text-2xl text-center">A blog about all things GCD.</span>
 		</div>
 	)
 }
