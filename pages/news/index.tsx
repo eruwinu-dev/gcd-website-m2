@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Head from "next/head"
 import type { GetStaticProps, InferGetStaticPropsType } from "next"
 
@@ -6,37 +6,57 @@ import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
 
 import client from "../../lib/client"
 
-import { getArticlesQuery, getCategoriesQuery } from "../../lib/grocQueries"
+import { getArticlesCategoriesQuery } from "../../lib/grocQueries"
 
 import NewsGallery from "../../components/NewsGallery"
 
 import { headerTitle } from "../../lib/title"
 import NewsPageHeader from "../../components/NewsPageHeader"
 import NewsCategoriesList from "../../components/NewsCategoriesList"
+import useStateContext from "../../context/State"
 
 type Props = {}
 
-const News = ({ articles, categories }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const News = ({ articlesFromSanity, categoriesFromSanity }: InferGetStaticPropsType<typeof getStaticProps>) => {
+	const { articles, setArticles, setCategories } = useStateContext()
+
+	useEffect(() => {
+		return () => {
+			setArticles(articlesFromSanity)
+			setCategories(categoriesFromSanity)
+		}
+	}, [])
+
 	return (
 		<>
 			<Head>
 				<title>{`News | ${headerTitle}`}</title>
 			</Head>
 			<NewsPageHeader />
-			<NewsCategoriesList categories={categories} />
+			<NewsCategoriesList categories={categoriesFromSanity} />
 			<NewsGallery articles={articles} />
 		</>
 	)
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const articles = (await client.fetch(getArticlesQuery)) as ArticleItemType[]
-	const categories = (await client.fetch(getCategoriesQuery)) as ArticleCategoryType[]
+	const { articles, categories, total } = (await client.fetch(getArticlesCategoriesQuery)) as {
+		articles: ArticleItemType[]
+		categories: ArticleCategoryType[]
+		total: number
+	}
 
 	return {
 		props: {
-			articles,
-			categories,
+			articlesFromSanity: articles,
+			categoriesFromSanity: [
+				{
+					title: "all",
+					description: "All blogs",
+					count: total,
+				},
+				...categories,
+			],
 		},
 	}
 }

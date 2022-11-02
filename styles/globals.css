@@ -278,7 +278,7 @@
 		@apply text-center mb-1;
 	}
 	.news-portable-text-component {
-		@apply lg:w-9/12 w-full mb-8 text-left leading-9;
+		@apply lg:w-9/12 w-full mb-8 text-left leading-loose;
 	}
 	.news-article-text {
 		@apply flex flex-col items-start lg:pt-16 md:pt-8 sm:pt-8 pt-8 mx-auto

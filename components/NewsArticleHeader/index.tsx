@@ -1,9 +1,13 @@
-import Image from "next/image"
 import React from "react"
+
+import Image from "next/image"
+
+import type { ArticleType } from "../../types/article"
+
+import NewsArticleCategories from "../NewsArticleCategories"
+
 import { formatDateFromISO } from "../../lib/dates"
 import { urlFor } from "../../lib/urlFor"
-import { ArticleType } from "../../types/article"
-import NewsArticleCategories from "../NewsArticleCategories"
 
 type Props = {
 	post: ArticleType
@@ -16,7 +20,7 @@ const NewsArticleHeader = ({ post }: Props) => {
 				<span className="text-lg text-gray-500 uppercase lg:text-left md:text-left text-center">
 					{formatDateFromISO(post?.publishedAt)}
 				</span>
-				<h1 className="lg:text-6xl text-5xl lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-center">
+				<h1 className="lg:text-6xl md:text-5xl lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-center">
 					{post.title}
 				</h1>
 				<p className="lg:text-xl md:text-xl sm:text-lg text-base lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-justify">

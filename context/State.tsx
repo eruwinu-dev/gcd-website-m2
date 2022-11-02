@@ -6,9 +6,18 @@ import Parse from "parse"
 import { initializeParse } from "@parse/react-ssr"
 import emailjs from "@emailjs/browser"
 import { ModeType } from "../types/project"
+import { ArticleCategoryType, ArticleItemType } from "../types/article"
+import client from "../lib/client"
+import { ParsedUrlQuery } from "querystring"
+import { getMoreArticlesByCategoryQuery, getMoreArticlesQuery } from "../lib/grocQueries"
 
 type Props = {
 	children: ReactNode
+}
+
+interface ArticleStaticParams extends ParsedUrlQuery {
+	currentSlugs: string[]
+	category?: string
 }
 
 const Context = createContext<ContextType | null>(null)
@@ -20,6 +29,11 @@ export const Provider = ({ children }: Props) => {
 
 	const [contactLoading, setContactLoading] = useState<boolean>(false)
 	const [modalOpen, setModalOpen] = useState<boolean>(false)
+
+	const [articlesLoading, setArticlesLoading] = useState<boolean>(false)
+	const [articles, setArticles] = useState<ArticleItemType[]>([])
+
+	const [categories, setCategories] = useState<ArticleCategoryType[]>([])
 
 	const paginate = (newDirection: number) => {
 		setPage([page + newDirection, newDirection])
@@ -54,6 +68,26 @@ export const Provider = ({ children }: Props) => {
 		}
 	}
 
+	const getMoreArticles = async (categoryString: string | undefined) => {
+		try {
+			setArticlesLoading(true)
+			const { currentSlugs = [], category = undefined } = {
+				currentSlugs: articles.map((article: ArticleItemType) => article.slug.current),
+				category: categoryString,
+			} as ArticleStaticParams
+			const moreArticles = !category
+				? await client.fetch(getMoreArticlesQuery, { currentSlugs })
+				: ((await client.fetch(getMoreArticlesByCategoryQuery, {
+						currentSlugs,
+						category,
+				  })) as ArticleItemType[])
+			if (!moreArticles.length) return
+			setArticles([...articles, ...moreArticles])
+		} finally {
+			setArticlesLoading(false)
+		}
+	}
+
 	const value: ContextType = {
 		storyOpen,
 		setStoryOpen,
@@ -68,6 +102,12 @@ export const Provider = ({ children }: Props) => {
 		setModalOpen,
 		contactLoading,
 		setContactLoading,
+		articles,
+		setArticles,
+		articlesLoading,
+		getMoreArticles,
+		categories,
+		setCategories,
 	}
 
 	return <Context.Provider value={value}>{children}</Context.Provider>

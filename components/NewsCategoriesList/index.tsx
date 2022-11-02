@@ -28,13 +28,14 @@ const NewsCategoriesList = ({ categories }: Props) => {
 			{ shallow: true }
 		)
 	}
+
 	return (
-		<nav className="w-full mx-auto pt-16 pb-8">
-			<ul className="w-full flex flex-row items-center justify-center space-x-16">
-				{[{ title: "all", description: "All blogs" }, ...categories].map((category: ArticleCategoryType) => (
+		<nav className="w-full mx-auto lg:pt-16 md:pt-8 sm:pt-4 pt-4 pb-8">
+			<ul className="w-full flex lg:flex-row md:flex-row flex-col items-center justify-center lg:space-x-16 md:space-x-8 space-x-0">
+				{categories.map((category: ArticleCategoryType) => (
 					<li
 						key={category.title}
-						className="flex flex-col items-start justify-center relative"
+						className="flex flex-col items-center justify-center relative"
 						onClick={changeCategory(category)}
 					>
 						<span

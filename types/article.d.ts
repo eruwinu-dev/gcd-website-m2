@@ -35,5 +35,6 @@ export interface ArticleType extends ArticleItemType {
 export interface ArticleCategoryType {
 	title: string
 	description?: string
+	count: number
 }
 

@@ -1,3 +1,4 @@
+import { ArticleCategoryType, ArticleItemType } from "./article"
 import { FormType } from "./form"
 import { ModeType } from "./project"
 
@@ -15,5 +16,11 @@ export interface ContextType {
 	setModalOpen: Dispatch<SetStateAction<boolean>>
 	contactLoading: boolean
 	setContactLoading: Dispatch<SetStateAction<boolean>>
+	articles: ArticleItemType[]
+	setArticles: Dispatch<SetStateAction<ArticleItemType>>
+	articlesLoading: boolean
+	getMoreArticles: (categoryString: string | undefined) => void
+	categories: ArticleCategoryType[]
+	setCategories: Dispatch<SetStateAction<ArticleCategoryType[]>>
 }
 

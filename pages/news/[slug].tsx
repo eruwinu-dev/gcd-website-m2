@@ -1,19 +1,20 @@
 import React from "react"
+
 import Head from "next/head"
 import groq from "groq"
 
-import { headerTitle } from "../../lib/title"
-import NewsArticleText from "../../components/NewsArticleText"
-import NewsArticleHeader from "../../components/NewsArticleHeader"
-
-import client from "../../lib/client"
-
+import type { ParsedUrlQuery } from "querystring"
 import type { ArticleItemType, ArticleType } from "../../types/article"
 import type { GetStaticPaths, GetStaticProps } from "next"
-import type { ParsedUrlQuery } from "querystring"
-import SocialMediaShare from "../../components/SocialMediaShare"
-import { getArticleBySlug } from "../../lib/grocQueries"
+
 import NewsGallery from "../../components/NewsGallery"
+import NewsArticleText from "../../components/NewsArticleText"
+import NewsArticleHeader from "../../components/NewsArticleHeader"
+import SocialMediaShare from "../../components/SocialMediaShare"
+
+import client from "../../lib/client"
+import { headerTitle } from "../../lib/title"
+import { getArticleBySlug } from "../../lib/grocQueries"
 
 interface StaticParams extends ParsedUrlQuery {
 	slug: string

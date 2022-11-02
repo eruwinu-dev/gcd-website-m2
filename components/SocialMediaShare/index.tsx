@@ -1,7 +1,6 @@
 import React from "react"
 
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from "react-share"
-import { categories } from "../../lib/categories"
 import { FacebookIcon, LinkedinIcon, TwitterIcon } from "../../lib/icons"
 
 import type { ArticleCategoryType, ArticleType } from "../../types/article"
