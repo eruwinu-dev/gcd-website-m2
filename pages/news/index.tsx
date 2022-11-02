@@ -21,10 +21,9 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: InferGetStaticPropsT
 	const { setArticles, setCategories } = useStateContext()
 
 	useEffect(() => {
-		return () => {
-			setArticles(articlesFromSanity)
-			setCategories(categoriesFromSanity)
-		}
+		setArticles(articlesFromSanity)
+		setCategories(categoriesFromSanity)
+		return () => {}
 	}, [])
 
 	return (
