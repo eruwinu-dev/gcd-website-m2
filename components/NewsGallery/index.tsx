@@ -10,23 +10,28 @@ import LoadMoreArticles from "./LoadMoreArticles"
 import useStateContext from "../../context/State"
 
 type Props = {
-	articles: ArticleItemType[]
+	recos?: ArticleItemType[]
 }
 
-const NewsGallery = ({ articles }: Props) => {
+const NewsGallery = ({ recos }: Props) => {
 	const {
 		pathname,
 		query: { category },
 	} = useRouter()
-	const { categories } = useStateContext()
+	const { categories, articles } = useStateContext()
 
-	const selectedArticles: ArticleItemType[] = articles.filter((article: ArticleItemType) =>
-		category
-			? article.categories
-				? article.categories.map((category: ArticleCategoryType) => category.title).includes(category as string)
-				: article
-			: article
-	)
+	const selectedArticles: ArticleItemType[] =
+		typeof recos === "undefined"
+			? articles.filter((article: ArticleItemType) =>
+					category
+						? article.categories
+							? article.categories
+									.map((category: ArticleCategoryType) => category.title)
+									.includes(category as string)
+							: article
+						: article
+			  )
+			: recos
 
 	const realCategory = category || "all"
 	const articlesInCategoryCount =

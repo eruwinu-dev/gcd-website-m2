@@ -33,7 +33,7 @@ const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] 
 			</div>
 			<div className="w-10/12 mx-auto lg:pt-16 pt-8 space-y-4 flex flex-col items-center border-t-2">
 				<h2>You May Also Like</h2>
-				<NewsGallery articles={recos} />
+				<NewsGallery recos={recos} />
 			</div>
 		</>
 	)

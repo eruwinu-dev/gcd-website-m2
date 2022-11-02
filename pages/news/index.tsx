@@ -18,7 +18,7 @@ import useStateContext from "../../context/State"
 type Props = {}
 
 const News = ({ articlesFromSanity, categoriesFromSanity }: InferGetStaticPropsType<typeof getStaticProps>) => {
-	const { articles, setArticles, setCategories } = useStateContext()
+	const { setArticles, setCategories } = useStateContext()
 
 	useEffect(() => {
 		return () => {
@@ -34,7 +34,7 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: InferGetStaticPropsT
 			</Head>
 			<NewsPageHeader />
 			<NewsCategoriesList categories={categoriesFromSanity} />
-			<NewsGallery articles={articles} />
+			<NewsGallery />
 		</>
 	)
 }
