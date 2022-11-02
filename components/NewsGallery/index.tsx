@@ -20,18 +20,7 @@ const NewsGallery = ({ recos }: Props) => {
 	} = useRouter()
 	const { categories, articles } = useStateContext()
 
-	const selectedArticles: ArticleItemType[] =
-		typeof recos === "undefined"
-			? articles.filter((article: ArticleItemType) =>
-					category
-						? article.categories
-							? article.categories
-									.map((category: ArticleCategoryType) => category.title)
-									.includes(category as string)
-							: article
-						: article
-			  )
-			: recos
+	const selectedArticles: ArticleItemType[] = typeof recos === "undefined" ? articles : recos
 
 	const realCategory = category || "all"
 	const articlesInCategoryCount =
@@ -53,8 +42,7 @@ const NewsGallery = ({ recos }: Props) => {
 					].join(" ")}
 				>
 					{selectedArticles.map((article: ArticleItemType) => (
-						// <NewsGalleryItem article={article} key={article.slug.current} />
-						<div key={article.slug.current}>{article.title}</div>
+						<NewsGalleryItem article={article} key={article.slug.current} />
 					))}
 				</motion.div>
 				{pathname === "/news" ? (
