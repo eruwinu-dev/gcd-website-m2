@@ -28,7 +28,7 @@ const NewsGallery = ({ recos }: Props) => {
 
 	return (
 		<div>
-			{selectedArticles.map((article: ArticleItemType) => (
+			{articles.map((article: ArticleItemType) => (
 				<NewsGalleryItem article={article} key={article.slug.current} />
 			))}
 		</div>
