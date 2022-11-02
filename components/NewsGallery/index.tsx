@@ -53,7 +53,8 @@ const NewsGallery = ({ recos }: Props) => {
 					].join(" ")}
 				>
 					{selectedArticles.map((article: ArticleItemType) => (
-						<NewsGalleryItem article={article} key={article.slug.current} />
+						// <NewsGalleryItem article={article} key={article.slug.current} />
+						<div key={article.slug.current}>{article.title}</div>
 					))}
 				</motion.div>
 				{pathname === "/news" ? (
