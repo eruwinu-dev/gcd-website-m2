@@ -31,6 +31,7 @@ const NewsGallery = ({ recos }: Props) => {
 			{articles.map((article: ArticleItemType) => (
 				<NewsGalleryItem article={article} key={article.slug.current} />
 			))}
+			{JSON.stringify(articles)}
 		</div>
 		// <AnimatePresence mode="wait">
 		// 	<>
