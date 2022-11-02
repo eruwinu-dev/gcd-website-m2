@@ -3,12 +3,12 @@ import React, { MouseEvent } from "react"
 import { ArticleCategoryType } from "../../types/article"
 
 import { motion } from "framer-motion"
+import useStateContext from "../../context/State"
 
-type Props = {
-	categories: ArticleCategoryType[]
-}
+type Props = {}
 
-const NewsCategoriesList = ({ categories }: Props) => {
+const NewsCategoriesList = ({}: Props) => {
+	const { categories } = useStateContext()
 	const router = useRouter()
 	const { query } = router
 

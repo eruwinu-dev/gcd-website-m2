@@ -32,7 +32,7 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: InferGetStaticPropsT
 				<title>{`News | ${headerTitle}`}</title>
 			</Head>
 			<NewsPageHeader />
-			<NewsCategoriesList categories={categoriesFromSanity} />
+			<NewsCategoriesList />
 			<NewsGallery />
 		</>
 	)
