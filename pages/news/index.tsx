@@ -34,6 +34,7 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: InferGetStaticPropsT
 			</Head>
 			<NewsPageHeader />
 			<NewsCategoriesList categories={categoriesFromSanity} />
+			{JSON.stringify(articlesFromSanity)}
 			<NewsGallery />
 		</>
 	)
