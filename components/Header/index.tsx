@@ -85,7 +85,7 @@ const Header = (props: Props) => {
 				</div>
 				<div className="lg:flex md:flex hidden flex-row items-center justify-center space-x-2 py-2">
 					{links.map((link: LinkType, index: number) => (
-						<Link href={link.url} key={index}>
+						<Link href={link.url} key={index} passHref>
 							<motion.a
 								className={[
 									"generic-transition relative",

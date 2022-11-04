@@ -282,7 +282,7 @@
 		 lg:w-10/12 md:w-10/12 w-full;
 	}
 	.news-category-tab {
-		@apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto w-full bg-red-700;
+		@apply h-1 border-0 absolute -bottom-1 left-0 right-0 mx-auto w-full bg-red-700;
 	}
 }
 

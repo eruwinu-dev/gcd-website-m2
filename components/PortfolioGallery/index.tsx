@@ -38,16 +38,14 @@ const PortfolioGallery = (props: Props) => {
 					{categories.map((category: CategoryType, index: number) => (
 						<li
 							key={category.name}
-							className="flex flex-col items-center justify-center relative h-full lg:text-base md:text-base sm:text-sm text-xs"
+							className="box-content flex flex-col items-center justify-center relative h-full lg:text-base md:text-base sm:text-sm text-xs"
 						>
 							<button
 								type="button"
 								onClick={changeCategory(category.category)}
 								className={[
 									"w-full generic-transition",
-									isSelectedCategory(category.category)
-										? "opacity-100"
-										: "opacity-70 hover:opacity-100",
+									isSelectedCategory(category.category) ? "text-black" : "hover:text-red-800",
 								].join(" ")}
 							>
 								{category.name}

@@ -41,7 +41,7 @@ const NewsCategoriesList = ({}: Props) => {
 						<span
 							className={[
 								"text-lg capitalize cursor-pointer",
-								isSelectedCategory(category) ? "opacity-100" : "opacity-50 hover:opacity-100",
+								isSelectedCategory(category) ? "text-black" : "hover:text-red-800",
 							].join(" ")}
 						>
 							{category.title}
