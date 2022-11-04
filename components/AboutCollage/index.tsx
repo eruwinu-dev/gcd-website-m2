@@ -6,15 +6,15 @@ type Props = {}
 
 const collages: CollageType[] = [
 	{
-		picture: "https://i.ibb.co/cvBb71n/Koman-Rear.jpg",
+		picture: "https://i.ibb.co/Jmxr61T/Carmar-2.jpg",
 		format: "col-span-3 row-span-2",
 	},
 	{
-		picture: "https://i.ibb.co/t29d6jr/glen-044.jpg",
+		picture: "https://i.ibb.co/nfwXbqz/Koman-Din1.jpg",
 		format: "col-span-2 row-span-3",
 	},
 	{
-		picture: "https://i.ibb.co/gt112NW/Rancho-Palo-Verdes-Drone-Shots-1-of-5.jpg",
+		picture: "https://i.ibb.co/DM1KzT0/San-Vicente-View-4dusk-10-18-2022.jpg",
 		format: "col-span-3 row-span-3",
 	},
 	{

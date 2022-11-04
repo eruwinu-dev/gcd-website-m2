@@ -6,19 +6,19 @@ type Props = {}
 
 const collages: CollageType[] = [
 	{
-		picture: "https://i.ibb.co/YXG0NpH/Rancho-Palo-Verdes-Craig-House-21-of-62.jpg",
+		picture: "https://i.ibb.co/fq9cFRc/open-room-1.jpg",
 		format: "col-span-2 row-span-2",
 	},
 	{
-		picture: "https://i.ibb.co/kgH8yhL/Front-of-House-2.jpg",
+		picture: "https://i.ibb.co/DGNpcXZ/5-D-photos-2-of-13-FIXED.jpg",
 		format: "col-span-3 row-span-4",
 	},
 	{
-		picture: "https://i.ibb.co/Dtx5nzf/DSC-0002-copy.jpg",
+		picture: "https://i.ibb.co/Zdw6BG8/Window-3.jpg",
 		format: "col-span-2 row-span-3",
 	},
 	{
-		picture: "https://i.ibb.co/1n9jMB8/longden-view3-08-01-2021.jpg",
+		picture: "https://i.ibb.co/xGhMcS0/Rancho-Palo-Verdes-Craig-House-38-of-62.jpg",
 		format: "col-span-3",
 	},
 ]

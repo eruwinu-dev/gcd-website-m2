@@ -119,7 +119,7 @@ const Home = (props: Props) => {
 			</section>
 			<section className="translate-y-0 relative w-full h-screen">
 				<Image
-					src="https://i.ibb.co/f0nrwYG/Outside-2.jpg"
+					src="https://i.ibb.co/8dP9BMV/Patio-1.jpg"
 					alt="Glen Charles Design Booking Image"
 					layout="fill"
 					objectFit="cover"
@@ -127,13 +127,13 @@ const Home = (props: Props) => {
 					quality="95"
 					priority
 				/>
-				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
+				<div className="w-full h-full bg-black/70 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 text-center col-span-2 px-8 text-white space-y-8">
-						<h4 className="w-full lg:text-4xl md:text-4xl sm:text-3xl text-3xl">
+						<h4 className="w-10/12 lg:text-4xl md:text-4xl sm:text-3xl text-3xl">
 							Maximize your project&apos;s potential.
 						</h4>
-						<p className="leading-relaxed text-white w-full">
+						<p className="w-10/12 leading-relaxed text-white">
 							Let&apos;s build your dream space fit to your wishes. Set up a talk with our architects!
 						</p>
 						<BookConsultButton />
