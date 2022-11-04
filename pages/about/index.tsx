@@ -5,8 +5,21 @@ import BookConsultButton from "../../components/BookConsultButton"
 import TeamGallery from "../../components/TeamGallery"
 import Image from "next/image"
 import { headerTitle } from "../../lib/title"
+import { motion } from "framer-motion"
 
 type Props = {}
+
+const sectionVariants = {
+	start: {
+		opacity: 0.9,
+	},
+	end: {
+		opacity: 1,
+		transition: {
+			duration: 0.75,
+		},
+	},
+}
 
 const About = (props: Props) => {
 	return (
@@ -14,7 +27,12 @@ const About = (props: Props) => {
 			<Head>
 				<title>{`About | ${headerTitle}`}</title>
 			</Head>
-			<section className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]">
+			<motion.section
+				className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]"
+				variants={sectionVariants}
+				initial="start"
+				animate="end"
+			>
 				<Image
 					src="https://i.ibb.co/Zf2c2d2/Staircase-3.jpg"
 					alt="Glen Charles Design About Image"
@@ -35,7 +53,7 @@ const About = (props: Props) => {
 						</p>
 					</div>
 				</div>
-			</section>
+			</motion.section>
 			<section className="lg:min-h-0 md:min-h-0 min-h-fit max-h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row lg:gap-4 md:gap-4 gap-0">
 				<div className="h-full flex flex-col items-center justify-center space-y-8 px-4">
 					<p className="lg:w-4/5 md:w-4/5 w-full">

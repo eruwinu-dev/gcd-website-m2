@@ -1,15 +1,35 @@
-import { useRect } from "@reach/rect"
+import React, { useEffect, useRef } from "react"
+
 import Head from "next/head"
 import Image from "next/image"
-import React, { useRef } from "react"
+
+import { useRect } from "@reach/rect"
+import { motion, AnimatePresence } from "framer-motion"
+
 import BookConsultButton from "../components/BookConsultButton"
 import LandingCollage from "../components/LandingCollage"
 import ServicesList from "../components/ServicesList"
+
 import { headerTitle } from "../lib/title"
+import LandingAnimate from "../components/LandingAnimate"
+import useStateContext from "../context/State"
 
 type Props = {}
 
+const sectionVariants = {
+	start: {
+		opacity: 0.9,
+	},
+	end: {
+		opacity: 1,
+		transition: {
+			duration: 0.75,
+		},
+	},
+}
+
 const Home = (props: Props) => {
+	const { load } = useStateContext()
 	const sliderRef = useRef<HTMLDivElement | null>(null)
 	const sliderRect = useRect(sliderRef)
 
@@ -18,28 +38,42 @@ const Home = (props: Props) => {
 			<Head>
 				<title>{headerTitle}</title>
 			</Head>
-			<section className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]">
-				<Image
-					src="https://i.ibb.co/Q6NwFhT/mulholland-front1.jpg"
-					alt="Glen Charles Design Landing Image"
-					layout="fill"
-					objectFit="cover"
-					objectPosition="left"
-					quality="95"
-					priority
-				/>
-				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row px-8 py-16">
-					<div className="flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center">
-						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white mb-4 leading-normal">
-							Client Focused Architecture.
-						</h1>
-						<p className="text-white w-3/5 lg:text-xl md:text-lg text-base leading-relaxed">
-							Whether the project is small or large, we will always passionately pursue quality.
-						</p>
-					</div>
-					<div className="lg:flex md:flex hidden"></div>
-				</div>
-			</section>
+			<LandingAnimate />
+			<AnimatePresence mode="wait">
+				{!load && (
+					<motion.section
+						className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]"
+						variants={sectionVariants}
+						initial="start"
+						animate="end"
+					>
+						<Image
+							src="https://i.ibb.co/Q6NwFhT/mulholland-front1.jpg"
+							alt="Glen Charles Design Landing Image"
+							layout="fill"
+							objectFit="cover"
+							objectPosition="left"
+							quality="95"
+							priority
+						/>
+						<div
+							className={[
+								"absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row px-8 py-16 generic-transition",
+							].join(" ")}
+						>
+							<div className="flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center">
+								<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white mb-4 leading-normal">
+									Client Focused Architecture.
+								</h1>
+								<p className="text-white w-3/5 lg:text-xl md:text-lg text-base leading-relaxed">
+									Whether the project is small or large, we will always passionately pursue quality.
+								</p>
+							</div>
+							<div className="lg:flex md:flex hidden"></div>
+						</div>
+					</motion.section>
+				)}
+			</AnimatePresence>
 			<section className="h-fit w-full lg:flex md:flex hidden flex-row items-center justify-center pb-16">
 				<div className="w-full h-fit flex flex-col items-center justify-center" ref={sliderRef}>
 					<ServicesList />
@@ -126,8 +160,9 @@ const Home = (props: Props) => {
 					objectPosition="center"
 					quality="95"
 					priority
+					className="saturate-50"
 				/>
-				<div className="w-full h-full bg-black/70 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
+				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 text-center col-span-2 px-8 text-white space-y-8">
 						<h4 className="w-10/12 lg:text-4xl md:text-4xl sm:text-3xl text-3xl">

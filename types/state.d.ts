@@ -22,5 +22,7 @@ export interface ContextType {
 	getMoreArticles: (categoryString: string | undefined) => void
 	categories: ArticleCategoryType[]
 	setCategories: Dispatch<SetStateAction<ArticleCategoryType[]>>
+	load: boolean
+	setLoad: Dispatch<SetStateAction<boolean>>
 }
 

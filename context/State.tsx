@@ -30,6 +30,8 @@ export const Provider = ({ children }: Props) => {
 	const [contactLoading, setContactLoading] = useState<boolean>(false)
 	const [modalOpen, setModalOpen] = useState<boolean>(false)
 
+	const [load, setLoad] = useState<boolean>(true)
+
 	const [articlesLoading, setArticlesLoading] = useState<boolean>(false)
 	const [articles, setArticles] = useState<ArticleItemType[]>([])
 
@@ -108,6 +110,8 @@ export const Provider = ({ children }: Props) => {
 		getMoreArticles,
 		categories,
 		setCategories,
+		load,
+		setLoad,
 	}
 
 	return <Context.Provider value={value}>{children}</Context.Provider>

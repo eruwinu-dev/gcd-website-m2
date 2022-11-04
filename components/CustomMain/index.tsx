@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import React, { ReactNode } from "react"
 import useStateContext from "../../context/State"
 
@@ -6,9 +7,14 @@ type Props = {
 }
 
 const CustomMain = ({ children }: Props) => {
-	const { headerOpen } = useStateContext()
+	const { headerOpen, load } = useStateContext()
+	const { pathname } = useRouter()
 
-	return <main className={[headerOpen ? "max-h-screen overflow-hidden" : ""].join(" ")}>{children}</main>
+	return (
+		<main className={[headerOpen || (pathname === "/" && load) ? "max-h-screen overflow-hidden" : ""].join(" ")}>
+			{children}
+		</main>
+	)
 }
 
 export default CustomMain

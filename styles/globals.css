@@ -23,10 +23,7 @@
 		@apply px-4 py-2;
 	}
 	a {
-		@apply generic-transition;
-	}
-	a:hover {
-		@apply hover:underline;
+		@apply generic-transition cursor-pointer;
 	}
 	h1 {
 		@apply text-4xl font-extrabold;
@@ -262,7 +259,7 @@
 		@apply p-2 text-white rounded-full;
 	}
 	.portfolio-nav-tab {
-		@apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto lg:w-4/5 w-full bg-red-600;
+		@apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto lg:w-4/5 w-full bg-red-700;
 	}
 	.portfolio-gallery {
 		@apply grid grid-flow-row lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 lg:gap-8 gap-4 w-11/12 h-fit pt-8 pb-16;
@@ -285,7 +282,7 @@
 		 lg:w-10/12 md:w-10/12 w-full;
 	}
 	.news-category-tab {
-		@apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto w-full bg-red-600;
+		@apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto w-full bg-red-700;
 	}
 }
 
