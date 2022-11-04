@@ -30,7 +30,7 @@ export const Provider = ({ children }: Props) => {
 	const [contactLoading, setContactLoading] = useState<boolean>(false)
 	const [modalOpen, setModalOpen] = useState<boolean>(false)
 
-	const [load, setLoad] = useState<boolean>(true)
+	const [load, setLoad] = useState<boolean>(false)
 
 	const [articlesLoading, setArticlesLoading] = useState<boolean>(false)
 	const [articles, setArticles] = useState<ArticleItemType[]>([])

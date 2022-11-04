@@ -1,20 +1,10 @@
 import Image from "next/image"
-import { useRouter } from "next/router"
-import React, { useEffect } from "react"
-import useStateContext from "../../context/State"
+import React from "react"
 import ContactList from "../ContactList"
 
 type Props = {}
 
 const Footer = (props: Props) => {
-	const { setLoad } = useStateContext()
-	const { pathname } = useRouter()
-
-	useEffect(() => {
-		if (pathname !== "/") setLoad(false)
-		return () => {}
-	}, [])
-
 	return (
 		<footer>
 			<div className="logo-container">
