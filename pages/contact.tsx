@@ -1,11 +1,14 @@
-import { useRect } from "@reach/rect"
-import Head from "next/head"
 import React, { useRef } from "react"
+import Head from "next/head"
+
+import { useRect } from "@reach/rect"
+
 import ContactForm from "../components/ContactForm"
 import ContactList from "../components/ContactList"
 import ContactModal from "../components/ContactModal"
 import MapContainer from "../components/MapContainer"
 import SocialsList from "../components/SocialsList"
+
 import { headerTitle } from "../lib/title"
 
 type Props = {}
@@ -19,23 +22,19 @@ const Contact = (props: Props) => {
 			<Head>
 				<title>{`Contact | ${headerTitle}`}</title>
 			</Head>
-			<section className="h-fit translate-y-0 lg:flex md:flex hidden flex-row items-start justify-center">
+			<section className="contact-landing-section">
 				<div
-					className="w-full flex flex-col items-center justify-start"
+					className="contact-landing-list-sticky-container"
 					style={{ height: sliderRect ? sliderRect.height : 0 }}
 				>
-					<div
-						className={[
-							"sticky flex flex-col items-center justify-center w-4/5 h-auto aspect-square space-y-8 px-8 mb-8 generic-transition top-32",
-						].join(" ")}
-					>
+					<div className="contact-landing-list-container">
 						<h1>Get In Touch</h1>
 						<ContactList size="large" />
 						<SocialsList />
 					</div>
 				</div>
 
-				<div className="w-full h-fit flex flex-col items-center justify-start space-y-2 pb-8" ref={sliderRef}>
+				<div className="contact-landing-scroll-container" ref={sliderRef}>
 					<MapContainer />
 					<ContactForm />
 				</div>

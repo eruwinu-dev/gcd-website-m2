@@ -1,6 +1,8 @@
 import { PortableText, PortableTextComponents, PortableTextReactComponents } from "@portabletext/react"
+import getYouTubeID from "get-youtube-id"
 import Image from "next/image"
 import React from "react"
+import YouTube from "react-youtube"
 import { urlFor } from "../../lib/urlFor"
 import { AuthorType } from "../../types/article"
 
@@ -35,6 +37,21 @@ const portableTextComponents: Partial<PortableTextReactComponents | PortableText
 					/>
 				</div>
 			)
+		},
+		youtube: ({ value }) => {
+			const { url } = value
+			const id = getYouTubeID(url)
+			return id ? (
+				<YouTube
+					videoId={id}
+					className="news-portable-text-component h-auto aspect-video"
+					opts={{
+						height: "100%",
+						width: "100%",
+					}}
+					onReady={() => console.clear()}
+				/>
+			) : null
 		},
 	},
 	block: {

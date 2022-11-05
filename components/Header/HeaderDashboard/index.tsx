@@ -1,36 +1,20 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { AnimatePresence, motion } from "framer-motion"
-import useStateContext from "../../../context/State"
-import { links } from "../../../lib/links"
-import { LinkType } from "../../../types/link"
-import ContactList from "../../ContactList"
-import SocialsList from "../../SocialsList"
 import { useRouter } from "next/router"
 
+import { AnimatePresence, motion } from "framer-motion"
+
+import type { LinkType } from "../../../types/link"
+
+import ContactList from "../../ContactList"
+import SocialsList from "../../SocialsList"
+
+import useStateContext from "../../../context/State"
+
+import { links } from "../../../lib/links"
+
 type Props = {}
-
-const containerVariants = {
-	hidden: {
-		opacity: 0,
-	},
-	show: {
-		opacity: 1,
-		transition: {
-			duration: 0.5,
-			type: "tween",
-			ease: "easeInOut",
-			delayChildren: 0.2,
-			staggerChildren: 0.1,
-		},
-	},
-}
-
-const item = {
-	hidden: { opacity: 0, y: -10 },
-	show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-}
 
 const HeaderDashboard = (props: Props) => {
 	const { headerOpen, setHeaderOpen } = useStateContext()
@@ -56,7 +40,7 @@ const HeaderDashboard = (props: Props) => {
 						{links.map((link: LinkType, index: number) => (
 							<motion.div
 								key={link.name}
-								variants={item}
+								variants={itemVariants}
 								onClick={() => {
 									setHeaderOpen((open: boolean) => !open)
 								}}
@@ -64,12 +48,12 @@ const HeaderDashboard = (props: Props) => {
 								<Link href={link.url}>
 									<a
 										className={[
-											"generic-transition",
+											"generic-transition text-lg",
 											[link.url, "/"].includes(pathname) ||
 											(link.url === "/portfolio" && pathname === "/portfolio/[project]") ||
 											(link.url === "/about" && pathname === "/about/[member]")
 												? "opacity-100"
-												: "opacity-50 hover:opacity-100",
+												: "opacity-50",
 										].join(" ")}
 									>
 										{link.name}
@@ -82,9 +66,9 @@ const HeaderDashboard = (props: Props) => {
 			</AnimatePresence>
 			<motion.div
 				className="flex flex-col items-center justify-center px-4 space-y-4"
-				initial={{ y: -10, opacity: 0 }}
-				animate={{ y: 0, opacity: 1 }}
-				transition={{ duration: 0.5 }}
+				variants={contactVariants}
+				initial="hidden"
+				animate="show"
 			>
 				<div className="relative w-5/12 h-auto aspect-video">
 					<Image src="/gcd-logo-big.png" alt="Glen Charles Design Logo" layout="fill" />
@@ -94,6 +78,32 @@ const HeaderDashboard = (props: Props) => {
 			</motion.div>
 		</div>
 	)
+}
+
+const containerVariants = {
+	hidden: {
+		opacity: 0,
+	},
+	show: {
+		opacity: 1,
+		transition: {
+			duration: 0.5,
+			type: "tween",
+			ease: "easeInOut",
+			delayChildren: 0.2,
+			staggerChildren: 0.1,
+		},
+	},
+}
+
+const itemVariants = {
+	hidden: { opacity: 0, y: -10 },
+	show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+}
+
+const contactVariants = {
+	hidden: { y: -10, opacity: 0 },
+	show: { y: 0, opacity: 1, transition: { duration: 0.5 } },
 }
 
 export default HeaderDashboard

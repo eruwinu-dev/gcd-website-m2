@@ -65,11 +65,82 @@
 }
 
 @layer components {
+	/* Generic Classes */
 	.generic-transition {
 		@apply transition-all ease-linear duration-200;
 	}
 	.custom-scrollbar {
 		@apply scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-rounded-md;
+	}
+	.banner-section {
+		@apply relative w-full lg:h-screen h-[100vh] lg:translate-y-[-3.5rem] translate-y-[-3.5rem];
+	}
+	.banner-mask {
+		@apply absolute w-full h-full top-0 left-0 bg-black/60 z-[2] px-8 py-16 grid grid-flow-row;
+	}
+	.banner-title {
+		@apply lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white mb-4 leading-normal;
+	}
+	.banner-subtitle {
+		@apply text-white lg:w-3/5 md:w-11/12 w-11/12 lg:text-xl md:text-lg text-base leading-relaxed;
+	}
+	.banner-spacer {
+		@apply lg:flex md:flex hidden;
+	}
+	/*Home*/
+	/*Process*/
+	.process-blockquote {
+		@apply w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4 translate-y-[-3.5rem];
+	}
+	.process-blockquote > p {
+		@apply lg:w-1/2 md:w-10/12 lg:p-16 p-8 text-white indent-4 text-justify leading-loose tracking-wider text-lg italic;
+	}
+	.process-timeline {
+		@apply w-full lg:min-h-[60vh] md:min-h-[80vh] min-h-fit max-h-fit flex flex-col items-center justify-start space-y-4 lg:pt-16 md:pt-8 pt-4 pb-16;
+	}
+	.process-timeline > nav {
+		@apply lg:w-3/4 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative;
+	}
+	.process-timeline-ul {
+		@apply flex flex-row items-center lg:justify-between md:justify-between justify-start w-full h-fit z-[3];
+	}
+	.process-timeline-ul > li {
+		@apply w-full flex flex-col items-center justify-center;
+	}
+	.process-timeline-circle {
+		@apply h-6 w-6 border-2 rounded-full cursor-pointer;
+	}
+	.process-timeline-label {
+		@apply p-2 cursor-pointer lg:flex md:flex hidden;
+	}
+	.process-timeline-item {
+		@apply w-full h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row gap-x-8;
+	}
+	.process-timeline-item-text-container {
+		@apply flex lg:flex-col md:flex-col flex-col-reverse lg:items-end md:items-end items-center justify-center lg:pr-8 md:pr-8 pr-0;
+	}
+	.process-timeline-item-text {
+		@apply lg:w-3/5 md:w-4/5 w-full lg:px-0 md:px-0 px-4 pb-4 my-4;
+	}
+	.process-timeline-item-image-container {
+		@apply h-full flex flex-col lg:justify-end md:justify-center justify-start lg:items-start md:items-start items-center lg:px-0 md:px-0 px-4;
+	}
+	.process-timeline-item-image-container > div {
+		@apply relative lg:w-3/5 md:w-4/5 w-full h-auto aspect-square;
+	}
+
+	/*Contact*/
+	.contact-landing-section {
+		@apply h-fit translate-y-0 lg:flex md:flex hidden flex-row items-start justify-center;
+	}
+	.contact-landing-list-sticky-container {
+		@apply w-full flex flex-col items-center justify-start;
+	}
+	.contact-landing-list-container {
+		@apply sticky flex flex-col items-center justify-center w-4/5 h-auto aspect-square space-y-8 px-8 mb-8 generic-transition top-32;
+	}
+	.contact-landing-scroll-container {
+		@apply w-full h-fit flex flex-col items-center justify-start space-y-2 pb-8;
 	}
 	.contact-list {
 		@apply max-h-fit space-y-2;
@@ -80,20 +151,11 @@
 	.contact-list > div > a {
 		@apply flex flex-row items-center justify-start space-x-4;
 	}
-	.about-beside > div {
-		@apply w-4/5 space-y-8 leading-loose flex flex-col items-center justify-center;
-	}
-	.about-beside > div > h1 {
-		@apply text-center;
-	}
 	.contact-form-section {
 		@apply flex flex-row items-stretch justify-between;
 	}
 	.contact-form-section > div {
 		@apply flex-1;
-	}
-	.contact-form-beside {
-		@apply flex flex-col items-center justify-center p-8;
 	}
 	.contact-form {
 		@apply lg:w-4/5 w-11/12 h-auto aspect-square flex flex-col items-start justify-center space-y-2 lg:px-8 px-4 lg:py-16 md:py-8 py-4;
@@ -116,9 +178,6 @@
 	}
 	.field-error {
 		@apply border-red-700;
-	}
-	.team-section {
-		@apply min-h-fit p-4 flex flex-col items-center justify-center space-y-2 mt-[5.2em] mb-[-5.2em];
 	}
 	.team-gallery {
 		@apply w-full h-fit lg:px-16 md:px-8 px-4 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row gap-8;
@@ -152,12 +211,6 @@
 	}
 	.portfolio-section {
 		@apply flex flex-col items-center justify-center h-fit;
-	}
-	.project-section {
-		@apply -translate-y-[3.5rem];
-	}
-	.project-landing-container {
-		@apply relative w-[96vw];
 	}
 	.project-bottom-bar {
 		@apply relative lg:w-4/5 md:w-4/5 w-full h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row gap-8 py-4;

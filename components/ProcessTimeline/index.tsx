@@ -1,27 +1,15 @@
 import React, { useRef, useState } from "react"
-import ProcessTimelineItem from "./ProcessTimelineItem"
 
-import { steps } from "../../lib/steps"
-import { ProcessType } from "../../types/process"
 import { AnimatePresence, motion } from "framer-motion"
 import { useRect } from "@reach/rect"
 
-type Props = {}
+import type { ProcessType } from "../../types/process"
 
-const circleVariants = {
-	inactive: {
-		border: "2px solid #e5e7eb",
-		backgroundColor: "#fff",
-	},
-	active: {
-		border: "2px solid #dc2626",
-		backgroundColor: "#fff",
-	},
-	current: {
-		border: "2px solid #dc2626",
-		backgroundColor: "#ef4444",
-	},
-}
+import ProcessTimelineItem from "./ProcessTimelineItem"
+
+import { steps } from "../../lib/steps"
+
+type Props = {}
 
 const ProcessTimeline = (props: Props) => {
 	const [step, setStep] = useState<number>(0)
@@ -30,11 +18,8 @@ const ProcessTimeline = (props: Props) => {
 	const rect = useRect(navRef)
 
 	return (
-		<div className="w-full lg:min-h-[60vh] md:min-h-[80vh] min-h-fit max-h-fit flex flex-col items-center justify-start space-y-4 lg:pt-16 md:pt-8 pt-4 pb-16">
-			<nav
-				className="lg:w-3/4 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative"
-				ref={navRef}
-			>
+		<div className="process-timeline">
+			<nav ref={navRef}>
 				<motion.div
 					style={{
 						position: "absolute",
@@ -63,14 +48,11 @@ const ProcessTimeline = (props: Props) => {
 						width: rect ? rect.width * (1 - 1 / steps.length) : 0,
 					}}
 				/>
-				<ul className="flex flex-row items-center lg:justify-space-between md:justify-space-between justify-start w-full h-fit z-[3]">
+				<ul className="process-timeline-ul">
 					{steps.map((processItem: ProcessType, index: number) => (
-						<li
-							key={processItem.phase}
-							className={["w-full flex flex-col items-center justify-center"].join(" ")}
-						>
+						<li key={processItem.phase}>
 							<motion.div
-								className="h-6 w-6 border-2 rounded-full cursor-pointer"
+								className="process-timeline-circle"
 								variants={circleVariants}
 								animate={step === index ? "current" : step > index ? "active" : "inactive"}
 								onClick={() => setStep(index)}
@@ -78,8 +60,8 @@ const ProcessTimeline = (props: Props) => {
 							<div
 								onClick={() => setStep(index)}
 								className={[
-									"p-2 cursor-pointer lg:flex md:flex hidden",
-									step === index ? "text-red-700" : "text-black",
+									"process-timeline-label",
+									step === index ? "text-red-800" : "text-black",
 								].join(" ")}
 							>
 								{processItem.phase}
@@ -93,6 +75,21 @@ const ProcessTimeline = (props: Props) => {
 			</AnimatePresence>
 		</div>
 	)
+}
+
+const circleVariants = {
+	inactive: {
+		border: "2px solid #e5e7eb",
+		backgroundColor: "#fff",
+	},
+	active: {
+		border: "2px solid #dc2626",
+		backgroundColor: "#fff",
+	},
+	current: {
+		border: "2px solid #dc2626",
+		backgroundColor: "#ef4444",
+	},
 }
 
 export default ProcessTimeline

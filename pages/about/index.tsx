@@ -27,12 +27,7 @@ const About = (props: Props) => {
 			<Head>
 				<title>{`About | ${headerTitle}`}</title>
 			</Head>
-			<motion.section
-				className="relative w-full lg:h-screen h-[100vh] -lg:translate-y-[3.5rem] -translate-y-[3.5rem]"
-				variants={sectionVariants}
-				initial="start"
-				animate="end"
-			>
+			<motion.section className="banner-section" variants={sectionVariants} initial="start" animate="end">
 				<Image
 					src="https://i.ibb.co/Zf2c2d2/Staircase-3.jpg"
 					alt="Glen Charles Design About Image"
@@ -42,13 +37,11 @@ const About = (props: Props) => {
 					quality="95"
 					priority
 				/>
-				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
-					<div className="lg:flex md:flex hidden" />
+				<div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
+					<div className="banner-spacer" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 text-center col-span-2">
-						<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl mb-4 text-white">
-							We design for our clients, not our portfolio.
-						</h1>
-						<p className="text-white lg:w-3/5 md:w-11/12 w-11/12 lg:text-xl md:text-lg text-base">
+						<h1 className="banner-title">We design for our clients, not our portfolio.</h1>
+						<p className="banner-subtitle">
 							Our knowledge of architecture is informed through years of education and experience.
 						</p>
 					</div>

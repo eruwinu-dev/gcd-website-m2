@@ -151,6 +151,7 @@ const linkVariants = {
 
 const lineVariants = {
 	start: {
+		opacity: 0,
 		width: "0%",
 		transiton: {
 			duration: 0.2,
@@ -158,6 +159,7 @@ const lineVariants = {
 		},
 	},
 	hover: {
+		opacity: 1,
 		width: "100%",
 		transiton: {
 			duration: 0.2,
