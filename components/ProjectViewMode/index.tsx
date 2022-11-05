@@ -34,7 +34,7 @@ const ProjectViewMode = (props: Props) => {
 			className={[
 				"absolute z-[4] flex flex-row items-center w-full h-fit",
 				viewMode === "carousel"
-					? "justify-center bottom-8"
+					? "justify-center lg:bottom-8 md:bottom-8 bottom-0 lg:translate-y-0 md:translate-y-0 translate-y-16"
 					: "justify-start lg:bottom-8 md:bottom-24 bottom-24",
 			].join(" ")}
 		>

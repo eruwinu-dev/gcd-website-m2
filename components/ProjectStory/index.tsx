@@ -89,7 +89,7 @@ const ProjectStory = ({ project, html }: Props) => {
 					initial="closed"
 					animate="open"
 					exit="closed"
-					className="relative w-full lg:h-screen h-[100vh] lg:translate-y-0 md:-translate-y-[3.5rem] -translate-y-[3.5rem] flex flex-col items-center overflow-x-hidden"
+					className="relative w-full lg:h-screen h-[100vh] lg:translate-y-0 md:-translate-y-[3.5rem] -translate-y-[3.5rem] flex flex-col items-center overflow-x-hidden aspect-video"
 				>
 					<Image
 						src={project.photos[photoIndex]}

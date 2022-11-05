@@ -18,7 +18,7 @@ const ContactList = ({ size }: Props) => {
 			</div>
 			<div>
 				<PhoneIcon />
-				<span className={size == "large" ? "text-base" : ""}>(818) 562-7224</span>
+				<span className={size == "large" ? "text-base" : ""}>(818) 532 7224</span>
 			</div>
 			<div>
 				<a
