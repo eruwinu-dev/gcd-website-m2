@@ -13,17 +13,6 @@ export const team: MemberType[] = [
 		text: "gsalcedo.md",
 	},
 	{
-		url: "roxanna-salcedo",
-		name: "Roxana M. Salcedo",
-		pictures: [
-			"https://i.ibb.co/0sgTvDC/roxana-salcedo.jpg",
-			"https://i.ibb.co/ctmfMBm/rsalcedo1.jpg",
-			"https://i.ibb.co/hZqLMy1/rsalcedo2.jpg",
-		],
-		role: "Project Manager/Vice President",
-		text: "",
-	},
-	{
 		url: "joshua-jay-naverette",
 		name: "Joshua Jay Navarette",
 		pictures: ["https://i.ibb.co/cbMbk48/navarette1.jpg", "https://i.ibb.co/4J7t8CY/navarette2.jpg"],
@@ -48,7 +37,18 @@ export const team: MemberType[] = [
 		url: "kristoffer-jake-yalong",
 		name: "Kristoffer Jake Yalong",
 		pictures: ["https://i.ibb.co/X2Dtqd2/yalong1.jpg"],
-		role: "Strctural Design Lead",
+		role: "Structural Design Lead ",
+		text: "",
+	},
+	{
+		url: "roxanna-salcedo",
+		name: "Roxana M. Salcedo",
+		pictures: [
+			"https://i.ibb.co/0sgTvDC/roxana-salcedo.jpg",
+			"https://i.ibb.co/ctmfMBm/rsalcedo1.jpg",
+			"https://i.ibb.co/hZqLMy1/rsalcedo2.jpg",
+		],
+		role: "Project Manager",
 		text: "",
 	},
 	{
@@ -59,8 +59,8 @@ export const team: MemberType[] = [
 		text: "",
 	},
 	{
-		url: "ed-mamaiit",
-		name: "Ed Mamaiit",
+		url: "ed-mamiit",
+		name: "Ed Mamiit",
 		pictures: ["https://i.ibb.co/0sgTvDC/roxana-salcedo.jpg"],
 		role: "Accounts Manager",
 		text: "",
