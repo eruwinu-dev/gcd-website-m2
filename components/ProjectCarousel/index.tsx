@@ -14,6 +14,8 @@ type Props = {
 	project: ProjectType
 }
 
+/* eslint-disable react/display-name */
+
 const ProjectCarousel = ({ project }: Props) => {
 	const { asPath, query, push } = useRouter()
 
@@ -48,7 +50,7 @@ const ProjectCarousel = ({ project }: Props) => {
 					className="w-[96vw] h-full mt-4 mx-auto"
 					renderArrowPrev={carouselControl("left")}
 					renderArrowNext={carouselControl("right")}
-					selectedItem={Number(query.photo) || 0}
+					selectedItem={Number(query?.photo) || 0}
 					onChange={changeCarouselIndex}
 				>
 					{project.photos.map((photo: string) => (
