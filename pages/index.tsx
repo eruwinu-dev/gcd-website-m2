@@ -12,6 +12,8 @@ import ServicesList from "../components/ServicesList"
 
 import { headerTitle } from "../lib/title"
 
+import { landingImage } from "../lib/images"
+
 type Props = {}
 
 const sectionVariants = {
@@ -37,7 +39,7 @@ const Home = (props: Props) => {
 			</Head>
 			<motion.section className="banner-section" variants={sectionVariants} initial="start" animate="end">
 				<Image
-					src="https://i.ibb.co/Q6NwFhT/mulholland-front1.jpg"
+					src={landingImage}
 					alt="Glen Charles Design Landing Image"
 					layout="fill"
 					objectFit="cover"

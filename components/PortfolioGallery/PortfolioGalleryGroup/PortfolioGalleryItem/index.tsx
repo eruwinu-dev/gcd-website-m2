@@ -14,7 +14,7 @@ type Props = {
 }
 
 const PortfolioGalleryItem = ({ project }: Props) => {
-	const { setPage, setStoryOpen } = useStateContext()
+	const { setStoryOpen } = useStateContext()
 	const [photo, setPhoto] = useState<number>(0)
 	const [hover, setHover] = useState<boolean>(false)
 
@@ -33,7 +33,6 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 	}, [hover])
 
 	const setCoverPhoto = (event: MouseEvent<HTMLDivElement>) => {
-		setPage([0, 1])
 		setStoryOpen(false)
 	}
 

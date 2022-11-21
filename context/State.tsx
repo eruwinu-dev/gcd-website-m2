@@ -5,7 +5,6 @@ import type { FormType } from "../types/form"
 import Parse from "parse"
 import { initializeParse } from "@parse/react-ssr"
 import emailjs from "@emailjs/browser"
-import { ModeType } from "../types/project"
 import { ArticleCategoryType, ArticleItemType } from "../types/article"
 import client from "../lib/client"
 import { ParsedUrlQuery } from "querystring"
@@ -24,7 +23,6 @@ const Context = createContext<ContextType | null>(null)
 
 export const Provider = ({ children }: Props) => {
 	const [storyOpen, setStoryOpen] = useState<boolean>(false)
-	const [[page, direction], setPage] = useState([0, 0])
 	const [headerOpen, setHeaderOpen] = useState<boolean>(false)
 
 	const [contactLoading, setContactLoading] = useState<boolean>(false)
@@ -36,10 +34,6 @@ export const Provider = ({ children }: Props) => {
 	const [articles, setArticles] = useState<ArticleItemType[]>([])
 
 	const [categories, setCategories] = useState<ArticleCategoryType[]>([])
-
-	const paginate = (newDirection: number) => {
-		setPage([page + newDirection, newDirection])
-	}
 
 	const addContact = async (values: FormType) => {
 		let contactId
@@ -93,10 +87,6 @@ export const Provider = ({ children }: Props) => {
 	const value: ContextType = {
 		storyOpen,
 		setStoryOpen,
-		page,
-		direction,
-		setPage,
-		paginate,
 		headerOpen,
 		setHeaderOpen,
 		addContact,

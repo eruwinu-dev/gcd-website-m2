@@ -1,7 +1,6 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
 import React, { MouseEvent } from "react"
-import useStateContext from "../../../context/State"
 
 type Props = {
 	photo: string
@@ -9,16 +8,14 @@ type Props = {
 }
 
 const ProjectGalleryItem = ({ photo, index }: Props) => {
-	const { setPage, direction } = useStateContext()
 	const router = useRouter()
 	const { asPath } = router
 
 	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
-		setPage([index, direction])
 		router.push(
 			{
 				pathname: asPath.split("?")[0],
-				query: { mode: "carousel" },
+				query: { mode: "carousel", photo: index },
 			},
 			undefined,
 			{ shallow: true }

@@ -6,6 +6,7 @@ import TeamGallery from "../../components/TeamGallery"
 import Image from "next/image"
 import { headerTitle } from "../../lib/title"
 import { motion } from "framer-motion"
+import { aboutImage } from "../../lib/images"
 
 type Props = {}
 
@@ -29,7 +30,7 @@ const About = (props: Props) => {
 			</Head>
 			<motion.section className="banner-section" variants={sectionVariants} initial="start" animate="end">
 				<Image
-					src="https://i.ibb.co/Zf2c2d2/Staircase-3.jpg"
+					src={aboutImage}
 					alt="Glen Charles Design About Image"
 					layout="fill"
 					objectFit="cover"

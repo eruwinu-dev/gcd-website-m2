@@ -1,11 +1,12 @@
-export const images: string[] = [
-	"https://i.ibb.co/swJY0wT/Outside-3.jpg",
-	"https://i.ibb.co/Q6NwFhT/mulholland-front1.jpg",
-	"https://i.ibb.co/cvBb71n/Koman-Rear.jpg",
-	"https://i.ibb.co/HKdjWQr/Koman-Front1.jpg",
-	"https://i.ibb.co/bJX4T0R/landing-house.jpg",
-	"https://i.ibb.co/bRbFRqH/Carmar-1.jpg",
-	"https://i.ibb.co/Db0ywPy/carmar-8.jpg",
-	"https://i.ibb.co/fGV41SP/Koman-Hall.jpg",
-]
+import { getCloudinaryImageUrl } from "./cloudinaryImage"
+
+export const landingImage = getCloudinaryImageUrl(
+	"v1668953941/gcd-website/background/tinywow_landing-background_8447681_ggk0cm.jpg"
+)
+export const aboutImage = getCloudinaryImageUrl(
+	"v1668953942/gcd-website/background/tinywow_Staircase-3_8447767_uxqfed.jpg"
+)
+export const processImage = getCloudinaryImageUrl(
+	"v1668953942/gcd-website/background/tinywow_Balcony-1_8447647_ujkygd.jpg"
+)
 

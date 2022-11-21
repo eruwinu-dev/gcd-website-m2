@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 
 import ProcessTimeline from "../components/ProcessTimeline"
 import { headerTitle } from "../lib/title"
+import { processImage } from "../lib/images"
 
 type Props = {}
 
@@ -30,7 +31,7 @@ const Process = (props: Props) => {
 
 			<motion.section className="banner-section" variants={sectionVariants} initial="start" animate="end">
 				<Image
-					src="https://i.ibb.co/8PNkG2s/Balcony-1.jpg"
+					src={processImage}
 					alt="Glen Charles Design Process Image"
 					layout="fill"
 					objectFit="cover"
