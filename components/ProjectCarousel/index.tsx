@@ -47,7 +47,7 @@ const ProjectCarousel = ({ project }: Props) => {
 					swipeScrollTolerance={100}
 					transitionTime={200}
 					infiniteLoop
-					className="w-[96vw] h-full mt-4 mx-auto"
+					className="w-full h-full mt-4 mx-auto"
 					renderArrowPrev={carouselControl("left")}
 					renderArrowNext={carouselControl("right")}
 					selectedItem={Number(query?.photo) || 0}
@@ -58,7 +58,15 @@ const ProjectCarousel = ({ project }: Props) => {
 							className={["w-full h-auto lg:aspect-video aspect-square relative select-none"].join(" ")}
 							key={photo}
 						>
-							<Image src={photo} alt={photo} layout="fill" objectFit="cover" objectPosition="center" />
+							<Image
+								src={photo}
+								alt={photo}
+								layout="fill"
+								objectFit="cover"
+								objectPosition="center"
+								priority
+								quality={70}
+							/>
 						</div>
 					))}
 				</Carousel>
@@ -71,7 +79,7 @@ const carouselControl = (side: "left" | "right") => (clickHandler: () => void, h
 	return (
 		<div
 			className={[
-				"w-1/12 h-[90vh] absolute top-0 bottom-0 my-auto z-[2] inline-flex items-center justify-center group cursor-pointer",
+				"lg:w-1/12 md:w-1/12 w-2/12 h-[90vh] absolute top-0 bottom-0 my-auto z-[2] inline-flex items-center justify-center group cursor-pointer",
 				side === "left" ? "left-0" : "right-0",
 			].join(" ")}
 			onClick={clickHandler}
@@ -80,7 +88,7 @@ const carouselControl = (side: "left" | "right") => (clickHandler: () => void, h
 				type="button"
 				aria-label={label}
 				className={[
-					"p-2 text-white rounded-full generic-transition group-hover:scale-125 group-hover:bg-black/50",
+					"lg:p-2 md:p-2 p-1 text-white rounded-full generic-transition group-hover:scale-125 group-hover:bg-black/50",
 					side === "left" ? "group-hover:-translate-x-2" : "group-hover:translate-x-2",
 				].join(" ")}
 			>

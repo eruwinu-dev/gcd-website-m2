@@ -39,6 +39,7 @@ const HeaderDashboard = (props: Props) => {
 					>
 						{links.map((link: LinkType, index: number) => (
 							<motion.div
+								className="relative"
 								key={link.name}
 								variants={itemVariants}
 								onClick={() => {
@@ -46,19 +47,23 @@ const HeaderDashboard = (props: Props) => {
 								}}
 							>
 								<Link href={link.url}>
-									<a
-										className={[
-											"generic-transition text-lg",
-											[link.url, "/"].includes(pathname) ||
-											(link.url === "/portfolio" && pathname === "/portfolio/[project]") ||
-											(link.url === "/about" && pathname === "/about/[member]")
-												? "opacity-100"
-												: "opacity-50",
-										].join(" ")}
-									>
-										{link.name}
-									</a>
+									<a className={["generic-transition text-lg"].join(" ")}>{link.name}</a>
 								</Link>
+								{[link.url, "/"].includes(pathname) ||
+								(link.url === "/portfolio" && pathname === "/portfolio/[project]") ||
+								(link.url === "/about" && pathname === "/about/[member]") ? (
+									<motion.div
+										initial={{
+											opacity: 0,
+											width: "0%",
+										}}
+										animate={{ opacity: 1, width: "100%" }}
+										transition={{ type: "spring", duration: 0.3, delay: 0.8 }}
+										className="absolute left-0 right-0 -bottom-1 h-1 bg-red-700"
+									/>
+								) : (
+									<></>
+								)}
 							</motion.div>
 						))}
 					</motion.div>

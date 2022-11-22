@@ -1,12 +1,13 @@
 import React, { MouseEvent } from "react"
 import Link from "next/link"
 
+import { motion } from "framer-motion"
+
 import type { ProjectType } from "../../types/project"
 
-import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
+import useStateContext from "../../context/State"
 
 import { projects } from "../../lib/projects"
-import useStateContext from "../../context/State"
 
 type Props = {
 	project: ProjectType
@@ -29,35 +30,73 @@ const ProjectBottomNav = ({ project }: Props) => {
 			{typeof prevProject === "undefined" ? (
 				<div />
 			) : (
-				<div className="flex flex-col lg:items-start md:items-start items-center">
-					<div className="project-bottom-bar-link w-fit lg:items-end md:items-end items-center">
-						<label>Previous Project</label>
+				<div className="flex flex-col lg:items-start md:items-start items-center cursor-pointer">
+					<motion.div
+						className="project-bottom-bar-link w-fit lg:items-end md:items-end items-center relative"
+						variants={linkVariants}
+						initial="hidden"
+						whileHover="show"
+						exit="hidden"
+					>
+						<label className="cursor-pointer">Previous Project</label>
 						<Link href={`./${prevProject.url}`}>
 							<a onClick={resetProjectState}>
-								<ArrowLeftIcon />
 								<div>{prevProject.name}</div>
 							</a>
 						</Link>
-					</div>
+						<motion.div className="absolute -bottom-1 right-0 h-1 bg-red-700" variants={lineVariants} />
+					</motion.div>
 				</div>
 			)}
 			{typeof nextProject === "undefined" ? (
 				<div />
 			) : (
 				<div className="flex flex-col lg:items-end md:items-end items-center">
-					<div className="project-bottom-bar-link w-fit lg:items-start md:items-start items-center">
-						<label>Next Project</label>
+					<motion.div
+						className="project-bottom-bar-link w-fit lg:items-start md:items-start items-center relative"
+						variants={linkVariants}
+						initial="hidden"
+						whileHover="show"
+						exit="hidden"
+					>
+						<label className="cursor-pointer">Next Project</label>
 						<Link href={`./${nextProject.url}`}>
 							<a onClick={resetProjectState}>
 								<div>{nextProject.name}</div>
-								<ArrowRightIcon />
 							</a>
 						</Link>
-					</div>
+						<motion.div className="absolute -bottom-1 lefet-0 h-1 bg-red-700" variants={lineVariants} />
+					</motion.div>
 				</div>
 			)}
 		</div>
 	)
+}
+
+const linkVariants = {
+	hidden: {},
+	show: {},
+}
+
+const lineVariants = {
+	hidden: {
+		opacity: 0,
+		width: "0%",
+		transition: {
+			duration: 0.3,
+			ease: "easeInOut",
+			type: "spring",
+		},
+	},
+	show: {
+		opacity: 1,
+		width: "100%",
+		transition: {
+			duration: 0.3,
+			ease: "easeInOut",
+			type: "spring",
+		},
+	},
 }
 
 export default ProjectBottomNav

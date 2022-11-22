@@ -41,6 +41,13 @@ export const team: MemberType[] = [
 		text: "",
 	},
 	{
+		url: "kenneth-hooper",
+		name: "Kenneth R. Hooper",
+		pictures: ["https://i.ibb.co/0sgTvDC/roxana-salcedo.jpg"],
+		role: "Project Manager",
+		text: "",
+	},
+	{
 		url: "roxanna-salcedo",
 		name: "Roxana M. Salcedo",
 		pictures: [
@@ -56,6 +63,13 @@ export const team: MemberType[] = [
 		name: "Ty Salcedo-Chalberg",
 		pictures: ["https://i.ibb.co/WWqfkpn/chalberg1.jpg", "https://i.ibb.co/Nxv0RrV/chalberg2.jpg"],
 		role: "Associate/Business Development",
+		text: "",
+	},
+	{
+		url: "kathleen-griffith",
+		name: "Kathleen Griffith",
+		pictures: ["https://i.ibb.co/0sgTvDC/roxana-salcedo.jpg"],
+		role: "Administrative Lead",
 		text: "",
 	},
 	{
