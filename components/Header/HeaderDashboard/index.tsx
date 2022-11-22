@@ -49,7 +49,7 @@ const HeaderDashboard = (props: Props) => {
 								<Link href={link.url}>
 									<a className={["generic-transition text-lg"].join(" ")}>{link.name}</a>
 								</Link>
-								{[link.url, "/"].includes(pathname) ||
+								{[link.url].includes(pathname) ||
 								(link.url === "/portfolio" && pathname === "/portfolio/[project]") ||
 								(link.url === "/about" && pathname === "/about/[member]") ? (
 									<motion.div
