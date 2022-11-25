@@ -28,7 +28,7 @@ const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] 
 			</Head>
 			<NewsArticleHeader post={post} />
 			<div className="w-10/12 min-h-screen max-h-fit flex lg:flex-row flex-col items-start justify-center mx-auto">
-				<NewsArticleText body={post.body} author={post.author} />
+				<NewsArticleText body={post.body} />
 				<SocialMediaShare post={post} />
 			</div>
 			<div className="w-10/12 mx-auto lg:pt-16 pt-8 space-y-4 flex flex-col items-center border-t-2">
