@@ -9,3 +9,10 @@ export const getCloudinaryImageUrl = (publicId: string) => {
 	return url
 }
 
+export const getOptimizedImageUrl = (link: string) => {
+	const publicId = link.split(
+		`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || ""}/image/upload/`
+	)[1]
+	return getCloudinaryImageUrl(publicId)
+}
+

@@ -2,18 +2,21 @@ import React from "react"
 
 import { motion } from "framer-motion"
 
-import type { ProjectCategoryOptionsType, ProjectType } from "../../../types/project"
+import type { ProjectType } from "../../../types/project"
 
-import { projects } from "../../../lib/projects"
 import PortfolioGalleryItem from "./PortfolioGalleryItem"
+import useStateContext from "../../../context/State"
 
 type Props = {
-	category: ProjectCategoryOptionsType
+	category: string
 }
 
 const PortfolioGalleryGroup = ({ category }: Props) => {
+	const { projects } = useStateContext()
 	const selectedProjects: ProjectType[] =
-		category === "all" ? projects : projects.filter((project: ProjectType) => project.category === category)
+		category === "all"
+			? projects
+			: projects.filter((project: ProjectType) => project.category.slug.current === category)
 
 	return (
 		<motion.div
@@ -23,8 +26,8 @@ const PortfolioGalleryGroup = ({ category }: Props) => {
 			animate="go"
 			className="portfolio-gallery"
 		>
-			{selectedProjects.map((project: ProjectType, index: number) => (
-				<PortfolioGalleryItem key={project.name} project={project} />
+			{selectedProjects.map((project: ProjectType) => (
+				<PortfolioGalleryItem key={project._id} project={project} />
 			))}
 		</motion.div>
 	)

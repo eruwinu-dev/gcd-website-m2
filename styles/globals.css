@@ -192,22 +192,13 @@
 		@apply translate-y-0 h-full lg:flex-row flex-col;
 	}
 	.member-image-layout {
-		@apply w-full h-full flex flex-col lg:items-end items-center justify-start lg:pt-8 md:pt-8 pt-0 lg:pr-8 pr-0 space-y-2 left-0;
-	}
-	.member-image-layout > h3 {
-		@apply lg:w-3/5 md:w-4/5 w-full text-center;
-	}
-	.member-image-layout > .italic {
-		@apply lg:w-3/5 md:w-4/5 w-full text-center lg:pb-4 md:pb-4 pb-0;
+		@apply w-full h-full flex flex-col lg:items-end md:items-end items-center justify-start;
 	}
 	.member-image-container {
-		@apply lg:w-3/5 md:w-3/5 w-full h-auto relative inline-block overflow-hidden aspect-[1/1.5];
+		@apply lg:w-7/12 md:w-9/12 w-full h-auto relative inline-block overflow-hidden aspect-[1/1.5];
 	}
 	.member-image-container > img {
 		@apply transition-all ease-in-out duration-300 hover:scale-105 cursor-pointer;
-	}
-	.member-beside {
-		@apply flex flex-col lg:items-start items-center justify-start h-full;
 	}
 	.member-markdown {
 		@apply lg:w-3/4 w-full prose text-justify px-4 pb-8 leading-loose;
@@ -247,7 +238,7 @@
 		@apply w-full flex lg:flex-row md:flex-col flex-col lg:items-start md:items-center items-center justify-center lg:space-x-8 space-x-0 py-8;
 	}
 	.project-description > .project-markdown {
-		@apply w-full h-full z-[2] flex flex-col items-center justify-center text-black py-4 lg:px-8 md:px-4 px-0;
+		@apply w-full h-full z-[2] flex flex-col items-center justify-center text-black py-4 lg:px-8 px-4 space-y-4;
 	}
 	.project-markdown > article {
 		@apply prose text-black leading-loose h-fit w-full scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-md lg:px-0 md:px-0 px-4;
@@ -298,9 +289,6 @@
 		@apply top-16 md:right-[1.25rem] absolute bg-white overflow-y-auto;
 		height: calc(100vh - 6rem);
 		width: calc(100vw / 2 - 2rem);
-	}
-	.project-story-markdown-container > article {
-		@apply lg:prose md:prose-sm lg:px-16 md:px-4 leading-loose;
 	}
 	.project-landing-carousel-container {
 		@apply w-full h-full;

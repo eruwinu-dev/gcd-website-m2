@@ -1,5 +1,35 @@
 import groq from "groq"
 
+export const getProjects = groq`*[_type == "project"] | order(order asc) {
+	_id,
+	name,
+	slug,
+	address,
+	team,
+	images,
+	body,
+	"category": categories[0] -> {_id, name, slug, description},
+  }`
+
+export const getProjectBySlug = groq`*[_type == "project" && slug.current == $slug][0]{
+	_id,
+	name,
+	slug,
+	address,
+	team,
+	images,
+	body,
+	"category": categories[0] -> {_id, name, slug, description},
+  "previous":*[_type == "project" && order == (^.order) - 1][0]{
+	name,
+    slug,
+  },
+  "next":*[_type == "project" && order == (^.order) + 1][0]{
+	name,
+    slug,
+  },
+}`
+
 export const getArticlesCategoriesQuery = groq`{
 	"articles": *[_type == "post"] | order(publishedAt desc) [0..5] {
 		_id,
@@ -68,5 +98,29 @@ export const getArticleBySlug = groq`*[_type == "post" && slug.current == $slug]
 		"categories": categories[]->title,
 		"wordCount": round(length(pt::text(body)) / 5),
 	},
+  }`
+
+export const getMembers = groq`*[_type == "author" && order > 0] | order(order asc){
+	_id,
+	name,
+	slug,
+	order,
+	role,
+	image,
+	otherImages,
+	blogBio,
+	bio,
+  }`
+
+export const getMemberBySlug = groq`*[_type == "author" && slug.current == $slug][0]{
+	_id,
+	name,
+	slug,
+	order,
+	role,
+	image,
+	otherImages,
+	blogBio,
+	bio,
   }`
 

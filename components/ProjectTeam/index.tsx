@@ -1,17 +1,30 @@
 import { useRouter } from "next/router"
-import React from "react"
-import type { ModeType, ProjectType } from "../../types/project"
-import type { TeamType } from "../../types/member"
+import React, { useMemo } from "react"
+import type { ModeType, ProjectTeamType } from "../../types/project"
 
 type Props = {
-	project: ProjectType
+	name: string
+	address?: string
+	team?: string
 }
 
-const ProjectTeam = ({ project }: Props) => {
+const ProjectTeam = ({ name, address, team }: Props) => {
 	const router = useRouter()
 	const { mode } = router.query
 
 	const viewMode = (mode || "story") as ModeType
+
+	const teamMembers = useMemo(
+		() =>
+			team?.split("\n").map((line: string) => {
+				const info = line?.split(" - ") || []
+				return {
+					name: line ? info[0] : "",
+					position: line ? info[1] : "",
+				}
+			}) || [],
+		[]
+	)
 
 	return (
 		<div
@@ -20,18 +33,18 @@ const ProjectTeam = ({ project }: Props) => {
 				viewMode === "story" ? "items-start text-white text-left" : "items-center text-black text-center",
 			].join(" ")}
 		>
-			<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl">{project.name}</h1>
-			<span className="italic tracking-wider">{project.address}</span>
+			<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl">{name}</h1>
+			<span className="italic tracking-wider">{address}</span>
 			<div className="project-members">
-				{project.team.map((team: TeamType, index: number) => (
+				{teamMembers.map((member: ProjectTeamType, index: number) => (
 					<div
 						key={index}
 						className={[
-							project.team.length % 2 !== 0 && index === project.team.length - 1 ? "odd-child" : "",
+							teamMembers.length % 2 !== 0 && index === teamMembers.length - 1 ? "odd-child" : "",
 						].join(" ")}
 					>
-						<h6>{team.name}</h6>
-						<i>{team.role}</i>
+						<h6>{member.name}</h6>
+						<i>{member.position}</i>
 					</div>
 				))}
 			</div>

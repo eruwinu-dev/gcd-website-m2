@@ -1,11 +1,7 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { SlugType } from "./slug"
 
 export type AlignMainImageType = "left" | "right"
-
-export interface SlugType {
-	_type: string
-	current: string
-}
 
 export interface AuthorType {
 	name: string

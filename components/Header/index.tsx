@@ -29,8 +29,8 @@ const Header = (props: Props) => {
 
 	const viewMode = (query.mode || "story") as ModeType
 
-	const isWhite = ["/", "/about", "/process", "/portfolio/[project]"].includes(pathname)
-		? pathname === "/portfolio/[project]"
+	const isWhite = ["/", "/about", "/process", "/portfolio/[slug]"].includes(pathname)
+		? pathname === "/portfolio/[slug]"
 			? viewMode === "story"
 				? true
 				: false

@@ -1,13 +1,15 @@
 import React, { useRef } from "react"
-import { team } from "../../lib/team"
 import type { MemberType } from "../../types/member"
 import { useRect } from "@reach/rect"
 
 import TeamGalleryItem from "./TeamGalleryItem"
+import useStateContext from "../../context/State"
 
 type Props = {}
 
-const TeamGallery = (props: Props) => {
+const TeamGallery = ({}: Props) => {
+	const { members } = useStateContext()
+
 	const boxRef = useRef<HTMLDivElement | null>(null)
 	const boxRect = useRect(boxRef)
 
@@ -15,8 +17,8 @@ const TeamGallery = (props: Props) => {
 		<>
 			<section className="h-fit lg:py-16 md:py-8 py-4 lg:flex md:flex hidden flex-row items-center justify-center">
 				<div className="team-gallery" ref={boxRef}>
-					{team.map((member: MemberType, index: number) => (
-						<TeamGalleryItem member={member} key={index} />
+					{members.map((member: MemberType) => (
+						<TeamGalleryItem member={member} key={member._id} />
 					))}
 				</div>
 				<div
@@ -40,8 +42,8 @@ const TeamGallery = (props: Props) => {
 			</section>
 			<section className="h-fit lg:py-16 md:py-8 py-4 lg:hidden md:hidden flex flex-col-reverse items-center justify-center">
 				<div className="team-gallery">
-					{team.map((member: MemberType, index: number) => (
-						<TeamGalleryItem member={member} key={index} />
+					{members.map((member: MemberType) => (
+						<TeamGalleryItem member={member} key={member._id} />
 					))}
 				</div>
 				<div className="flex flex-col items-center justify-center w-full lg:h-auto h-fit space-y-8 py-16 px-4">

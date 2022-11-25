@@ -1,4 +1,4 @@
-import React, { MouseEvent, useEffect, useState } from "react"
+import React, { memo, MouseEvent, useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -8,6 +8,7 @@ import { wrap } from "popmotion"
 import type { ProjectType } from "../../../../types/project"
 
 import useStateContext from "../../../../context/State"
+import { getOptimizedImageUrl } from "../../../../lib/cloudinaryImage"
 
 type Props = {
 	project: ProjectType
@@ -18,11 +19,13 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 	const [photo, setPhoto] = useState<number>(0)
 	const [hover, setHover] = useState<boolean>(false)
 
-	const photoIndex = wrap(0, project.photos.length, photo)
+	const photoList: string[] = useMemo(() => (project.images ? project.images.split("\n") : []), [project])
+
+	const photoIndex = wrap(0, photoList.length, photo)
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
-			if (project.photos.length === 1) return
+			if (photoList.length === 1) return
 			setPhoto((photo) => (hover ? photo + 1 : 0))
 		}, 1000)
 
@@ -42,7 +45,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 			variants={galleryItemVariants}
 			onClick={setCoverPhoto}
 		>
-			<Link href={`./portfolio/${project.url}`}>
+			<Link href={`./portfolio/${project.slug.current}`}>
 				<motion.div
 					className="w-full h-fit flex flex-col items-center justify-start"
 					variants={containerVariants}
@@ -64,9 +67,10 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 						exit="end"
 					>
 						<Image
-							src={project.photos[photoIndex]}
-							alt={project.url}
+							src={getOptimizedImageUrl(photoList[photoIndex])}
+							alt={project.name}
 							layout="fill"
+							loading="eager"
 							objectFit="cover"
 							objectPosition="top"
 							className="generic-transition hover:scale-105"

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import React, { MouseEvent } from "react"
+import React, { MouseEvent, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import useStateContext from "../../context/State"
 
@@ -7,19 +7,23 @@ import type { ModeType, ProjectType } from "../../types/project"
 import ProjectTeam from "../ProjectTeam"
 import { ChevronDoubleRightIcon, CloseIcon } from "../../lib/icons"
 import { useRouter } from "next/router"
+import { PortableText } from "@portabletext/react"
+import { CustomProjectStoryComponents } from "../CustomPTComponents"
+import { getOptimizedImageUrl } from "../../lib/cloudinaryImage"
 
 type Props = {
 	project: ProjectType
-	html: string
 }
 
-const ProjectStory = ({ project, html }: Props) => {
+const ProjectStory = ({ project }: Props) => {
 	const { storyOpen, setStoryOpen } = useStateContext()
 	const {
 		query: { mode },
 	} = useRouter()
 
 	const viewMode = (mode || "story") as ModeType
+
+	const photos: string[] = useMemo(() => project?.images?.split("\n") || [], [project])
 
 	const toggleProjectStory = (event: MouseEvent<HTMLButtonElement>) => {
 		setStoryOpen((open: boolean) => !open)
@@ -37,11 +41,12 @@ const ProjectStory = ({ project, html }: Props) => {
 					className="relative w-full lg:h-screen h-[100vh] lg:translate-y-0 md:-translate-y-[3.5rem] -translate-y-[3.5rem] flex flex-col items-center overflow-x-hidden aspect-video"
 				>
 					<Image
-						src={project.photos[0]}
+						src={getOptimizedImageUrl(photos[0])}
 						alt={project.name}
 						layout="fill"
 						objectFit="cover"
 						objectPosition="left"
+						priority
 					/>
 					<div className="relative w-full h-full bg-black/60 z-[2]">
 						<motion.div
@@ -54,8 +59,8 @@ const ProjectStory = ({ project, html }: Props) => {
 						<div className="border-2 top-16 left-8 absolute lg:hidden md:hidden flex flex-col items-start justify-center px-8 h-[calc(100vh_-_6rem)] w-[calc(100vw_-_4rem)]" />
 						<div className="top-16 left-8 absolute grid grid-rows-3 px-8 z-[2] h-[calc(100vh_-_6rem)]  lg:w-[calc(100vw_/_2_-_2rem)] md:w-[calc(100vw_/_2_-_2rem)] w-[calc(100vw_-_4rem)]">
 							<div />
-							<ProjectTeam project={project} />
-							{html && (
+							<ProjectTeam name={project.name} address={project?.address} team={project.team} />
+							{project.body && (
 								<AnimatePresence>
 									{!storyOpen && (
 										<motion.div
@@ -73,7 +78,7 @@ const ProjectStory = ({ project, html }: Props) => {
 								</AnimatePresence>
 							)}
 						</div>
-						{html && (
+						{project.body && (
 							<div className="lg:flex md:flex hidden">
 								<AnimatePresence>
 									{storyOpen && (
@@ -101,7 +106,14 @@ const ProjectStory = ({ project, html }: Props) => {
 													</motion.div>
 												)}
 											</AnimatePresence>
-											<article dangerouslySetInnerHTML={{ __html: html }} />
+											<div className="lg:px-16 md:px-4 space-y-4">
+												{project.body ? (
+													<PortableText
+														value={project.body}
+														components={CustomProjectStoryComponents}
+													/>
+												) : null}
+											</div>
 										</motion.div>
 									)}
 								</AnimatePresence>

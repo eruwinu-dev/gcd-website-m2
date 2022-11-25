@@ -1,6 +1,7 @@
 import { ArticleCategoryType, ArticleItemType } from "./article"
 import { FormType } from "./form"
-import { ModeType } from "./project"
+import { MemberType } from "./member"
+import { ModeType, ProjectType } from "./project"
 
 export interface ContextType {
 	storyOpen: boolean
@@ -20,5 +21,9 @@ export interface ContextType {
 	setCategories: Dispatch<SetStateAction<ArticleCategoryType[]>>
 	load: boolean
 	setLoad: Dispatch<SetStateAction<boolean>>
+	members: MemberType[]
+	setMembers: Dispatch<SetStateAction<MemberType[]>>
+	projects: ProjectType[]
+	setProjects: Dispatch<SetStateAction<ProjectType[]>>
 }
 

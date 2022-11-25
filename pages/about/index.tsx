@@ -1,5 +1,5 @@
 import Head from "next/head"
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import AboutCollage from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
 import TeamGallery from "../../components/TeamGallery"
@@ -7,22 +7,30 @@ import Image from "next/image"
 import { headerTitle } from "../../lib/title"
 import { motion } from "framer-motion"
 import { aboutImage } from "../../lib/images"
+import { GetStaticProps } from "next"
+import client from "../../lib/client"
+import { getMembers } from "../../lib/grocQueries"
+import { MemberType } from "../../types/member"
+import useStateContext from "../../context/State"
 
-type Props = {}
-
-const sectionVariants = {
-	start: {
-		opacity: 0.9,
-	},
-	end: {
-		opacity: 1,
-		transition: {
-			duration: 0.75,
-		},
-	},
+type Props = {
+	members: MemberType[]
 }
 
-const About = (props: Props) => {
+const About = ({ members }: Props) => {
+	const { setMembers } = useStateContext()
+
+	const calledOnce = useRef(false)
+
+	useEffect(() => {
+		if (calledOnce.current) return
+		else {
+			setMembers(members)
+			calledOnce.current = true
+		}
+		return () => {}
+	}, [])
+
 	return (
 		<>
 			<Head>
@@ -64,7 +72,7 @@ const About = (props: Props) => {
 			</section>
 			<section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4">
 				<div className="lg:w-1/2 md:w-10/12  w-full h-auto flex flex-col items-center justify-center lg:p-16 p-8">
-					<p className="text-white indent-4 text-justify leading-loose tracking-wider text-lg w-full italic">
+				<p className="text-white indent-4 text-justify leading-loose tracking-wider text-lg w-full italic">
 						Any style can be emulated, but the truly talented architects are those that can masterfully
 						create designs of any style and period, historically correct and with strong precedence from the
 						entire history of architecture.
@@ -99,6 +107,28 @@ const About = (props: Props) => {
 			</section>
 		</>
 	)
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+	const members = (await client.fetch(getMembers)) as MemberType[]
+
+	return {
+		props: {
+			members,
+		},
+	}
+}
+
+const sectionVariants = {
+	start: {
+		opacity: 0.9,
+	},
+	end: {
+		opacity: 1,
+		transition: {
+			duration: 0.75,
+		},
+	},
 }
 
 export default About

@@ -1,6 +1,6 @@
 import React from "react"
 
-import type { InferGetStaticPropsType, GetStaticPaths, GetStaticProps } from "next"
+import type { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 
 import type { ModeType, ProjectType } from "../../types/project"
@@ -10,29 +10,27 @@ import ProjectGallery from "../../components/ProjectGallery"
 import ProjectViewMode from "../../components/ProjectViewMode"
 import ProjectCarousel from "../../components/ProjectCarousel"
 
-import { getProjectText } from "../../lib/api"
-import mdToHtml from "../../lib/mdToHtml"
-import { projects } from "../../lib/projects"
 import ProjectBottomNav from "../../components/ProjectBottomNav"
 import ProjectDescription from "../../components/ProjectDescription"
 import { motion } from "framer-motion"
 import { headerTitle } from "../../lib/title"
 import { useRouter } from "next/router"
+import { getProjectBySlug, getProjects } from "../../lib/grocQueries"
+import client from "../../lib/client"
+import { ParsedUrlQuery } from "querystring"
+import { ProjectLinkType } from "../../types/project"
 
-type Props = {}
-
-const sectionVariants = {
-	story: {
-		width: "100%",
-		x: "0vw",
-	},
-	carousel: {
-		width: "96vw",
-		x: "2vw",
-	},
+type Props = {
+	project: ProjectType
+	previous: ProjectLinkType | null
+	next: ProjectLinkType | null
 }
 
-const Project = ({ project, html }: InferGetStaticPropsType<typeof getStaticProps>) => {
+interface StaticParams extends ParsedUrlQuery {
+	slug: string
+}
+
+const Project = ({ project, previous, next }: Props) => {
 	const {
 		query: { mode },
 	} = useRouter()
@@ -57,51 +55,63 @@ const Project = ({ project, html }: InferGetStaticPropsType<typeof getStaticProp
 				>
 					<div className="w-full h-fit flex flex-col items-center justify-center relative">
 						{viewMode === "story" ? (
-							<ProjectStory project={project} html={html} />
-						) : (
-							<ProjectCarousel project={project} />
-						)}
+							<ProjectStory project={project} />
+						) : project.images ? (
+							<ProjectCarousel images={project.images} />
+						) : null}
 						<ProjectViewMode />
 					</div>
 				</motion.div>
 			</section>
 			<div className="portfolio-section">
 				{viewMode === "story" ? (
-					<ProjectGallery photos={project.photos} />
-				) : (
-					<ProjectDescription project={project} html={html} />
-				)}
-				<ProjectBottomNav project={project} />
+					project.images ? (
+						<ProjectGallery images={project.images} />
+					) : null
+				) : project.body ? (
+					<ProjectDescription project={project} />
+				) : null}
+				<ProjectBottomNav previous={previous} next={next} />
 			</div>
 		</>
 	)
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+	const projects = (await client.fetch(getProjects)) as ProjectType[]
+
 	return {
-		paths: projects.map((project: ProjectType) => ({ params: { project: project.url } })),
+		paths: projects.map((project: ProjectType) => ({ params: { slug: project.slug.current } })),
 		fallback: false,
 	}
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const project: ProjectType | undefined = projects.find((project: ProjectType) => project.url === params?.project)
-
-	const content = typeof project === "undefined" ? "" : getProjectText(project)
-	const html = await mdToHtml(content || "")
-
-	if (!project) {
-		return {
-			notFound: true,
-		}
+	const { slug = "" } = params as StaticParams
+	const { next, previous, ...project } = (await client.fetch(getProjectBySlug, { slug })) as {
+		next: ProjectLinkType | null
+		previous: ProjectLinkType | null
+		project: ProjectType
 	}
 
 	return {
 		props: {
 			project,
-			html,
+			next,
+			previous,
 		},
 	}
+}
+
+const sectionVariants = {
+	story: {
+		width: "100%",
+		x: "0vw",
+	},
+	carousel: {
+		width: "96vw",
+		x: "2vw",
+	},
 }
 
 export default Project

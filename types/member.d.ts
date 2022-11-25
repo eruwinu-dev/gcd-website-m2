@@ -1,9 +1,16 @@
+import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { SlugType } from "./slug"
+
 export interface MemberType {
-	url: string
+	_id: string
 	name: string
-	pictures: string[]
-	role: string
-	text: string
+	slug: SlugType
+	order: number
+	role?: string
+	image?: SanityImageSource
+	otherImages?: string
+	bio?: TypedObject
+	blogBio?: string
 }
 
 export interface TeamType {

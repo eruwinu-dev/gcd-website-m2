@@ -3,23 +3,17 @@ import Link from "next/link"
 
 import { motion } from "framer-motion"
 
-import type { ProjectType } from "../../types/project"
-
 import useStateContext from "../../context/State"
 
-import { projects } from "../../lib/projects"
+import { ProjectLinkType } from "../../types/project"
 
 type Props = {
-	project: ProjectType
+	previous: ProjectLinkType | null
+	next: ProjectLinkType | null
 }
 
-const ProjectBottomNav = ({ project }: Props) => {
+const ProjectBottomNav = ({ previous, next }: Props) => {
 	const { setStoryOpen } = useStateContext()
-
-	const projectIndex: number = projects.findIndex((projectItem: ProjectType) => projectItem.url === project.url)
-
-	const prevProject: ProjectType | undefined = projects[projectIndex - 1]
-	const nextProject: ProjectType | undefined = projects[projectIndex + 1]
 
 	const resetProjectState = (event: MouseEvent<HTMLAnchorElement>) => {
 		setStoryOpen(false)
@@ -27,7 +21,7 @@ const ProjectBottomNav = ({ project }: Props) => {
 
 	return (
 		<div className="project-bottom-bar">
-			{typeof prevProject === "undefined" ? (
+			{!previous ? (
 				<div />
 			) : (
 				<div className="flex flex-col lg:items-start md:items-start items-center cursor-pointer">
@@ -39,16 +33,16 @@ const ProjectBottomNav = ({ project }: Props) => {
 						exit="hidden"
 					>
 						<label className="cursor-pointer">Previous Project</label>
-						<Link href={`./${prevProject.url}`}>
+						<Link href={`./${previous.slug.current}`}>
 							<a onClick={resetProjectState}>
-								<div>{prevProject.name}</div>
+								<div>{previous.name}</div>
 							</a>
 						</Link>
 						<motion.div className="absolute -bottom-1 right-0 h-1 bg-red-700" variants={lineVariants} />
 					</motion.div>
 				</div>
 			)}
-			{typeof nextProject === "undefined" ? (
+			{!next ? (
 				<div />
 			) : (
 				<div className="flex flex-col lg:items-end md:items-end items-center">
@@ -60,9 +54,9 @@ const ProjectBottomNav = ({ project }: Props) => {
 						exit="hidden"
 					>
 						<label className="cursor-pointer">Next Project</label>
-						<Link href={`./${nextProject.url}`}>
+						<Link href={`./${next.slug.current}`}>
 							<a onClick={resetProjectState}>
-								<div>{nextProject.name}</div>
+								<div>{next.name}</div>
 							</a>
 						</Link>
 						<motion.div className="absolute -bottom-1 lefet-0 h-1 bg-red-700" variants={lineVariants} />

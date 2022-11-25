@@ -9,6 +9,8 @@ import { ArticleCategoryType, ArticleItemType } from "../types/article"
 import client from "../lib/client"
 import { ParsedUrlQuery } from "querystring"
 import { getMoreArticlesByCategoryQuery, getMoreArticlesQuery } from "../lib/grocQueries"
+import { MemberType } from "../types/member"
+import { ProjectType } from "../types/project"
 
 type Props = {
 	children: ReactNode
@@ -33,7 +35,11 @@ export const Provider = ({ children }: Props) => {
 	const [articlesLoading, setArticlesLoading] = useState<boolean>(false)
 	const [articles, setArticles] = useState<ArticleItemType[]>([])
 
+	const [members, setMembers] = useState<MemberType[]>([])
+
 	const [categories, setCategories] = useState<ArticleCategoryType[]>([])
+
+	const [projects, setProjects] = useState<ProjectType[]>([])
 
 	const addContact = async (values: FormType) => {
 		let contactId
@@ -102,6 +108,10 @@ export const Provider = ({ children }: Props) => {
 		setCategories,
 		load,
 		setLoad,
+		members,
+		setMembers,
+		projects,
+		setProjects,
 	}
 
 	return <Context.Provider value={value}>{children}</Context.Provider>

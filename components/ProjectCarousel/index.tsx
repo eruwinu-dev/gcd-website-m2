@@ -1,23 +1,25 @@
-import React from "react"
-
-import type { ProjectType } from "../../types/project"
-
-import { AnimatePresence, motion } from "framer-motion"
-
-import { Carousel } from "react-responsive-carousel"
-import "react-responsive-carousel/lib/styles/carousel.min.css"
+import React, { useMemo } from "react"
 import Image from "next/image"
-import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
 import { useRouter } from "next/router"
 
+import { Carousel } from "react-responsive-carousel"
+import { AnimatePresence, motion } from "framer-motion"
+
+import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { getOptimizedImageUrl } from "../../lib/cloudinaryImage"
+
 type Props = {
-	project: ProjectType
+	images: string
 }
 
 /* eslint-disable react/display-name */
 
-const ProjectCarousel = ({ project }: Props) => {
+const ProjectCarousel = ({ images }: Props) => {
 	const { asPath, query, push } = useRouter()
+
+	const imagesList = useMemo(() => images.split("\n"), [images])
 
 	const changeCarouselIndex = (value: number) => {
 		push(
@@ -53,19 +55,19 @@ const ProjectCarousel = ({ project }: Props) => {
 					selectedItem={Number(query?.photo) || 0}
 					onChange={changeCarouselIndex}
 				>
-					{project.photos.map((photo: string) => (
+					{imagesList.map((photo: string) => (
 						<div
 							className={["w-full h-auto lg:aspect-video aspect-square relative select-none"].join(" ")}
 							key={photo}
 						>
 							<Image
-								src={photo}
+								src={getOptimizedImageUrl(photo)}
 								alt={photo}
 								layout="fill"
 								objectFit="cover"
 								objectPosition="center"
 								priority
-								quality={70}
+								loading="eager"
 							/>
 						</div>
 					))}

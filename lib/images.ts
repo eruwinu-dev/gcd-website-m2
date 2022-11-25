@@ -10,3 +10,5 @@ export const processImage = getCloudinaryImageUrl(
 	"v1668953942/gcd-website/background/tinywow_Balcony-1_8447647_ujkygd.jpg"
 )
 
+export const testImage = getCloudinaryImageUrl("v1669298803/gcd-website/the-modern-barn/DJI_0031_r34m5h.jpg")
+

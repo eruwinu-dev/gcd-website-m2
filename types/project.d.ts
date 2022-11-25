@@ -1,21 +1,32 @@
+import { SlugType } from "./slug"
+
 export type ModeType = "story" | "carousel"
 
-export type ProjectCategoryType = "single" | "retail" | "multi"
-
-export type ProjectCategoryOptionsType = ProjectCategoryType | "all"
-
 export interface CategoryType {
+	_id: string
 	name: string
-	category: ProjectCategoryType | "all"
+	slug: SlugType
+	description?: string
 }
 
 export interface ProjectType {
-	url: string
+	_id: string
 	name: string
-	text: string
-	photos: string[]
-	address: string
-	team: TeamType[]
-	category: ProjectCategoryType
+	slug: SlugType
+	address?: string
+	team?: string
+	images: string
+	body?: TypedObject
+	category: CategoryType
+}
+
+export interface ProjectLinkType {
+	name: string
+	slug: SlugType
+}
+
+export interface ProjectTeamType {
+	name: string
+	position: string
 }
 
