@@ -11,8 +11,7 @@ import LandingCollage from "../components/LandingCollage"
 import ServicesList from "../components/ServicesList"
 
 import { headerTitle } from "../lib/title"
-
-import { landingImage } from "../lib/images"
+import { getCloudinaryImageUrl } from "../lib/cloudinaryImage"
 
 type Props = {}
 
@@ -136,12 +135,12 @@ const Home = (props: Props) => {
 			</section>
 			<section className="translate-y-0 relative w-full h-screen">
 				<Image
-					src="https://i.ibb.co/8dP9BMV/Patio-1.jpg"
+					src={bookConsultImage}
 					alt="Glen Charles Design Booking Image"
 					layout="fill"
 					objectFit="cover"
 					objectPosition="center"
-					quality="95"
+					quality="90"
 					priority
 					className="saturate-50"
 				/>
@@ -161,6 +160,14 @@ const Home = (props: Props) => {
 		</>
 	)
 }
+
+const bookConsultImage = getCloudinaryImageUrl(
+	"https://res.cloudinary.com/dr8eirysm/image/upload/v1669298847/gcd-website/the-modern-barn/Patio_1_aqmmnr.jpg"
+)
+
+const landingImage = getCloudinaryImageUrl(
+	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953941/gcd-website/background/tinywow_landing-background_8447681_ggk0cm.jpg"
+)
 
 export default Home
 

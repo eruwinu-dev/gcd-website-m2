@@ -1,6 +1,9 @@
-import Image from "next/image"
+import React, { MouseEvent, useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import React, { MouseEvent } from "react"
+import Image from "next/image"
+
+import { motion, useAnimation } from "framer-motion"
+
 import { getOptimizedImageUrl } from "../../../lib/cloudinaryImage"
 
 type Props = {
@@ -11,6 +14,15 @@ type Props = {
 const ProjectGalleryItem = ({ photo, index }: Props) => {
 	const router = useRouter()
 	const { asPath } = router
+	const controls = useAnimation()
+	const [load, setLoad] = useState<boolean>(false)
+
+	useEffect(() => {
+		if (load) {
+			controls.start("visible")
+		}
+		return () => {}
+	}, [load])
 
 	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
 		router.push(
@@ -25,18 +37,38 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 	}
 
 	return (
-		<div className="project-gallery-item" onClick={viewGalleryItem(index)}>
-			<div className="relative w-full h-full overflow-hidden generic-transition hover:scale-105">
+		<div
+			className={["project-gallery-item", !load ? "animate-pulse bg-gray-200" : ""].join(" ")}
+			onClick={viewGalleryItem(index)}
+		>
+			<motion.div
+				className="relative w-full h-full overflow-hidden generic-transition hover:scale-105"
+				variants={itemVariants}
+				initial="hidden"
+				animate={controls}
+			>
 				<Image
 					src={getOptimizedImageUrl(photo)}
 					alt={photo}
 					layout="fill"
 					objectFit="cover"
 					objectPosition="center"
+					onLoadingComplete={() => setLoad(true)}
 				/>
-			</div>
+			</motion.div>
 		</div>
 	)
+}
+
+const itemVariants = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: {
+			duration: 0.3,
+			ease: "easeInOut",
+		},
+	},
 }
 
 export default ProjectGalleryItem

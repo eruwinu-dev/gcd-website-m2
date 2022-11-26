@@ -1,27 +1,9 @@
 import React from "react"
 import Image from "next/image"
 import type { CollageType } from ".././../types/collage"
+import { getOptimizedImageUrl } from "../../lib/cloudinaryImage"
 
 type Props = {}
-
-const collages: CollageType[] = [
-	{
-		picture: "https://i.ibb.co/fq9cFRc/open-room-1.jpg",
-		format: "col-span-2 row-span-2",
-	},
-	{
-		picture: "https://i.ibb.co/DGNpcXZ/5-D-photos-2-of-13-FIXED.jpg",
-		format: "col-span-3 row-span-4",
-	},
-	{
-		picture: "https://i.ibb.co/Zdw6BG8/Window-3.jpg",
-		format: "col-span-2 row-span-3",
-	},
-	{
-		picture: "https://i.ibb.co/xGhMcS0/Rancho-Palo-Verdes-Craig-House-38-of-62.jpg",
-		format: "col-span-3",
-	},
-]
 
 const LandingCollage = (props: Props) => {
 	return (
@@ -30,8 +12,9 @@ const LandingCollage = (props: Props) => {
 				{collages.map((tile: CollageType, index: number) => (
 					<div className={["relative w-full h-full aspect-video", tile.format].join(" ")} key={tile.picture}>
 						<Image
-							src={tile.picture}
+							src={getOptimizedImageUrl(tile.picture)}
 							alt={tile.picture}
+							loading="eager"
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
@@ -43,8 +26,9 @@ const LandingCollage = (props: Props) => {
 				{collages.map((tile: CollageType, index: number) => (
 					<div className={["relative w-full h-fit aspect-video"].join(" ")} key={tile.picture}>
 						<Image
-							src={tile.picture}
+							src={getOptimizedImageUrl(tile.picture)}
 							alt={tile.picture}
+							loading="eager"
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
@@ -55,6 +39,29 @@ const LandingCollage = (props: Props) => {
 		</div>
 	)
 }
+
+const collages: CollageType[] = [
+	{
+		picture:
+			"https://res.cloudinary.com/dr8eirysm/image/upload/v1669362562/gcd-website/the-cyclist/open_room_1_izrncp.jpg",
+		format: "col-span-2 row-span-2",
+	},
+	{
+		picture:
+			"https://res.cloudinary.com/dr8eirysm/image/upload/v1669364150/gcd-website/woodland-hills-home/5D_photos_2_of_13_FIXED_ez5ggm.jpg",
+		format: "col-span-3 row-span-4",
+	},
+	{
+		picture:
+			"https://res.cloudinary.com/dr8eirysm/image/upload/v1669339503/gcd-website/a-montecito-classic/Window_3_a9lfa9.jpg",
+		format: "col-span-2 row-span-3",
+	},
+	{
+		picture:
+			"https://res.cloudinary.com/dr8eirysm/image/upload/v1669366025/gcd-website/the-bernadus-ranch-house/Rancho_Palo_Verdes_-_Craig_House_38_of_62_ycymmv.jpg",
+		format: "col-span-3",
+	},
+]
 
 export default LandingCollage
 

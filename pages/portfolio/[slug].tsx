@@ -68,9 +68,9 @@ const Project = ({ project, previous, next }: Props) => {
 					project.images ? (
 						<ProjectGallery images={project.images} />
 					) : null
-				) : project.body ? (
+				) : (
 					<ProjectDescription project={project} />
-				) : null}
+				)}
 				<ProjectBottomNav previous={previous} next={next} />
 			</div>
 		</>

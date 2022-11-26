@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Head from "next/head"
-import type { GetStaticProps, InferGetStaticPropsType } from "next"
+import type { GetServerSideProps } from "next"
 
 import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
 
@@ -15,9 +15,12 @@ import NewsPageHeader from "../../components/NewsPageHeader"
 import NewsCategoriesList from "../../components/NewsCategoriesList"
 import useStateContext from "../../context/State"
 
-type Props = {}
+type Props = {
+	articlesFromSanity: ArticleItemType[]
+	categoriesFromSanity: ArticleCategoryType[]
+}
 
-const News = ({ articlesFromSanity, categoriesFromSanity }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const News = ({ articlesFromSanity, categoriesFromSanity }: Props) => {
 	const { setArticles, setCategories } = useStateContext()
 
 	useEffect(() => {
@@ -38,7 +41,7 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: InferGetStaticPropsT
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const { articles, categories, total } = (await client.fetch(getArticlesCategoriesQuery)) as {
 		articles: ArticleItemType[]
 		categories: ArticleCategoryType[]

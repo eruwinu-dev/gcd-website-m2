@@ -32,8 +32,6 @@ const PortfolioGallery = (props: Props) => {
 		[projects]
 	)
 
-	const key = "current" as keyof ProjectType
-
 	const isSelectedCategory = (slug: string) => {
 		if (slug === "all" && !query.category) return true
 		else if (slug === query.category) return true

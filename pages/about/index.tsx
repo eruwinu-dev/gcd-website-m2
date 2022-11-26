@@ -1,17 +1,22 @@
-import Head from "next/head"
 import React, { useEffect, useRef } from "react"
+import Head from "next/head"
+import Image from "next/image"
+import { GetServerSideProps } from "next"
+
+import { motion } from "framer-motion"
+
+import type { MemberType } from "../../types/member"
+
 import AboutCollage from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
 import TeamGallery from "../../components/TeamGallery"
-import Image from "next/image"
+
+import useStateContext from "../../context/State"
+
 import { headerTitle } from "../../lib/title"
-import { motion } from "framer-motion"
-import { aboutImage } from "../../lib/images"
-import { GetStaticProps } from "next"
 import client from "../../lib/client"
 import { getMembers } from "../../lib/grocQueries"
-import { MemberType } from "../../types/member"
-import useStateContext from "../../context/State"
+import { getCloudinaryImageUrl } from "../../lib/cloudinaryImage"
 
 type Props = {
 	members: MemberType[]
@@ -72,7 +77,7 @@ const About = ({ members }: Props) => {
 			</section>
 			<section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4">
 				<div className="lg:w-1/2 md:w-10/12  w-full h-auto flex flex-col items-center justify-center lg:p-16 p-8">
-				<p className="text-white indent-4 text-justify leading-loose tracking-wider text-lg w-full italic">
+					<p className="text-white indent-4 text-justify leading-loose tracking-wider text-lg w-full italic">
 						Any style can be emulated, but the truly talented architects are those that can masterfully
 						create designs of any style and period, historically correct and with strong precedence from the
 						entire history of architecture.
@@ -82,7 +87,7 @@ const About = ({ members }: Props) => {
 			<TeamGallery />
 			<section className="relative w-full h-screen translate-y-0 aspect-video">
 				<Image
-					src="https://i.ibb.co/HrbGy9v/Michigan-Exterior-3-2.jpg"
+					src={bookConsultImage}
 					alt="Glen Charles Booking Image"
 					layout="fill"
 					objectFit="cover"
@@ -109,7 +114,7 @@ const About = ({ members }: Props) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const members = (await client.fetch(getMembers)) as MemberType[]
 
 	return {
@@ -130,6 +135,14 @@ const sectionVariants = {
 		},
 	},
 }
+
+const aboutImage = getCloudinaryImageUrl(
+	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953942/gcd-website/background/tinywow_Staircase-3_8447767_uxqfed.jpg"
+)
+
+const bookConsultImage = getCloudinaryImageUrl(
+	"https://res.cloudinary.com/dr8eirysm/image/upload/v1669338172/gcd-website/the-music-barn/Michigan_Exterior_3_fmxbzu.jpg"
+)
 
 export default About
 

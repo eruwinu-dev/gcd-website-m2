@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import Head from "next/head"
 import React, { useEffect, useRef } from "react"
 import PortfolioGallery from "../../components/PortfolioGallery"
@@ -38,7 +38,7 @@ const Portfolio = ({ projects }: Props) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const projects = (await client.fetch(getProjects)) as ProjectType[]
 
 	return {

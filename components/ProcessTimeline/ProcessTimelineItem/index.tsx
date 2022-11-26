@@ -14,10 +14,10 @@ const ProcessTimelineItem = ({ process }: Props) => {
 		<motion.div
 			className="process-timeline-item"
 			key={process ? process.phase : "0"}
-			initial={{ y: 10, opacity: 0 }}
-			animate={{ y: 0, opacity: 1 }}
-			exit={{ y: -10, opacity: 0 }}
-			transition={{ duration: 0.4 }}
+			variants={stepVariants}
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
 		>
 			<div className="process-timeline-item-text-container">
 				<h3 className="process-timeline-item-text text-center">{process.title}</h3>
@@ -30,6 +30,27 @@ const ProcessTimelineItem = ({ process }: Props) => {
 			</div>
 		</motion.div>
 	)
+}
+
+const stepVariants = {
+	hidden: {
+		y: 10,
+		opacity: 0,
+		transition: {
+			duration: 0.5,
+			ease: "easeInOut",
+			type: "spring",
+		},
+	},
+	visible: {
+		y: 0,
+		opacity: 1,
+		transition: {
+			duration: 0.5,
+			ease: "easeInOut",
+			type: "spring",
+		},
+	},
 }
 
 export default ProcessTimelineItem

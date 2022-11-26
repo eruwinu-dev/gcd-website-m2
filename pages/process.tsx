@@ -5,22 +5,11 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 import ProcessTimeline from "../components/ProcessTimeline"
+
 import { headerTitle } from "../lib/title"
-import { processImage } from "../lib/images"
+import { getCloudinaryImageUrl } from "../lib/cloudinaryImage"
 
 type Props = {}
-
-const sectionVariants = {
-	start: {
-		opacity: 0.9,
-	},
-	end: {
-		opacity: 1,
-		transition: {
-			duration: 0.75,
-		},
-	},
-}
 
 const Process = (props: Props) => {
 	return (
@@ -59,6 +48,22 @@ const Process = (props: Props) => {
 			<ProcessTimeline />
 		</>
 	)
+}
+
+const processImage = getCloudinaryImageUrl(
+	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953942/gcd-website/background/tinywow_Balcony-1_8447647_ujkygd.jpg"
+)
+
+const sectionVariants = {
+	start: {
+		opacity: 0.9,
+	},
+	end: {
+		opacity: 1,
+		transition: {
+			duration: 0.75,
+		},
+	},
 }
 
 export default Process

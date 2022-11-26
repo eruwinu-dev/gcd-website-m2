@@ -117,7 +117,7 @@
 		@apply w-full h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row gap-x-8;
 	}
 	.process-timeline-item-text-container {
-		@apply flex lg:flex-col md:flex-col flex-col-reverse lg:items-end md:items-end items-center justify-center lg:pr-8 md:pr-8 pr-0;
+		@apply flex flex-col lg:items-end md:items-end items-center justify-center lg:pr-8 md:pr-8 pr-0;
 	}
 	.process-timeline-item-text {
 		@apply lg:w-3/5 md:w-4/5 w-full lg:px-0 md:px-0 px-4 pb-4 my-4;
