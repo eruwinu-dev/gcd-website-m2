@@ -33,47 +33,55 @@ const ProjectCarousel = ({ images }: Props) => {
 	}
 
 	return (
-		<AnimatePresence>
-			<motion.div
-				className="project-carousel-container"
-				variants={carouselVariants}
-				initial="hidden"
-				animate="show"
-			>
-				<Carousel
-					showThumbs={false}
-					showIndicators={false}
-					showStatus={false}
-					swipeable
-					emulateTouch
-					swipeScrollTolerance={100}
-					transitionTime={200}
-					infiniteLoop
-					className="w-full h-full mt-4 mx-auto"
-					renderArrowPrev={carouselControl("left")}
-					renderArrowNext={carouselControl("right")}
-					selectedItem={Number(query?.photo) || 0}
-					onChange={changeCarouselIndex}
+		<>
+			<AnimatePresence>
+				<motion.div
+					className="project-carousel-container"
+					variants={carouselVariants}
+					initial="hidden"
+					animate="show"
 				>
-					{imagesList.map((photo: string) => (
-						<div
-							className={["w-full h-auto lg:aspect-video aspect-square relative select-none"].join(" ")}
-							key={photo}
-						>
-							<Image
-								src={getOptimizedImageUrl(photo)}
-								alt={photo}
-								layout="fill"
-								objectFit="cover"
-								objectPosition="center"
-								priority
-								loading="eager"
-							/>
-						</div>
-					))}
-				</Carousel>
-			</motion.div>
-		</AnimatePresence>
+					<Carousel
+						showThumbs={false}
+						showIndicators={false}
+						showStatus={false}
+						swipeable
+						emulateTouch
+						swipeScrollTolerance={100}
+						transitionTime={200}
+						infiniteLoop
+						className="w-full h-full mt-4 mx-auto"
+						renderArrowPrev={carouselControl("left")}
+						renderArrowNext={carouselControl("right")}
+						selectedItem={Number(query?.photo) || 0}
+						onChange={changeCarouselIndex}
+					>
+						{imagesList.map((photo: string) => (
+							<div
+								className={["w-full h-auto lg:aspect-video aspect-square relative select-none"].join(
+									" "
+								)}
+								key={photo}
+							>
+								<Image
+									src={getOptimizedImageUrl(photo)}
+									alt={photo}
+									layout="fill"
+									objectFit={
+										["the-art-deco", "adelbert"].includes(asPath.split("?")[0].split("/")[2])
+											? "contain"
+											: "cover"
+									}
+									objectPosition="center"
+									priority
+									loading="eager"
+								/>
+							</div>
+						))}
+					</Carousel>
+				</motion.div>
+			</AnimatePresence>
+		</>
 	)
 }
 
