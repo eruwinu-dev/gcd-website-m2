@@ -9,7 +9,12 @@ const ContactList = ({ size }: Props) => {
 	return (
 		<div className="contact-list h-fit">
 			<div>
-				<a href="mailto:inquiry@gcharlesdesign.com" target="_blank" rel="noopener noreferrer">
+				<a
+					href="mailto:inquiry@gcharlesdesign.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="hover:text-red-700 hover:underline"
+				>
 					<div className="w-6 h-6">
 						<MailIcon />
 					</div>
@@ -22,13 +27,14 @@ const ContactList = ({ size }: Props) => {
 			</div>
 			<div>
 				<a
-					href="https://www.google.com/maps/place/Westlake+Village+Industrial+Park,+31312+Via+Colinas+%23109,+Westlake+Village,+CA+91362/@34.1564555,-118.8096535,17z/data=!3m1!4b1!4m5!3m4!1s0x80e8245959a89a85:0xecd35589a8231181!8m2!3d34.1564555!4d-118.8074648"
+					href="https://www.google.com/maps/place/6860+Canby+Ave+UNIT+113,+Reseda,+CA+91335,+USA/@34.1957441,-118.5339613,17z/data=!3m1!4b1!4m5!3m4!1s0x80c2997f42ed0517:0xac97d99b47c7624b!8m2!3d34.1957441!4d-118.5339613"
 					target="_blank"
 					rel="noopener noreferrer"
+					className="hover:text-red-700 hover:underline"
 				>
 					<MapPinIcon />
 					<span className={size == "large" ? "text-base" : ""}>
-						31312 Via Colinas #109, Westlake Village, CA 91362
+						6860 Canby Avenue, Suite 113 Los Angeles, California 91335
 					</span>
 				</a>
 			</div>
