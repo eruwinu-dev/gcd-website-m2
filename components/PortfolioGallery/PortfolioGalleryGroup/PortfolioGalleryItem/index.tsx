@@ -73,6 +73,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 							alt={project.name}
 							layout="fill"
 							loading="eager"
+							unoptimized
 							objectFit="cover"
 							objectPosition="top"
 							className="generic-transition hover:scale-105"

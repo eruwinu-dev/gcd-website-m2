@@ -14,6 +14,7 @@ const Footer = (props: Props) => {
 						alt="Glen Charles Design Logo"
 						layout="fill"
 						objectFit="contain"
+						loading="eager"
 						unoptimized
 					/>
 				</div>

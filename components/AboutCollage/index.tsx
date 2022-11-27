@@ -17,6 +17,8 @@ const AboutCollage = (props: Props) => {
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
+							loading="eager"
+							unoptimized
 						/>
 					</div>
 				))}
@@ -30,6 +32,8 @@ const AboutCollage = (props: Props) => {
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
+							loading="eager"
+							unoptimized
 						/>
 					</div>
 				))}

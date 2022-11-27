@@ -44,6 +44,7 @@ const Home = (props: Props) => {
 					objectPosition="left"
 					quality="95"
 					priority
+					loading="eager"
 				/>
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center">
@@ -126,6 +127,7 @@ const Home = (props: Props) => {
 										alt="AIA Logo"
 										layout="fill"
 										objectFit="contain"
+										loading="eager"
 										unoptimized
 									/>
 								</div>
@@ -135,6 +137,7 @@ const Home = (props: Props) => {
 										alt="AIA Logo"
 										layout="fill"
 										objectFit="contain"
+										loading="eager"
 										unoptimized
 									/>
 								</div>
@@ -154,6 +157,7 @@ const Home = (props: Props) => {
 					quality="90"
 					priority
 					className="saturate-50"
+					loading="eager"
 				/>
 				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />

@@ -78,6 +78,8 @@ const Header = (props: Props) => {
 									layout="fill"
 									objectFit="contain"
 									className="cursor-pointer"
+									loading="eager"
+									unoptimized
 								/>
 							</div>
 						}
