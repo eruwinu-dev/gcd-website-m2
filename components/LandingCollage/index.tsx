@@ -1,7 +1,6 @@
 import React from "react"
 import Image from "next/image"
 import type { CollageType } from ".././../types/collage"
-import { getOptimizedImageUrl } from "../../lib/cloudinaryImage"
 
 type Props = {}
 
@@ -12,7 +11,7 @@ const LandingCollage = (props: Props) => {
 				{collages.map((tile: CollageType, index: number) => (
 					<div className={["relative w-full h-full aspect-video", tile.format].join(" ")} key={tile.picture}>
 						<Image
-							src={getOptimizedImageUrl(tile.picture)}
+							src={tile.picture}
 							alt={tile.picture}
 							loading="eager"
 							layout="fill"
@@ -26,7 +25,7 @@ const LandingCollage = (props: Props) => {
 				{collages.map((tile: CollageType, index: number) => (
 					<div className={["relative w-full h-fit aspect-video"].join(" ")} key={tile.picture}>
 						<Image
-							src={getOptimizedImageUrl(tile.picture)}
+							src={tile.picture}
 							alt={tile.picture}
 							loading="eager"
 							layout="fill"

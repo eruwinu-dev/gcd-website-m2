@@ -8,7 +8,6 @@ import { wrap } from "popmotion"
 import type { ProjectType } from "../../../../types/project"
 
 import useStateContext from "../../../../context/State"
-import { getOptimizedImageUrl } from "../../../../lib/cloudinaryImage"
 
 type Props = {
 	project: ProjectType
@@ -67,7 +66,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 						exit="end"
 					>
 						<Image
-							src={getOptimizedImageUrl(photoList[photoIndex])}
+							src={photoList[photoIndex]}
 							alt={project.name}
 							layout="fill"
 							loading="eager"

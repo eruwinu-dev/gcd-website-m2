@@ -16,7 +16,6 @@ import useStateContext from "../../context/State"
 import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
 import { getMembers } from "../../lib/grocQueries"
-import { getCloudinaryImageUrl } from "../../lib/cloudinaryImage"
 
 type Props = {
 	members: MemberType[]
@@ -136,13 +135,11 @@ const sectionVariants = {
 	},
 }
 
-const aboutImage = getCloudinaryImageUrl(
+const aboutImage =
 	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953942/gcd-website/background/tinywow_Staircase-3_8447767_uxqfed.jpg"
-)
 
-const bookConsultImage = getCloudinaryImageUrl(
+const bookConsultImage =
 	"https://res.cloudinary.com/dr8eirysm/image/upload/v1669338172/gcd-website/the-music-barn/Michigan_Exterior_3_fmxbzu.jpg"
-)
 
 export default About
 

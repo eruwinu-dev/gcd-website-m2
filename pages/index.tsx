@@ -11,7 +11,6 @@ import LandingCollage from "../components/LandingCollage"
 import ServicesList from "../components/ServicesList"
 
 import { headerTitle } from "../lib/title"
-import { getCloudinaryImageUrl } from "../lib/cloudinaryImage"
 
 type Props = {}
 
@@ -122,10 +121,22 @@ const Home = (props: Props) => {
 							</p>
 							<div className="lg:w-3/4 md:w-11/12 w-full flex flex-row items-center justify-center">
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[2.38/1] overflow-hidden">
-									<Image src="/aia-logo.png" alt="AIA Logo" layout="fill" objectFit="contain" />
+									<Image
+										src="/aia-logo.png"
+										alt="AIA Logo"
+										layout="fill"
+										objectFit="contain"
+										unoptimized
+									/>
 								</div>
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[1.60/1] overflow-hidden">
-									<Image src="/ncarb.png" alt="AIA Logo" layout="fill" objectFit="contain" />
+									<Image
+										src="/ncarb.png"
+										alt="AIA Logo"
+										layout="fill"
+										objectFit="contain"
+										unoptimized
+									/>
 								</div>
 							</div>
 						</div>
@@ -161,13 +172,11 @@ const Home = (props: Props) => {
 	)
 }
 
-const bookConsultImage = getCloudinaryImageUrl(
+const bookConsultImage =
 	"https://res.cloudinary.com/dr8eirysm/image/upload/v1669298847/gcd-website/the-modern-barn/Patio_1_aqmmnr.jpg"
-)
 
-const landingImage = getCloudinaryImageUrl(
+const landingImage =
 	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953941/gcd-website/background/tinywow_landing-background_8447681_ggk0cm.jpg"
-)
 
 export default Home
 

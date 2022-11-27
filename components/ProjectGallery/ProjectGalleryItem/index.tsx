@@ -4,8 +4,6 @@ import Image from "next/image"
 
 import { motion, useAnimation } from "framer-motion"
 
-import { getOptimizedImageUrl } from "../../../lib/cloudinaryImage"
-
 type Props = {
 	photo: string
 	index: number
@@ -48,7 +46,7 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 				animate={controls}
 			>
 				<Image
-					src={getOptimizedImageUrl(photo)}
+					src={photo}
 					alt={photo}
 					layout="fill"
 					objectFit="cover"

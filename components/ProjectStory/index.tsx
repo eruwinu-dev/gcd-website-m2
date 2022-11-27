@@ -1,15 +1,18 @@
 import Image from "next/image"
 import React, { MouseEvent, useMemo } from "react"
+import { useRouter } from "next/router"
+
 import { motion, AnimatePresence } from "framer-motion"
-import useStateContext from "../../context/State"
+import { PortableText } from "@portabletext/react"
 
 import type { ModeType, ProjectType } from "../../types/project"
+
 import ProjectTeam from "../ProjectTeam"
-import { ChevronDoubleRightIcon, CloseIcon } from "../../lib/icons"
-import { useRouter } from "next/router"
-import { PortableText } from "@portabletext/react"
 import { CustomProjectStoryComponents } from "../CustomPTComponents"
-import { getOptimizedImageUrl } from "../../lib/cloudinaryImage"
+
+import { ChevronDoubleRightIcon, CloseIcon } from "../../lib/icons"
+
+import useStateContext from "../../context/State"
 
 type Props = {
 	project: ProjectType
@@ -41,7 +44,7 @@ const ProjectStory = ({ project }: Props) => {
 					className="relative w-full lg:h-screen h-[100vh] lg:translate-y-0 md:-translate-y-[3.5rem] -translate-y-[3.5rem] flex flex-col items-center overflow-x-hidden aspect-video"
 				>
 					<Image
-						src={getOptimizedImageUrl(photos[0])}
+						src={photos[0]}
 						alt={project.name}
 						layout="fill"
 						objectFit="cover"

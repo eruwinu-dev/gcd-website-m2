@@ -7,7 +7,6 @@ import { motion } from "framer-motion"
 import ProcessTimeline from "../components/ProcessTimeline"
 
 import { headerTitle } from "../lib/title"
-import { getCloudinaryImageUrl } from "../lib/cloudinaryImage"
 
 type Props = {}
 
@@ -50,9 +49,8 @@ const Process = (props: Props) => {
 	)
 }
 
-const processImage = getCloudinaryImageUrl(
+const processImage =
 	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953942/gcd-website/background/tinywow_Balcony-1_8447647_ujkygd.jpg"
-)
 
 const sectionVariants = {
 	start: {

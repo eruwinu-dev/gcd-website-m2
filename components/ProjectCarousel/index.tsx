@@ -8,7 +8,6 @@ import { AnimatePresence, motion } from "framer-motion"
 import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import { getOptimizedImageUrl } from "../../lib/cloudinaryImage"
 
 type Props = {
 	images: string
@@ -64,7 +63,7 @@ const ProjectCarousel = ({ images }: Props) => {
 								key={photo}
 							>
 								<Image
-									src={getOptimizedImageUrl(photo)}
+									src={photo}
 									alt={photo}
 									layout="fill"
 									objectFit={
@@ -73,8 +72,6 @@ const ProjectCarousel = ({ images }: Props) => {
 											: "cover"
 									}
 									objectPosition="center"
-									priority
-									loading="eager"
 								/>
 							</div>
 						))}

@@ -18,6 +18,7 @@ const NewsArticleAuthor = ({ author }: Props) => {
 					objectFit="cover"
 					objectPosition="bottom"
 					className="rounded-full"
+					unoptimized
 				/>
 			</div>
 			<p className="w-1/3 flex flex-col items-start space-y-2">
