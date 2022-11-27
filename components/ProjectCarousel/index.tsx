@@ -73,7 +73,6 @@ const ProjectCarousel = ({ images }: Props) => {
 											: "cover"
 									}
 									objectPosition="center"
-									loading="eager"
 								/>
 							</div>
 						))}
