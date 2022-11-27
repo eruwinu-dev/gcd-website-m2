@@ -49,7 +49,6 @@ const About = ({ members }: Props) => {
 					objectPosition="left"
 					quality="95"
 					priority
-					loading="eager"
 				/>
 				<div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
 					<div className="banner-spacer" />
@@ -94,7 +93,6 @@ const About = ({ members }: Props) => {
 					objectPosition="center"
 					quality="95"
 					priority
-					loading="eager"
 				/>
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
 					<div className="lg:flex md:flex hidden" />

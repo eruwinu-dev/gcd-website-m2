@@ -72,8 +72,6 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 							src={photoList[photoIndex]}
 							alt={project.name}
 							layout="fill"
-							loading="eager"
-							unoptimized
 							objectFit="cover"
 							objectPosition="top"
 							className="generic-transition hover:scale-105"

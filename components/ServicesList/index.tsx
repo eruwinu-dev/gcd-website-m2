@@ -45,7 +45,6 @@ const ServicesList = (props: Props) => {
 							layout="fill"
 							objectFit="cover"
 							className="generic-transition hover:scale-105 cursor-pointer"
-							loading="eager"
 							unoptimized
 							onLoadingComplete={() => setLoad(true)}
 						/>

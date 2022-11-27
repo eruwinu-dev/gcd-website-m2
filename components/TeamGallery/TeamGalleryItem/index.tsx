@@ -34,6 +34,7 @@ const TeamGalleryItem = ({ member }: Props) => {
 							alt={member.name}
 							layout="fill"
 							objectFit="cover"
+							loading="eager"
 							objectPosition="bottom"
 							className="generic-transition hover:scale-105 cursor-pointer"
 							onLoadingComplete={() => setLoad(true)}
