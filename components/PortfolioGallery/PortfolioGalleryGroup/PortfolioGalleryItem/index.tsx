@@ -15,6 +15,7 @@ type Props = {
 
 const PortfolioGalleryItem = ({ project }: Props) => {
 	const { setStoryOpen } = useStateContext()
+	const [load, setLoad] = useState<boolean>(false)
 	const [photo, setPhoto] = useState<number>(0)
 	const [hover, setHover] = useState<boolean>(false)
 
@@ -25,7 +26,9 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			if (photoList.length === 1) return
+			if (!load) return
 			setPhoto((photo) => (hover ? photo + 1 : 0))
+			setLoad(false)
 		}, 1000)
 
 		return () => {
@@ -73,6 +76,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 							objectFit="cover"
 							objectPosition="top"
 							className="generic-transition hover:scale-105"
+							onLoadingComplete={() => setLoad(true)}
 						/>
 					</motion.div>
 					<div className="portfolio-gallery-item-caption">
