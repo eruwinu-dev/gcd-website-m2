@@ -40,6 +40,7 @@ const Member = ({ member }: Props) => {
 							objectFit="cover"
 							objectPosition="bottom"
 							loading="eager"
+							unoptimized
 						/>
 					</div>
 				</div>

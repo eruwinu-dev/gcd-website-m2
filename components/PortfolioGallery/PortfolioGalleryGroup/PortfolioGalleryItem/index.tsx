@@ -61,7 +61,10 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 						onMouseLeave={() => {
 							setHover(false)
 						}}
-						className={["w-full h-auto relative aspect-video overflow-hidden cursor-pointer"].join(" ")}
+						className={[
+							"w-full h-auto relative aspect-video overflow-hidden cursor-pointer",
+							!load && !hover ? "animate-pulse bg-gray-300" : "",
+						].join(" ")}
 						key={photoIndex}
 						variants={imageVariants}
 						animate="hover"
@@ -76,6 +79,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 							objectPosition="top"
 							className="generic-transition hover:scale-105"
 							onLoadingComplete={() => setLoad(true)}
+							unoptimized
 						/>
 					</motion.div>
 					<div className="portfolio-gallery-item-caption">

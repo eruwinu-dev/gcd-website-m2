@@ -38,7 +38,12 @@ const ServicesList = (props: Props) => {
 						once: true,
 					}}
 				>
-					<div className="relative lg:w-11/12 w-full h-auto aspect-video overflow-hidden">
+					<div
+						className={[
+							"relative lg:w-11/12 w-full h-auto aspect-video overflow-hidden",
+							!load ? "animate-pulse bg-gray-300" : "",
+						].join(" ")}
+					>
 						<Image
 							src={service.photo}
 							alt={service.title}
@@ -46,6 +51,7 @@ const ServicesList = (props: Props) => {
 							objectFit="cover"
 							className="generic-transition hover:scale-105 cursor-pointer"
 							unoptimized
+							loading="eager"
 							onLoadingComplete={() => setLoad(true)}
 						/>
 					</div>

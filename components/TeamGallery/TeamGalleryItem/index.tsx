@@ -1,8 +1,8 @@
-import React, { memo, useEffect, useState } from "react"
+import React, { memo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 
 import type { MemberType } from "../../../types/member"
 
@@ -13,20 +13,18 @@ type Props = {
 }
 
 const TeamGalleryItem = ({ member }: Props) => {
-	const [load, setLoad] = useState<boolean>(false)
-	const controls = useAnimation()
-
-	useEffect(() => {
-		if (load) {
-			controls.start("visible")
-		}
-		return () => {}
-	}, [load])
-
 	return (
 		<>
 			<div className={member.order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
-			<motion.div className="team-gallery-item" variants={itemVariants} initial="hidden" animate={controls}>
+			<motion.div
+				className="team-gallery-item"
+				variants={itemVariants}
+				initial="hidden"
+				whileInView="visible"
+				viewport={{
+					once: true,
+				}}
+			>
 				<Link href={`about/${member.slug.current}`}>
 					<div className="relative lg:w-full md:w-full w-3/5 h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center">
 						<Image
@@ -35,9 +33,9 @@ const TeamGalleryItem = ({ member }: Props) => {
 							layout="fill"
 							objectFit="cover"
 							loading="eager"
+							unoptimized
 							objectPosition="bottom"
 							className="generic-transition hover:scale-105 cursor-pointer"
-							onLoadingComplete={() => setLoad(true)}
 						/>
 					</div>
 				</Link>
