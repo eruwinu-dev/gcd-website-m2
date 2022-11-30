@@ -50,6 +50,7 @@ const ProjectStory = ({ project }: Props) => {
 						objectFit="cover"
 						objectPosition="left"
 						priority
+						loading="eager"
 					/>
 					<div className="relative w-full h-full bg-black/60 z-[2]">
 						<motion.div

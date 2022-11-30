@@ -31,6 +31,7 @@ const Home = (props: Props) => {
 					objectPosition="left"
 					quality="95"
 					priority
+					loading="eager"
 				/>
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center">

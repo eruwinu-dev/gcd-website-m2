@@ -69,6 +69,7 @@ const ProjectCarousel = ({ images }: Props) => {
 									layout="fill"
 									objectFit="contain"
 									objectPosition="center"
+									loading="eager"
 								/>
 							</div>
 						))}
