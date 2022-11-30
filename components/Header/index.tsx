@@ -64,12 +64,9 @@ const Header = (props: Props) => {
 					<Link href="/">
 						{
 							<div
-								className={[
-									"generic-transition",
-									"relative h-[2.5rem] w-auto",
-									"aspect-[1.32/1]",
-									offset > limit ? "mx-2.5" : "mx-1",
-								].join(" ")}
+								className={["generic-transition", "relative h-[2.5rem] w-auto", "aspect-[1.32/1]"].join(
+									" "
+								)}
 								onClick={() => setHeaderOpen((open: boolean) => false)}
 							>
 								<Image
@@ -78,7 +75,6 @@ const Header = (props: Props) => {
 									layout="fill"
 									objectFit="contain"
 									className="cursor-pointer"
-									loading="eager"
 									unoptimized
 								/>
 							</div>

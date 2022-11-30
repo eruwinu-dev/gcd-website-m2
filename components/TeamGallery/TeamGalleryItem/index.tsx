@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -18,7 +18,7 @@ const TeamGalleryItem = ({ member }: Props) => {
 			<div className={member.order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
 			<motion.div
 				className="team-gallery-item"
-				variants={itemVariants}
+				variants={teamVariants}
 				initial="hidden"
 				whileInView="visible"
 				viewport={{
@@ -32,8 +32,6 @@ const TeamGalleryItem = ({ member }: Props) => {
 							alt={member.name}
 							layout="fill"
 							objectFit="cover"
-							loading="eager"
-							unoptimized
 							objectPosition="bottom"
 							className="generic-transition hover:scale-105 cursor-pointer"
 						/>
@@ -47,16 +45,15 @@ const TeamGalleryItem = ({ member }: Props) => {
 	)
 }
 
-const itemVariants = {
+const teamVariants = {
 	hidden: { opacity: 0 },
 	visible: {
 		opacity: 1,
 		transition: {
-			duration: 0.3,
-			ease: "easeInOut",
+			duration: 0.5,
 		},
 	},
 }
 
-export default memo(TeamGalleryItem)
+export default TeamGalleryItem
 

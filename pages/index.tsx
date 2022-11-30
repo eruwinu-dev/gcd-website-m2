@@ -4,7 +4,6 @@ import Head from "next/head"
 import Image from "next/image"
 
 import { useRect } from "@reach/rect"
-import { motion } from "framer-motion"
 
 import BookConsultButton from "../components/BookConsultButton"
 import LandingCollage from "../components/LandingCollage"
@@ -13,18 +12,6 @@ import ServicesList from "../components/ServicesList"
 import { headerTitle } from "../lib/title"
 
 type Props = {}
-
-const sectionVariants = {
-	start: {
-		opacity: 0.9,
-	},
-	end: {
-		opacity: 1,
-		transition: {
-			duration: 0.75,
-		},
-	},
-}
 
 const Home = (props: Props) => {
 	const sliderRef = useRef<HTMLDivElement | null>(null)
@@ -35,7 +22,7 @@ const Home = (props: Props) => {
 			<Head>
 				<title>{headerTitle}</title>
 			</Head>
-			<motion.section className="banner-section" variants={sectionVariants} initial="start" animate="end">
+			<section className="banner-section">
 				<Image
 					src={landingImage}
 					alt="Glen Charles Design Landing Image"
@@ -54,7 +41,7 @@ const Home = (props: Props) => {
 					</div>
 					<div className="banner-spacer"></div>
 				</div>
-			</motion.section>
+			</section>
 			<section className="h-fit w-full lg:flex md:flex hidden flex-row items-center justify-center pb-16">
 				<div className="w-full h-fit flex flex-col items-center justify-center" ref={sliderRef}>
 					<ServicesList />
@@ -126,7 +113,7 @@ const Home = (props: Props) => {
 										alt="AIA Logo"
 										layout="fill"
 										objectFit="contain"
-										loading="eager"
+										loading="lazy"
 										unoptimized
 									/>
 								</div>
@@ -136,7 +123,7 @@ const Home = (props: Props) => {
 										alt="AIA Logo"
 										layout="fill"
 										objectFit="contain"
-										loading="eager"
+										loading="lazy"
 										unoptimized
 									/>
 								</div>

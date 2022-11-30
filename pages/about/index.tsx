@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import Head from "next/head"
 import Image from "next/image"
-import { GetServerSideProps } from "next"
-
-import { motion } from "framer-motion"
+import { GetStaticProps } from "next"
 
 import type { MemberType } from "../../types/member"
 
@@ -40,11 +38,12 @@ const About = ({ members }: Props) => {
 			<Head>
 				<title>{`About | ${headerTitle}`}</title>
 			</Head>
-			<motion.section className="banner-section" variants={sectionVariants} initial="start" animate="end">
+			<section className="banner-section">
 				<Image
 					src={aboutImage}
 					alt="Glen Charles Design About Image"
 					layout="fill"
+					loading="eager"
 					objectFit="cover"
 					objectPosition="left"
 					quality="95"
@@ -59,7 +58,7 @@ const About = ({ members }: Props) => {
 						</p>
 					</div>
 				</div>
-			</motion.section>
+			</section>
 			<section className="lg:min-h-0 md:min-h-0 min-h-fit max-h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row lg:gap-4 md:gap-4 gap-0">
 				<div className="h-full flex flex-col items-center justify-center space-y-8 px-4">
 					<p className="lg:w-4/5 md:w-4/5 w-full">
@@ -113,7 +112,7 @@ const About = ({ members }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const members = (await client.fetch(getMembers)) as MemberType[]
 
 	return {

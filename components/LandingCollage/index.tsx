@@ -14,7 +14,6 @@ const LandingCollage = (props: Props) => {
 							src={tile.picture}
 							alt={tile.picture}
 							layout="fill"
-							loading="eager"
 							objectFit="cover"
 							objectPosition="center"
 						/>
@@ -27,7 +26,6 @@ const LandingCollage = (props: Props) => {
 						<Image
 							src={tile.picture}
 							alt={tile.picture}
-							loading="eager"
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"

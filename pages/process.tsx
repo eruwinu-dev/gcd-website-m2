@@ -2,8 +2,6 @@ import Head from "next/head"
 import React from "react"
 import Image from "next/image"
 
-import { motion } from "framer-motion"
-
 import ProcessTimeline from "../components/ProcessTimeline"
 
 import { headerTitle } from "../lib/title"
@@ -17,7 +15,7 @@ const Process = (props: Props) => {
 				<title>{`Process | ${headerTitle}`}</title>
 			</Head>
 
-			<motion.section className="banner-section" variants={sectionVariants} initial="start" animate="end">
+			<section className="banner-section">
 				<Image
 					src={processImage}
 					alt="Glen Charles Design Process Image"
@@ -26,7 +24,6 @@ const Process = (props: Props) => {
 					objectPosition="left"
 					quality="95"
 					priority
-					loading="eager"
 				/>
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="banner-spacer" />
@@ -38,7 +35,7 @@ const Process = (props: Props) => {
 						</p>
 					</div>
 				</div>
-			</motion.section>
+			</section>
 			<section className="process-blockquote">
 				<p>
 					By hiring a licensed architect, you gain creative expertise through the design process coupled with
@@ -52,18 +49,6 @@ const Process = (props: Props) => {
 
 const processImage =
 	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953942/gcd-website/background/tinywow_Balcony-1_8447647_ujkygd.jpg"
-
-const sectionVariants = {
-	start: {
-		opacity: 0.9,
-	},
-	end: {
-		opacity: 1,
-		transition: {
-			duration: 0.75,
-		},
-	},
-}
 
 export default Process
 

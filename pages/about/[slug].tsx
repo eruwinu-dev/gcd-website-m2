@@ -39,8 +39,6 @@ const Member = ({ member }: Props) => {
 							layout="fill"
 							objectFit="cover"
 							objectPosition="bottom"
-							loading="eager"
-							unoptimized
 						/>
 					</div>
 				</div>

@@ -67,11 +67,7 @@ const ProjectCarousel = ({ images }: Props) => {
 									src={getOptimizedImageUrl(photo)}
 									alt={photo}
 									layout="fill"
-									objectFit={
-										["the-art-deco", "adelbert"].includes(asPath.split("?")[0].split("/")[2])
-											? "contain"
-											: "cover"
-									}
+									objectFit="contain"
 									objectPosition="center"
 								/>
 							</div>
@@ -87,7 +83,7 @@ const carouselControl = (side: "left" | "right") => (clickHandler: () => void, h
 	return (
 		<div
 			className={[
-				"lg:w-1/12 md:w-1/12 w-2/12 h-[90vh] absolute top-0 bottom-0 my-auto z-[2] inline-flex items-center justify-center group cursor-pointer",
+				"lg:w-[5%] md:w-[5%] w-1/12 h-[90vh] absolute top-0 bottom-0 my-auto z-[2] inline-flex items-center justify-center group cursor-pointer generic-transition",
 				side === "left" ? "left-0" : "right-0",
 			].join(" ")}
 			onClick={clickHandler}
@@ -96,7 +92,7 @@ const carouselControl = (side: "left" | "right") => (clickHandler: () => void, h
 				type="button"
 				aria-label={label}
 				className={[
-					"lg:p-2 md:p-2 p-1 text-white rounded-full generic-transition group-hover:scale-125 group-hover:bg-black/50",
+					"lg:p-2 md:p-2 p-1 text-white rounded-full bg-black/50 generic-transition group-hover:scale-125 group-hover:bg-black/70",
 					side === "left" ? "group-hover:-translate-x-2" : "group-hover:translate-x-2",
 				].join(" ")}
 			>

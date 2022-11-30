@@ -51,7 +51,6 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 					layout="fill"
 					objectFit="cover"
 					objectPosition="center"
-					unoptimized
 					onLoadingComplete={() => setLoad(true)}
 				/>
 			</motion.div>

@@ -19,8 +19,6 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"
-						loading="eager"
-						unoptimized
 					/>
 				</div>
 			)
@@ -101,8 +99,6 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 				<div className="h-auto aspect-video relative">
 					<Image
 						alt={value.alt || " "}
-						loading="eager"
-						unoptimized
 						src={urlFor(value).auto("format").url()}
 						layout="fill"
 						objectFit="cover"
@@ -185,8 +181,6 @@ export const CustomProjectStoryComponents: Partial<PortableTextReactComponents |
 				<div className="h-auto aspect-video relative">
 					<Image
 						alt={value.alt || " "}
-						loading="eager"
-						unoptimized
 						src={urlFor(value).auto("format").url()}
 						layout="fill"
 						objectFit="cover"
