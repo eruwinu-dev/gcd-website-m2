@@ -48,8 +48,6 @@ const About = ({ members }: Props) => {
 					objectPosition="left"
 					quality="95"
 					priority
-					loading="eager"
-
 				/>
 				<div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
 					<div className="banner-spacer" />

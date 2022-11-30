@@ -79,8 +79,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 							layout="fill"
 							objectFit="cover"
 							objectPosition="top"
-							unoptimized
-							loading={index !== 0 ? "lazy" : undefined}
+							loading={index !== 0 ? "lazy" : "eager"}
 							priority={Boolean(index === 0)}
 						/>
 					</div>

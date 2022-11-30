@@ -33,7 +33,7 @@ const ProjectBottomNav = ({ previous, next }: Props) => {
 						exit="hidden"
 					>
 						<label className="cursor-pointer">Previous Project</label>
-						<Link href={`./${previous.slug.current}`}>
+						<Link href={`./${previous.slug.current}`} prefetch>
 							<a onClick={resetProjectState}>
 								<div>{previous.name}</div>
 							</a>
@@ -54,7 +54,7 @@ const ProjectBottomNav = ({ previous, next }: Props) => {
 						exit="hidden"
 					>
 						<label className="cursor-pointer">Next Project</label>
-						<Link href={`./${next.slug.current}`}>
+						<Link href={`./${next.slug.current}`} prefetch>
 							<a onClick={resetProjectState}>
 								<div>{next.name}</div>
 							</a>
