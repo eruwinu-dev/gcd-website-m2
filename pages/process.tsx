@@ -24,6 +24,7 @@ const Process = (props: Props) => {
 					objectPosition="left"
 					quality="95"
 					priority
+					loading="eager"
 				/>
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="banner-spacer" />

@@ -19,6 +19,7 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"
+						loading="eager"
 					/>
 				</div>
 			)
@@ -103,6 +104,7 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"
+						loading="eager"
 					/>
 				</div>
 			)
@@ -185,6 +187,7 @@ export const CustomProjectStoryComponents: Partial<PortableTextReactComponents |
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"
+						loading="eager"
 					/>
 				</div>
 			)

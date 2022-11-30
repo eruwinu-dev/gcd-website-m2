@@ -16,6 +16,7 @@ const LandingCollage = (props: Props) => {
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
+							loading="eager"
 						/>
 					</div>
 				))}
@@ -29,6 +30,7 @@ const LandingCollage = (props: Props) => {
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
+							loading="eager"
 						/>
 					</div>
 				))}
