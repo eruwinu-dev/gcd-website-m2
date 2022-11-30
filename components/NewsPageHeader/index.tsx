@@ -13,7 +13,6 @@ const NewsPageHeader = (props: Props) => {
 					layout="fill"
 					className="cursor-pointer"
 					loading="eager"
-					unoptimized
 				/>
 			</div>
 			<span className="text-2xl text-center">A blog about all things GCD.</span>

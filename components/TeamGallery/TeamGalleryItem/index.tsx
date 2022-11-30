@@ -15,7 +15,7 @@ const TeamGalleryItem = ({ member }: Props) => {
 		<>
 			<div className={member.order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
 			<div className="team-gallery-item">
-				<Link href={`about/${member.slug.current}`}>
+				<Link href={`about/${member.slug.current}`} prefetch>
 					<div className="relative lg:w-full md:w-full w-3/5 h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center">
 						<Image
 							src={member?.image ? urlFor(member?.image).url() : ""}

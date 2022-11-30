@@ -35,7 +35,6 @@ const NewsArticleHeader = ({ post }: Props) => {
 							objectFit="cover"
 							objectPosition="bottom"
 							className="rounded-full"
-							unoptimized
 						/>
 					</div>
 					<div className="text-lg text-center font-semibold">{post.author.name}</div>

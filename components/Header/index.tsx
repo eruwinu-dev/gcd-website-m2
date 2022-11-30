@@ -61,7 +61,7 @@ const Header = (props: Props) => {
 				].join(" ")}
 			>
 				<div>
-					<Link href="/">
+					<Link href="/" prefetch>
 						{
 							<div
 								className={["generic-transition", "relative h-[2.5rem] w-auto", "aspect-[1.32/1]"].join(
@@ -75,7 +75,6 @@ const Header = (props: Props) => {
 									layout="fill"
 									objectFit="contain"
 									className="cursor-pointer"
-									unoptimized
 								/>
 							</div>
 						}
@@ -83,7 +82,7 @@ const Header = (props: Props) => {
 				</div>
 				<div className="lg:flex md:flex hidden flex-row items-center justify-center space-x-2 py-2">
 					{links.map((link: LinkType, index: number) => (
-						<Link href={link.url} key={index} passHref>
+						<Link href={link.url} key={index} passHref prefetch>
 							<motion.a
 								className={[
 									"generic-transition relative",

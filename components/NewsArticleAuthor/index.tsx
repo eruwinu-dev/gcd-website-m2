@@ -19,7 +19,6 @@ const NewsArticleAuthor = ({ author }: Props) => {
 					objectPosition="bottom"
 					className="rounded-full"
 					loading="eager"
-					unoptimized
 				/>
 			</div>
 			<p className="w-1/3 flex flex-col items-start space-y-2">

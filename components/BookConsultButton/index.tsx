@@ -21,7 +21,7 @@ const buttonVariants = {
 
 const BookConsultButton = (props: Props) => {
 	return (
-		<Link href="/contact">
+		<Link href="/contact" prefetch>
 			<motion.button
 				type="button"
 				className="border-2 border-white generic-transition text-white hover:bg-white hover:text-black"

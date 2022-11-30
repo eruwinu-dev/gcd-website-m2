@@ -28,7 +28,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 				initial="rest"
 				whileHover="hover"
 			>
-				<Link href={redirectPath}>
+				<Link href={redirectPath} prefetch>
 					<div
 						className={[
 							"w-full h-auto relative bg-gray-200 overflow-hidden cursor-pointer aspect-video",
@@ -59,7 +59,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 					) : (
 						<></>
 					)}
-					<Link href={redirectPath}>
+					<Link href={redirectPath} prefetch>
 						<a>
 							<motion.h3 variants={headerVariants} className="text-2xl">
 								{article.title}

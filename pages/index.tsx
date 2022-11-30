@@ -115,7 +115,6 @@ const Home = (props: Props) => {
 										layout="fill"
 										objectFit="contain"
 										loading="lazy"
-										unoptimized
 									/>
 								</div>
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[1.60/1] overflow-hidden">
@@ -125,7 +124,6 @@ const Home = (props: Props) => {
 										layout="fill"
 										objectFit="contain"
 										loading="lazy"
-										unoptimized
 									/>
 								</div>
 							</div>
