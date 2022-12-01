@@ -1,7 +1,6 @@
 import React, { MouseEvent } from "react"
 import { useRouter } from "next/router"
-
-import { motion } from "framer-motion"
+import { getOptimizedImageUrl } from "../../../lib/cloudinaryImage"
 
 type Props = {
 	photo: string
@@ -26,14 +25,12 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 
 	return (
 		<div className={["project-gallery-item"].join(" ")} onClick={viewGalleryItem(index)}>
-			<motion.div
-				className="relative w-full h-full overflow-hidden generic-transition hover:scale-105"
-				variants={itemVariants}
-				initial="hidden"
-				whileInView="visible"
-			>
-				<img src={photo} alt={photo} />
-			</motion.div>
+			<img
+				className="relative w-full h-full overflow-hidden generic-transition hover:scale-105 object-cover"
+				src={getOptimizedImageUrl(photo)}
+				alt={photo}
+				loading="lazy"
+			/>
 		</div>
 	)
 }

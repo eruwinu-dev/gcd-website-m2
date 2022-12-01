@@ -42,7 +42,12 @@ const ProjectStory = ({ project }: Props) => {
 					exit="closed"
 					className="relative w-full lg:h-screen h-[100vh] lg:translate-y-0 md:-translate-y-[3.5rem] -translate-y-[3.5rem] flex flex-col items-center overflow-x-hidden aspect-video"
 				>
-					<img src={photos[0]} alt={project.name} loading="eager" />
+					<img
+						src={photos[0]}
+						alt={project.name}
+						className="absolute top-0 left-0 w-full h-full object-cover"
+						loading="eager"
+					/>
 					<div className="relative w-full h-full bg-black/60 z-[2]">
 						<motion.div
 							className="border-2 top-16 left-8 absolute lg:flex md:flex hidden flex-col items-start justify-center px-8 h-[calc(100vh_-_6rem)] w-[calc(100vw_/_2_-_2rem)]"

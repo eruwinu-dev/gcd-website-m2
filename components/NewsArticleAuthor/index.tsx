@@ -13,8 +13,7 @@ const NewsArticleAuthor = ({ author }: Props) => {
 				<img
 					src={author?.image ? urlFor(author?.image).url() : ""}
 					alt={author.name}
-					className="rounded-full"
-					loading="eager"
+					className="rounded-full w-full h-full object-cover"
 				/>
 			</div>
 			<p className="w-1/3 flex flex-col items-start space-y-2">

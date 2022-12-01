@@ -15,7 +15,12 @@ const Process = (props: Props) => {
 			</Head>
 
 			<section className="banner-section">
-				<img src={processImage} alt="Glen Charles Design Process Image" loading="eager" />
+				<img
+					src={processImage}
+					alt="Glen Charles Design Process Image"
+					className="w-full h-full aspect-video object-cover"
+					loading="eager"
+				/>
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="banner-spacer" />
 					<div className="flex flex-col items-end justify-center w-full h-full relative border-2 px-8 lg:text-end md:text-end text-center">

@@ -17,7 +17,7 @@ const ServicesList = (props: Props) => {
 		>
 			{services.map((service: ServiceType, index: number) => (
 				<motion.div
-					className="h-full flex flex-col items-center justify-start space-y-4"
+					className="lg:w-10/12 w-11/12 mx-auto h-full flex flex-col items-center justify-start space-y-4"
 					key={index}
 					variants={itemVariants}
 					initial="hidden"
@@ -26,14 +26,14 @@ const ServicesList = (props: Props) => {
 						once: true,
 					}}
 				>
-					<div className={["relative lg:w-11/12 w-full h-auto aspect-video overflow-hidden"].join(" ")}>
+					<picture>
 						<img
 							src={service.photo}
 							alt={service.title}
-							className="generic-transition hover:scale-105 cursor-pointer"
 							loading="lazy"
+							className="generic-transition hover:scale-105 w-full h-auto aspect-video object-cover overflow-hidden"
 						/>
-					</div>
+					</picture>
 				</motion.div>
 			))}
 		</div>
@@ -46,6 +46,7 @@ const itemVariants = {
 		opacity: 1,
 		transition: {
 			duration: 0.3,
+			delay: 0.2,
 			ease: "easeInOut",
 		},
 	},

@@ -38,7 +38,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 							<img
 								src={urlFor(article.mainImage).url()}
 								alt={article.title}
-								className="generic-transition hover:scale-105"
+								className="generic-transition hover:scale-105 w-full h-full object-cover"
 							/>
 						)}
 					</div>

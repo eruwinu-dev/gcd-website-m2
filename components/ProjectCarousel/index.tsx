@@ -50,20 +50,15 @@ const ProjectCarousel = ({ images }: Props) => {
 						swipeScrollTolerance={100}
 						transitionTime={200}
 						infiniteLoop
-						className="w-full h-full mt-4 mx-auto"
+						className="w-full h-auto aspect-video mt-4 mx-auto"
 						renderArrowPrev={carouselControl("left")}
 						renderArrowNext={carouselControl("right")}
 						selectedItem={Number(query?.photo) || 0}
 						onChange={changeCarouselIndex}
 					>
 						{imagesList.map((photo: string) => (
-							<div
-								className={["w-full h-auto lg:aspect-video aspect-square relative select-none"].join(
-									" "
-								)}
-								key={photo}
-							>
-								<img src={getOptimizedImageUrl(photo)} alt={photo} loading="eager" />
+							<div className="w-full h-auto aspect-video" key={photo}>
+								<img src={photo} className="h-full w-auto object-contain" />
 							</div>
 						))}
 					</Carousel>

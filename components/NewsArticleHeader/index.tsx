@@ -25,11 +25,11 @@ const NewsArticleHeader = ({ post }: Props) => {
 					{post.description}
 				</p>
 				<div className="lg:w-9/12 md:w-10/12 w-full flex flex-row items-center lg:justify-start md:justify-start justify-center space-x-4">
-					<div className="relative w-10 h-10">
+					<div className="relative w-14 h-auto aspect-square">
 						<img
 							src={post?.author?.image ? urlFor(post?.author?.image).url() : ""}
 							alt={post.author.name}
-							className="rounded-full"
+							className="rounded-full w-full h-full object-cover"
 						/>
 					</div>
 					<div className="text-lg text-center font-semibold">{post.author.name}</div>
@@ -38,7 +38,13 @@ const NewsArticleHeader = ({ post }: Props) => {
 			</div>
 			<div className="w-full flex flex-col items-center mx-auto">
 				<div className="relative w-full h-auto lg:aspect-video md:aspect-video aspect-square bg-gray-100">
-					{post.mainImage && <img src={urlFor(post.mainImage).url()} alt={`Main image from ${post.title}`} />}
+					{post.mainImage && (
+						<img
+							src={urlFor(post.mainImage).url()}
+							alt={`Main image from ${post.title}`}
+							className="w-full h-full object-cover"
+						/>
+					)}
 				</div>
 			</div>
 		</>

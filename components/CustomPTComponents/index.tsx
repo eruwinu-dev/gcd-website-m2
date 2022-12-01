@@ -12,7 +12,12 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 			}
 			return (
 				<div className="news-portable-text-component h-auto aspect-video relative">
-					<img alt={value.alt || " "} src={urlFor(value).auto("format").url()} loading="eager" />
+					<img
+						alt={value.alt || " "}
+						src={urlFor(value).auto("format").url()}
+						className="w-full h-full object-cover"
+						loading="eager"
+					/>
 				</div>
 			)
 		},
@@ -90,7 +95,12 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 			}
 			return (
 				<div className="h-auto aspect-video relative">
-					<img alt={value.alt || " "} src={urlFor(value).auto("format").url()} loading="eager" />
+					<img
+						alt={value.alt || " "}
+						src={urlFor(value).auto("format").url()}
+						className="w-full h-full object-cover"
+						loading="eager"
+					/>
 				</div>
 			)
 		},
@@ -166,7 +176,12 @@ export const CustomProjectStoryComponents: Partial<PortableTextReactComponents |
 			}
 			return (
 				<div className="h-auto aspect-video relative">
-					<img alt={value.alt || " "} src={urlFor(value).auto("format").url()} loading="eager" />
+					<img
+						alt={value.alt || " "}
+						src={urlFor(value).auto("format").url()}
+						className="w-full h-full object-cover"
+						loading="eager"
+					/>
 				</div>
 			)
 		},

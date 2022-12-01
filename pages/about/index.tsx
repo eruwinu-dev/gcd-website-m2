@@ -39,7 +39,12 @@ const About = ({ members }: Props) => {
 				<title>{`About | ${headerTitle}`}</title>
 			</Head>
 			<section className="banner-section">
-				<img src={aboutImage} alt="Glen Charles Design About Image" loading="eager" />
+				<img
+					src={aboutImage}
+					alt="Glen Charles Design About Image"
+					className="w-full h-full aspect-video object-cover"
+					loading="eager"
+				/>
 				<div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
 					<div className="banner-spacer" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 text-center col-span-2">

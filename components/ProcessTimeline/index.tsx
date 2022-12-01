@@ -1,4 +1,4 @@
-import React, { MouseEvent, useRef, useState } from "react"
+import React, { MouseEvent, useRef } from "react"
 import { useRouter } from "next/router"
 
 import { AnimatePresence, motion } from "framer-motion"
@@ -13,7 +13,6 @@ import { steps } from "../../lib/steps"
 type Props = {}
 
 const ProcessTimeline = (props: Props) => {
-	// const [step, setStep] = useState<number>(0)
 	const {
 		query: { step = "1" },
 		push,

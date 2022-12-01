@@ -22,7 +22,12 @@ const Home = (props: Props) => {
 				<title>{headerTitle}</title>
 			</Head>
 			<section className="banner-section">
-				<img src={landingImage} alt="Glen Charles Design Landing Image" loading="eager" />
+				<img
+					src={landingImage}
+					alt="Glen Charles Design Landing Image"
+					className="w-full h-full aspect-video object-cover"
+					loading="eager"
+				/>
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center">
 						<h1 className="banner-title">Client Focused Architecture.</h1>
@@ -111,8 +116,13 @@ const Home = (props: Props) => {
 				</div>
 			</section>
 			<section className="translate-y-0 relative w-full h-screen">
-				<img src={bookConsultImage} alt="Glen Charles Design Booking Image" className="saturate-50" />
-				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
+				<img
+					src={bookConsultImage}
+					alt="Glen Charles Design Booking Image"
+					className="saturate-50 w-full h-full aspect-video"
+					loading="lazy"
+				/>
+				<div className="absolute w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 text-center col-span-2 px-8 text-white space-y-8">
 						<h4 className="w-10/12 lg:text-4xl md:text-4xl sm:text-3xl text-3xl">

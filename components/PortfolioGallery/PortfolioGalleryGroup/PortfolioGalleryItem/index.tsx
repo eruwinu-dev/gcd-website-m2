@@ -72,9 +72,13 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 				selectedItem={photoIndex}
 			>
 				{photoList.map((image: string, index) => (
-					<div className="w-full h-auto aspect-video relative" key={image}>
-						<img src={image} alt={image} loading={index !== 0 ? "lazy" : "eager"} />
-					</div>
+					<img
+						src={image}
+						className="w-full h-auto aspect-video object-cover"
+						alt={image}
+						loading={index !== 0 ? "lazy" : "eager"}
+						key={image}
+					/>
 				))}
 			</Carousel>
 			<div className="portfolio-gallery-item-caption">
