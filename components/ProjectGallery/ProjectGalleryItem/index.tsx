@@ -1,7 +1,7 @@
-import React, { MouseEvent, useEffect, useState } from "react"
+import React, { MouseEvent } from "react"
 import { useRouter } from "next/router"
 
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 
 type Props = {
 	photo: string
@@ -11,15 +11,6 @@ type Props = {
 const ProjectGalleryItem = ({ photo, index }: Props) => {
 	const router = useRouter()
 	const { asPath } = router
-	const controls = useAnimation()
-	const [load, setLoad] = useState<boolean>(false)
-
-	useEffect(() => {
-		if (load) {
-			controls.start("visible")
-		}
-		return () => {}
-	}, [load])
 
 	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
 		router.push(
@@ -34,17 +25,14 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 	}
 
 	return (
-		<div
-			className={["project-gallery-item", !load ? "animate-pulse bg-gray-200" : ""].join(" ")}
-			onClick={viewGalleryItem(index)}
-		>
+		<div className={["project-gallery-item"].join(" ")} onClick={viewGalleryItem(index)}>
 			<motion.div
 				className="relative w-full h-full overflow-hidden generic-transition hover:scale-105"
 				variants={itemVariants}
 				initial="hidden"
-				animate={controls}
+				whileInView="visible"
 			>
-				<img src={photo} alt={photo} onLoadingComplete={() => setLoad(true)} />
+				<img src={photo} alt={photo} />
 			</motion.div>
 		</div>
 	)
