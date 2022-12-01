@@ -1,6 +1,5 @@
 import React, { MouseEvent, useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import Image from "next/image"
 
 import { motion, useAnimation } from "framer-motion"
 
@@ -45,14 +44,7 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 				initial="hidden"
 				animate={controls}
 			>
-				<Image
-					src={photo}
-					alt={photo}
-					layout="fill"
-					objectFit="cover"
-					objectPosition="center"
-					onLoadingComplete={() => setLoad(true)}
-				/>
+				<img src={photo} alt={photo} onLoadingComplete={() => setLoad(true)} />
 			</motion.div>
 		</div>
 	)

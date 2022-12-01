@@ -1,6 +1,5 @@
 import Head from "next/head"
 import React from "react"
-import Image from "next/image"
 
 import ProcessTimeline from "../components/ProcessTimeline"
 
@@ -16,16 +15,7 @@ const Process = (props: Props) => {
 			</Head>
 
 			<section className="banner-section">
-				<Image
-					src={processImage}
-					alt="Glen Charles Design Process Image"
-					layout="fill"
-					objectFit="cover"
-					objectPosition="left"
-					quality="95"
-					priority
-					loading="eager"
-				/>
+				<img src={processImage} alt="Glen Charles Design Process Image" loading="eager" />
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="banner-spacer" />
 					<div className="flex flex-col items-end justify-center w-full h-full relative border-2 px-8 lg:text-end md:text-end text-center">

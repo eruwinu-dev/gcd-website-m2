@@ -1,8 +1,11 @@
-import { GetServerSideProps } from "next"
-import Head from "next/head"
 import React, { useEffect, useRef } from "react"
+import { GetStaticProps } from "next"
+import Head from "next/head"
+
 import PortfolioGallery from "../../components/PortfolioGallery"
+
 import useStateContext from "../../context/State"
+
 import client from "../../lib/client"
 import { getProjects } from "../../lib/grocQueries"
 import { headerTitle } from "../../lib/title"
@@ -38,7 +41,7 @@ const Portfolio = ({ projects }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const projects = (await client.fetch(getProjects)) as ProjectType[]
 
 	return {

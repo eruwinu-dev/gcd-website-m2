@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 
@@ -61,7 +60,7 @@ const Header = (props: Props) => {
 				].join(" ")}
 			>
 				<div>
-					<Link href="/" prefetch>
+					<Link href="/">
 						{
 							<div
 								className={["generic-transition", "relative h-[2.5rem] w-auto", "aspect-[1.32/1]"].join(
@@ -69,20 +68,14 @@ const Header = (props: Props) => {
 								)}
 								onClick={() => setHeaderOpen((open: boolean) => false)}
 							>
-								<Image
-									src={iconPath}
-									alt="Glen Charles Design Logo"
-									layout="fill"
-									objectFit="contain"
-									className="cursor-pointer"
-								/>
+								<img src={iconPath} alt="Glen Charles Design Logo" className="cursor-pointer" />
 							</div>
 						}
 					</Link>
 				</div>
 				<div className="lg:flex md:flex hidden flex-row items-center justify-center space-x-2 py-2">
 					{links.map((link: LinkType, index: number) => (
-						<Link href={link.url} key={index} passHref prefetch>
+						<Link href={link.url} key={index} passHref>
 							<motion.a
 								className={[
 									"generic-transition relative",

@@ -1,5 +1,4 @@
 import React from "react"
-import Image from "next/image"
 
 import { motion } from "framer-motion"
 
@@ -25,7 +24,7 @@ const ProcessTimelineItem = ({ process }: Props) => {
 			</div>
 			<div className="process-timeline-item-image-container">
 				<div>
-					<Image src={process.photo} alt={process.title} layout="fill" objectFit="cover" loading="eager" />
+					<img src={process.photo} alt={process.title} loading="eager" />
 				</div>
 			</div>
 		</motion.div>

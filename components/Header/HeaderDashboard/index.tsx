@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "next/link"
-import Image from "next/image"
+
 import { useRouter } from "next/router"
 
 import { AnimatePresence, motion } from "framer-motion"
@@ -46,7 +46,7 @@ const HeaderDashboard = (props: Props) => {
 									setHeaderOpen((open: boolean) => !open)
 								}}
 							>
-								<Link href={link.url} prefetch>
+								<Link href={link.url}>
 									<a className={["generic-transition text-lg"].join(" ")}>{link.name}</a>
 								</Link>
 								{[link.url].includes(pathname) ||
@@ -76,7 +76,7 @@ const HeaderDashboard = (props: Props) => {
 				animate="show"
 			>
 				<div className="relative w-5/12 h-auto aspect-video">
-					<Image src="/gcd-logo-big.png" alt="Glen Charles Design Logo" layout="fill" loading="eager" />
+					<img src="/gcd-logo-big.png" alt="Glen Charles Design Logo" loading="eager" />
 				</div>
 				<ContactList />
 				<SocialsList />

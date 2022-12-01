@@ -1,6 +1,5 @@
 import React from "react"
 
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 
@@ -28,7 +27,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 				initial="rest"
 				whileHover="hover"
 			>
-				<Link href={redirectPath} prefetch>
+				<Link href={redirectPath}>
 					<div
 						className={[
 							"w-full h-auto relative bg-gray-200 overflow-hidden cursor-pointer aspect-video",
@@ -36,12 +35,9 @@ const NewsGalleryItem = ({ article }: Props) => {
 						].join(" ")}
 					>
 						{article.mainImage && (
-							<Image
+							<img
 								src={urlFor(article.mainImage).url()}
 								alt={article.title}
-								layout="fill"
-								objectFit="cover"
-								objectPosition="center"
 								className="generic-transition hover:scale-105"
 							/>
 						)}
@@ -59,7 +55,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 					) : (
 						<></>
 					)}
-					<Link href={redirectPath} prefetch>
+					<Link href={redirectPath}>
 						<a>
 							<motion.h3 variants={headerVariants} className="text-2xl">
 								{article.title}

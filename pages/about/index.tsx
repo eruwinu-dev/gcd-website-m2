@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import Head from "next/head"
-import Image from "next/image"
+
 import { GetStaticProps } from "next"
 
 import type { MemberType } from "../../types/member"
@@ -39,16 +39,7 @@ const About = ({ members }: Props) => {
 				<title>{`About | ${headerTitle}`}</title>
 			</Head>
 			<section className="banner-section">
-				<Image
-					src={aboutImage}
-					alt="Glen Charles Design About Image"
-					layout="fill"
-					loading="eager"
-					objectFit="cover"
-					objectPosition="left"
-					quality="95"
-					priority
-				/>
+				<img src={aboutImage} alt="Glen Charles Design About Image" loading="eager" />
 				<div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
 					<div className="banner-spacer" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 text-center col-span-2">
@@ -84,15 +75,7 @@ const About = ({ members }: Props) => {
 			</section>
 			<TeamGallery />
 			<section className="relative w-full h-screen translate-y-0 aspect-video">
-				<Image
-					src={bookConsultImage}
-					alt="Glen Charles Booking Image"
-					layout="fill"
-					objectFit="cover"
-					objectPosition="center"
-					quality="95"
-					priority
-				/>
+				<img src={bookConsultImage} alt="Glen Charles Booking Image" />
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 col-span-2 space-y-8">

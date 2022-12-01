@@ -1,7 +1,6 @@
 import React, { useRef } from "react"
 
 import Head from "next/head"
-import Image from "next/image"
 
 import { useRect } from "@reach/rect"
 
@@ -23,16 +22,7 @@ const Home = (props: Props) => {
 				<title>{headerTitle}</title>
 			</Head>
 			<section className="banner-section">
-				<Image
-					src={landingImage}
-					alt="Glen Charles Design Landing Image"
-					layout="fill"
-					objectFit="cover"
-					objectPosition="left"
-					quality="95"
-					priority
-					loading="eager"
-				/>
+				<img src={landingImage} alt="Glen Charles Design Landing Image" loading="eager" />
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center">
 						<h1 className="banner-title">Client Focused Architecture.</h1>
@@ -109,22 +99,10 @@ const Home = (props: Props) => {
 							</p>
 							<div className="lg:w-3/4 md:w-11/12 w-full flex flex-row items-center justify-center">
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[2.38/1] overflow-hidden">
-									<Image
-										src="/aia-logo.png"
-										alt="AIA Logo"
-										layout="fill"
-										objectFit="contain"
-										loading="lazy"
-									/>
+									<img src="/aia-logo.png" alt="AIA Logo" loading="lazy" />
 								</div>
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[1.60/1] overflow-hidden">
-									<Image
-										src="/ncarb.png"
-										alt="AIA Logo"
-										layout="fill"
-										objectFit="contain"
-										loading="lazy"
-									/>
+									<img src="/ncarb.png" alt="AIA Logo" loading="lazy" />
 								</div>
 							</div>
 						</div>
@@ -133,16 +111,7 @@ const Home = (props: Props) => {
 				</div>
 			</section>
 			<section className="translate-y-0 relative w-full h-screen">
-				<Image
-					src={bookConsultImage}
-					alt="Glen Charles Design Booking Image"
-					layout="fill"
-					objectFit="cover"
-					objectPosition="center"
-					quality="90"
-					priority
-					className="saturate-50"
-				/>
+				<img src={bookConsultImage} alt="Glen Charles Design Booking Image" className="saturate-50" />
 				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 text-center col-span-2 px-8 text-white space-y-8">

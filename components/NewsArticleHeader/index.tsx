@@ -1,7 +1,5 @@
 import React from "react"
 
-import Image from "next/image"
-
 import type { ArticleType } from "../../types/article"
 
 import NewsArticleCategories from "../NewsArticleCategories"
@@ -28,12 +26,9 @@ const NewsArticleHeader = ({ post }: Props) => {
 				</p>
 				<div className="lg:w-9/12 md:w-10/12 w-full flex flex-row items-center lg:justify-start md:justify-start justify-center space-x-4">
 					<div className="relative w-10 h-10">
-						<Image
+						<img
 							src={post?.author?.image ? urlFor(post?.author?.image).url() : ""}
 							alt={post.author.name}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="bottom"
 							className="rounded-full"
 						/>
 					</div>
@@ -43,15 +38,7 @@ const NewsArticleHeader = ({ post }: Props) => {
 			</div>
 			<div className="w-full flex flex-col items-center mx-auto">
 				<div className="relative w-full h-auto lg:aspect-video md:aspect-video aspect-square bg-gray-100">
-					{post.mainImage && (
-						<Image
-							src={urlFor(post.mainImage).url()}
-							alt={`Main image from ${post.title}`}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="center"
-						/>
-					)}
+					{post.mainImage && <img src={urlFor(post.mainImage).url()} alt={`Main image from ${post.title}`} />}
 				</div>
 			</div>
 		</>

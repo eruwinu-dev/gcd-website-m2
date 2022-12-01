@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react"
-import Image from "next/image"
+import React from "react"
 
-import { motion, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 
 import type { ServiceType } from "../../types/service"
 
@@ -10,16 +9,6 @@ import { services } from "../../lib/services"
 type Props = {}
 
 const ServicesList = (props: Props) => {
-	const controls = useAnimation()
-	const [load, setLoad] = useState<boolean>(false)
-
-	useEffect(() => {
-		if (load) {
-			controls.start("visible")
-		}
-		return () => {}
-	}, [load])
-
 	return (
 		<div
 			className={["w-full h-fit grid grid-cols-1 grid-flow-row gap-8 lg:px-8 md:px-8 px-4 lg:py-16 md:py-8"].join(
@@ -33,25 +22,16 @@ const ServicesList = (props: Props) => {
 					variants={itemVariants}
 					initial="hidden"
 					whileInView="visible"
-					animate={controls}
 					viewport={{
 						once: true,
 					}}
 				>
-					<div
-						className={[
-							"relative lg:w-11/12 w-full h-auto aspect-video overflow-hidden",
-							!load ? "animate-pulse bg-gray-300" : "",
-						].join(" ")}
-					>
-						<Image
+					<div className={["relative lg:w-11/12 w-full h-auto aspect-video overflow-hidden"].join(" ")}>
+						<img
 							src={service.photo}
 							alt={service.title}
-							layout="fill"
-							objectFit="cover"
 							className="generic-transition hover:scale-105 cursor-pointer"
 							loading="lazy"
-							onLoadingComplete={() => setLoad(true)}
 						/>
 					</div>
 				</motion.div>

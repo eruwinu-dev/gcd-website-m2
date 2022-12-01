@@ -1,5 +1,5 @@
 import React, { useMemo } from "react"
-import Image from "next/image"
+
 import { useRouter } from "next/router"
 
 import { Carousel } from "react-responsive-carousel"
@@ -63,14 +63,7 @@ const ProjectCarousel = ({ images }: Props) => {
 								)}
 								key={photo}
 							>
-								<Image
-									src={getOptimizedImageUrl(photo)}
-									alt={photo}
-									layout="fill"
-									objectFit="contain"
-									objectPosition="center"
-									loading="eager"
-								/>
+								<img src={getOptimizedImageUrl(photo)} alt={photo} loading="eager" />
 							</div>
 						))}
 					</Carousel>

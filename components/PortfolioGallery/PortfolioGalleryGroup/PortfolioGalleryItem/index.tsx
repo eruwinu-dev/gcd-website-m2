@@ -1,5 +1,5 @@
 import React, { memo, MouseEvent, useEffect, useMemo, useState } from "react"
-import Image from "next/image"
+
 import { useRouter } from "next/router"
 
 import { motion } from "framer-motion"
@@ -73,15 +73,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 			>
 				{photoList.map((image: string, index) => (
 					<div className="w-full h-auto aspect-video relative" key={image}>
-						<Image
-							src={image}
-							alt={image}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="top"
-							loading={index !== 0 ? "lazy" : "eager"}
-							priority={Boolean(index === 0)}
-						/>
+						<img src={image} alt={image} loading={index !== 0 ? "lazy" : "eager"} />
 					</div>
 				))}
 			</Carousel>

@@ -1,7 +1,7 @@
 import React from "react"
 
 import Head from "next/head"
-import Image from "next/image"
+
 import type { GetStaticPaths, GetStaticProps } from "next"
 import type { ParsedUrlQuery } from "querystring"
 
@@ -33,13 +33,7 @@ const Member = ({ member }: Props) => {
 			<section className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row translate-y-0 lg:gap-x-16 md:gap-x-8 gap-x-0 lg:gap-y-0 md:gap-y-0 gap-y-8 lg:pt-8 md:pt-6 pt-0 pb-8">
 				<div className="member-image-layout">
 					<div className="member-image-container">
-						<Image
-							src={member?.image ? urlFor(member?.image).url() : ""}
-							alt={member.name}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="bottom"
-						/>
+						<img src={member?.image ? urlFor(member?.image).url() : ""} alt={member.name} />
 					</div>
 				</div>
 				<div className="flex flex-col lg:items-start md:items-start items-center justify-start h-full">

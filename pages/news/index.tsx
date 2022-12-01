@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Head from "next/head"
-import type { GetServerSideProps } from "next"
+import type { GetStaticProps } from "next"
 
 import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
 
@@ -41,7 +41,7 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const { articles, categories, total } = (await client.fetch(getArticlesCategoriesQuery)) as {
 		articles: ArticleItemType[]
 		categories: ArticleCategoryType[]

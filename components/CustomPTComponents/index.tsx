@@ -1,6 +1,5 @@
 import YouTube from "react-youtube"
 import getYouTubeID from "get-youtube-id"
-import Image from "next/image"
 
 import { urlFor } from "../../lib/urlFor"
 import { PortableTextComponents, PortableTextReactComponents } from "@portabletext/react"
@@ -13,14 +12,7 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 			}
 			return (
 				<div className="news-portable-text-component h-auto aspect-video relative">
-					<Image
-						alt={value.alt || " "}
-						src={urlFor(value).auto("format").url()}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-						loading="eager"
-					/>
+					<img alt={value.alt || " "} src={urlFor(value).auto("format").url()} loading="eager" />
 				</div>
 			)
 		},
@@ -98,14 +90,7 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 			}
 			return (
 				<div className="h-auto aspect-video relative">
-					<Image
-						alt={value.alt || " "}
-						src={urlFor(value).auto("format").url()}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-						loading="eager"
-					/>
+					<img alt={value.alt || " "} src={urlFor(value).auto("format").url()} loading="eager" />
 				</div>
 			)
 		},
@@ -181,14 +166,7 @@ export const CustomProjectStoryComponents: Partial<PortableTextReactComponents |
 			}
 			return (
 				<div className="h-auto aspect-video relative">
-					<Image
-						alt={value.alt || " "}
-						src={urlFor(value).auto("format").url()}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-						loading="eager"
-					/>
+					<img alt={value.alt || " "} src={urlFor(value).auto("format").url()} loading="eager" />
 				</div>
 			)
 		},
