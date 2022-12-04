@@ -15,7 +15,7 @@ type Props = {
 }
 
 const NewsArticleHeader = ({ post }: Props) => {
-	const imageProps = post.mainImage ? useSanityImageProps(post.mainImage) : null
+	const imageProps = useSanityImageProps(post.mainImage)
 
 	return (
 		<>

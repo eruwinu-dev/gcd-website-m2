@@ -24,7 +24,7 @@ const Portfolio = ({ projects }: Props) => {
 			calledOnce.current = true
 		}
 		return () => {}
-	}, [])
+	}, [setProjects, projects])
 
 	return (
 		<>

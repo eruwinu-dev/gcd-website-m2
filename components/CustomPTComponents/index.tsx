@@ -14,14 +14,16 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 			}
 			return (
 				<div className="news-portable-text-component h-auto aspect-video relative">
-					<Image
-						alt={value.alt || " "}
-						src={imageProps.src}
-						loader={imageProps.loader}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-					/>
+					{imageProps ? (
+						<Image
+							src={imageProps.src}
+							loader={imageProps.loader}
+							alt={value.alt || " "}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
+					) : null}
 				</div>
 			)
 		},
@@ -100,14 +102,16 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 			}
 			return (
 				<div className="h-auto aspect-video relative">
-					<Image
-						alt={value.alt || " "}
-						src={imageProps.src}
-						loader={imageProps.loader}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-					/>
+					{imageProps ? (
+						<Image
+							src={imageProps.src}
+							loader={imageProps.loader}
+							alt={value.alt || " "}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
+					) : null}
 				</div>
 			)
 		},
@@ -184,14 +188,16 @@ export const CustomProjectStoryComponents: Partial<PortableTextReactComponents |
 			}
 			return (
 				<div className="h-auto aspect-video relative">
-					<Image
-						src={imageProps.src}
-						loader={imageProps.loader}
-						alt={value.alt || " "}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-					/>
+					{imageProps ? (
+						<Image
+							src={imageProps.src}
+							loader={imageProps.loader}
+							alt={value.alt || " "}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
+					) : null}
 				</div>
 			)
 		},

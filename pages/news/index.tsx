@@ -27,7 +27,7 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: Props) => {
 		setArticles(articlesFromSanity)
 		setCategories(categoriesFromSanity)
 		return () => {}
-	}, [])
+	}, [articlesFromSanity, categoriesFromSanity, setArticles, setCategories])
 
 	return (
 		<>

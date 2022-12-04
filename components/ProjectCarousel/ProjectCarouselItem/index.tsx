@@ -13,15 +13,17 @@ const ProjectCarouselItem = ({ image }: Props) => {
 
 	return (
 		<div className={["w-full h-auto lg:aspect-video aspect-square relative select-none"].join(" ")}>
-			<Image
-				src={imageProps.src}
-				loader={imageProps.loader}
-				layout="fill"
-				objectFit="contain"
-				objectPosition="center"
-				priority
-				sizes="96vw, 760px 420px 300px"
-			/>
+			{imageProps ? (
+				<Image
+					src={imageProps.src}
+					loader={imageProps.loader}
+					layout="fill"
+					objectFit="contain"
+					objectPosition="center"
+					priority
+					sizes="96vw, 760px 420px 300px"
+				/>
+			) : null}
 		</div>
 	)
 }

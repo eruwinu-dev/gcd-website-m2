@@ -18,16 +18,16 @@ const pageMap: PageMapType = {
 }
 
 const NotFound = (props: Props) => {
-	const router = useRouter()
+	const { asPath, back } = useRouter()
 	const [page, setPage] = useState<string | null>(null)
 
 	const goBackHandler = (event: MouseEvent<HTMLButtonElement>) => {
-		router.back()
+		back()
 	}
 
 	useEffect(() => {
 		return () => {
-			setPage(router.asPath.split("?")[0].split("/")[1])
+			setPage(asPath.split("?")[0].split("/")[1])
 		}
 	}, [])
 

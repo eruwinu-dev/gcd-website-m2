@@ -24,7 +24,7 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 			controls.start("visible")
 		}
 		return () => {}
-	}, [load])
+	}, [load, controls])
 
 	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
 		router.push(
@@ -49,14 +49,16 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 				initial="hidden"
 				animate={controls}
 			>
-				<Image
-					src={imageProps.src}
-					loader={imageProps.loader}
-					layout="fill"
-					objectFit="cover"
-					objectPosition="center"
-					onLoadingComplete={() => setLoad(true)}
-				/>
+				{imageProps ? (
+					<Image
+						src={imageProps.src}
+						loader={imageProps.loader}
+						layout="fill"
+						objectFit="cover"
+						objectPosition="center"
+						onLoadingComplete={() => setLoad(true)}
+					/>
+				) : null}
 			</motion.div>
 		</div>
 	)

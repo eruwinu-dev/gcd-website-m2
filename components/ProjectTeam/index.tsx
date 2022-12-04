@@ -23,7 +23,7 @@ const ProjectTeam = ({ name, address, team }: Props) => {
 					position: line ? info[1] : "",
 				}
 			}) || [],
-		[]
+		[team]
 	)
 
 	return (

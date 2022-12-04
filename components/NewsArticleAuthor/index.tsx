@@ -8,7 +8,7 @@ type Props = {
 }
 
 const NewsArticleAuthor = ({ author }: Props) => {
-	const imageProps = author.image ? useSanityImageProps(author.image) : null
+	const imageProps = useSanityImageProps(author.image) 
 	return (
 		<div className="w-8/12 mx-auto flex flex-row items-start justify-start lg:py-8 py-4 space-x-4">
 			<div className="relative w-24 h-auto aspect-square">

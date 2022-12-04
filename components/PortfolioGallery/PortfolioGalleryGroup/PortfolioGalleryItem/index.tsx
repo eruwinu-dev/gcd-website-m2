@@ -18,7 +18,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 		push(`./portfolio/${project.slug.current}`)
 	}
 
-	const imageProps = project.imageList.length ? useSanityImageProps(project.imageList[0]) : null
+	const imageProps = useSanityImageProps(project.imageList[0])
 
 	return (
 		<motion.div

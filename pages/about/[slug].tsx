@@ -35,14 +35,16 @@ const Member = ({ member }: Props) => {
 			<section className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row translate-y-0 lg:gap-x-16 md:gap-x-8 gap-x-0 lg:gap-y-0 md:gap-y-0 gap-y-8 lg:pt-8 md:pt-6 pt-0 pb-8">
 				<div className="member-image-layout">
 					<div className="member-image-container">
-						<Image
-							src={imageProps.src}
-							loader={imageProps.loader}
-							alt={member.name}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="bottom"
-						/>
+						{imageProps ? (
+							<Image
+								src={imageProps.src}
+								loader={imageProps.loader}
+								alt={member.name}
+								layout="fill"
+								objectFit="cover"
+								objectPosition="bottom"
+							/>
+						) : null}
 					</div>
 				</div>
 				<div className="flex flex-col lg:items-start md:items-start items-center justify-start h-full">

@@ -18,15 +18,17 @@ const TeamGalleryItem = ({ member }: Props) => {
 			<div className="team-gallery-item">
 				<Link href={`about/${member.slug.current}`}>
 					<div className="relative lg:w-full md:w-full w-3/5 h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center">
-						<Image
-							src={imageProps.src}
-							loader={imageProps.loader}
-							alt={member.name}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="bottom"
-							className="generic-transition hover:scale-105 cursor-pointer"
-						/>
+						{imageProps ? (
+							<Image
+								src={imageProps.src}
+								loader={imageProps.loader}
+								alt={member.name}
+								layout="fill"
+								objectFit="cover"
+								objectPosition="bottom"
+								className="generic-transition hover:scale-105 cursor-pointer"
+							/>
+						) : null}
 					</div>
 				</Link>
 				<h5 className="mt-2 text-center">{member.name}</h5>

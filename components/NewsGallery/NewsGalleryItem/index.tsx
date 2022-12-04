@@ -19,7 +19,7 @@ type Props = {
 const NewsGalleryItem = ({ article }: Props) => {
 	const { pathname } = useRouter()
 
-	const imageProps = article.mainImage ? useSanityImageProps(article.mainImage) : null
+	const imageProps = useSanityImageProps(article.mainImage)
 
 	const redirectPath = pathname === "/news" ? `./news/${article.slug.current}` : `../news/${article.slug.current}`
 

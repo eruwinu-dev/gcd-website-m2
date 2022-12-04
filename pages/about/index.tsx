@@ -32,7 +32,7 @@ const About = ({ members }: Props) => {
 			calledOnce.current = true
 		}
 		return () => {}
-	}, [])
+	}, [members, setMembers])
 
 	return (
 		<>
