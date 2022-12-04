@@ -9,21 +9,22 @@ import { sanityImageLoader } from "../../lib/sanityImageLoader"
 export const CustomPTComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			if (!value?.asset?._ref) {
+			if (!value.asset._ref) {
 				return null
+			} else {
+				return (
+					<div className="news-portable-text-component h-auto aspect-video relative">
+						<Image
+							src={value.asset._ref}
+							loader={sanityImageLoader}
+							alt={value.alt || " "}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
+					</div>
+				)
 			}
-			return (
-				<div className="news-portable-text-component h-auto aspect-video relative">
-					<Image
-						src={value}
-						loader={sanityImageLoader}
-						alt={value.alt || " "}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-					/>
-				</div>
-			)
 		},
 		youtube: ({ value }) => {
 			const { url } = value
@@ -94,21 +95,22 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 export const CustomArticleComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			if (!value?.asset?._ref) {
+			if (!value.asset._ref) {
 				return null
+			} else {
+				return (
+					<div className="h-auto aspect-video relative">
+						<Image
+							src={value.asset._ref}
+							loader={sanityImageLoader}
+							alt={value.alt || " "}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
+					</div>
+				)
 			}
-			return (
-				<div className="h-auto aspect-video relative">
-					<Image
-						src={value}
-						loader={sanityImageLoader}
-						alt={value.alt || " "}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-					/>
-				</div>
-			)
 		},
 		youtube: ({ value }) => {
 			const { url } = value
@@ -177,21 +179,22 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 export const CustomProjectStoryComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			if (!value?.asset?._ref) {
+			if (!value.asset._ref) {
 				return null
+			} else {
+				return (
+					<div className="h-auto aspect-video relative">
+						<Image
+							src={value.asset._ref}
+							loader={sanityImageLoader}
+							alt={value.alt || " "}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="center"
+						/>
+					</div>
+				)
 			}
-			return (
-				<div className="h-auto aspect-video relative">
-					<Image
-						src={value}
-						loader={sanityImageLoader}
-						alt={value.alt || " "}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="center"
-					/>
-				</div>
-			)
 		},
 		youtube: ({ value }) => {
 			const { url } = value
