@@ -1,5 +1,5 @@
 import Image from "next/image"
-import React, { MouseEvent, useMemo } from "react"
+import React, { MouseEvent } from "react"
 import { useRouter } from "next/router"
 
 import { motion, AnimatePresence } from "framer-motion"
@@ -11,6 +11,7 @@ import ProjectTeam from "../ProjectTeam"
 import { CustomProjectStoryComponents } from "../CustomPTComponents"
 
 import { ChevronDoubleRightIcon, CloseIcon } from "../../lib/icons"
+import { getSanityImageProps } from "../../lib/sanityImageLoader"
 
 import useStateContext from "../../context/State"
 
@@ -26,7 +27,7 @@ const ProjectStory = ({ project }: Props) => {
 
 	const viewMode = (mode || "story") as ModeType
 
-	const photos: string[] = useMemo(() => project?.images?.split("\n") || [], [project])
+	const imageProps = getSanityImageProps(project.imageList[0])
 
 	const toggleProjectStory = (event: MouseEvent<HTMLButtonElement>) => {
 		setStoryOpen((open: boolean) => !open)
@@ -44,13 +45,13 @@ const ProjectStory = ({ project }: Props) => {
 					className="relative w-full lg:h-screen h-[100vh] lg:translate-y-0 md:-translate-y-[3.5rem] -translate-y-[3.5rem] flex flex-col items-center overflow-x-hidden aspect-video"
 				>
 					<Image
-						src={photos[0]}
+						src={imageProps.src}
+						loader={imageProps.loader}
 						alt={project.name}
 						layout="fill"
 						objectFit="cover"
 						objectPosition="left"
 						priority
-						loading="eager"
 					/>
 					<div className="relative w-full h-full bg-black/60 z-[2]">
 						<motion.div

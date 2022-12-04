@@ -61,7 +61,7 @@ const Header = (props: Props) => {
 				].join(" ")}
 			>
 				<div>
-					<Link href="/" prefetch>
+					<Link href="/">
 						{
 							<div
 								className={["generic-transition", "relative h-[2.5rem] w-auto", "aspect-[1.32/1]"].join(
@@ -71,10 +71,13 @@ const Header = (props: Props) => {
 							>
 								<Image
 									src={iconPath}
+									loader={({ src }) => src}
 									alt="Glen Charles Design Logo"
 									layout="fill"
 									objectFit="contain"
 									className="cursor-pointer"
+									unoptimized
+									loading="eager"
 								/>
 							</div>
 						}
@@ -82,7 +85,7 @@ const Header = (props: Props) => {
 				</div>
 				<div className="lg:flex md:flex hidden flex-row items-center justify-center space-x-2 py-2">
 					{links.map((link: LinkType, index: number) => (
-						<Link href={link.url} key={index} passHref prefetch>
+						<Link href={link.url} key={index} passHref>
 							<motion.a
 								className={[
 									"generic-transition relative",

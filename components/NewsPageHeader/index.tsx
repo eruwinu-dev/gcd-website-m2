@@ -9,9 +9,11 @@ const NewsPageHeader = (props: Props) => {
 			<div className="lg:w-2/12 md:w-4/12 sm:w-6/12 w-9/12 h-auto aspect-video relative">
 				<Image
 					src="/gcd-logo-big.png"
+					loader={({ src }) => src}
 					alt="GCD Logo"
 					layout="fill"
 					className="cursor-pointer"
+					unoptimized
 					loading="eager"
 				/>
 			</div>

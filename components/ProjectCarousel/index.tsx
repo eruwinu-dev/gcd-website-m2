@@ -1,5 +1,4 @@
-import React, { useMemo } from "react"
-import Image from "next/image"
+import React, { memo } from "react"
 import { useRouter } from "next/router"
 
 import { Carousel } from "react-responsive-carousel"
@@ -8,18 +7,17 @@ import { AnimatePresence, motion } from "framer-motion"
 import { ArrowLeftIcon, ArrowRightIcon } from "../../lib/icons"
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import { getOptimizedImageUrl } from "../../lib/cloudinaryImage"
+import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import ProjectCarouselItem from "./ProjectCarouselItem"
 
 type Props = {
-	images: string
+	images: SanityImageSource[]
 }
 
 /* eslint-disable react/display-name */
 
 const ProjectCarousel = ({ images }: Props) => {
 	const { asPath, query, push } = useRouter()
-
-	const imagesList = useMemo(() => images.split("\n"), [images])
 
 	const changeCarouselIndex = (value: number) => {
 		push(
@@ -56,22 +54,8 @@ const ProjectCarousel = ({ images }: Props) => {
 						selectedItem={Number(query?.photo) || 0}
 						onChange={changeCarouselIndex}
 					>
-						{imagesList.map((photo: string) => (
-							<div
-								className={["w-full h-auto lg:aspect-video aspect-square relative select-none"].join(
-									" "
-								)}
-								key={photo}
-							>
-								<Image
-									src={getOptimizedImageUrl(photo)}
-									alt={photo}
-									layout="fill"
-									objectFit="contain"
-									objectPosition="center"
-									loading="eager"
-								/>
-							</div>
+						{images.map((image: SanityImageSource, index: number) => (
+							<ProjectCarouselItem image={image} key={index} />
 						))}
 					</Carousel>
 				</motion.div>
@@ -110,10 +94,12 @@ const carouselVariants = {
 	show: {
 		opacity: 1,
 		transition: {
+			delay: 0.5,
 			duration: 0.5,
+			ease: "easeInOut",
 		},
 	},
 }
 
-export default ProjectCarousel
+export default memo(ProjectCarousel)
 

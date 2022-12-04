@@ -56,8 +56,8 @@ const Project = ({ project, previous, next }: Props) => {
 					<div className="w-full h-fit flex flex-col items-center justify-center relative">
 						{viewMode === "story" ? (
 							<ProjectStory project={project} />
-						) : project.images ? (
-							<ProjectCarousel images={project.images} />
+						) : project.imageList.length ? (
+							<ProjectCarousel images={project.imageList} />
 						) : null}
 						<ProjectViewMode />
 					</div>
@@ -65,8 +65,8 @@ const Project = ({ project, previous, next }: Props) => {
 			</section>
 			<div className="portfolio-section">
 				{viewMode === "story" ? (
-					project.images ? (
-						<ProjectGallery images={project.images} />
+					project.imageList.length ? (
+						<ProjectGallery images={project.imageList} />
 					) : null
 				) : (
 					<ProjectDescription project={project} />

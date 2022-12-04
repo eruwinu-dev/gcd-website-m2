@@ -46,7 +46,7 @@ const HeaderDashboard = (props: Props) => {
 									setHeaderOpen((open: boolean) => !open)
 								}}
 							>
-								<Link href={link.url} prefetch>
+								<Link href={link.url}>
 									<a className={["generic-transition text-lg"].join(" ")}>{link.name}</a>
 								</Link>
 								{[link.url].includes(pathname) ||
@@ -76,7 +76,14 @@ const HeaderDashboard = (props: Props) => {
 				animate="show"
 			>
 				<div className="relative w-5/12 h-auto aspect-video">
-					<Image src="/gcd-logo-big.png" alt="Glen Charles Design Logo" layout="fill" loading="eager" />
+					<Image
+						src="/gcd-logo-big.png"
+						alt="Glen Charles Design Logo"
+						layout="fill"
+						unoptimized
+						loading="eager"
+						loader={({ src }) => src}
+					/>
 				</div>
 				<ContactList />
 				<SocialsList />

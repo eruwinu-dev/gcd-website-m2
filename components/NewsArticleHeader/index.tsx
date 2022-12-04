@@ -7,13 +7,16 @@ import type { ArticleType } from "../../types/article"
 import NewsArticleCategories from "../NewsArticleCategories"
 
 import { formatDateFromISO } from "../../lib/dates"
-import { urlFor } from "../../lib/urlFor"
+import { getSanityImageProps } from "../../lib/sanityImageLoader"
+import NewsArticleAuthor from "./NewsArticleAuthor"
 
 type Props = {
 	post: ArticleType
 }
 
 const NewsArticleHeader = ({ post }: Props) => {
+	const imageProps = post.mainImage ? getSanityImageProps(post.mainImage) : null
+
 	return (
 		<>
 			<div className="lg:w-10/12 md:w-10/12 w-full min-h-[50vh] max-h-fit flex flex-col lg:items-start md:items-start items-center justify-center space-y-6 mx-auto lg:px-0 md:px-0 px-4 py-8">
@@ -26,32 +29,21 @@ const NewsArticleHeader = ({ post }: Props) => {
 				<p className="lg:text-xl md:text-xl sm:text-lg text-base lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-justify">
 					{post.description}
 				</p>
-				<div className="lg:w-9/12 md:w-10/12 w-full flex flex-row items-center lg:justify-start md:justify-start justify-center space-x-4">
-					<div className="relative w-10 h-10">
-						<Image
-							src={post?.author?.image ? urlFor(post?.author?.image).url() : ""}
-							alt={post.author.name}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="bottom"
-							className="rounded-full"
-						/>
-					</div>
-					<div className="text-lg text-center font-semibold">{post.author.name}</div>
-				</div>
+				<NewsArticleAuthor post={post} />
 				{post.categories && <NewsArticleCategories categories={post.categories} />}
 			</div>
 			<div className="w-full flex flex-col items-center mx-auto">
 				<div className="relative w-full h-auto lg:aspect-video md:aspect-video aspect-square bg-gray-100">
-					{post.mainImage && (
+					{imageProps ? (
 						<Image
-							src={urlFor(post.mainImage).url()}
-							alt={`Main image from ${post.title}`}
+							src={imageProps.src}
+							loader={imageProps.loader}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
+							priority
 						/>
-					)}
+					) : null}
 				</div>
 			</div>
 		</>

@@ -11,6 +11,7 @@ import ServicesList from "../components/ServicesList"
 
 import { headerTitle } from "../lib/title"
 
+import { sanityImageLoader } from "../lib/sanityImageLoader"
 type Props = {}
 
 const Home = (props: Props) => {
@@ -25,13 +26,12 @@ const Home = (props: Props) => {
 			<section className="banner-section">
 				<Image
 					src={landingImage}
+					loader={sanityImageLoader}
 					alt="Glen Charles Design Landing Image"
 					layout="fill"
 					objectFit="cover"
 					objectPosition="left"
-					quality="95"
 					priority
-					loading="eager"
 				/>
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center">
@@ -85,7 +85,7 @@ const Home = (props: Props) => {
 					</div>
 				</div>
 				<div className="w-full h-fit flex flex-col items-center justify-start pb-16">
-					<ServicesList />
+					{/* <ServicesList /> */}
 				</div>
 			</section>
 			<section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4">
@@ -107,14 +107,16 @@ const Home = (props: Props) => {
 								an efficient and agile operation that saves you money on all fronts without sacrificing
 								quality production.
 							</p>
-							<div className="lg:w-3/4 md:w-11/12 w-full flex flex-row items-center justify-center">
+							<div className="lg:w-3/4 md:w-11/12 w-full flex lg:flex-row md:flex-row flex-col items-center justify-center">
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[2.38/1] overflow-hidden">
 									<Image
 										src="/aia-logo.png"
 										alt="AIA Logo"
 										layout="fill"
 										objectFit="contain"
-										loading="lazy"
+										unoptimized
+										loading="eager"
+										sizes="460px, 200px, 100px"
 									/>
 								</div>
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[1.60/1] overflow-hidden">
@@ -123,7 +125,9 @@ const Home = (props: Props) => {
 										alt="AIA Logo"
 										layout="fill"
 										objectFit="contain"
-										loading="lazy"
+										unoptimized
+										loading="eager"
+										sizes="315px, 150px, 75px"
 									/>
 								</div>
 							</div>
@@ -134,13 +138,15 @@ const Home = (props: Props) => {
 			</section>
 			<section className="translate-y-0 relative w-full h-screen">
 				<Image
-					src={bookConsultImage}
+					src={bookImage}
+					loader={sanityImageLoader}
 					alt="Glen Charles Design Booking Image"
 					layout="fill"
 					objectFit="cover"
 					objectPosition="center"
 					quality="90"
 					priority
+					sizes="100vw"
 					className="saturate-50"
 				/>
 				<div className="w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16">
@@ -160,11 +166,11 @@ const Home = (props: Props) => {
 	)
 }
 
-const bookConsultImage =
-	"https://res.cloudinary.com/dr8eirysm/image/upload/v1669298847/gcd-website/the-modern-barn/Patio_1_aqmmnr.jpg"
-
 const landingImage =
-	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953941/gcd-website/background/tinywow_landing-background_8447681_ggk0cm.jpg"
+	"https://cdn.sanity.io/images/1apv929p/production/d8026d1f0395c9b782bf26ca806c8684619bb943-2200x1100.jpg"
+
+const bookImage =
+	"https://cdn.sanity.io/images/1apv929p/production/e358b6cfee63720bac0e8357fe23fecf106f6e28-2048x1365.jpg"
 
 export default Home
 

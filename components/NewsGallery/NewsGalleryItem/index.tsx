@@ -9,8 +9,8 @@ import { motion } from "framer-motion"
 import type { ArticleItemType } from "../../../types/article"
 
 import { formatDateFromISO } from "../../../lib/dates"
-import { urlFor } from "../../../lib/urlFor"
 import NewsArticleCategories from "../../NewsArticleCategories"
+import { getSanityImageProps } from "../../../lib/sanityImageLoader"
 
 type Props = {
 	article: ArticleItemType
@@ -18,6 +18,8 @@ type Props = {
 
 const NewsGalleryItem = ({ article }: Props) => {
 	const { pathname } = useRouter()
+
+	const imageProps = article.mainImage ? getSanityImageProps(article.mainImage) : null
 
 	const redirectPath = pathname === "/news" ? `./news/${article.slug.current}` : `../news/${article.slug.current}`
 
@@ -28,23 +30,24 @@ const NewsGalleryItem = ({ article }: Props) => {
 				initial="rest"
 				whileHover="hover"
 			>
-				<Link href={redirectPath} prefetch>
+				<Link href={redirectPath}>
 					<div
 						className={[
 							"w-full h-auto relative bg-gray-200 overflow-hidden cursor-pointer aspect-video",
 							article?.mainImage ? "animate-none" : "animate-pulse",
 						].join(" ")}
 					>
-						{article.mainImage && (
+						{imageProps ? (
 							<Image
-								src={urlFor(article.mainImage).url()}
+								src={imageProps.src}
+								loader={imageProps.loader}
 								alt={article.title}
 								layout="fill"
 								objectFit="cover"
 								objectPosition="center"
 								className="generic-transition hover:scale-105"
 							/>
-						)}
+						) : null}
 					</div>
 				</Link>
 				<motion.div className="w-full pt-4 flex flex-col bg-white space-y-4" variants={textVariants}>
@@ -59,7 +62,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 					) : (
 						<></>
 					)}
-					<Link href={redirectPath} prefetch>
+					<Link href={redirectPath}>
 						<a>
 							<motion.h3 variants={headerVariants} className="text-2xl">
 								{article.title}

@@ -1,22 +1,23 @@
 import React from "react"
 import Image from "next/image"
 import type { CollageType } from ".././../types/collage"
+import { sanityImageLoader } from "../../lib/sanityImageLoader"
 
 type Props = {}
 
 const LandingCollage = (props: Props) => {
 	return (
-		<div className="lg:px-16 md:px-8 px-4 py-16">
+		<div className="lg:px-16 md:px8 px-4 py-16">
 			<div className="w-full lg:h-auto md:h-auto h-auto lg:aspect-square md:aspect-square lg:grid md:grid hidden grid-cols-5 grid-flow-row gap-2">
 				{collages.map((tile: CollageType, index: number) => (
 					<div className={["relative w-full h-full aspect-video", tile.format].join(" ")} key={tile.picture}>
 						<Image
 							src={tile.picture}
+							loader={sanityImageLoader}
 							alt={tile.picture}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
-							loading="eager"
 						/>
 					</div>
 				))}
@@ -26,11 +27,11 @@ const LandingCollage = (props: Props) => {
 					<div className={["relative w-full h-fit aspect-video"].join(" ")} key={tile.picture}>
 						<Image
 							src={tile.picture}
+							loader={sanityImageLoader}
 							alt={tile.picture}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
-							loading="eager"
 						/>
 					</div>
 				))}
@@ -42,22 +43,22 @@ const LandingCollage = (props: Props) => {
 const collages: CollageType[] = [
 	{
 		picture:
-			"https://res.cloudinary.com/dr8eirysm/image/upload/v1669362562/gcd-website/the-cyclist/open_room_1_izrncp.jpg",
+			"https://cdn.sanity.io/images/1apv929p/production/b00986fcffc65f43d9a4d956fa49071e69bf4dd0-6016x4010.jpg",
 		format: "col-span-2 row-span-2",
 	},
 	{
 		picture:
-			"https://res.cloudinary.com/dr8eirysm/image/upload/v1669364150/gcd-website/woodland-hills-home/5D_photos_2_of_13_FIXED_ez5ggm.jpg",
+			"https://cdn.sanity.io/images/1apv929p/production/8094a7b6bfae5ab2af94148433597d7ae194c0e2-6698x4465.jpg",
 		format: "col-span-3 row-span-4",
 	},
 	{
 		picture:
-			"https://res.cloudinary.com/dr8eirysm/image/upload/v1669339503/gcd-website/a-montecito-classic/Window_3_a9lfa9.jpg",
+			"https://cdn.sanity.io/images/1apv929p/production/d6681788694ebc1934407bf8402502b6cfd3df24-3072x2048.jpg",
 		format: "col-span-2 row-span-3",
 	},
 	{
 		picture:
-			"https://res.cloudinary.com/dr8eirysm/image/upload/v1669366025/gcd-website/the-bernadus-ranch-house/Rancho_Palo_Verdes_-_Craig_House_38_of_62_ycymmv.jpg",
+			"https://cdn.sanity.io/images/1apv929p/production/c40ed94a59748e2853edd06edbc7b652f881d019-3274x2183.jpg",
 		format: "col-span-3",
 	},
 ]

@@ -4,6 +4,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 import type { ProcessType } from "../../../types/process"
+import { sanityImageLoader } from "../../../lib/sanityImageLoader"
 
 type Props = {
 	process: ProcessType
@@ -25,7 +26,13 @@ const ProcessTimelineItem = ({ process }: Props) => {
 			</div>
 			<div className="process-timeline-item-image-container">
 				<div>
-					<Image src={process.photo} alt={process.title} layout="fill" objectFit="cover" loading="eager" />
+					<Image
+						src={process.photo}
+						loader={sanityImageLoader}
+						alt={process.title}
+						layout="fill"
+						objectFit="cover"
+					/>
 				</div>
 			</div>
 		</motion.div>

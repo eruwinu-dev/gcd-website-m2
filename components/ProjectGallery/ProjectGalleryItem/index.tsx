@@ -3,9 +3,11 @@ import { useRouter } from "next/router"
 import Image from "next/image"
 
 import { motion, useAnimation } from "framer-motion"
+import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { getSanityImageProps } from "../../../lib/sanityImageLoader"
 
 type Props = {
-	photo: string
+	photo: SanityImageSource
 	index: number
 }
 
@@ -14,6 +16,8 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 	const { asPath } = router
 	const controls = useAnimation()
 	const [load, setLoad] = useState<boolean>(false)
+
+	const imageProps = getSanityImageProps(photo)
 
 	useEffect(() => {
 		if (load) {
@@ -46,8 +50,8 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 				animate={controls}
 			>
 				<Image
-					src={photo}
-					alt={photo}
+					src={imageProps.src}
+					loader={imageProps.loader}
 					layout="fill"
 					objectFit="cover"
 					objectPosition="center"

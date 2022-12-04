@@ -14,6 +14,7 @@ import useStateContext from "../../context/State"
 import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
 import { getMembers } from "../../lib/grocQueries"
+import { sanityImageLoader } from "../../lib/sanityImageLoader"
 
 type Props = {
 	members: MemberType[]
@@ -41,12 +42,11 @@ const About = ({ members }: Props) => {
 			<section className="banner-section">
 				<Image
 					src={aboutImage}
+					loader={sanityImageLoader}
 					alt="Glen Charles Design About Image"
 					layout="fill"
-					loading="eager"
 					objectFit="cover"
 					objectPosition="left"
-					quality="95"
 					priority
 				/>
 				<div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
@@ -85,12 +85,12 @@ const About = ({ members }: Props) => {
 			<TeamGallery />
 			<section className="relative w-full h-screen translate-y-0 aspect-video">
 				<Image
-					src={bookConsultImage}
-					alt="Glen Charles Booking Image"
+					src={bookImage}
+					alt="Glen Charles Design Booking Image"
+					loader={sanityImageLoader}
 					layout="fill"
 					objectFit="cover"
-					objectPosition="center"
-					quality="95"
+					objectPosition="left"
 					priority
 				/>
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
@@ -122,23 +122,10 @@ export const getStaticProps: GetStaticProps = async () => {
 	}
 }
 
-const sectionVariants = {
-	start: {
-		opacity: 0.9,
-	},
-	end: {
-		opacity: 1,
-		transition: {
-			duration: 0.75,
-		},
-	},
-}
-
 const aboutImage =
-	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953942/gcd-website/background/tinywow_Staircase-3_8447767_uxqfed.jpg"
+	"https://cdn.sanity.io/images/1apv929p/production/59da1ca9995434510b2d0980a4d9e14476f33a9c-3072x2048.jpg"
 
-const bookConsultImage =
-	"https://res.cloudinary.com/dr8eirysm/image/upload/v1669338172/gcd-website/the-music-barn/Michigan_Exterior_3_fmxbzu.jpg"
-
+const bookImage =
+	"https://cdn.sanity.io/images/1apv929p/production/86a4e15150bc9160b16c2e60f866276be927a88e-1280x720.jpg"
 export default About
 

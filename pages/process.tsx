@@ -5,6 +5,7 @@ import Image from "next/image"
 import ProcessTimeline from "../components/ProcessTimeline"
 
 import { headerTitle } from "../lib/title"
+import { sanityImageLoader } from "../lib/sanityImageLoader"
 
 type Props = {}
 
@@ -18,13 +19,12 @@ const Process = (props: Props) => {
 			<section className="banner-section">
 				<Image
 					src={processImage}
+					loader={sanityImageLoader}
 					alt="Glen Charles Design Process Image"
 					layout="fill"
 					objectFit="cover"
 					objectPosition="left"
-					quality="95"
 					priority
-					loading="eager"
 				/>
 				<div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
 					<div className="banner-spacer" />
@@ -49,7 +49,7 @@ const Process = (props: Props) => {
 }
 
 const processImage =
-	"https://res.cloudinary.com/dr8eirysm/image/upload/v1668953942/gcd-website/background/tinywow_Balcony-1_8447647_ujkygd.jpg"
+	"https://cdn.sanity.io/images/1apv929p/production/f07ddafe01db7857dbf2ada96f766bb74a172b14-3072x2048.jpg"
 
 export default Process
 

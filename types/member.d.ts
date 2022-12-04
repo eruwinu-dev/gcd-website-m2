@@ -7,7 +7,7 @@ export interface MemberType {
 	slug: SlugType
 	order: number
 	role?: string
-	image?: SanityImageSource
+	image: SanityImageSource
 	otherImages?: string
 	bio?: TypedObject
 	blogBio?: string

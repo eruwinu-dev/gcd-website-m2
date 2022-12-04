@@ -1,17 +1,17 @@
-import React, { useMemo } from "react"
+import React from "react"
+import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+
 import ProjectGalleryItem from "./ProjectGalleryItem"
 
 type Props = {
-	images: string
+	images: SanityImageSource[]
 }
 
 const ProjectGallery = ({ images }: Props) => {
-	const imagesList = useMemo(() => images.split("\n"), [images])
-
 	return (
 		<div className="project-gallery">
 			<div className="project-gallery-list">
-				{imagesList.map((photo: string, index: number) => (
+				{images.map((photo: SanityImageSource, index: number) => (
 					<ProjectGalleryItem photo={photo} key={index} index={index} />
 				))}
 			</div>

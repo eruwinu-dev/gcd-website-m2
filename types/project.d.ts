@@ -1,3 +1,4 @@
+import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import { SlugType } from "./slug"
 
 export type ModeType = "story" | "carousel"
@@ -15,7 +16,7 @@ export interface ProjectType {
 	slug: SlugType
 	address?: string
 	team?: string
-	images: string
+	imageList: SanityImageSource[]
 	body?: TypedObject
 	category: CategoryType
 }

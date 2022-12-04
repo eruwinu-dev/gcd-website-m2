@@ -2,12 +2,13 @@ import YouTube from "react-youtube"
 import getYouTubeID from "get-youtube-id"
 import Image from "next/image"
 
-import { urlFor } from "../../lib/urlFor"
 import { PortableTextComponents, PortableTextReactComponents } from "@portabletext/react"
+import { getSanityImageProps } from "../../lib/sanityImageLoader"
 
 export const CustomPTComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
+			const imageProps = getSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
@@ -15,11 +16,11 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 				<div className="news-portable-text-component h-auto aspect-video relative">
 					<Image
 						alt={value.alt || " "}
-						src={urlFor(value).auto("format").url()}
+						src={imageProps.src}
+						loader={imageProps.loader}
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"
-						loading="eager"
 					/>
 				</div>
 			)
@@ -93,6 +94,7 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 export const CustomArticleComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
+			const imageProps = getSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
@@ -100,11 +102,11 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 				<div className="h-auto aspect-video relative">
 					<Image
 						alt={value.alt || " "}
-						src={urlFor(value).auto("format").url()}
+						src={imageProps.src}
+						loader={imageProps.loader}
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"
-						loading="eager"
 					/>
 				</div>
 			)
@@ -176,18 +178,19 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 export const CustomProjectStoryComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
+			const imageProps = getSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
 			return (
 				<div className="h-auto aspect-video relative">
 					<Image
+						src={imageProps.src}
+						loader={imageProps.loader}
 						alt={value.alt || " "}
-						src={urlFor(value).auto("format").url()}
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"
-						loading="eager"
 					/>
 				</div>
 			)

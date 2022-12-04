@@ -6,6 +6,7 @@ import { motion, useAnimation } from "framer-motion"
 import type { ServiceType } from "../../types/service"
 
 import { services } from "../../lib/services"
+import { sanityImageLoader } from "../../lib/sanityImageLoader"
 
 type Props = {}
 
@@ -46,11 +47,10 @@ const ServicesList = (props: Props) => {
 					>
 						<Image
 							src={service.photo}
-							alt={service.title}
+							loader={sanityImageLoader}
 							layout="fill"
 							objectFit="cover"
 							className="generic-transition hover:scale-105 cursor-pointer"
-							loading="lazy"
 							onLoadingComplete={() => setLoad(true)}
 						/>
 					</div>

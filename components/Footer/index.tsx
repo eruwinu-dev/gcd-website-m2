@@ -15,6 +15,8 @@ const Footer = (props: Props) => {
 						layout="fill"
 						objectFit="contain"
 						loading="eager"
+						unoptimized
+						loader={({ src }) => src}
 					/>
 				</div>
 				<span className="text-sm italic">

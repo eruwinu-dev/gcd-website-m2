@@ -6,7 +6,7 @@ export const getProjects = groq`*[_type == "project"] | order(order asc) {
 	slug,
 	address,
 	team,
-	images,
+	imageList,
 	body,
 	"category": categories[0] -> {_id, name, slug, description},
   }`
@@ -17,7 +17,7 @@ export const getProjectBySlug = groq`*[_type == "project" && slug.current == $sl
 	slug,
 	address,
 	team,
-	images,
+	imageList,
 	body,
 	"category": categories[0] -> {_id, name, slug, description},
   "previous":*[_type == "project" && order == (^.order) - 1][0]{
