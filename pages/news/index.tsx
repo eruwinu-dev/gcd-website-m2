@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import Head from "next/head"
 import type { GetServerSideProps } from "next"
 
@@ -23,11 +23,18 @@ type Props = {
 const News = ({ articlesFromSanity, categoriesFromSanity }: Props) => {
 	const { setArticles, setCategories } = useStateContext()
 
+	const calledOnce = useRef(false)
+
 	useEffect(() => {
-		setArticles(articlesFromSanity)
-		setCategories(categoriesFromSanity)
+		if (calledOnce.current) return
+		else {
+			setArticles(articlesFromSanity)
+			setCategories(categoriesFromSanity)
+			calledOnce.current = true
+		}
+
 		return () => {}
-	}, [articlesFromSanity, categoriesFromSanity, setArticles, setCategories])
+	}, [])
 
 	return (
 		<>

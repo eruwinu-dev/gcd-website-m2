@@ -29,7 +29,7 @@ const NotFound = (props: Props) => {
 		return () => {
 			setPage(asPath.split("?")[0].split("/")[1])
 		}
-	}, [])
+	}, [asPath])
 
 	return (
 		<>

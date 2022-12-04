@@ -13,4 +13,3 @@ export const sanityImageLoader = ({ src, width }: ImageProps) => {
 		.fit("clip")
 		.url()
 }
-

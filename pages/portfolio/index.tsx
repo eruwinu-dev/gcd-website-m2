@@ -22,7 +22,7 @@ const Portfolio = ({ projects }: Props) => {
 		else {
 			setProjects(projects)
 			calledOnce.current = true
-		}
+	}
 		return () => {}
 	}, [setProjects, projects])
 

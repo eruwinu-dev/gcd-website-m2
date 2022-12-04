@@ -19,7 +19,7 @@ const ServicesList = (props: Props) => {
 			controls.start("visible")
 		}
 		return () => {}
-	}, [load])
+	}, [load, controls])
 
 	return (
 		<div
