@@ -13,6 +13,8 @@ const LoadMoreArticles = (props: Props) => {
 	const loadMoreArticlesHandler = async (event: MouseEvent<HTMLButtonElement>) => {
 		try {
 			getMoreArticles(category as string | undefined)
+		} catch (error) {
+			console.log(error)
 		} finally {
 		}
 	}
