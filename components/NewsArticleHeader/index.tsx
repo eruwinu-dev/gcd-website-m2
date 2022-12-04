@@ -7,7 +7,7 @@ import type { ArticleType } from "../../types/article"
 import NewsArticleCategories from "../NewsArticleCategories"
 
 import { formatDateFromISO } from "../../lib/dates"
-import { getSanityImageProps } from "../../lib/sanityImageLoader"
+import { useSanityImageProps } from "../../lib/sanityImageLoader"
 import NewsArticleAuthor from "./NewsArticleAuthor"
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 }
 
 const NewsArticleHeader = ({ post }: Props) => {
-	const imageProps = post.mainImage ? getSanityImageProps(post.mainImage) : null
+	const imageProps = post.mainImage ? useSanityImageProps(post.mainImage) : null
 
 	return (
 		<>

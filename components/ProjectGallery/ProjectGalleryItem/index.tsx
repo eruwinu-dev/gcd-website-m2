@@ -4,7 +4,7 @@ import Image from "next/image"
 
 import { motion, useAnimation } from "framer-motion"
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
-import { getSanityImageProps } from "../../../lib/sanityImageLoader"
+import { useSanityImageProps } from "../../../lib/sanityImageLoader"
 
 type Props = {
 	photo: SanityImageSource
@@ -17,7 +17,7 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 	const controls = useAnimation()
 	const [load, setLoad] = useState<boolean>(false)
 
-	const imageProps = getSanityImageProps(photo)
+	const imageProps = useSanityImageProps(photo)
 
 	useEffect(() => {
 		if (load) {

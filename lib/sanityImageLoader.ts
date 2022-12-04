@@ -5,7 +5,7 @@ import imageUrlBuilder from "@sanity/image-url"
 
 import client from "./client"
 
-export const getSanityImageProps = (image: SanityImageSource) => useNextSanityImage(client, image)
+export const useSanityImageProps = (image: SanityImageSource) => useNextSanityImage(client, image)
 
 export const sanityImageLoader = ({ src, width }: ImageProps) => {
 	const builder = imageUrlBuilder(client)

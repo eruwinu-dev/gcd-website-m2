@@ -11,7 +11,7 @@ import ProjectTeam from "../ProjectTeam"
 import { CustomProjectStoryComponents } from "../CustomPTComponents"
 
 import { ChevronDoubleRightIcon, CloseIcon } from "../../lib/icons"
-import { getSanityImageProps } from "../../lib/sanityImageLoader"
+import { useSanityImageProps } from "../../lib/sanityImageLoader"
 
 import useStateContext from "../../context/State"
 
@@ -27,7 +27,7 @@ const ProjectStory = ({ project }: Props) => {
 
 	const viewMode = (mode || "story") as ModeType
 
-	const imageProps = getSanityImageProps(project.imageList[0])
+	const imageProps = useSanityImageProps(project.imageList[0])
 
 	const toggleProjectStory = (event: MouseEvent<HTMLButtonElement>) => {
 		setStoryOpen((open: boolean) => !open)

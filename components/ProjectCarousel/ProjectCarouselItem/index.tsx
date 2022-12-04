@@ -2,14 +2,14 @@ import React from "react"
 import Image from "next/image"
 
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
-import { getSanityImageProps } from "../../../lib/sanityImageLoader"
+import { useSanityImageProps } from "../../../lib/sanityImageLoader"
 
 type Props = {
 	image: SanityImageSource
 }
 
 const ProjectCarouselItem = ({ image }: Props) => {
-	const imageProps = getSanityImageProps(image)
+	const imageProps = useSanityImageProps(image)
 
 	return (
 		<div className={["w-full h-auto lg:aspect-video aspect-square relative select-none"].join(" ")}>

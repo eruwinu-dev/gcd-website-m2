@@ -14,7 +14,7 @@ import { CustomArticleComponents } from "../../components/CustomPTComponents"
 import { getMemberBySlug, getMembers } from "../../lib/grocQueries"
 import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
-import { getSanityImageProps } from "../../lib/sanityImageLoader"
+import { useSanityImageProps } from "../../lib/sanityImageLoader"
 
 type Props = {
 	member: MemberType
@@ -25,7 +25,7 @@ interface StaticParams extends ParsedUrlQuery {
 }
 
 const Member = ({ member }: Props) => {
-	const imageProps = getSanityImageProps(member.image)
+	const imageProps = useSanityImageProps(member.image)
 
 	return (
 		<>

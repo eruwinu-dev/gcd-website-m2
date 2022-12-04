@@ -10,7 +10,7 @@ import type { ArticleItemType } from "../../../types/article"
 
 import { formatDateFromISO } from "../../../lib/dates"
 import NewsArticleCategories from "../../NewsArticleCategories"
-import { getSanityImageProps } from "../../../lib/sanityImageLoader"
+import { useSanityImageProps } from "../../../lib/sanityImageLoader"
 
 type Props = {
 	article: ArticleItemType
@@ -19,7 +19,7 @@ type Props = {
 const NewsGalleryItem = ({ article }: Props) => {
 	const { pathname } = useRouter()
 
-	const imageProps = article.mainImage ? getSanityImageProps(article.mainImage) : null
+	const imageProps = article.mainImage ? useSanityImageProps(article.mainImage) : null
 
 	const redirectPath = pathname === "/news" ? `./news/${article.slug.current}` : `../news/${article.slug.current}`
 

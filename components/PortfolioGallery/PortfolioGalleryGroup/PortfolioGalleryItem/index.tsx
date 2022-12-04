@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import { motion } from "framer-motion"
 
 import type { ProjectType } from "../../../../types/project"
-import { getSanityImageProps } from "../../../../lib/sanityImageLoader"
+import { useSanityImageProps } from "../../../../lib/sanityImageLoader"
 
 type Props = {
 	project: ProjectType
@@ -18,7 +18,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 		push(`./portfolio/${project.slug.current}`)
 	}
 
-	const imageProps = project.imageList.length ? getSanityImageProps(project.imageList[0]) : null
+	const imageProps = project.imageList.length ? useSanityImageProps(project.imageList[0]) : null
 
 	return (
 		<motion.div

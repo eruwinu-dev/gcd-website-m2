@@ -3,12 +3,12 @@ import getYouTubeID from "get-youtube-id"
 import Image from "next/image"
 
 import { PortableTextComponents, PortableTextReactComponents } from "@portabletext/react"
-import { getSanityImageProps } from "../../lib/sanityImageLoader"
+import { useSanityImageProps } from "../../lib/sanityImageLoader"
 
 export const CustomPTComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			const imageProps = getSanityImageProps(value)
+			const imageProps = useSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
@@ -94,7 +94,7 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 export const CustomArticleComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			const imageProps = getSanityImageProps(value)
+			const imageProps = useSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
@@ -178,7 +178,7 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 export const CustomProjectStoryComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			const imageProps = getSanityImageProps(value)
+			const imageProps = useSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
