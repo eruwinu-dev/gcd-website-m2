@@ -16,7 +16,7 @@ export interface ContextType {
 	articles: ArticleItemType[]
 	setArticles: Dispatch<SetStateAction<ArticleItemType>>
 	articlesLoading: boolean
-	getMoreArticles: (categoryString: string | undefined) => Promise<void>
+	getMoreArticles: (categoryString: string | undefined) => void
 	categories: ArticleCategoryType[]
 	setCategories: Dispatch<SetStateAction<ArticleCategoryType[]>>
 	load: boolean
