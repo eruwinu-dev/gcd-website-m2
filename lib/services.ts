@@ -11,7 +11,7 @@ export const services: ServiceType[] = [
 		title: "Acessory Dwelling Units (ADU)",
 		description:
 			"ADUs are the fastest growing segment of the housing market in the US today. We specialize in providing valuable expertise to assist clients in planning and construction.",
-		photo: "https://cdn.sanity.io/images/1apv929p/production/eff2f6e25535f670689635be31e89c27ed031afd-3072x2048.jpg",
+		photo: "https://cdn.sanity.io/images/1apv929p/production/4a83fc72e425ea3bab13ba34c01092adc0b51eea-3072x2048.jpg",
 	},
 	{
 		title: "SB 9s",
@@ -23,7 +23,7 @@ export const services: ServiceType[] = [
 		title: "Hillside",
 		description:
 			"We are knowledgeable in developing hillside residential properties with constraints to extremely sensitive site conditions to ensure safety while enhancing the outstanding scenery and nature aesthetic.",
-		photo: "https://cdn.sanity.io/images/1apv929p/production/5ad53f9ce3b7393a53087d1f25013bea4316f9bc-4000x3000.jpg",
+		photo: "https://cdn.sanity.io/images/1apv929p/production/26ce242e0665eb500d7dd2948d460eb74aeac69c-4000x3000.jpg",
 	},
 ]
 

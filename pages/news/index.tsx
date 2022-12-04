@@ -42,7 +42,7 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: Props) => {
 				<title>{`News | ${headerTitle}`}</title>
 			</Head>
 			<NewsPageHeader />
-			<NewsCategoriesList />
+		<NewsCategoriesList />
 			<NewsGallery />
 		</>
 	)

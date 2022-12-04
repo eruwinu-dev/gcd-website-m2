@@ -23,13 +23,13 @@ const ServicesList = (props: Props) => {
 
 	return (
 		<div
-			className={["w-full h-fit grid grid-cols-1 grid-flow-row gap-8 lg:px-8 md:px-8 px-4 lg:py-16 md:py-8"].join(
-				" "
-			)}
+			className={[
+				"w-full h-fit grid grid-cols-1 grid-flow-row gap-12 lg:px-8 md:px-8 px-4 lg:py-16 md:py-8",
+			].join(" ")}
 		>
 			{services.map((service: ServiceType, index: number) => (
 				<motion.div
-					className="h-full flex flex-col items-center justify-start space-y-4"
+					className="h-full flex flex-col items-center justify-start"
 					key={index}
 					variants={itemVariants}
 					initial="hidden"
@@ -50,6 +50,7 @@ const ServicesList = (props: Props) => {
 							loader={sanityImageLoader}
 							layout="fill"
 							objectFit="cover"
+							objectPosition="top"
 							className="generic-transition hover:scale-105 cursor-pointer"
 							onLoadingComplete={() => setLoad(true)}
 						/>
