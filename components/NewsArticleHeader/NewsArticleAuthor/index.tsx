@@ -1,14 +1,18 @@
-import Image from "next/image"
 import React from "react"
-import { useSanityImageProps } from "../../../lib/sanityImageLoader"
-import { ArticleType } from "../../../types/article"
+import Image from "next/image"
+
+import { useNextSanityImage } from "next-sanity-image"
+
+import type { ArticleType } from "../../../types/article"
+
+import client from "../../../lib/client"
 
 type Props = {
 	post: ArticleType
 }
 
 const NewsArticleAuthor = ({ post }: Props) => {
-	const imageProps = useSanityImageProps(post.author.image)
+	const imageProps = useNextSanityImage(client, post.author.image)
 
 	return (
 		<div className="lg:w-9/12 md:w-10/12 w-full flex flex-row items-center lg:justify-start md:justify-start justify-center space-x-4">

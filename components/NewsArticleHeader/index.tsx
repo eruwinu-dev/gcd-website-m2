@@ -7,15 +7,16 @@ import type { ArticleType } from "../../types/article"
 import NewsArticleCategories from "../NewsArticleCategories"
 
 import { formatDateFromISO } from "../../lib/dates"
-import { useSanityImageProps } from "../../lib/sanityImageLoader"
 import NewsArticleAuthor from "./NewsArticleAuthor"
+import { useNextSanityImage } from "next-sanity-image"
+import client from "../../lib/client"
 
 type Props = {
 	post: ArticleType
 }
 
 const NewsArticleHeader = ({ post }: Props) => {
-	const imageProps = useSanityImageProps(post.mainImage)
+	const imageProps = useNextSanityImage(client, post.mainImage)
 
 	return (
 		<>

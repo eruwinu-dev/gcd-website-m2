@@ -6,7 +6,7 @@ export type AlignMainImageType = "left" | "right"
 export interface AuthorType {
 	name: string
 	slug: SlugType
-	image?: SanityImageSource
+	image: SanityImageSource
 	blogBio?: string
 }
 
@@ -16,7 +16,7 @@ export interface ArticleItemType {
 	title: string
 	slug: SlugType
 	description?: string
-	mainImage?: SanityImageSource
+	mainImage: SanityImageSource
 	author: AuthorType
 	categories?: ArticleCategoryType[]
 	otherImages?: string

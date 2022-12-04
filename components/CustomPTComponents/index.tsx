@@ -3,27 +3,25 @@ import getYouTubeID from "get-youtube-id"
 import Image from "next/image"
 
 import { PortableTextComponents, PortableTextReactComponents } from "@portabletext/react"
-import { useSanityImageProps } from "../../lib/sanityImageLoader"
+
+import { sanityImageLoader } from "../../lib/sanityImageLoader"
 
 export const CustomPTComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			const imageProps = useSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
 			return (
 				<div className="news-portable-text-component h-auto aspect-video relative">
-					{imageProps ? (
-						<Image
-							src={imageProps.src}
-							loader={imageProps.loader}
-							alt={value.alt || " "}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="center"
-						/>
-					) : null}
+					<Image
+						src={value}
+						loader={sanityImageLoader}
+						alt={value.alt || " "}
+						layout="fill"
+						objectFit="cover"
+						objectPosition="center"
+					/>
 				</div>
 			)
 		},
@@ -96,22 +94,19 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 export const CustomArticleComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			const imageProps = useSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
 			return (
 				<div className="h-auto aspect-video relative">
-					{imageProps ? (
-						<Image
-							src={imageProps.src}
-							loader={imageProps.loader}
-							alt={value.alt || " "}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="center"
-						/>
-					) : null}
+					<Image
+						src={value}
+						loader={sanityImageLoader}
+						alt={value.alt || " "}
+						layout="fill"
+						objectFit="cover"
+						objectPosition="center"
+					/>
 				</div>
 			)
 		},
@@ -182,22 +177,19 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 export const CustomProjectStoryComponents: Partial<PortableTextReactComponents | PortableTextComponents> = {
 	types: {
 		image: ({ value }) => {
-			const imageProps = useSanityImageProps(value)
 			if (!value?.asset?._ref) {
 				return null
 			}
 			return (
 				<div className="h-auto aspect-video relative">
-					{imageProps ? (
-						<Image
-							src={imageProps.src}
-							loader={imageProps.loader}
-							alt={value.alt || " "}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="center"
-						/>
-					) : null}
+					<Image
+						src={value}
+						loader={sanityImageLoader}
+						alt={value.alt || " "}
+						layout="fill"
+						objectFit="cover"
+						objectPosition="center"
+					/>
 				</div>
 			)
 		},

@@ -3,14 +3,15 @@ import Image from "next/image"
 import Link from "next/link"
 
 import type { MemberType } from "../../../types/member"
-import { useSanityImageProps } from "../../../lib/sanityImageLoader"
+import { useNextSanityImage } from "next-sanity-image"
+import client from "../../../lib/client"
 
 type Props = {
 	member: MemberType
 }
 
 const TeamGalleryItem = ({ member }: Props) => {
-	const imageProps = useSanityImageProps(member.image)
+	const imageProps = useNextSanityImage(client, member.image)
 
 	return (
 		<>

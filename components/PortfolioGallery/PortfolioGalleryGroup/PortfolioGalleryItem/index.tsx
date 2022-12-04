@@ -1,11 +1,12 @@
-import React, { memo, MouseEvent, useMemo } from "react"
+import React, { memo, MouseEvent } from "react"
 import Image from "next/image"
 import { useRouter } from "next/router"
 
+import { useNextSanityImage } from "next-sanity-image"
 import { motion } from "framer-motion"
 
 import type { ProjectType } from "../../../../types/project"
-import { useSanityImageProps } from "../../../../lib/sanityImageLoader"
+import client from "../../../../lib/client"
 
 type Props = {
 	project: ProjectType
@@ -18,7 +19,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 		push(`./portfolio/${project.slug.current}`)
 	}
 
-	const imageProps = useSanityImageProps(project.imageList[0])
+	const imageProps = useNextSanityImage(client, project.imageList[0])
 
 	return (
 		<motion.div
