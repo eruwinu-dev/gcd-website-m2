@@ -58,7 +58,7 @@ const collages: CollageType[] = [
 	},
 	{
 		picture:
-			"https://cdn.sanity.io/images/1apv929p/production/c40ed94a59748e2853edd06edbc7b652f881d019-3274x2183.jpg",
+			"https://cdn.sanity.io/images/1apv929p/production/6648120ab3666b52413c78f4312e7455733f1d12-3274x2183.jpg",
 		format: "col-span-3",
 	},
 ]
