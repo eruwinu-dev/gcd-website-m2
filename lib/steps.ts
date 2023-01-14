@@ -3,37 +3,30 @@ import { ProcessType } from "../types/process"
 export const steps: ProcessType[] = [
 	{
 		phase: "Phase I",
-		title: "Pre-Design",
+		title: "Concept/Schematic Design",
 		description:
-			"We create a preliminary framework and description of the work, as well as a structured portfolio of photos that assist capture and define the spirit of the project.",
-		photo: "https://cdn.sanity.io/images/1apv929p/production/5b2e10bba9ba05cccc3753fd87ece7472993588f-6000x4000.jpg",
+			"The team will develop a broad layout based on the client's requirements at the beginning of the design phase. Using a 3D model, the objective is to establish a distinct and comprehensive overall vision for the project. Usually three iterations are done to reach a suitable design fit for the client's taste.",
+		photo: "https://cdn.sanity.io/images/1apv929p/production/172042bfbe29cfad10ddb9aee465e382833ca6d7-2000x1125.jpg",
 	},
 	{
 		phase: "Phase II",
-		title: "Schematic Design",
+		title: "Design Development",
 		description:
-			"During this stage, we create a number of rough sketches and drawings to show the design's fundamental ideas. We hold a series of meetings with you to evaluate and debate drawings and suggested design solutions, working together to arrive at a clearly defined idea, timetable, and construction budget. Additionally, preliminary research of local compliance and regulations are finished at this time.",
-		photo: "https://cdn.sanity.io/images/1apv929p/production/43b86fb40e55d86a39923374a68606573dc8cf6e-2678x1899.jpg",
+			"The architect will submit by drop off any HOA reviews and will address any questions and corrections in order to reach an approval and to continue the design and building process..",
+		photo: "https://cdn.sanity.io/images/1apv929p/production/647e44ecb753ae5a030681356e859d7de439c839-2000x1125.jpg",
 	},
 	{
 		phase: "Phase III",
-		title: "Design Development",
+		title: "Construction Documents",
 		description:
-			"This step entails finalizing the design and specifying features such as materials, window and door positions, and general structural details. The documentation gets more precise and thorough as it goes along, and it now contains thorough site drawings, elevations, and any material and equipment choices that might be required.",
-		photo: "https://cdn.sanity.io/images/1apv929p/production/791e963fd3dc0c9e6537eb3106d85b02e700c525-4902x2382.jpg",
+			"A basic package of construction documents will be provided by the team in order to procure a building permit. GCD focuses on a technical representation of work along with the required guidelines such as zone codes, building codes, and safety guidelines.",
+		photo: "https://cdn.sanity.io/images/1apv929p/production/3d4cccbf113009b95375535699beee795787ad1a-1512x2016.jpg",
 	},
 	{
 		phase: "Phase IV",
-		title: "Construction Documentation",
+		title: "Construction Administration",
 		description:
-			"We now have a design. We can start preparing the construction drawings/blueprints, notes, and technical specifications required for bidding, construction, and permit applications. These precise drawings and specifications will be used by construction firms to plan the construction.",
-		photo: "https://cdn.sanity.io/images/1apv929p/production/16aa06dba9fa63b4da63bee2ba887bccd8a8dcd6-3600x2400.jpg",
-	},
-	{
-		phase: "Phase V",
-		title: "Negotiation and Construction Observation",
-		description:
-			"In this stage, we will construct in accordance with the design intent. Additionally, we discuss any adjustments and possibilities with the owner. It makes ensuring that changes are in line with the project owner's vision. This is the final stage, and once it is complete, a project is ready for use or occupation.",
+			"With the construction underway, the team will remotely check on the progress of the contractor's work. GCD ensures that every aspect of the design is carried out exactly as envisioned, offering a warranty that the finished product will adhere to the design guidelines and requirements.",
 		photo: "https://cdn.sanity.io/images/1apv929p/production/db54f72b5e0fda509d9ab872ac11f19e000771a4-2592x1936.jpg",
 	},
 ]
