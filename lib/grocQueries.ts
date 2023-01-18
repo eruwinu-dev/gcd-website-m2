@@ -108,7 +108,7 @@ export const getMembers = groq`*[_type == "author" && order > 0] | order(order a
 	role,
 	image,
 	otherImages,
-	blogBio,
+	"blogBio": blogbio,
 	bio,
   }`
 
@@ -120,7 +120,7 @@ export const getMemberBySlug = groq`*[_type == "author" && slug.current == $slug
 	role,
 	image,
 	otherImages,
-	blogBio,
+	"blogBio": blogbio,
 	bio,
   }`
 

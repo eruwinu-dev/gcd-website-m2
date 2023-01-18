@@ -39,7 +39,7 @@ const Member = ({ member }: Props) => {
 							<Image
 								src={imageProps.src}
 								loader={imageProps.loader}
-								alt={member.name}
+								alt={member.blogBio}
 								layout="fill"
 								objectFit="cover"
 								objectPosition="bottom"

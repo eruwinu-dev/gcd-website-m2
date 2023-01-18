@@ -10,7 +10,7 @@ export interface MemberType {
 	image: SanityImageSource
 	otherImages?: string
 	bio?: TypedObject
-	blogBio?: string
+	blogBio: string
 }
 
 export interface TeamType {

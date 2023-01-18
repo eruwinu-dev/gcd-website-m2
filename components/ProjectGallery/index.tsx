@@ -5,14 +5,15 @@ import ProjectGalleryItem from "./ProjectGalleryItem"
 
 type Props = {
 	images: SanityImageSource[]
+	title: string
 }
 
-const ProjectGallery = ({ images }: Props) => {
+const ProjectGallery = ({ images, title }: Props) => {
 	return (
 		<div className="project-gallery">
 			<div className="project-gallery-list">
 				{images.map((photo: SanityImageSource, index: number) => (
-					<ProjectGalleryItem photo={photo} key={index} index={index} />
+					<ProjectGalleryItem title={title} photo={photo} key={index} index={index} />
 				))}
 			</div>
 		</div>

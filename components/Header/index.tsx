@@ -72,7 +72,7 @@ const Header = (props: Props) => {
 								<Image
 									src={iconPath}
 									loader={({ src }) => src}
-									alt="Glen Charles Design Logo"
+									alt="The logo for G. Charles Design"
 									layout="fill"
 									objectFit="contain"
 									className="cursor-pointer"

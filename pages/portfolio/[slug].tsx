@@ -57,7 +57,7 @@ const Project = ({ project, previous, next }: Props) => {
 						{viewMode === "story" ? (
 							<ProjectStory project={project} />
 						) : project.imageList.length ? (
-							<ProjectCarousel images={project.imageList} />
+							<ProjectCarousel images={project.imageList} title={project.name} />
 						) : null}
 						<ProjectViewMode />
 					</div>
@@ -66,7 +66,7 @@ const Project = ({ project, previous, next }: Props) => {
 			<div className="portfolio-section">
 				{viewMode === "story" ? (
 					project.imageList.length ? (
-						<ProjectGallery images={project.imageList} />
+						<ProjectGallery title={project.name} images={project.imageList} />
 					) : null
 				) : (
 					<ProjectDescription project={project} />

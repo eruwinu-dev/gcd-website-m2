@@ -29,7 +29,7 @@ const ProcessTimelineItem = ({ process }: Props) => {
 					<Image
 						src={process.photo}
 						loader={sanityImageLoader}
-						alt={process.title}
+						alt={`${process.title} - ${process.description} | G. Charles Design`}
 						layout="fill"
 						objectFit="cover"
 					/>

@@ -1,1 +1,2 @@
-export const headerTitle = "Glen Charles Design - Client Focused Architecture"
+export const headerTitle = "G. Charles Design - Client Focused Architecture"
+

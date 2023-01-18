@@ -43,7 +43,7 @@ const About = ({ members }: Props) => {
 				<Image
 					src={aboutImage}
 					loader={sanityImageLoader}
-					alt="Glen Charles Design About Image"
+					alt="A picture of the staircase from A Montecito Classic, a project by G. Charles Design.`"
 					layout="fill"
 					objectFit="cover"
 					objectPosition="left"
@@ -86,7 +86,7 @@ const About = ({ members }: Props) => {
 			<section className="relative w-full h-screen translate-y-0 aspect-video">
 				<Image
 					src={bookImage}
-					alt="Glen Charles Design Booking Image"
+					alt="A rendering of The Music Barn, a project of G. Charles Design. Book your consult now!`"
 					loader={sanityImageLoader}
 					layout="fill"
 					objectFit="cover"

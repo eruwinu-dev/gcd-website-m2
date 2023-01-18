@@ -21,7 +21,7 @@ const NewsArticleAuthor = ({ post }: Props) => {
 					<Image
 						src={imageProps.src}
 						loader={imageProps.loader}
-						alt={post.author.name}
+						alt={`A picture for ${post.author.name}, a blog writer for G. Charles Design`}
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"

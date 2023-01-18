@@ -11,7 +11,7 @@ const Footer = (props: Props) => {
 				<div className="relative lg:w-1/4 md:w-1/2 w-4/5 h-auto aspect-video">
 					<Image
 						src="/gcd-logo-big.png"
-						alt="Glen Charles Design Logo"
+						alt="The logo for G. Charles Design"
 						layout="fill"
 						objectFit="contain"
 						loading="eager"

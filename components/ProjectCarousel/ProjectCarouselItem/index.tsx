@@ -8,10 +8,11 @@ import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import client from "../../../lib/client"
 
 type Props = {
+	title: string
 	image: SanityImageSource
 }
 
-const ProjectCarouselItem = ({ image }: Props) => {
+const ProjectCarouselItem = ({ title, image }: Props) => {
 	const imageProps = useNextSanityImage(client, image)
 
 	return (
@@ -20,6 +21,7 @@ const ProjectCarouselItem = ({ image }: Props) => {
 				<Image
 					src={imageProps.src}
 					loader={imageProps.loader}
+					alt={`A picture from the photo gallery of ${title}, a project of G. Charles Design`}
 					layout="fill"
 					objectFit="contain"
 					objectPosition="center"

@@ -34,7 +34,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 					<Image
 						src={imageProps.src}
 						loader={imageProps.loader}
-						alt={project.name}
+						alt={`The main image for ${project.name}, one of the projects by G. Charles Design`}
 						layout="fill"
 						objectFit="cover"
 						objectPosition="top"

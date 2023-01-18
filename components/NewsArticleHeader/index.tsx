@@ -39,6 +39,7 @@ const NewsArticleHeader = ({ post }: Props) => {
 						<Image
 							src={imageProps.src}
 							loader={imageProps.loader}
+							alt={`The main image for the article ${post.title} by ${post.author.name}, writer for G. Charles Design`}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"

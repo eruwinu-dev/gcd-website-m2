@@ -20,7 +20,7 @@ const Process = (props: Props) => {
 				<Image
 					src={processImage}
 					loader={sanityImageLoader}
-					alt="Glen Charles Design Process Image"
+					alt={"The veranda of the building from the A Montecito Classic, a project from G. Charles Design"}
 					layout="fill"
 					objectFit="cover"
 					objectPosition="left"

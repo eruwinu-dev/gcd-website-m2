@@ -42,7 +42,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 							<Image
 								src={imageProps.src}
 								loader={imageProps.loader}
-								alt={article.title}
+								alt={`The main image for ${article.title}, a blog article from G. Charles Design`}
 								layout="fill"
 								objectFit="cover"
 								objectPosition="center"

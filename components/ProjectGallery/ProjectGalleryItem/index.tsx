@@ -8,11 +8,12 @@ import { useNextSanityImage } from "next-sanity-image"
 import client from "../../../lib/client"
 
 type Props = {
+	title: string
 	photo: SanityImageSource
 	index: number
 }
 
-const ProjectGalleryItem = ({ photo, index }: Props) => {
+const ProjectGalleryItem = ({ title, photo, index }: Props) => {
 	const router = useRouter()
 	const { asPath } = router
 	const controls = useAnimation()
@@ -54,6 +55,7 @@ const ProjectGalleryItem = ({ photo, index }: Props) => {
 					<Image
 						src={imageProps.src}
 						loader={imageProps.loader}
+						alt={`A photo from ${title}, a project of G. Charles Design`}
 						layout="fill"
 						objectFit="cover"
 						objectPosition="center"

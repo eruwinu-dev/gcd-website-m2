@@ -15,10 +15,11 @@ const AboutCollage = (props: Props) => {
 						<Image
 							src={tile.picture}
 							loader={sanityImageLoader}
-							alt={tile.picture}
+							alt={`A picture used in the collage from G. Charles Design`}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
+							priority
 						/>
 					</div>
 				))}
@@ -29,10 +30,11 @@ const AboutCollage = (props: Props) => {
 						<Image
 							src={tile.picture}
 							loader={sanityImageLoader}
-							alt={tile.picture}
+							alt={`A picture used in the collage from G. Charles Design`}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
+							priority
 						/>
 					</div>
 				))}

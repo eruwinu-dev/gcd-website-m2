@@ -49,7 +49,7 @@ const ProjectStory = ({ project }: Props) => {
 						<Image
 							src={imageProps.src}
 							loader={imageProps.loader}
-							alt={project.name}
+							alt={`A photo from ${project.name}, a project of G. Charles Design`}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="left"

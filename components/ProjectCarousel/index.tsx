@@ -11,12 +11,13 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import ProjectCarouselItem from "./ProjectCarouselItem"
 
 type Props = {
+	title: string
 	images: SanityImageSource[]
 }
 
 /* eslint-disable react/display-name */
 
-const ProjectCarousel = ({ images }: Props) => {
+const ProjectCarousel = ({ images, title }: Props) => {
 	const { asPath, query, push } = useRouter()
 
 	const changeCarouselIndex = (value: number) => {
@@ -55,7 +56,7 @@ const ProjectCarousel = ({ images }: Props) => {
 						onChange={changeCarouselIndex}
 					>
 						{images.map((image: SanityImageSource, index: number) => (
-							<ProjectCarouselItem image={image} key={index} />
+							<ProjectCarouselItem image={image} title={title} key={index} />
 						))}
 					</Carousel>
 				</motion.div>

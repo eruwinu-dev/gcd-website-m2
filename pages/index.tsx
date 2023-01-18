@@ -21,13 +21,13 @@ const Home = (props: Props) => {
 	return (
 		<>
 			<Head>
-				<title>{headerTitle}</title>
+				<title>{`Home | ${headerTitle}`}</title>
 			</Head>
 			<section className="banner-section">
 				<Image
 					src={landingImage}
 					loader={sanityImageLoader}
-					alt="Glen Charles Design Landing Image"
+					alt="The landing image comes from The Farmasist, a project of G. Charles Design"
 					layout="fill"
 					objectFit="cover"
 					objectPosition="left"
@@ -122,7 +122,7 @@ const Home = (props: Props) => {
 								<div className="relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[1.60/1] overflow-hidden">
 									<Image
 										src="/ncarb.png"
-										alt="AIA Logo"
+										alt="NCARB Logo"
 										layout="fill"
 										objectFit="contain"
 										unoptimized
@@ -140,7 +140,7 @@ const Home = (props: Props) => {
 				<Image
 					src={bookImage}
 					loader={sanityImageLoader}
-					alt="Glen Charles Design Booking Image"
+					alt="A picture of the Modern Barn, a project of G. Charles Design. Book a consult now!"
 					layout="fill"
 					objectFit="cover"
 					objectPosition="center"

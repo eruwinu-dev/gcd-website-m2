@@ -17,7 +17,7 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 						<Image
 							src={value.asset._ref}
 							loader={sanityImageLoader}
-							alt={value.alt || " "}
+							alt={value.alt || "An image from a blog article by G. Charles Design"}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
@@ -103,7 +103,7 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 						<Image
 							src={value.asset._ref}
 							loader={sanityImageLoader}
-							alt={value.alt || " "}
+							alt={value.alt || "An image from a blog article by G. Charles Design"}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
@@ -187,7 +187,7 @@ export const CustomProjectStoryComponents: Partial<PortableTextReactComponents |
 						<Image
 							src={value.asset._ref}
 							loader={sanityImageLoader}
-							alt={value.alt || " "}
+							alt={value.alt || "An image from a blog article by G. Charles Design"}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"

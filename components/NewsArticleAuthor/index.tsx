@@ -24,6 +24,7 @@ const NewsArticleAuthor = ({ author }: Props) => {
 						objectFit="cover"
 						objectPosition="bottom"
 						className="rounded-full"
+						alt={`A picture for ${author.name}, a blog writer for G. Charles Design`}
 					/>
 				) : null}
 			</div>

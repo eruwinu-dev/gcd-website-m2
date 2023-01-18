@@ -78,7 +78,7 @@ const HeaderDashboard = (props: Props) => {
 				<div className="relative w-5/12 h-auto aspect-video">
 					<Image
 						src="/gcd-logo-big.png"
-						alt="Glen Charles Design Logo"
+						alt="The logo for G. Charles Design"
 						layout="fill"
 						unoptimized
 						loading="eager"

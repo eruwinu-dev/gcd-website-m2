@@ -10,7 +10,7 @@ const NewsPageHeader = (props: Props) => {
 				<Image
 					src="/gcd-logo-big.png"
 					loader={({ src }) => src}
-					alt="GCD Logo"
+					alt="The logo for G. Charles Design"
 					layout="fill"
 					className="cursor-pointer"
 					unoptimized
