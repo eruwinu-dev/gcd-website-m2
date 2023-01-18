@@ -7,8 +7,8 @@ type Props = {}
 
 const LandingCollage = (props: Props) => {
 	return (
-		<div className="lg:px-16 md:px8 px-4 py-16">
-			<div className="w-full lg:h-auto md:h-auto h-auto lg:aspect-square md:aspect-square lg:grid md:grid hidden grid-cols-5 grid-flow-row gap-2">
+		<div className="landing-collage">
+			<div className="landing-collage-container">
 				{collages.map((tile: CollageType, index: number) => (
 					<div className={["relative w-full h-full aspect-video", tile.format].join(" ")} key={tile.picture}>
 						<Image
@@ -23,7 +23,7 @@ const LandingCollage = (props: Props) => {
 					</div>
 				))}
 			</div>
-			<div className="w-full lg:h-screen md:h-screen h-fit lg:aspect-square md:aspect-square lg:hidden md:hidden grid grid-cols-1 grid-flow-row gap-4 lg:px-16 md:px-8 px-4 py-16">
+			<div className="landing-collage-hidden-container">
 				{collages.map((tile: CollageType, index: number) => (
 					<div className={["relative w-full h-fit aspect-video"].join(" ")} key={tile.picture}>
 						<Image

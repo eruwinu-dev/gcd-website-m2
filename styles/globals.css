@@ -78,6 +78,12 @@
 	.banner-mask {
 		@apply absolute w-full h-full top-0 left-0 bg-black/60 z-[2] px-8 py-16 grid grid-flow-row;
 	}
+	.banner-mask.two-column {
+		@apply lg:grid-cols-2 md:grid-cols-2 grid-cols-1;
+	}
+	.banner-mask > .banner-title-container {
+		@apply flex flex-col lg:items-start md:items-start items-center justify-center w-full h-full relative border-2 px-8 lg:text-left md:text-left text-center;
+	}
 	.banner-title {
 		@apply lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white mb-4 leading-normal;
 	}
@@ -88,6 +94,105 @@
 		@apply lg:flex md:flex hidden;
 	}
 	/*Home*/
+	.services-section {
+		@apply h-fit w-full lg:flex md:flex hidden flex-row items-center justify-center pb-16;
+	}
+	.services-list-container {
+		@apply w-full h-fit flex flex-col items-center justify-center;
+	}
+	.services-list {
+		@apply w-full h-fit grid grid-cols-1 grid-flow-row gap-12 lg:px-8 md:px-8 px-4 lg:py-16 md:py-8;
+	}
+	.services-list > div {
+		@apply relative lg:w-11/12 w-full h-auto aspect-video overflow-hidden;
+	}
+	.services-slider {
+		@apply w-full h-fit flex flex-col items-center justify-start;
+	}
+	.services-slider-container {
+		@apply sticky flex flex-col items-center justify-center w-full h-auto aspect-square space-y-8 generic-transition top-24 py-8;
+	}
+	.services-slider-container > h2 {
+		@apply text-2xl;
+	}
+	.services-slider-container > p {
+		@apply leading-loose lg:w-4/5 md:w-11/12 w-full;
+	}
+	.services-slider-hidden {
+		@apply h-fit w-full lg:hidden md:hidden flex flex-col items-start justify-center;
+	}
+	.services-slider-hidden-container {
+		@apply w-full h-fit flex flex-col items-center justify-start;
+	}
+	.services-slider-hidden-text-container {
+		@apply flex flex-col items-center justify-center w-11/12 h-auto aspect-square space-y-8 generic-transition pb-8;
+	}
+	.services-slider-hidden-text-container > h2 {
+		@apply text-2xl;
+	}
+	.services-slider-hidden-text-container > p {
+		@apply leading-loose;
+	}
+	.landing-blockquote-section {
+		@apply w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4;
+	}
+	.landing-blockquote-section-container {
+		@apply lg:w-1/2 md:w-3/4 w-full h-auto flex flex-col items-center justify-center lg:p-16 p-8;
+	}
+	.landing-blockquote-section-container > p {
+		@apply text-white indent-4 text-justify leading-loose tracking-wider text-lg w-full italic;
+	}
+	.landing-collage {
+		@apply lg:px-16 md:px-8 px-4 py-16;
+	}
+	.landing-collage-container {
+		@apply w-full lg:h-auto md:h-auto h-auto lg:aspect-square md:aspect-square lg:grid md:grid hidden grid-cols-5 grid-flow-row gap-2;
+	}
+	.landing-collage-hidden-container {
+		@apply w-full lg:h-screen md:h-screen h-fit lg:aspect-square md:aspect-square lg:hidden md:hidden grid grid-cols-1 grid-flow-row gap-4 lg:px-16 md:px-8 px-4 py-16;
+	}
+	.license-section {
+		@apply min-h-0 max-h-fit;
+	}
+	.license-grid {
+		@apply w-full h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row;
+	}
+	.license-description {
+		@apply w-11/12 mx-auto h-fit flex flex-col items-center justify-center space-y-8 pt-16;
+	}
+	.license-description > h3 {
+		@apply text-center;
+	}
+	.license-description > p {
+		@apply leading-loose lg:w-4/5 md:w-11/12 w-full text-left;
+	}
+	.license-icons-container {
+		@apply lg:w-3/4 md:w-11/12 w-full flex lg:flex-row md:flex-row flex-col items-center justify-center;
+	}
+	.aia-icon-container {
+		@apply relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[2.38/1] overflow-hidden;
+	}
+	.ncarb-icon-container {
+		@apply relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[1.60/1] overflow-hidden;
+	}
+	.consult-section {
+		@apply translate-y-0 relative w-full h-screen;
+	}
+	.consult-backdrop {
+		@apply w-full h-full bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16;
+	}
+	.consult-spacer {
+		@apply lg:flex md:flex hidden;
+	}
+	.consult-border {
+		@apply flex flex-col items-center justify-center w-full h-full relative border-2 text-center col-span-2 px-8 text-white space-y-8;
+	}
+	.consult-border > h4 {
+		@apply w-10/12 lg:text-4xl md:text-4xl sm:text-3xl text-3xl;
+	}
+	.consult-border > p {
+		@apply w-10/12 leading-relaxed text-white;
+	}
 	/*Process*/
 	.process-blockquote {
 		@apply w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4 translate-y-[-3.5rem];
