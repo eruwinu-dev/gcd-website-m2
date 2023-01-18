@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react"
-import Head from "next/head"
 import Image from "next/image"
 import { GetStaticProps } from "next"
 
@@ -15,6 +14,7 @@ import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
 import { getMembers } from "../../lib/grocQueries"
 import { sanityImageLoader } from "../../lib/sanityImageLoader"
+import MetaHead from "../../components/MetaHead"
 
 type Props = {
 	members: MemberType[]
@@ -36,9 +36,13 @@ const About = ({ members }: Props) => {
 
 	return (
 		<>
-			<Head>
-				<title>{`About | ${headerTitle}`}</title>
-			</Head>
+			<MetaHead
+				title={`About | ${headerTitle}`}
+				description="In G. Charles Design, we design for our clients, not for our portfolio."
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/about"}
+				siteName={`About | ${headerTitle}`}
+				image={process.env.NEXT_PUBLIC_SITE_URL + "/about.jpg"}
+			/>
 			<section className="banner-section">
 				<Image
 					src={aboutImage}
@@ -128,4 +132,3 @@ const aboutImage =
 const bookImage =
 	"https://cdn.sanity.io/images/1apv929p/production/86a4e15150bc9160b16c2e60f866276be927a88e-1280x720.jpg"
 export default About
-

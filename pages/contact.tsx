@@ -1,5 +1,4 @@
 import React, { useRef } from "react"
-import Head from "next/head"
 
 import { useRect } from "@reach/rect"
 
@@ -10,6 +9,7 @@ import MapContainer from "../components/MapContainer"
 import SocialsList from "../components/SocialsList"
 
 import { headerTitle } from "../lib/title"
+import MetaHead from "../components/MetaHead"
 
 type Props = {}
 
@@ -19,9 +19,12 @@ const Contact = (props: Props) => {
 
 	return (
 		<>
-			<Head>
-				<title>{`Contact | ${headerTitle}`}</title>
-			</Head>
+			<MetaHead
+				title={`Contact | ${headerTitle}`}
+				description="Get in touch with G. Charles Design at inquiry@gcharlesdesign.com. Book a consult now!"
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/contact"}
+				siteName={`Contact | ${headerTitle}`}
+			/>
 			<section className="contact-landing-section">
 				<div
 					className="contact-landing-list-sticky-container"

@@ -1,7 +1,6 @@
 import React from "react"
 
 import type { GetStaticPaths, GetStaticProps } from "next"
-import Head from "next/head"
 
 import type { ModeType, ProjectType } from "../../types/project"
 
@@ -19,6 +18,8 @@ import { getProjectBySlug, getProjects } from "../../lib/grocQueries"
 import client from "../../lib/client"
 import { ParsedUrlQuery } from "querystring"
 import { ProjectLinkType } from "../../types/project"
+import MetaHead from "../../components/MetaHead"
+import { useNextSanityImage } from "next-sanity-image"
 
 type Props = {
 	project: ProjectType
@@ -34,14 +35,19 @@ const Project = ({ project, previous, next }: Props) => {
 	const {
 		query: { mode },
 	} = useRouter()
+	const imageProps = useNextSanityImage(client, project.imageList[0])
 
 	const viewMode = (mode || "story") as ModeType
 
 	return (
 		<>
-			<Head>
-				<title>{`${project.name} | ${headerTitle}`}</title>
-			</Head>
+			<MetaHead
+				title={`${project.name} | ${headerTitle}`}
+				description={project.name + " - a project by G. Charles Design"}
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio/" + project.slug.current}
+				siteName={`${project.name} | ${headerTitle}`}
+				image={imageProps.src}
+			/>
 			<section className={[viewMode === "carousel" ? "translate-y-0" : "", "generic-transition h-fit"].join(" ")}>
 				<motion.div
 					className={["w-full h-fit"].join(" ")}

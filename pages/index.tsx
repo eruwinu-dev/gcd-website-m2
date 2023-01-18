@@ -1,6 +1,5 @@
 import React, { useRef } from "react"
 
-import Head from "next/head"
 import Image from "next/image"
 
 import { useRect } from "@reach/rect"
@@ -12,6 +11,7 @@ import ServicesList from "../components/ServicesList"
 import { headerTitle } from "../lib/title"
 
 import { sanityImageLoader } from "../lib/sanityImageLoader"
+import MetaHead from "../components/MetaHead"
 type Props = {}
 
 const Home = (props: Props) => {
@@ -20,9 +20,13 @@ const Home = (props: Props) => {
 
 	return (
 		<>
-			<Head>
-				<title>{`Home | ${headerTitle}`}</title>
-			</Head>
+			<MetaHead
+				title={`Home | ${headerTitle}`}
+				description="G. Charles Design is an architecture firm licensed in California, Nevada and Arizona with authentic architecture services catered to the client's needs."
+				url={process.env.NEXT_PUBLIC_SITE_URL || ""}
+				siteName={`Home | ${headerTitle}`}
+				image={process.env.NEXT_PUBLIC_SITE_URL + "/landing.jpg"}
+			/>
 			<section className="banner-section">
 				<Image
 					src={landingImage}

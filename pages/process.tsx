@@ -1,4 +1,3 @@
-import Head from "next/head"
 import React from "react"
 import Image from "next/image"
 
@@ -6,15 +5,20 @@ import ProcessTimeline from "../components/ProcessTimeline"
 
 import { headerTitle } from "../lib/title"
 import { sanityImageLoader } from "../lib/sanityImageLoader"
+import MetaHead from "../components/MetaHead"
 
 type Props = {}
 
 const Process = (props: Props) => {
 	return (
 		<>
-			<Head>
-				<title>{`Process | ${headerTitle}`}</title>
-			</Head>
+			<MetaHead
+				title={`Process | ${headerTitle}`}
+				description="G. Charles Design strives to create architecture that stands as a unique and enduring representation of who our clients are."
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/process"}
+				siteName={`Process | ${headerTitle}`}
+				image={process.env.NEXT_PUBLIC_SITE_URL + "/process.jpg"}
+			/>
 
 			<section className="banner-section">
 				<Image

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react"
-import Head from "next/head"
 import type { GetServerSideProps } from "next"
 
 import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
@@ -14,6 +13,7 @@ import { headerTitle } from "../../lib/title"
 import NewsPageHeader from "../../components/NewsPageHeader"
 import NewsCategoriesList from "../../components/NewsCategoriesList"
 import useStateContext from "../../context/State"
+import MetaHead from "../../components/MetaHead"
 
 type Props = {
 	articlesFromSanity: ArticleItemType[]
@@ -38,11 +38,14 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: Props) => {
 
 	return (
 		<>
-			<Head>
-				<title>{`News | ${headerTitle}`}</title>
-			</Head>
+			<MetaHead
+				title={`News | ${headerTitle}`}
+				description="Our knowledge of architecture is informed through years of education and experience. GCD Blog shares our process and things you want to know."
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/news"}
+				siteName={`News | ${headerTitle}`}
+			/>
 			<NewsPageHeader />
-		<NewsCategoriesList />
+			<NewsCategoriesList />
 			<NewsGallery />
 		</>
 	)

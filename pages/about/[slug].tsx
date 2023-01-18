@@ -1,6 +1,5 @@
 import React from "react"
 
-import Head from "next/head"
 import Image from "next/image"
 import type { GetStaticPaths, GetStaticProps } from "next"
 import type { ParsedUrlQuery } from "querystring"
@@ -15,6 +14,7 @@ import { getMemberBySlug, getMembers } from "../../lib/grocQueries"
 import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
 import { useNextSanityImage } from "next-sanity-image"
+import MetaHead from "../../components/MetaHead"
 
 type Props = {
 	member: MemberType
@@ -29,9 +29,13 @@ const Member = ({ member }: Props) => {
 
 	return (
 		<>
-			<Head>
-				<title>{`${member.name} | ${headerTitle}`}</title>
-			</Head>
+			<MetaHead
+				title={`${member.name} | ${headerTitle}`}
+				description={member.blogBio}
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug.current}
+				siteName={`${member.name} | ${headerTitle}`}
+				image={imageProps.src}
+			/>
 			<section className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row translate-y-0 lg:gap-x-16 md:gap-x-8 gap-x-0 lg:gap-y-0 md:gap-y-0 gap-y-8 lg:pt-8 md:pt-6 pt-0 pb-8">
 				<div className="member-image-layout">
 					<div className="member-image-container">

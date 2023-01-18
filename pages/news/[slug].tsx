@@ -1,6 +1,5 @@
 import React from "react"
 
-import Head from "next/head"
 import groq from "groq"
 
 import type { ParsedUrlQuery } from "querystring"
@@ -15,17 +14,25 @@ import SocialMediaShare from "../../components/SocialMediaShare"
 import client from "../../lib/client"
 import { headerTitle } from "../../lib/title"
 import { getArticleBySlug } from "../../lib/grocQueries"
+import MetaHead from "../../components/MetaHead"
+import { useNextSanityImage } from "next-sanity-image"
 
 interface StaticParams extends ParsedUrlQuery {
 	slug: string
 }
 
 const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] }) => {
+	const imageProps = useNextSanityImage(client, post.mainImage)
+
 	return (
 		<>
-			<Head>
-				<title>{`${post.title} - Blog | ${headerTitle}`}</title>
-			</Head>
+			<MetaHead
+				title={`${post.title} - Blog | ${headerTitle}`}
+				description={post.description || "A blog post by G. Charles Design"}
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug.current}
+				siteName={`${post.title} - Blog | ${headerTitle}`}
+				image={imageProps.src}
+			/>
 			<NewsArticleHeader post={post} />
 			<div className="w-10/12 min-h-screen max-h-fit flex lg:flex-row flex-col items-start justify-center mx-auto">
 				<NewsArticleText body={post.body} />
