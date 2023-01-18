@@ -16,6 +16,7 @@ const Layout = ({ children }: Props) => {
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta charSet="utf-8" />
+				<meta name="robots" content="all" />
 				<meta name="googlebot" content="all" />
 				<meta name="HandheldFriendly" content="True" />
 				<meta name="MobileOptimized" content="320" />
@@ -25,17 +26,16 @@ const Layout = ({ children }: Props) => {
 				<meta name="mobile-web-app-capable" content="yes" />
 				<meta name="theme-color" content="#ffffff" />
 				<meta
-					name="robots"
-					content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-				/>
-				<meta
 					name="description"
 					content="G. Charles Design (Glen Charles Design) is an architecture firm licensed in California, Nevada and Arizona. GCD strives to develop authentic architecture services catered to the client's needs. Book a consult now!"
 				/>
 				<link rel="canonical" href="https://gcharlesdesign.com" />
 				<meta property="og:locale" content="en_US" />
 				<meta property="og:type" content="website" />
-				<meta property="og:title" content="Home | G. Charles Design - Client Focused Architecture" />
+				<meta
+					property="og:title"
+					content="G. Charles Design - Client Focused Architecture, Glen Charles Design"
+				/>
 				<meta
 					property="og:description"
 					content="G. Charles Design (Glen Charles Design) is an architecture firm licensed in California, Nevada and Arizona. GCD strives to develop authentic architecture services catered to the client's needs. Book a consult now!"

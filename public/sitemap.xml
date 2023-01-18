@@ -20,6 +20,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.gcharlesdesign.com/news</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.gcharlesdesign.com/portfolio</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
