@@ -1,14 +1,12 @@
-import React, { useEffect, useRef } from "react"
+import React from "react"
 import Image from "next/image"
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 
 import type { MemberType } from "../../types/member"
 
 import AboutCollage from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
 import TeamGallery from "../../components/TeamGallery"
-
-import useStateContext from "../../context/State"
 
 import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
@@ -21,19 +19,6 @@ type Props = {
 }
 
 const About = ({ members }: Props) => {
-	const { setMembers } = useStateContext()
-
-	const calledOnce = useRef(false)
-
-	useEffect(() => {
-		if (calledOnce.current) return
-		else {
-			setMembers(members)
-			calledOnce.current = true
-		}
-		return () => {}
-	}, [members, setMembers])
-
 	return (
 		<>
 			<MetaHead
@@ -86,7 +71,7 @@ const About = ({ members }: Props) => {
 					</p>
 				</div>
 			</section>
-			<TeamGallery />
+			<TeamGallery members={members} />
 			<section className="relative w-full h-screen translate-y-0 aspect-video">
 				<Image
 					src={bookImage}
@@ -116,7 +101,7 @@ const About = ({ members }: Props) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const members = (await client.fetch(getMembers)) as MemberType[]
 
 	return {
@@ -132,3 +117,4 @@ const aboutImage =
 const bookImage =
 	"https://cdn.sanity.io/images/1apv929p/production/86a4e15150bc9160b16c2e60f866276be927a88e-1280x720.jpg"
 export default About
+

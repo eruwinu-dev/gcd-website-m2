@@ -2,6 +2,8 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
+import { motion } from "framer-motion"
+
 import type { MemberType } from "../../../types/member"
 import { useNextSanityImage } from "next-sanity-image"
 import client from "../../../lib/client"
@@ -18,7 +20,13 @@ const TeamGalleryItem = ({ member }: Props) => {
 			<div className={member.order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
 			<div className="team-gallery-item">
 				<Link href={`about/${member.slug.current}`}>
-					<div className="relative lg:w-full md:w-full w-3/5 h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center">
+					<motion.div
+						className="relative lg:w-full md:w-full w-3/5 h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center"
+						variants={memberVariants}
+						initial="start"
+						whileInView="go"
+						viewport={{ once: true }}
+					>
 						{imageProps ? (
 							<Image
 								src={imageProps.src}
@@ -30,7 +38,7 @@ const TeamGalleryItem = ({ member }: Props) => {
 								className="generic-transition hover:scale-105 cursor-pointer"
 							/>
 						) : null}
-					</div>
+					</motion.div>
 				</Link>
 				<h5 className="mt-2 text-center">{member.name}</h5>
 				<div className="text-center italic">{member.role}</div>
@@ -38,6 +46,11 @@ const TeamGalleryItem = ({ member }: Props) => {
 			<div className={member.order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
 		</>
 	)
+}
+
+const memberVariants = {
+	start: { opacity: 0 },
+	go: { opacity: 1, transition: { duration: 0.3 } },
 }
 
 export default TeamGalleryItem

@@ -1,20 +1,19 @@
 import React from "react"
-
 import Image from "next/image"
-import type { GetStaticPaths, GetStaticProps } from "next"
+import type { GetServerSideProps } from "next"
 import type { ParsedUrlQuery } from "querystring"
 
 import { PortableText } from "@portabletext/react"
+import { useNextSanityImage } from "next-sanity-image"
 
 import type { MemberType } from "../../types/member"
 
 import { CustomArticleComponents } from "../../components/CustomPTComponents"
+import MetaHead from "../../components/MetaHead"
 
-import { getMemberBySlug, getMembers } from "../../lib/grocQueries"
+import { getMemberBySlug } from "../../lib/grocQueries"
 import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
-import { useNextSanityImage } from "next-sanity-image"
-import MetaHead from "../../components/MetaHead"
 
 type Props = {
 	member: MemberType
@@ -36,9 +35,9 @@ const Member = ({ member }: Props) => {
 				siteName={`${member.name} | ${headerTitle}`}
 				image={imageProps.src}
 			/>
-			<section className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row translate-y-0 lg:gap-x-16 md:gap-x-8 gap-x-0 lg:gap-y-0 md:gap-y-0 gap-y-8 lg:pt-8 md:pt-6 pt-0 pb-8">
-				<div className="member-image-layout">
-					<div className="member-image-container">
+			<section className="team-member-section">
+				<div className="team-member-image-layout">
+					<div className="team-member-image-container">
 						{imageProps ? (
 							<Image
 								src={imageProps.src}
@@ -65,18 +64,14 @@ const Member = ({ member }: Props) => {
 	)
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const members = (await client.fetch(getMembers)) as MemberType[]
-
-	return {
-		paths: members.map((member: MemberType) => ({ params: { slug: member.slug.current } })),
-		fallback: false,
-	}
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const { slug = "" } = params as StaticParams
 	const member = (await client.fetch(getMemberBySlug, { slug })) as MemberType
+
+	if (!member)
+		return {
+			notFound: true,
+		}
 
 	return {
 		props: {
