@@ -1,6 +1,8 @@
 import React from "react"
 import Image from "next/image"
 
+import { motion } from "framer-motion"
+
 import type { ServiceType } from "../../types/service"
 
 import { services } from "../../lib/services"
@@ -12,7 +14,13 @@ const ServicesList = (props: Props) => {
 	return (
 		<div className="services-list">
 			{services.map((service: ServiceType, index: number) => (
-				<div key={service.title}>
+				<motion.div
+					key={service.title}
+					variants={serviceVariants}
+					initial="start"
+					whileInView="go"
+					viewport={{ once: true }}
+				>
 					<Image
 						src={service.photo}
 						loader={sanityImageLoader}
@@ -21,10 +29,15 @@ const ServicesList = (props: Props) => {
 						objectPosition="top"
 						alt={`${service.title} - ${service.description} - G. Charles Design`}
 					/>
-				</div>
+				</motion.div>
 			))}
 		</div>
 	)
+}
+
+const serviceVariants = {
+	start: { opacity: 0 },
+	go: { opacity: 1, transition: { duration: 0.3 } },
 }
 
 export default ServicesList

@@ -1,8 +1,7 @@
-import { GetServerSideProps } from "next"
-import React, { useEffect, useRef } from "react"
+import { GetStaticProps } from "next"
+import React from "react"
 import MetaHead from "../../components/MetaHead"
 import PortfolioGallery from "../../components/PortfolioGallery"
-import useStateContext from "../../context/State"
 import client from "../../lib/client"
 import { getProjects } from "../../lib/grocQueries"
 import { headerTitle } from "../../lib/title"
@@ -13,19 +12,6 @@ type Props = {
 }
 
 const Portfolio = ({ projects }: Props) => {
-	const { setProjects } = useStateContext()
-
-	const calledOnce = useRef(false)
-
-	useEffect(() => {
-		if (calledOnce.current) return
-		else {
-			setProjects(projects)
-			calledOnce.current = true
-		}
-		return () => {}
-	}, [setProjects, projects])
-
 	return (
 		<>
 			<MetaHead
@@ -35,13 +21,13 @@ const Portfolio = ({ projects }: Props) => {
 				siteName={`Portfolio | ${headerTitle}`}
 			/>
 			<div className="portfolio-section">
-				<PortfolioGallery />
+				<PortfolioGallery projects={projects} />
 			</div>
 		</>
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const projects = (await client.fetch(getProjects)) as ProjectType[]
 
 	return {

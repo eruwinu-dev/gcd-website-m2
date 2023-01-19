@@ -6,13 +6,15 @@ import type { CategoryType, ProjectType } from "../../types/project"
 
 import PortfolioGalleryGroup from "./PortfolioGalleryGroup"
 
-import useStateContext from "../../context/State"
+type Props = {
+	projects: ProjectType[]
+}
 
-type Props = {}
-
-const PortfolioGallery = (props: Props) => {
-	const { projects } = useStateContext()
-	const { query, push } = useRouter()
+const PortfolioGallery = ({ projects }: Props) => {
+	const {
+		query: { category },
+		push,
+	} = useRouter()
 
 	const categories: CategoryType[] = useMemo(
 		() =>
@@ -32,9 +34,14 @@ const PortfolioGallery = (props: Props) => {
 		[projects]
 	)
 
+	const selectedProjects = useMemo(
+		() => (category ? projects.filter((project) => project.category.slug.current === category) : projects),
+		[category]
+	)
+
 	const isSelectedCategory = (slug: string) => {
-		if (slug === "all" && !query.category) return true
-		else if (slug === query.category) return true
+		if (slug === "all" && !category) return true
+		else if (slug === category) return true
 		else return false
 	}
 
@@ -50,14 +57,11 @@ const PortfolioGallery = (props: Props) => {
 	}
 
 	return (
-		<div className="w-full min-h-screen max-h-fit flex flex-col items-center justify-start">
-			<nav className="mx-auto lg:w-7/12 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative px-2">
-				<ul className="flex flex-row lg:items-end md:items-end items-center space-between h-fit lg:mt-16 md:mt-16 mt-8 lg:mb-8 md:mb-8 mb-4">
+		<div className="portfolio-gallery-container">
+			<nav className="portfolio-category-nav">
+				<ul>
 					{categories.map((category: CategoryType) => (
-						<li
-							key={category.slug.current}
-							className="box-content flex flex-col items-center justify-center relative h-full lg:text-base md:text-base sm:text-sm text-xs"
-						>
+						<li key={category.slug.current}>
 							<button
 								type="button"
 								onClick={changeCategory(category.slug.current)}
@@ -69,14 +73,14 @@ const PortfolioGallery = (props: Props) => {
 								{category.name}
 							</button>
 							{isSelectedCategory(category.slug.current) ? (
-								<motion.div className="portfolio-nav-tab" layoutId="portfolio-nav-tab" />
+								<motion.div className="portfolio-category-nav-tab" layoutId="portfolio-nav-tab" />
 							) : null}
 						</li>
 					))}
 				</ul>
 			</nav>
 			<AnimatePresence mode="wait">
-				<PortfolioGalleryGroup category={(query.category || "all") as string} />
+				<PortfolioGalleryGroup selectedProjects={selectedProjects} />
 			</AnimatePresence>
 		</div>
 	)

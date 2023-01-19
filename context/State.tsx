@@ -33,13 +33,6 @@ export const Provider = ({ children }: Props) => {
 	const [load, setLoad] = useState<boolean>(false)
 
 	const [articlesLoading, setArticlesLoading] = useState<boolean>(false)
-	const [articles, setArticles] = useState<ArticleItemType[]>([])
-
-	const [members, setMembers] = useState<MemberType[]>([])
-
-	const [categories, setCategories] = useState<ArticleCategoryType[]>([])
-
-	const [projects, setProjects] = useState<ProjectType[]>([])
 
 	const addContact = async (values: FormType) => {
 		let contactId
@@ -70,26 +63,6 @@ export const Provider = ({ children }: Props) => {
 		}
 	}
 
-	const getMoreArticles = async (categoryString: string | undefined) => {
-		try {
-			setArticlesLoading(true)
-			const { currentSlugs = [], category = undefined } = {
-				currentSlugs: articles.map((article: ArticleItemType) => article.slug.current),
-				category: categoryString,
-			} as ArticleStaticParams
-			const moreArticles = !category
-				? await client.fetch(getMoreArticlesQuery, { currentSlugs })
-				: ((await client.fetch(getMoreArticlesByCategoryQuery, {
-						currentSlugs,
-						category,
-				  })) as ArticleItemType[])
-			if (!moreArticles.length) return
-			setArticles([...articles, ...moreArticles])
-		} finally {
-			setArticlesLoading(false)
-		}
-	}
-
 	const value: ContextType = {
 		storyOpen,
 		setStoryOpen,
@@ -100,18 +73,9 @@ export const Provider = ({ children }: Props) => {
 		setModalOpen,
 		contactLoading,
 		setContactLoading,
-		articles,
-		setArticles,
 		articlesLoading,
-		getMoreArticles,
-		categories,
-		setCategories,
 		load,
 		setLoad,
-		members,
-		setMembers,
-		projects,
-		setProjects,
 	}
 
 	return <Context.Provider value={value}>{children}</Context.Provider>

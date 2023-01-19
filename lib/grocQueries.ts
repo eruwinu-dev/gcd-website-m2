@@ -31,7 +31,7 @@ export const getProjectBySlug = groq`*[_type == "project" && slug.current == $sl
 }`
 
 export const getArticlesCategoriesQuery = groq`{
-	"articles": *[_type == "post"] | order(publishedAt desc) [0..5] {
+	"articles": *[_type == "post"] | order(publishedAt desc) {
 		_id,
 		publishedAt,
 		title,

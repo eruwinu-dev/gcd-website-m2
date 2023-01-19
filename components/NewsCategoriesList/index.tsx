@@ -3,23 +3,25 @@ import React, { MouseEvent } from "react"
 import { ArticleCategoryType } from "../../types/article"
 
 import { motion } from "framer-motion"
-import useStateContext from "../../context/State"
 
-type Props = {}
+type Props = {
+	categories: ArticleCategoryType[]
+}
 
-const NewsCategoriesList = ({}: Props) => {
-	const { categories } = useStateContext()
-	const router = useRouter()
-	const { query } = router
+const NewsCategoriesList = ({ categories }: Props) => {
+	const {
+		query: { category },
+		push,
+	} = useRouter()
 
-	const isSelectedCategory = (category: ArticleCategoryType) => {
-		if (category.title === "all" && !query.category) return true
-		else if (category.title === query.category) return true
+	const isSelectedCategory = (selectedCategory: ArticleCategoryType) => {
+		if (selectedCategory.title === "all" && !category) return true
+		else if (selectedCategory.title === category) return true
 		else return false
 	}
 
 	const changeCategory = (category: ArticleCategoryType) => (event: MouseEvent<HTMLLIElement>) => {
-		router.push(
+		push(
 			{
 				pathname: "/news",
 				query: category.title !== "all" ? { category: category.title } : {},
@@ -30,14 +32,10 @@ const NewsCategoriesList = ({}: Props) => {
 	}
 
 	return (
-		<nav className="w-full mx-auto lg:pt-16 md:pt-8 sm:pt-4 pt-4 pb-8">
-			<ul className="w-full flex lg:flex-row md:flex-row flex-col items-center justify-center lg:space-x-16 md:space-x-8 space-x-0">
+		<nav className="news-category-nav">
+			<ul>
 				{categories.map((category: ArticleCategoryType) => (
-					<li
-						key={category.title}
-						className="flex flex-col items-center justify-center relative"
-						onClick={changeCategory(category)}
-					>
+					<li key={category.title} onClick={changeCategory(category)}>
 						<span
 							className={[
 								"text-lg capitalize cursor-pointer",

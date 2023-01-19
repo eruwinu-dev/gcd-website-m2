@@ -1,23 +1,21 @@
 import React from "react"
+import { useRouter } from "next/router"
 
 import type { ProjectType } from "../../../types/project"
 
 import PortfolioGalleryItem from "./PortfolioGalleryItem"
-import useStateContext from "../../../context/State"
 
 type Props = {
-	category: string
+	selectedProjects: ProjectType[]
 }
 
-const PortfolioGalleryGroup = ({ category }: Props) => {
-	const { projects } = useStateContext()
-	const selectedProjects: ProjectType[] =
-		category === "all"
-			? projects
-			: projects.filter((project: ProjectType) => project.category.slug.current === category)
+const PortfolioGalleryGroup = ({ selectedProjects }: Props) => {
+	const {
+		query: { category },
+	} = useRouter()
 
 	return (
-		<div key={category} className="portfolio-gallery">
+		<div key={(category || "all") as string} className="portfolio-gallery">
 			{selectedProjects.map((project: ProjectType) => (
 				<PortfolioGalleryItem key={project._id} project={project} />
 			))}

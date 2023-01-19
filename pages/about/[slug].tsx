@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import type { GetServerSideProps } from "next"
+import type { GetStaticPaths, GetStaticProps } from "next"
 import type { ParsedUrlQuery } from "querystring"
 
 import { PortableText } from "@portabletext/react"
@@ -11,7 +11,7 @@ import type { MemberType } from "../../types/member"
 import { CustomArticleComponents } from "../../components/CustomPTComponents"
 import MetaHead from "../../components/MetaHead"
 
-import { getMemberBySlug } from "../../lib/grocQueries"
+import { getMemberBySlug, getMembers } from "../../lib/grocQueries"
 import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
 
@@ -50,11 +50,11 @@ const Member = ({ member }: Props) => {
 						) : null}
 					</div>
 				</div>
-				<div className="flex flex-col lg:items-start md:items-start items-center justify-start h-full">
-					<div className="lg:w-8/12 md:w-9/12 w-11/12 space-y-6">
-						<div className="space-y-2 flex flex-col lg:items-start md:items-start items-center">
+				<div className="team-member-text">
+					<div className="team-member-text-layout">
+						<div className="team-member-text-container">
 							<h2>{member.name}</h2>
-							<div className="italic">{member.role}</div>
+							<h3>{member.role}</h3>
 						</div>
 						<PortableText value={member.bio} components={CustomArticleComponents} />
 					</div>
@@ -64,14 +64,18 @@ const Member = ({ member }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+	const members = (await client.fetch(getMembers)) as MemberType[]
+
+	return {
+		paths: members.map((member: MemberType) => ({ params: { slug: member.slug.current } })),
+		fallback: false,
+	}
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { slug = "" } = params as StaticParams
 	const member = (await client.fetch(getMemberBySlug, { slug })) as MemberType
-
-	if (!member)
-		return {
-			notFound: true,
-		}
 
 	return {
 		props: {

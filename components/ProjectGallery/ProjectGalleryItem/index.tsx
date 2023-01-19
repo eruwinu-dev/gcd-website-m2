@@ -28,6 +28,10 @@ const ProjectGalleryItem = ({ title, photo, index }: Props) => {
 		return () => {}
 	}, [load, controls])
 
+	useEffect(() => {
+		setLoad(false)
+	}, [asPath])
+
 	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
 		router.push(
 			{
@@ -57,6 +61,7 @@ const ProjectGalleryItem = ({ title, photo, index }: Props) => {
 						loader={imageProps.loader}
 						alt={`A photo from ${title}, a project of G. Charles Design`}
 						layout="fill"
+						quality={80}
 						objectFit="cover"
 						objectPosition="center"
 						onLoadingComplete={() => setLoad(true)}

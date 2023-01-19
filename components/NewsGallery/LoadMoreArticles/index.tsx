@@ -1,18 +1,11 @@
-import { useRouter } from "next/router"
 import React, { MouseEvent } from "react"
-import useStateContext from "../../../context/State"
 
 type Props = {}
 
 const LoadMoreArticles = (props: Props) => {
-	const {
-		query: { category },
-	} = useRouter()
-	const { getMoreArticles } = useStateContext()
-
 	const loadMoreArticlesHandler = async (event: MouseEvent<HTMLButtonElement>) => {
 		try {
-			await getMoreArticles(category as string | undefined)
+			// await getMoreArticles(category as string | undefined)
 		} catch (error) {
 			console.log(error)
 		} finally {

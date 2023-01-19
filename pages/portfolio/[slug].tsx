@@ -59,7 +59,7 @@ const Project = ({ project, previous, next }: Props) => {
 						duration: 0.5,
 					}}
 				>
-					<div className="w-full h-fit flex flex-col items-center justify-center relative">
+					<div className="project-view-mode-container">
 						{viewMode === "story" ? (
 							<ProjectStory project={project} />
 						) : project.imageList.length ? (

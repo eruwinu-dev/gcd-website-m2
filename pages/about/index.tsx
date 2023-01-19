@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import { GetServerSideProps } from "next"
+import { GetStaticProps } from "next"
 
 import type { MemberType } from "../../types/member"
 
@@ -101,7 +101,7 @@ const About = ({ members }: Props) => {
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const members = (await client.fetch(getMembers)) as MemberType[]
 
 	return {

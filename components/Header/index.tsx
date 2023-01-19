@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 
 import Image from "next/image"
 import Link from "next/link"
@@ -25,9 +25,12 @@ const logoWhite: string = "/logo-white.png"
 const Header = (props: Props) => {
 	const [offset, setOffset] = useState<number>(0)
 	const { setHeaderOpen, headerOpen, load } = useStateContext()
-	const { pathname, query } = useRouter()
+	const {
+		pathname,
+		query: { mode },
+	} = useRouter()
 
-	const viewMode = (query.mode || "story") as ModeType
+	const viewMode = (mode || "story") as ModeType
 
 	const isWhite = ["/", "/about", "/process", "/portfolio/[slug]"].includes(pathname)
 		? pathname === "/portfolio/[slug]"

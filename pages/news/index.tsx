@@ -1,41 +1,25 @@
-import React, { useEffect, useRef } from "react"
-import type { GetServerSideProps } from "next"
+import React from "react"
+
+import type { GetStaticProps } from "next"
 
 import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
 
-import client from "../../lib/client"
-
 import { getArticlesCategoriesQuery } from "../../lib/grocQueries"
 
+import MetaHead from "../../components/MetaHead"
 import NewsGallery from "../../components/NewsGallery"
-
-import { headerTitle } from "../../lib/title"
 import NewsPageHeader from "../../components/NewsPageHeader"
 import NewsCategoriesList from "../../components/NewsCategoriesList"
-import useStateContext from "../../context/State"
-import MetaHead from "../../components/MetaHead"
+
+import client from "../../lib/client"
+import { headerTitle } from "../../lib/title"
 
 type Props = {
-	articlesFromSanity: ArticleItemType[]
-	categoriesFromSanity: ArticleCategoryType[]
+	articles: ArticleItemType[]
+	categories: ArticleCategoryType[]
 }
 
-const News = ({ articlesFromSanity, categoriesFromSanity }: Props) => {
-	const { setArticles, setCategories } = useStateContext()
-
-	const calledOnce = useRef(false)
-
-	useEffect(() => {
-		if (calledOnce.current) return
-		else {
-			setArticles(articlesFromSanity)
-			setCategories(categoriesFromSanity)
-			calledOnce.current = true
-		}
-
-		return () => {}
-	}, [])
-
+const News = ({ articles, categories }: Props) => {
 	return (
 		<>
 			<MetaHead
@@ -45,13 +29,13 @@ const News = ({ articlesFromSanity, categoriesFromSanity }: Props) => {
 				siteName={`News | ${headerTitle}`}
 			/>
 			<NewsPageHeader />
-			<NewsCategoriesList />
-			<NewsGallery />
+			<NewsCategoriesList categories={categories} />
+			<NewsGallery categories={categories} articles={articles} />
 		</>
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
 	const { articles, categories, total } = (await client.fetch(getArticlesCategoriesQuery)) as {
 		articles: ArticleItemType[]
 		categories: ArticleCategoryType[]
@@ -60,8 +44,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 	return {
 		props: {
-			articlesFromSanity: articles,
-			categoriesFromSanity: [
+			articles,
+			categories: [
 				{
 					title: "all",
 					description: "All blogs",
