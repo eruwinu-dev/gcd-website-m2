@@ -39,7 +39,7 @@ const Contact = (props: Props) => {
 
 				<div className="contact-landing-scroll-container" ref={sliderRef}>
 					<MapContainer />
-					<ContactForm />
+					<ContactForm titleTag="h2" />
 				</div>
 			</section>
 			<section className="h-fit translate-y-0 lg:hidden md:hidden flex flex-col items-center justify-start space-y-8 py-4">
@@ -49,7 +49,7 @@ const Contact = (props: Props) => {
 					<ContactList size="large" />
 					<SocialsList />
 				</div>
-				<ContactForm />
+				<ContactForm titleTag="h3" />
 			</section>
 			<ContactModal />
 		</>
