@@ -28,7 +28,7 @@ const Footer = (props: Props) => {
 				</span>
 			</div>
 			<div className="contact-list-container">
-				{pathname === "/" ? <h4 className="text-xl">Reach Us</h4> : <h6 className="text-xl">Reach Us</h6>}
+				<h4 className="text-xl">Reach Us</h4>
 				<ContactList />
 			</div>
 		</footer>
