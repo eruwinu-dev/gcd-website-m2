@@ -46,7 +46,6 @@ const NewsGalleryItem = ({ article }: Props) => {
 								layout="fill"
 								objectFit="cover"
 								objectPosition="center"
-								className="generic-transition hover:scale-105"
 							/>
 						) : null}
 					</div>

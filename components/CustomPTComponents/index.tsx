@@ -17,6 +17,7 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 						<Image
 							src={value.asset._ref}
 							loader={sanityImageLoader}
+							priority
 							alt={value.alt || "An image from a blog article by G. Charles Design"}
 							layout="fill"
 							objectFit="cover"
@@ -80,15 +81,11 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 		},
 	},
 	list: {
-		bullet: ({ children }) => <ul className="pl-5">{children}</ul>,
-		number: ({ children }) => <ol className="pl-5">{children}</ol>,
+		bullet: ({ children }) => <ul className="news-article-pt-list">{children}</ul>,
+		number: ({ children }) => <ol className="news-article-pt-list">{children}</ol>,
 	},
 	listItem: {
-		bullet: ({ children }) => (
-			<li style={{ listStyleType: "disc" }} className="news-portable-text-component text-justify">
-				{children}
-			</li>
-		),
+		bullet: ({ children }) => <li style={{ listStyleType: "disc" }}>{children}</li>,
 	},
 }
 

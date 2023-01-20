@@ -15,7 +15,7 @@ const PortfolioGalleryGroup = ({ selectedProjects }: Props) => {
 	} = useRouter()
 
 	return (
-		<div key={(category || "all") as string} className="portfolio-gallery">
+		<div key={(category || "all") as string} className="portfolio-gallery-group">
 			{selectedProjects.map((project: ProjectType) => (
 				<PortfolioGalleryItem key={project._id} project={project} />
 			))}

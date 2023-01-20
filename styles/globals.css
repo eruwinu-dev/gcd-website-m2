@@ -303,6 +303,24 @@
 	.portfolio-category-nav-tab {
 		@apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto lg:w-4/5 w-full bg-red-700;
 	}
+	.portfolio-gallery-group {
+		@apply grid grid-flow-row lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 lg:gap-8 gap-4 w-11/12 h-fit pt-8 pb-16;
+	}
+	.portfolio-gallery-item {
+		@apply lg:w-10/12 md:w-10/12 mx-auto w-full h-full flex flex-col items-center justify-start;
+	}
+	.portfolio-gallery-item-image {
+		@apply w-full h-auto aspect-video relative cursor-pointer overflow-hidden;
+	}
+	.portfolio-gallery-item-caption {
+		@apply w-full lg:h-1/5 md:h-1/5 h-1/4 z-[2] bg-white flex flex-col items-center justify-center border-b-2 py-4;
+	}
+	.portfolio-gallery-item-caption > h5,
+	.portfolio-gallery-item-caption > span {
+		@apply text-center mb-1;
+	}
+
+	/*Portfolio/[slug]*/
 	.project-bottom-bar {
 		@apply relative lg:w-4/5 md:w-4/5 w-full h-fit grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 grid-flow-row gap-8 py-4;
 	}
@@ -354,20 +372,8 @@
 	.project-gallery-item {
 		@apply w-full aspect-video inline-block mb-2 relative cursor-pointer overflow-hidden;
 	}
-	.project-gallery-item > img {
-		@apply hover:scale-105 transition-transform duration-300 ease-in-out hover:opacity-100 opacity-80;
-	}
-	.project-story-div {
-		@apply w-[50%] h-[7.5%] absolute top-0 right-0;
-	}
-	.project-story-div > button {
-		@apply p-1 m-4;
-	}
-	.project-story-team-container {
-		@apply w-[50%] h-full absolute top-0 left-0 z-[2] p-2 space-y-12 bg-black/70 flex flex-col items-center justify-center text-white;
-	}
-	.project-story-team-container > .project-story-relative {
-		@apply relative w-full h-full flex flex-col items-center justify-center;
+	.proejct-gallery-item-image {
+		@apply relative w-full h-full overflow-hidden generic-transition hover:scale-105;
 	}
 	.animated-div-button {
 		@apply italic hover:underline z-[2] relative w-full;
@@ -400,20 +406,6 @@
 	}
 	.carousel-controls > button {
 		@apply p-2 text-white rounded-full;
-	}
-
-	.portfolio-gallery {
-		@apply grid grid-flow-row lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 lg:gap-8 gap-4 w-11/12 h-fit pt-8 pb-16;
-	}
-	.portfolio-gallery-item {
-		@apply w-full h-full;
-	}
-	.portfolio-gallery-item-caption {
-		@apply w-full lg:h-1/5 md:h-1/5 h-1/4 z-[2] bg-white flex flex-col items-center justify-center border-b-2 py-4;
-	}
-	.portfolio-gallery-item-caption > h5,
-	.portfolio-gallery-item-caption > span {
-		@apply text-center mb-1;
 	}
 
 	/*Contact*/
@@ -495,6 +487,12 @@
 	}
 	.news-category-tab {
 		@apply h-1 border-0 absolute -bottom-1 left-0 right-0 mx-auto w-full bg-red-700;
+	}
+	.news-article-pt-list {
+		@apply pl-4 space-y-2 mb-4;
+	}
+	.news-article-pt-list > li {
+		@apply text-justify;
 	}
 }
 

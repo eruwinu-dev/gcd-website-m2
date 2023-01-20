@@ -50,7 +50,7 @@ const ProjectGalleryItem = ({ title, photo, index }: Props) => {
 			onClick={viewGalleryItem(index)}
 		>
 			<motion.div
-				className="relative w-full h-full overflow-hidden generic-transition hover:scale-105"
+				className="project-gallery-item-image"
 				variants={itemVariants}
 				initial="hidden"
 				animate={controls}

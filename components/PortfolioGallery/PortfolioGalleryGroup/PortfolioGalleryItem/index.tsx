@@ -23,13 +23,13 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 
 	return (
 		<motion.div
-			className="lg:w-10/12 md:w-10/12 mx-auto w-full h-full flex flex-col items-center justify-start"
+			className="portfolio-gallery-item"
 			variants={galleryItemVariants}
 			initial="start"
 			whileInView="go"
 			viewport={{ once: true }}
 		>
-			<div className="w-full h-auto aspect-video relative cursor-pointer overflow-hidden" onClick={goToProject}>
+			<div className="portfolio-gallery-item-image" onClick={goToProject}>
 				{imageProps ? (
 					<Image
 						src={imageProps.src}

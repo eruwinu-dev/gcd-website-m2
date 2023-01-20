@@ -10,12 +10,12 @@ import LoadMoreArticles from "./LoadMoreArticles"
 import useStateContext from "../../context/State"
 
 type Props = {
-	articles: ArticleItemType[]
-	categories: ArticleCategoryType[]
+	articles?: ArticleItemType[]
+	categories?: ArticleCategoryType[]
 	recos?: ArticleItemType[]
 }
 
-const NewsGallery = ({ categories, articles, recos }: Props) => {
+const NewsGallery = ({ categories = [], articles = [], recos }: Props) => {
 	const {
 		pathname,
 		query: { category },
