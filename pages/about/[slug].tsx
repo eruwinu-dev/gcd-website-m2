@@ -29,7 +29,7 @@ const Member = ({ member }: Props) => {
 	return (
 		<>
 			<MetaHead
-				title={`${member.name} | "G Charles" Design`}
+				title={`${member.name} | GCD`}
 				description={member.blogBio}
 				url={process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug.current}
 				siteName={`${member.name} | "G Charles" Design`}
