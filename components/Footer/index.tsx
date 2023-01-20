@@ -1,10 +1,13 @@
 import Image from "next/image"
+import { useRouter } from "next/router"
 import React from "react"
 import ContactList from "../ContactList"
 
 type Props = {}
 
 const Footer = (props: Props) => {
+	const { pathname } = useRouter()
+
 	return (
 		<footer>
 			<div className="logo-container">
@@ -25,7 +28,7 @@ const Footer = (props: Props) => {
 				</span>
 			</div>
 			<div className="contact-list-container">
-				<h4 className="text-xl">Reach Us</h4>
+				{pathname === "/" ? <h4 className="text-xl">Reach Us</h4> : <h6 className="text-xl">Reach Us</h6>}
 				<ContactList />
 			</div>
 		</footer>

@@ -10,9 +10,10 @@ import client from "../../../lib/client"
 
 type Props = {
 	member: MemberType
+	titleTag: "h3" | "h5"
 }
 
-const TeamGalleryItem = ({ member }: Props) => {
+const TeamGalleryItem = ({ member, titleTag }: Props) => {
 	const imageProps = useNextSanityImage(client, member.image)
 
 	return (
@@ -40,7 +41,11 @@ const TeamGalleryItem = ({ member }: Props) => {
 						) : null}
 					</motion.div>
 				</Link>
-				<h5 className="mt-2 text-center">{member.name}</h5>
+				{titleTag === "h3" ? (
+					<h3 className="mt-2 text-center text-lg font-semibold">{member.name}</h3>
+				) : (
+					<h5 className="mt-2 text-center">{member.name}</h5>
+				)}
 				<div className="text-center italic">{member.role}</div>
 			</div>
 			<div className={member.order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
