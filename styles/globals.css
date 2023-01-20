@@ -246,6 +246,12 @@
 	.team-member-text-container {
 		@apply space-y-2 flex flex-col lg:items-start md:items-start items-center;
 	}
+	.team-member-text-container > h1 {
+		@apply text-3xl;
+	}
+	.team-member-text-container > h2 {
+		@apply text-2xl font-semibold;
+	}
 
 	/*Process*/
 	.process-blockquote {

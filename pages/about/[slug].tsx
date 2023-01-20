@@ -29,10 +29,10 @@ const Member = ({ member }: Props) => {
 	return (
 		<>
 			<MetaHead
-				title={`${member.name} | ${headerTitle}`}
+				title={`${member.name} | "G Charles" Design`}
 				description={member.blogBio}
 				url={process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug.current}
-				siteName={`${member.name} | ${headerTitle}`}
+				siteName={`${member.name} | "G Charles" Design`}
 				image={imageProps.src}
 			/>
 			<section className="team-member-section">
@@ -53,8 +53,8 @@ const Member = ({ member }: Props) => {
 				<div className="team-member-text">
 					<div className="team-member-text-layout">
 						<div className="team-member-text-container">
-							<h2>{member.name}</h2>
-							<h3>{member.role}</h3>
+							<h1>{member.name}</h1>
+							<h2>{member.role}</h2>
 						</div>
 						<PortableText value={member.bio} components={CustomArticleComponents} />
 					</div>
