@@ -1,13 +1,10 @@
 import Image from "next/image"
-import { useRouter } from "next/router"
 import React from "react"
 import ContactList from "../ContactList"
 
 type Props = {}
 
 const Footer = (props: Props) => {
-	const { pathname } = useRouter()
-
 	return (
 		<footer>
 			<div className="logo-container">

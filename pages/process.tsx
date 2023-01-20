@@ -42,10 +42,10 @@ const Process = (props: Props) => {
 				</div>
 			</section>
 			<section className="process-blockquote">
-				<p>
+				<h2>
 					By hiring a licensed architect, you gain creative expertise through the design process coupled with
 					years of experience getting plans approved by various jurisdictions.
-				</p>
+				</h2>
 			</section>
 			<ProcessTimeline />
 		</>

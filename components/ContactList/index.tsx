@@ -14,6 +14,7 @@ const ContactList = ({ size }: Props) => {
 					target="_blank"
 					rel="noopener noreferrer"
 					className="hover:text-red-700 hover:underline"
+					aria-label="G. Charles Design Inquiry Email"
 				>
 					<div className="w-6 h-6">
 						<MailIcon />
@@ -30,6 +31,7 @@ const ContactList = ({ size }: Props) => {
 					href="https://www.google.com/maps/place/6860+Canby+Ave+UNIT+113,+Reseda,+CA+91335,+USA/@34.1957441,-118.5339613,17z/data=!3m1!4b1!4m5!3m4!1s0x80c2997f42ed0517:0xac97d99b47c7624b!8m2!3d34.1957441!4d-118.5339613"
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="Google Map Link of G. Charles Design"
 					className="hover:text-red-700 hover:underline"
 				>
 					<MapPinIcon />
