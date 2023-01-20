@@ -1,5 +1,3 @@
 # Allow all crawlers
 User-agent: *
 Allow: /
-
-https://www.gcharlesdesign.com/sitemap.xml
