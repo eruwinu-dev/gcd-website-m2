@@ -16,11 +16,6 @@ const TeamGallery = ({ members }: Props) => {
 	return (
 		<>
 			<section className="team-gallery-container">
-				<div className="team-gallery" ref={boxRef}>
-					{members.map((member: MemberType) => (
-						<TeamGalleryItem member={member} key={member._id} />
-					))}
-				</div>
 				<div
 					style={{
 						height: boxRect ? boxRect.height : 0,
@@ -31,13 +26,18 @@ const TeamGallery = ({ members }: Props) => {
 					}}
 				>
 					<div className="meet-the-team-container">
-						<h3>Meet the Team</h3>
+						<h2>Meet the Team</h2>
 						<p>
 							We believe that developing collaborative relationships would produce the best service for
 							our clients. The strength of our team gives us the capability to design in any style, scale
 							or geography.
 						</p>
 					</div>
+				</div>
+				<div className="team-gallery" ref={boxRef}>
+					{members.map((member: MemberType) => (
+						<TeamGalleryItem member={member} key={member._id} />
+					))}
 				</div>
 			</section>
 			<section className="team-gallery-hidden-container">
@@ -47,7 +47,7 @@ const TeamGallery = ({ members }: Props) => {
 					))}
 				</div>
 				<div className="meet-the-team-hidden-container">
-					<h3>Meet the Team</h3>
+					<h2>Meet the Team</h2>
 					<p>
 						We believe that developing collaborative relationships would produce the best service for our
 						clients. The strength of our team gives us the capability to design in any style, scale or

@@ -85,9 +85,9 @@ const About = ({ members }: Props) => {
 				<div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
 					<div className="lg:flex md:flex hidden" />
 					<div className="flex flex-col items-center justify-center w-full h-full relative border-2 px-8 col-span-2 space-y-8">
-						<h1 className="w-full lg:text-4xl md:text-4xl sm:text-3xl text-3xl text-white">
+						<h4 className="w-full lg:text-4xl md:text-4xl sm:text-3xl text-3xl text-white">
 							Let&apos;s build that dream project together.
-						</h1>
+						</h4>
 						<p className="leading-relaxed text-white w-full">
 							Whether you&apos;re still in the rough sketches or you have a full plan in mind, it&apos;s
 							never too early to involve us. We&apos;ll be with you in every step.

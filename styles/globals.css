@@ -146,10 +146,10 @@
 		@apply lg:px-16 md:px-8 px-4 py-16;
 	}
 	.landing-collage-container {
-		@apply w-full lg:h-auto md:h-auto h-auto lg:aspect-square md:aspect-square lg:grid md:grid hidden grid-cols-5 grid-flow-row gap-2;
+		@apply lg:w-full md:w-full w-0 lg:h-auto md:h-auto h-0 aspect-square lg:grid md:grid hidden grid-cols-5 grid-flow-row gap-2;
 	}
 	.landing-collage-hidden-container {
-		@apply w-full lg:h-screen md:h-screen h-fit lg:aspect-square md:aspect-square lg:hidden md:hidden grid grid-cols-1 grid-flow-row gap-4 lg:px-16 md:px-8 px-4 py-16;
+		@apply lg:w-0 md:w-0 w-full lg:h-0 md:h-0 h-fit lg:hidden md:hidden grid grid-cols-1 grid-flow-row gap-4 lg:px-16 md:px-8 px-4 py-16;
 	}
 	.license-section {
 		@apply min-h-0 max-h-fit;
@@ -221,6 +221,10 @@
 	}
 	.meet-the-team-hidden-container > p {
 		@apply lg:w-3/5 md:w-4/5 w-full text-left leading-loose;
+	}
+	.meet-the-team-container > h2,
+	.meet-the-team-hidden-container > h2 {
+		@apply text-2xl;
 	}
 
 	/*About/[slug]*/
