@@ -84,22 +84,15 @@ const NewsGalleryItem = ({ article }: Props) => {
 
 const articleVariants = {
 	start: {
-		y: -20,
 		opacity: 0,
 	},
 	go: {
-		y: 0,
 		opacity: 1,
 		transition: {
 			duration: 0.2,
 			ease: "easeInOut",
 		},
 	},
-}
-
-const containerVariants = {
-	rest: {},
-	hover: {},
 }
 
 const headerVariants = {

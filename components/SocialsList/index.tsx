@@ -12,6 +12,7 @@ const SocialsList = (props: Props) => {
 					target="_blank"
 					rel="noopener noreferrer"
 					className="hover:scale-110 generic-transition"
+					aria-label="G. Charles Design Instagram"
 				>
 					<InstagramIcon />
 				</a>
@@ -22,6 +23,7 @@ const SocialsList = (props: Props) => {
 					target="_blank"
 					rel="noopener noreferrer"
 					className="hover:scale-110 generic-transition"
+					aria-label="G. Charles Design Facebook"
 				>
 					<FacebookIcon />
 				</a>
@@ -32,6 +34,7 @@ const SocialsList = (props: Props) => {
 					target="_blank"
 					rel="noopener noreferrer"
 					className="hover:scale-110 generic-transition"
+					aria-label="G. Charles Design Linkedin"
 				>
 					<LinkedinIcon />
 				</a>

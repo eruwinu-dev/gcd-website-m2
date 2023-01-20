@@ -37,7 +37,7 @@ const ContactForm = (props: Props) => {
 		>
 			{({ values, errors, touched }) => (
 				<Form className="contact-form border-2 border-gray-400 lg:mx-8 mx-4">
-					<h4>Talk to an Expert Now.</h4>
+					<h2 className="text-xl">Talk to an Expert Now.</h2>
 					<label htmlFor="name">Name*</label>
 					<Field
 						type="text"
@@ -53,18 +53,18 @@ const ContactForm = (props: Props) => {
 						as=""
 						name="email"
 						placeholder="email@address.com"
-						className={[touched.name && errors.name && "field-error"].join(" ")}
+						className={[touched.email && errors.email && "field-error"].join(" ")}
 					/>
 					{touched.email && errors.email ? <span className="error">{errors.email}</span> : null}
 					<label htmlFor="company">Company</label>
 					<Field type="text" as="" name="company" placeholder="My Company" />
-					<label htmlFor="company">Message*</label>
+					<label htmlFor="message">Message*</label>
 					<Field
 						type="text"
 						as="textarea"
 						name="message"
 						placeholder="2000 characters max"
-						className={[touched.name && errors.name && "field-error"].join(" ")}
+						className={[touched.message && errors.message && "field-error"].join(" ")}
 					/>
 					{touched.message && errors.message ? <span className="error">{errors.message}</span> : null}
 					<button type="submit">Submit</button>
