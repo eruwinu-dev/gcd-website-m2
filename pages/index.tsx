@@ -6,17 +6,17 @@ import { useRect } from "@reach/rect"
 
 import BookConsultButton from "../components/BookConsultButton"
 import LandingCollage from "../components/LandingCollage"
-import ServicesList from "../components/ServicesList"
 
 import { headerTitle } from "../lib/title"
 
 import { sanityImageLoader } from "../lib/sanityImageLoader"
 import MetaHead from "../components/MetaHead"
+import ServicesSection from "../components/ServicesSection"
 type Props = {}
 
 const Home = (props: Props) => {
-	const sliderRef = useRef<HTMLDivElement | null>(null)
-	const sliderRect = useRect(sliderRef)
+	const widthRef = useRef<HTMLDivElement | null>(null)
+	const widthRect = useRect(widthRef)
 
 	return (
 		<>
@@ -27,7 +27,7 @@ const Home = (props: Props) => {
 				siteName={`Home | ${headerTitle}`}
 				image={process.env.NEXT_PUBLIC_SITE_URL + "/landing.jpg"}
 			/>
-			<section className="banner-section">
+			<section className="banner-section" ref={widthRef}>
 				<Image
 					src={landingImage}
 					loader={sanityImageLoader}
@@ -47,41 +47,7 @@ const Home = (props: Props) => {
 					<div className="banner-spacer" />
 				</div>
 			</section>
-			<section className="services-section">
-				<div className="services-list-container" ref={sliderRef}>
-					<ServicesList />
-				</div>
-				<div className="services-slider" style={{ height: sliderRect ? sliderRect.height : 0 }}>
-					<div className="services-slider-container">
-						<h2>Quality in Service.</h2>
-
-						<p>
-							Our approach is built upon the belief that the greater talent of any architect lies in their
-							ability to translate a clients wishes and dreams into beautiful design solutions.
-						</p>
-						<p>
-							Our goal is to provide a level of service that is reflective of our passion while paying
-							careful attention to the individual needs of each of our clients.
-						</p>
-					</div>
-				</div>
-			</section>
-			<section className="services-slider-hidden">
-				<div className="services-slider-hidden-container">
-					<div className="services-slider-hidden-text-container">
-						<h2>Quality in Service.</h2>
-
-						<p>
-							Our approach is built upon the belief that the greater talent of any architect lies in their
-							ability to translate a clients wishes and dreams into beautiful design solutions.
-						</p>
-						<p>
-							Our goal is to provide a level of service that is reflective of our passion while paying
-							careful attention to the individual needs of each of our clients.
-						</p>
-					</div>
-				</div>
-			</section>
+			<ServicesSection width={widthRect ? widthRect.width : 0} />
 			<section className="landing-blockquote-section">
 				<div className="landing-blockquote-section-container">
 					<p>
@@ -125,7 +91,8 @@ const Home = (props: Props) => {
 							</div>
 						</div>
 					</div>
-					<LandingCollage />
+
+					<LandingCollage width={widthRect ? widthRect.width : 0} />
 				</div>
 			</section>
 			<section className="consult-section">

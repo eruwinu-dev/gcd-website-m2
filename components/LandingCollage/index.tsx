@@ -2,42 +2,36 @@ import React from "react"
 import Image from "next/image"
 import type { CollageType } from ".././../types/collage"
 import { sanityImageLoader } from "../../lib/sanityImageLoader"
+import { getMediaSize } from "../../lib/media"
 
-type Props = {}
+type Props = {
+	width: number
+}
 
-const LandingCollage = (props: Props) => {
+const LandingCollage = ({ width }: Props) => {
+	let breakpoint = getMediaSize(width)
 	return (
-		<div className="landing-collage">
-			<div className="landing-collage-container">
-				{collages.map((tile: CollageType, index: number) => (
-					<div className={["relative w-full h-full aspect-video", tile.format].join(" ")} key={tile.picture}>
-						<Image
-							src={tile.picture}
-							loader={sanityImageLoader}
-							alt={`A picture used in the collage from G. Charles Design`}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="center"
-							priority
-						/>
-					</div>
-				))}
-			</div>
-			<div className="landing-collage-hidden-container">
-				{collages.map((tile: CollageType, index: number) => (
-					<div className={["relative w-full h-fit aspect-video"].join(" ")} key={tile.picture}>
-						<Image
-							src={tile.picture}
-							loader={sanityImageLoader}
-							alt={`A picture used in the collage from G. Charles Design`}
-							layout="fill"
-							objectFit="cover"
-							objectPosition="center"
-							priority
-						/>
-					</div>
-				))}
-			</div>
+		<div className={["landing-collage", breakpoint !== "sm" ? "grid-cols-5" : "grid-cols-1"].join(" ")}>
+			{collages.map((tile: CollageType, index: number) => (
+				<div
+					className={[
+						"relative w-full aspect-video",
+						tile.format,
+						breakpoint !== "sm" ? "h-full" : "h-fit",
+					].join(" ")}
+					key={tile.picture}
+				>
+					<Image
+						src={tile.picture}
+						loader={sanityImageLoader}
+						alt={`A picture used in the collage from G. Charles Design`}
+						layout="fill"
+						objectFit="cover"
+						objectPosition="center"
+						priority
+					/>
+				</div>
+			))}
 		</div>
 	)
 }

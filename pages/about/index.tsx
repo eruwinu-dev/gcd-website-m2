@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import Image from "next/image"
 import { GetStaticProps } from "next"
 
@@ -13,12 +13,15 @@ import client from "../../lib/client"
 import { getMembers } from "../../lib/grocQueries"
 import { sanityImageLoader } from "../../lib/sanityImageLoader"
 import MetaHead from "../../components/MetaHead"
+import { useRect } from "@reach/rect"
 
 type Props = {
 	members: MemberType[]
 }
 
 const About = ({ members }: Props) => {
+	const widthRef = useRef<HTMLDivElement | null>(null)
+	const widthRect = useRect(widthRef)
 	return (
 		<>
 			<MetaHead
@@ -28,7 +31,7 @@ const About = ({ members }: Props) => {
 				siteName={`About | ${headerTitle}`}
 				image={process.env.NEXT_PUBLIC_SITE_URL + "/about.jpg"}
 			/>
-			<section className="banner-section">
+			<section className="banner-section" ref={widthRef}>
 				<Image
 					src={aboutImage}
 					loader={sanityImageLoader}
@@ -60,7 +63,7 @@ const About = ({ members }: Props) => {
 						to work with clients from all walks of life.
 					</p>
 				</div>
-				<AboutCollage />
+				<AboutCollage width={widthRect ? widthRect.width : 0} />
 			</section>
 			<section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4">
 				<div className="lg:w-1/2 md:w-10/12  w-full h-auto flex flex-col items-center justify-center lg:p-16 p-8">
@@ -71,7 +74,7 @@ const About = ({ members }: Props) => {
 					</p>
 				</div>
 			</section>
-			<TeamGallery members={members} />
+			<TeamGallery width={widthRect ? widthRect.width : 0} members={members} />
 			<section className="relative w-full h-screen translate-y-0 aspect-video">
 				<Image
 					src={bookImage}

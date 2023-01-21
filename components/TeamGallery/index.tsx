@@ -3,59 +3,52 @@ import type { MemberType } from "../../types/member"
 import { useRect } from "@reach/rect"
 
 import TeamGalleryItem from "./TeamGalleryItem"
-import useStateContext from "../../context/State"
+import TeamGalleryText from "./TeamGalleryText"
+import { getMediaSize } from "../../lib/media"
 
 type Props = {
+	width: number
 	members: MemberType[]
 }
 
-const TeamGallery = ({ members }: Props) => {
+const TeamGallery = ({ width, members }: Props) => {
 	const boxRef = useRef<HTMLDivElement | null>(null)
 	const boxRect = useRect(boxRef)
 
+	let breakpoint = getMediaSize(width)
+
 	return (
-		<>
-			<section className="team-gallery-container">
-				<div
-					style={{
-						height: boxRect ? boxRect.height : 0,
-						display: "flex",
-						flexDirection: "column",
-						alignItems: "center",
-						justifyContent: "flex-start",
-					}}
-				>
-					<div className="meet-the-team-container">
-						<h2>Meet the Team</h2>
-						<p>
-							We believe that developing collaborative relationships would produce the best service for
-							our clients. The strength of our team gives us the capability to design in any style, scale
-							or geography.
-						</p>
+		<section className="team-gallery-container">
+			{breakpoint !== "sm" ? (
+				<>
+					<div
+						style={{
+							height: boxRect ? boxRect.height : 0,
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "flex-start",
+						}}
+					>
+						<TeamGalleryText sticky />
 					</div>
-				</div>
-				<div className="team-gallery" ref={boxRef}>
-					{members.map((member: MemberType) => (
-						<TeamGalleryItem titleTag="h3" member={member} key={member._id} />
-					))}
-				</div>
-			</section>
-			<section className="team-gallery-hidden-container">
-				<div className="meet-the-team-hidden-container">
-					<h4>Meet the Team</h4>
-					<p>
-						We believe that developing collaborative relationships would produce the best service for our
-						clients. The strength of our team gives us the capability to design in any style, scale or
-						geography.
-					</p>
-				</div>
-				<div className="team-gallery">
-					{members.map((member: MemberType) => (
-						<TeamGalleryItem titleTag="h5" member={member} key={member._id} />
-					))}
-				</div>
-			</section>
-		</>
+					<div className="team-gallery" ref={boxRef}>
+						{members.map((member: MemberType) => (
+							<TeamGalleryItem member={member} key={member._id} />
+						))}
+					</div>
+				</>
+			) : (
+				<>
+					<TeamGalleryText />
+					<div className="team-gallery" ref={boxRef}>
+						{members.map((member: MemberType) => (
+							<TeamGalleryItem member={member} key={member._id} />
+						))}
+					</div>
+				</>
+			)}
+		</section>
 	)
 }
 
