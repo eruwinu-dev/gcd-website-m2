@@ -1,7 +1,10 @@
-import { format, parseISO } from "date-fns"
-
 export const formatDateFromISO = (ISOString: string | undefined) => {
-	if (typeof ISOString === "undefined") return "Invalid Date"
-	return format(parseISO(ISOString), "LLL d, yyyy")
+	return typeof ISOString === "undefined"
+		? "NaN"
+		: new Date(ISOString).toLocaleDateString("en-US", {
+				month: "short",
+				day: "numeric",
+				year: "numeric",
+		  })
 }
 

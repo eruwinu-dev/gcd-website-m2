@@ -18,7 +18,6 @@
     "@sanity/image-url": "^1.0.1",
     "@tailwindcss/typography": "^0.5.7",
     "@types/parse": "^2.18.18",
-    "date-fns": "^2.29.3",
     "formik": "^2.2.9",
     "framer-motion": "^7.5.1",
     "get-youtube-id": "^1.0.1",

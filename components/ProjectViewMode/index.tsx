@@ -44,12 +44,18 @@ const ProjectViewMode = (props: Props) => {
 					viewMode === "carousel" ? "bg-black/60" : "bg-transparent translate-x-8",
 				].join(" ")}
 			>
-				<button type="button" className="p-1 text-white/50 hover:text-white" onClick={toggleViewMode("story")}>
+				<button
+					className="p-1 text-white/50 hover:text-white"
+					onClick={toggleViewMode("story")}
+					id="togglestorymodebutton"
+					aria-label="Toggle Story Mode"
+				>
 					<BookIcon />
 				</button>
 				<button
-					type="button"
 					className="p-1 text-white/50 hover:text-white"
+					aria-label="Toggle Carousel Mode"
+					id="togglecarouselmodebutton"
 					onClick={toggleViewMode("carousel")}
 				>
 					<ColumnsIcon />

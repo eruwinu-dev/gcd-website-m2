@@ -149,10 +149,10 @@
 		@apply lg:w-3/4 md:w-11/12 w-full flex lg:flex-row md:flex-row flex-col items-center justify-center;
 	}
 	.aia-icon-container {
-		@apply relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[2.38/1] overflow-hidden;
+		@apply relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[460/193] overflow-hidden;
 	}
 	.ncarb-icon-container {
-		@apply relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[1.60/1] overflow-hidden;
+		@apply relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[315/196] overflow-hidden;
 	}
 	.consult-section {
 		@apply translate-y-0 relative w-full h-screen;
@@ -453,7 +453,7 @@
 		@apply text-2xl text-center;
 	}
 	.news-page-header-image-container {
-		@apply lg:w-2/12 md:w-4/12 sm:w-6/12 w-9/12 h-auto aspect-video relative;
+		@apply lg:w-2/12 md:w-4/12 sm:w-6/12 w-9/12 h-auto aspect-[629/331] relative;
 	}
 	.news-category-nav {
 		@apply w-full mx-auto lg:pt-16 md:pt-8 sm:pt-4 pt-4 pb-8;

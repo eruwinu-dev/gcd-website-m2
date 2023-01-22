@@ -67,9 +67,11 @@ const Header = (props: Props) => {
 					<Link href="/">
 						{
 							<div
-								className={["generic-transition", "relative h-[2.5rem] w-auto", "aspect-[1.32/1]"].join(
-									" "
-								)}
+								className={[
+									"generic-transition",
+									"relative h-[2.5rem] w-auto",
+									iconPath === logoBlack ? "aspect-[307/249]" : "aspect-[332/251]",
+								].join(" ")}
 								onClick={() => setHeaderOpen((open: boolean) => false)}
 							>
 								<Image
