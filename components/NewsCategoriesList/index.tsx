@@ -36,14 +36,14 @@ const NewsCategoriesList = ({ categories }: Props) => {
 			<ul>
 				{categories.map((category: ArticleCategoryType) => (
 					<li key={category.title} onClick={changeCategory(category)}>
-						<span
+						<h2
 							className={[
-								"text-lg capitalize cursor-pointer",
+								"text-lg font-normal capitalize cursor-pointer",
 								isSelectedCategory(category) ? "text-black" : "hover:text-red-800",
 							].join(" ")}
 						>
 							{category.title}
-						</span>
+						</h2>
 						{isSelectedCategory(category) ? (
 							<motion.div className="news-category-tab" layoutId="news-category-tab" />
 						) : null}

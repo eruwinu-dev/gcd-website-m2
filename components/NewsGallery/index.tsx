@@ -53,9 +53,15 @@ const NewsGallery = ({ categories = [], articles = [], recos }: Props) => {
 							: "w-full lg:grid-cols-3 pt-8 gap-8",
 					].join(" ")}
 				>
-					{selectedArticles.map((article: ArticleItemType) => (
-						<NewsGalleryItem article={article} key={article.slug.current} />
-					))}
+					{selectedArticles.length ? (
+						selectedArticles.map((article: ArticleItemType) => (
+							<NewsGalleryItem article={article} key={article.slug.current} />
+						))
+					) : (
+						<div className="col-span-2 mx-auto inline-flex items-center justify-center">
+							<h3>No articles for this category.</h3>
+						</div>
+					)}
 				</motion.div>
 				{pathname === "/news" ? (
 					selectedArticles.length < articlesInCategoryCount ? (

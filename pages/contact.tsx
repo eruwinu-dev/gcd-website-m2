@@ -16,6 +16,8 @@ type Props = {}
 const Contact = (props: Props) => {
 	const sliderRef = useRef<HTMLDivElement | null>(null)
 	const sliderRect = useRect(sliderRef)
+	const widthRef = useRef<HTMLDivElement | null>(null)
+	const widthRect = useRect(widthRef)
 
 	return (
 		<>
@@ -25,7 +27,7 @@ const Contact = (props: Props) => {
 				url={process.env.NEXT_PUBLIC_SITE_URL + "/contact"}
 				siteName={`Contact | ${headerTitle}`}
 			/>
-			<section className="contact-landing-section">
+			<section className="contact-landing-section" ref={widthRef}>
 				<div
 					className="contact-landing-list-sticky-container"
 					style={{ height: sliderRect ? sliderRect.height : 0 }}
@@ -38,18 +40,8 @@ const Contact = (props: Props) => {
 				</div>
 
 				<div className="contact-landing-scroll-container" ref={sliderRef}>
-					<MapContainer />
-					<ContactForm titleTag="h2" />
+					<ContactForm />
 				</div>
-			</section>
-			<section className="h-fit translate-y-0 lg:hidden md:hidden flex flex-col items-center justify-start space-y-8 py-4">
-				<MapContainer />
-				<div className="h-fit flex flex-col items-center justify-center space-y-4 w-11/12 aspect-square">
-					<h3>Get In Touch</h3>
-					<ContactList size="large" />
-					<SocialsList />
-				</div>
-				<ContactForm titleTag="h3" />
 			</section>
 			<ContactModal />
 		</>

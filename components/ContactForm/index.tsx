@@ -4,9 +4,7 @@ import { Formik, Form, Field } from "formik"
 import type { FormType } from "../../types/form"
 import useStateContext from "../../context/State"
 
-type Props = {
-	titleTag: "h2" | "h3"
-}
+type Props = {}
 
 const schema = Yup.object().shape({
 	name: Yup.string().required("Required"),
@@ -22,7 +20,7 @@ const initialValues: FormType = {
 	message: "",
 }
 
-const ContactForm = ({ titleTag }: Props) => {
+const ContactForm = ({}: Props) => {
 	const { addContact } = useStateContext()
 
 	return (
@@ -38,12 +36,8 @@ const ContactForm = ({ titleTag }: Props) => {
 			}}
 		>
 			{({ values, errors, touched }) => (
-				<Form className="contact-form border-2 border-gray-400 lg:mx-8 mx-4">
-					{titleTag === "h2" ? (
-						<h2 className="text-xl">Talk to an Expert Now.</h2>
-					) : (
-						<h3 className="text-xl font-bold">Talk to an Expert Now.</h3>
-					)}
+				<Form className="contact-form">
+					<h2 className="text-xl">Talk to an Expert Now.</h2>
 					<label htmlFor="name">Name*</label>
 					<Field
 						type="text"
@@ -73,7 +67,9 @@ const ContactForm = ({ titleTag }: Props) => {
 						className={[touched.message && errors.message && "field-error"].join(" ")}
 					/>
 					{touched.message && errors.message ? <span className="error">{errors.message}</span> : null}
-					<button type="submit">Submit</button>
+					<button type="submit">
+						<h3 className="text-base font-normal">Submit</h3>
+					</button>
 				</Form>
 			)}
 		</Formik>

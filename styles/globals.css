@@ -224,6 +224,9 @@
 	.team-member-text-container > h2 {
 		@apply text-2xl font-semibold;
 	}
+	.team-member-go-back {
+		@apply text-base ml-auto mr-0 w-fit hover:text-red-500 hover:underline generic-transition cursor-pointer;
+	}
 
 	/*Process*/
 	.process-blockquote {
@@ -419,7 +422,7 @@
 		@apply flex-1;
 	}
 	.contact-form {
-		@apply lg:w-4/5 w-11/12 h-auto aspect-square flex flex-col items-start justify-center space-y-2 lg:px-8 px-4 lg:py-16 md:py-8 py-4;
+		@apply lg:w-4/5 w-11/12 h-auto aspect-square flex flex-col items-start justify-center space-y-2 lg:px-8 px-4 lg:py-16 md:py-8 py-4  border-2 border-gray-400 lg:mx-8 mx-4;
 	}
 	.contact-form > h2,
 	.contact-form > h3 {

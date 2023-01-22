@@ -17,7 +17,7 @@ const NewsPageHeader = (props: Props) => {
 					loading="eager"
 				/>
 			</div>
-			<span>A blog about all things GCD.</span>
+			<h1 className="text-2xl font-semibold">A blog about all things GCD.</h1>
 		</div>
 	)
 }

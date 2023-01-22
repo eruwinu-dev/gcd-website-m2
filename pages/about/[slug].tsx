@@ -12,8 +12,8 @@ import { CustomArticleComponents } from "../../components/CustomPTComponents"
 import MetaHead from "../../components/MetaHead"
 
 import { getMemberBySlug, getMembers } from "../../lib/grocQueries"
-import { headerTitle } from "../../lib/title"
 import client from "../../lib/client"
+import Link from "next/link"
 
 type Props = {
 	member: MemberType
@@ -29,7 +29,7 @@ const Member = ({ member }: Props) => {
 	return (
 		<>
 			<MetaHead
-				title={`${member.name} | GCD`}
+				title={`${member.name} | G.Charles Design`}
 				description={member.blogBio}
 				url={process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug.current}
 				siteName={`${member.name} | "G Charles" Design`}
@@ -57,6 +57,9 @@ const Member = ({ member }: Props) => {
 							<h2>{member.role}</h2>
 						</div>
 						<PortableText value={member.bio} components={CustomArticleComponents} />
+						<Link href="/about">
+							<h3 className="team-member-go-back">Go Back</h3>
+						</Link>
 					</div>
 				</div>
 			</section>

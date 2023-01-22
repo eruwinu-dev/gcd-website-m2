@@ -34,19 +34,26 @@ const ProjectTeam = ({ name, address, team }: Props) => {
 			].join(" ")}
 		>
 			<h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl">{name}</h1>
-			<span className="italic tracking-wider">{address}</span>
+			<h2 className="text-base font-normal italic tracking-wider">{address || "Project Address"}</h2>
 			<div className="project-members">
-				{teamMembers.map((member: ProjectTeamType, index: number) => (
-					<div
-						key={index}
-						className={[
-							teamMembers.length % 2 !== 0 && index === teamMembers.length - 1 ? "odd-child" : "",
-						].join(" ")}
-					>
-						<h6>{member.name}</h6>
-						<i>{member.position}</i>
+				{teamMembers.length ? (
+					teamMembers.map((member: ProjectTeamType, index: number) => (
+						<div
+							key={index}
+							className={[
+								teamMembers.length % 2 !== 0 && index === teamMembers.length - 1 ? "odd-child" : "",
+							].join(" ")}
+						>
+							<h3 className="text-lg font-semibold">{member.name}</h3>
+							<span className="italic text-center">{member.position}</span>
+						</div>
+					))
+				) : (
+					<div className={[].join(" ")}>
+						<h3 className="text-lg font-semibold">G. Charles Design</h3>
+						<span className="italic text-center">Project</span>
 					</div>
-				))}
+				)}
 			</div>
 		</div>
 	)
