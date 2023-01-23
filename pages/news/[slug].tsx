@@ -1,25 +1,33 @@
 import React from "react"
+import dynamic from "next/dynamic"
+
+import type { GetStaticPaths, GetStaticProps } from "next"
 
 import groq from "groq"
+import { useNextSanityImage } from "next-sanity-image"
 
 import type { ParsedUrlQuery } from "querystring"
 import type { ArticleItemType, ArticleType } from "../../types/article"
-import type { GetStaticPaths, GetStaticProps } from "next"
 
 import NewsGallery from "../../components/NewsGallery"
 import NewsArticleText from "../../components/NewsArticleText"
 import NewsArticleHeader from "../../components/NewsArticleHeader"
 import SocialMediaShare from "../../components/SocialMediaShare"
+import MetaHead from "../../components/MetaHead"
 
 import client from "../../lib/client"
 import { headerTitle } from "../../lib/title"
 import { getArticleBySlug } from "../../lib/grocQueries"
-import MetaHead from "../../components/MetaHead"
-import { useNextSanityImage } from "next-sanity-image"
 
 interface StaticParams extends ParsedUrlQuery {
 	slug: string
 }
+
+const DynamicRecosGallery = dynamic(() => import("../../components/NewsGallery"), {
+	loading: () => <div>Loading ...</div>,
+})
+
+const NewsGalleryCaller = ({ recos }: { recos: ArticleItemType[] }) => <DynamicRecosGallery recos={recos} />
 
 const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] }) => {
 	const imageProps = useNextSanityImage(client, post.mainImage)
@@ -40,7 +48,7 @@ const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] 
 			</div>
 			<div className="w-10/12 mx-auto lg:pt-16 pt-8 space-y-4 flex flex-col items-center border-t-2">
 				<h2>You May Also Like</h2>
-				<NewsGallery recos={recos} />
+				<NewsGalleryCaller recos={recos} />
 			</div>
 		</>
 	)

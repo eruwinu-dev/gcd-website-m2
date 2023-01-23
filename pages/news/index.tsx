@@ -1,4 +1,5 @@
 import React from "react"
+import dynamic from "next/dynamic"
 
 import type { GetStaticProps } from "next"
 
@@ -7,7 +8,6 @@ import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
 import { getArticlesCategoriesQuery } from "../../lib/grocQueries"
 
 import MetaHead from "../../components/MetaHead"
-import NewsGallery from "../../components/NewsGallery"
 import NewsPageHeader from "../../components/NewsPageHeader"
 import NewsCategoriesList from "../../components/NewsCategoriesList"
 
@@ -18,6 +18,14 @@ type Props = {
 	articles: ArticleItemType[]
 	categories: ArticleCategoryType[]
 }
+
+const DynamicNewsGallery = dynamic(() => import("../../components/NewsGallery"), {
+	loading: () => <div>Loading ...</div>,
+})
+
+const NewsGalleryCaller = ({ articles, categories }: Props) => (
+	<DynamicNewsGallery categories={categories} articles={articles} />
+)
 
 const News = ({ articles, categories }: Props) => {
 	return (
@@ -30,7 +38,7 @@ const News = ({ articles, categories }: Props) => {
 			/>
 			<NewsPageHeader />
 			<NewsCategoriesList categories={categories} />
-			{/* <NewsGallery categories={categories} articles={articles} /> */}
+			<NewsGalleryCaller categories={categories} articles={articles} />
 		</>
 	)
 }
