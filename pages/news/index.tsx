@@ -29,8 +29,8 @@ const News = ({ articles, categories }: Props) => {
 				siteName={`News | ${headerTitle}`}
 			/>
 			<NewsPageHeader />
-			<NewsCategoriesList categories={categories} />
-			<NewsGallery categories={categories} articles={articles} />
+			{/* <NewsCategoriesList categories={categories} />
+			<NewsGallery categories={categories} articles={articles} /> */}
 		</>
 	)
 }

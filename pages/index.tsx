@@ -75,7 +75,9 @@ const Home = (props: Props) => {
 									objectFit="contain"
 									unoptimized
 									loading="eager"
-									sizes="460px, 200px, 100px"
+									sizes="(max-width: 768px) 100vw,
+									(max-width: 1280px) 50vw,
+									33vw"
 								/>
 							</div>
 							<div className="ncarb-icon-container">
@@ -86,7 +88,9 @@ const Home = (props: Props) => {
 									objectFit="contain"
 									unoptimized
 									loading="eager"
-									sizes="315px, 150px, 75px"
+									sizes="(max-width: 768px) 100vw,
+									(max-width: 1280px) 50vw,
+									33vw"
 								/>
 							</div>
 						</div>
@@ -103,9 +107,6 @@ const Home = (props: Props) => {
 					layout="fill"
 					objectFit="cover"
 					objectPosition="center"
-					quality="90"
-					priority
-					sizes="100vw"
 					className="saturate-50"
 				/>
 				<div className="consult-backdrop">

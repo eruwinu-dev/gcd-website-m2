@@ -83,6 +83,9 @@ const Header = (props: Props) => {
 									className="cursor-pointer"
 									unoptimized
 									loading="eager"
+									sizes="(max-width: 768px) 307px,
+										(max-width: 1200px) 307px,
+										307px"
 								/>
 							</div>
 						}
