@@ -30,7 +30,7 @@ const News = ({ articles, categories }: Props) => {
 			/>
 			<NewsPageHeader />
 			<NewsCategoriesList categories={categories} />
-			// <NewsGallery categories={categories} articles={articles} />
+			{/* <NewsGallery categories={categories} articles={articles} /> */}
 		</>
 	)
 }
