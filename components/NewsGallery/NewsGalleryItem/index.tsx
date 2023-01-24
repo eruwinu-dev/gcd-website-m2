@@ -48,9 +48,9 @@ const NewsGalleryItem = ({ article }: Props) => {
 				<div className="w-full flex-row items-center justify-start space-x-4">
 					<span className="text-sm">{readTime} minute read</span>
 					<span>/</span>
-					<span className="text-sm uppercase text-gray-500">
+					{/* <span className="text-sm uppercase text-gray-500">
 						{article.publishedAt ? formatDateFromISO(article.publishedAt) : "NaN"}
-					</span>
+					</span> */}
 				</div>
 				<Link href={redirectPath}>
 					<h3 className="text-2xl cursor-pointer">{article.title}</h3>
