@@ -20,7 +20,7 @@ const NewsArticleHeader = ({ post }: Props) => {
 		<>
 			<div className="lg:w-10/12 md:w-10/12 w-full min-h-[50vh] max-h-fit flex flex-col lg:items-start md:items-start items-center justify-center space-y-6 mx-auto lg:px-0 md:px-0 px-4 py-8">
 				<span className="text-lg text-gray-500 uppercase lg:text-left md:text-left text-center">
-					{formatDateFromISO(post?.publishedAt)}
+					{post.publishedAt ? formatDateFromISO(post.publishedAt) : "NaN"}
 				</span>
 				<h1 className="lg:text-6xl md:text-5xl lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-center">
 					{post.title}

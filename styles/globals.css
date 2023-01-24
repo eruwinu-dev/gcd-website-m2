@@ -473,7 +473,10 @@
 		@apply w-10/12 min-h-fit max-h-fit grid grid-flow-row pb-16 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 pt-8 px-2 gap-4;
 	}
 	.news-gallery-item {
-		@apply w-10/12 h-full flex flex-col mx-auto;
+		@apply w-10/12 h-full flex flex-col mx-auto mb-16;
+	}
+	.news-gallery-item-image {
+		@apply w-full h-auto relative bg-gray-200 overflow-hidden cursor-pointer aspect-video;
 	}
 	.news-portable-text-component {
 		@apply lg:w-9/12 w-full mb-8 text-left leading-loose;

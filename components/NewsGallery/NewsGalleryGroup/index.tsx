@@ -14,9 +14,13 @@ const NewsGalleryGroup = ({ selectedArticles }: Props) => {
 	} = useRouter()
 	return (
 		<div key={(category || "all") as string} className="news-gallery-group">
-			{selectedArticles.map((article) => (
-				<NewsGalleryItem key={article._id} article={article} />
-			))}
+			{selectedArticles.length ? (
+				selectedArticles.map((article) => <NewsGalleryItem key={article._id} article={article} />)
+			) : (
+				<div className="col-span-2 text-center">
+					<h3 className="text-xl">No articles under this category.</h3>
+				</div>
+			)}
 		</div>
 	)
 }
