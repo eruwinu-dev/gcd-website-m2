@@ -24,7 +24,7 @@ const ProcessTimelineItem = ({ process }: Props) => {
 				<h3 className="process-timeline-item-text text-center">{process.title}</h3>
 				<p className="process-timeline-item-text text-justify leading-relaxed">{process.description}</p>
 			</div>
-			<div className="process-timeline-item-image-container">
+			<motion.div className="process-timeline-item-image-container" variants={imageVariants}>
 				<div>
 					<Image
 						src={process.photo}
@@ -34,7 +34,7 @@ const ProcessTimelineItem = ({ process }: Props) => {
 						objectFit="cover"
 					/>
 				</div>
-			</div>
+			</motion.div>
 		</motion.div>
 	)
 }
@@ -56,6 +56,19 @@ const stepVariants = {
 			duration: 0.5,
 			ease: "easeInOut",
 			type: "spring",
+		},
+	},
+}
+
+const imageVariants = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: {
+		opacity: 1,
+		transition: {
+			delay: 0.2,
+			duration: 0.2,
 		},
 	},
 }

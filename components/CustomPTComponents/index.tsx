@@ -13,7 +13,7 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 				return null
 			} else {
 				return (
-					<div className="news-portable-text-component h-auto aspect-video relative">
+					<div className="news-portable-text-component h-auto aspect-video relative lg:mt-16 md:mt-16 mt-8 lg:mb-24 md:mb-24 mb-16">
 						<Image
 							src={value.asset._ref}
 							loader={sanityImageLoader}
@@ -96,7 +96,7 @@ export const CustomArticleComponents: Partial<PortableTextReactComponents | Port
 				return null
 			} else {
 				return (
-					<div className="h-auto aspect-video relative">
+					<div className="h-auto aspect-video relative my-8">
 						<Image
 							src={value.asset._ref}
 							loader={sanityImageLoader}

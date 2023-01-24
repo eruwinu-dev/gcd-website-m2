@@ -5,20 +5,9 @@ import type { FormType } from "../types/form"
 import Parse from "parse"
 import { initializeParse } from "@parse/react-ssr"
 import emailjs from "@emailjs/browser"
-import { ArticleCategoryType, ArticleItemType } from "../types/article"
-import client from "../lib/client"
-import { ParsedUrlQuery } from "querystring"
-import { getMoreArticlesByCategoryQuery, getMoreArticlesQuery } from "../lib/grocQueries"
-import { MemberType } from "../types/member"
-import { ProjectType } from "../types/project"
 
 type Props = {
 	children: ReactNode
-}
-
-interface ArticleStaticParams extends ParsedUrlQuery {
-	currentSlugs: string[]
-	category?: string
 }
 
 const Context = createContext<ContextType | null>(null)

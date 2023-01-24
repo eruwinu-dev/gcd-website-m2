@@ -4,36 +4,32 @@ import Image from "next/image"
 
 import type { ArticleType } from "../../types/article"
 
-import NewsArticleAuthor from "./NewsArticleAuthor"
+import NewsArticleHeaderAuthor from "./NewsArticleHeaderAuthor"
 import { useNextSanityImage } from "next-sanity-image"
 import client from "../../lib/client"
 
 type Props = {
-	post: ArticleType
+	article: ArticleType
 }
 
-const NewsArticleHeader = ({ post }: Props) => {
-	const imageProps = useNextSanityImage(client, post.mainImage)
+const NewsArticleHeader = ({ article }: Props) => {
+	const imageProps = useNextSanityImage(client, article.mainImage)
 
 	return (
 		<>
-			<div className="lg:w-10/12 md:w-10/12 w-full min-h-[50vh] max-h-fit flex flex-col lg:items-start md:items-start items-center justify-center space-y-6 mx-auto lg:px-0 md:px-0 px-4 py-8">
-				<span className="text-lg text-gray-500 uppercase lg:text-left md:text-left text-center"></span>
-				<h1 className="lg:text-6xl md:text-5xl lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-center">
-					{post.title}
-				</h1>
-				<p className="lg:text-xl md:text-xl sm:text-lg text-base lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-justify">
-					{post.description}
-				</p>
-				<NewsArticleAuthor post={post} />
+			<div className="news-article-header">
+				<span>{article.publishedAt}</span>
+				<h1>{article.title}</h1>
+				<p>{article.description}</p>
+				<NewsArticleHeaderAuthor author={article.author} />
 			</div>
-			<div className="w-full flex flex-col items-center mx-auto">
-				<div className="relative w-full h-auto lg:aspect-video md:aspect-video aspect-square bg-gray-100">
+			<div className="news-article-header-image">
+				<div>
 					{imageProps ? (
 						<Image
 							src={imageProps.src}
 							loader={imageProps.loader}
-							alt={`The main image for the article ${post.title} by ${post.author.name}, writer for G. Charles Design`}
+							alt={`The main image for the article ${article.title} by ${article.author.name}, writer for G. Charles Design`}
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"

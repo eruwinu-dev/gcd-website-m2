@@ -8,40 +8,44 @@ import { useNextSanityImage } from "next-sanity-image"
 import type { ParsedUrlQuery } from "querystring"
 import type { ArticleItemType, ArticleType } from "../../types/article"
 
-// import NewsArticleText from "../../components/NewsArticleText"
-// import NewsArticleHeader from "../../components/NewsArticleHeader"
-// import SocialMediaShare from "../../components/SocialMediaShare"
+import NewsArticleText from "../../components/NewsArticleText"
+import NewsArticleHeader from "../../components/NewsArticleHeader"
+import SocialMediaShare from "../../components/SocialMediaShare"
 import MetaHead from "../../components/MetaHead"
 
 import client from "../../lib/client"
 import { headerTitle } from "../../lib/title"
 import { getArticleBySlug, getArticleSlugs } from "../../lib/grocQueries"
+import { formatDateFromISO } from "../../lib/dates"
+import NewsArticleRecos from "../../components/NewsArticleRecos"
+
+type Props = { article: ArticleType; recos: ArticleItemType[] }
 
 interface StaticParams extends ParsedUrlQuery {
 	slug: string
 }
 
-const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] }) => {
-	const imageProps = useNextSanityImage(client, post.mainImage)
+const Article = ({ article, recos }: Props) => {
+	const imageProps = useNextSanityImage(client, article.mainImage)
 
 	return (
 		<>
 			<MetaHead
-				title={`${post.title} - Blog | ${headerTitle}`}
-				description={post.description || "A blog post by G. Charles Design"}
-				url={process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug}
-				siteName={`${post.title} - Blog | ${headerTitle}`}
+				title={`${article.title} - Blog | ${headerTitle}`}
+				description={article.description || "A blog post by G. Charles Design"}
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/news/" + article.slug}
+				siteName={`${article.title} - Blog | ${headerTitle}`}
 				image={imageProps.src}
 			/>
-			{/* <NewsArticleHeader post={post} />
-			<div className="w-10/12 min-h-screen max-h-fit flex lg:flex-row flex-col items-start justify-center mx-auto">
-				<NewsArticleText body={post.body} />
-				<SocialMediaShare post={post} />
+			<NewsArticleHeader article={article} />
+			<div className="news-article-text-container">
+				<NewsArticleText body={article.body} />
+				<SocialMediaShare article={article} />
 			</div>
-			<div className="w-10/12 mx-auto lg:pt-16 pt-8 space-y-4 flex flex-col items-center border-t-2">
+			<div className="news-recos-container">
 				<h2>You May Also Like</h2>
-				<NewsGalleryCaller recos={recos} />
-			</div> */}
+				<NewsArticleRecos recos={recos} />
+			</div>
 		</>
 	)
 }
@@ -56,13 +60,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
 	const { slug = "" } = context.params as StaticParams
-	const post = (await client.fetch(getArticleBySlug, { slug })) as ArticleType
-	const recos = post.recos.sort(() => 0.5 - Math.random()).slice(0, 3)
+	const { article, recos } = (await client.fetch(getArticleBySlug, { slug })) as {
+		article: ArticleType
+		recos: ArticleItemType[]
+	}
 
 	return {
 		props: {
-			post,
-			recos,
+			article: { ...article, publishedAt: article.publishedAt ? formatDateFromISO(article.publishedAt) : "NaN" },
+			recos: recos
+				.sort(() => 0.5 - Math.random())
+				.slice(0, 3)
+				.map((reco) => ({
+					...reco,
+					publishedAt: reco.publishedAt ? formatDateFromISO(reco.publishedAt) : "NaN",
+				})),
 		},
 	}
 }

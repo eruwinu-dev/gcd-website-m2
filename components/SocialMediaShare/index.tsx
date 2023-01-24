@@ -3,44 +3,41 @@ import React from "react"
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from "react-share"
 import { FacebookIcon, LinkedinIcon, TwitterIcon } from "../../lib/icons"
 
-import type { ArticleCategoryType, ArticleType } from "../../types/article"
+import type { ArticleType } from "../../types/article"
 
 type Props = {
-	post: ArticleType
+	article: ArticleType
 }
 
-const SocialMediaShare = ({ post }: Props) => {
-	const shareUrl = process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug
+const SocialMediaShare = ({ article }: Props) => {
+	const shareUrl = process.env.NEXT_PUBLIC_SITE_URL + "/news/" + article.slug
 
 	const source = "Glen Charles Design - Client Focused Architecture"
 
 	return (
-		<div className="sticky top-36 lg:pt-20 md:pt-10 pt-6 pb-16 lg:w-2/12 w-full flex flex-col items-center justify-center space-y-8">
-			<div className="w-full flex">
-				<span className="font-semibold text-xl text-center">Share this</span>
+		<div className="social-media-container">
+			<div>
+				<span>Share this</span>
 			</div>
-			<div className="w-full h-fit flex lg:flex-col flex-row items-center justify-center lg:space-y-8 space-y-0 lg:space-x-0 space-x-8">
+			<div className="social-media-buttons">
 				<FacebookShareButton
-					className="hover:scale-110  generic-transition"
 					url={shareUrl}
-					quote={post.title}
-					hashtag={post?.categories ? "#" + post.categories[0] : ""}
+					quote={article.title}
+					hashtag={article?.categories ? "#" + article.categories[0] : ""}
 				>
 					<FacebookIcon />
 				</FacebookShareButton>
 				<TwitterShareButton
-					className="hover:scale-110  generic-transition"
 					url={shareUrl}
-					title={post.title}
-					hashtags={post?.categories?.map((category) => category) || []}
+					title={article.title}
+					hashtags={article?.categories?.map((category) => category) || []}
 				>
 					<TwitterIcon />
 				</TwitterShareButton>
 				<LinkedinShareButton
-					className="hover:scale-110  generic-transition"
 					url={shareUrl}
-					title={post.title}
-					summary={post?.description || ""}
+					title={article.title}
+					summary={article?.description || ""}
 					source={source}
 				>
 					<LinkedinIcon />

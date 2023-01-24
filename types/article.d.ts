@@ -11,7 +11,7 @@ export interface AuthorType {
 
 export interface ArticleItemType {
 	_id: string
-	publishedAt?: string
+	publishedAt: string
 	title: string
 	slug: string
 	description?: string
@@ -23,12 +23,5 @@ export interface ArticleItemType {
 
 export interface ArticleType extends ArticleItemType {
 	body?: TypedObject
-	recos: ArticleItemType[]
-}
-
-export interface ArticleCategoryType {
-	title: string
-	description?: string
-	count: number
 }
 

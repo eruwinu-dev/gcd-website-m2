@@ -20,7 +20,7 @@ const Footer = (props: Props) => {
 					/>
 				</div>
 				<span className="text-sm italic">
-					&copy; 2022 G.Charles Design + Consulting Inc. <br />
+					&copy; 2023 G.Charles Design + Consulting Inc. <br />
 					<span>d.b.a G. Charles Design</span>
 				</span>
 			</div>

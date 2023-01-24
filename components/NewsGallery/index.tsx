@@ -53,10 +53,9 @@ const NewsGallery = ({ articles, categories }: Props) => {
 					{categoriesList.map((category) => (
 						<li key={category} onClick={changeCategory(category)}>
 							<h2
-								className={[
-									"text-lg font-normal capitalize cursor-pointer",
-									isSelectedCategory(category) ? "text-black" : "hover:text-red-800",
-								].join(" ")}
+								className={[isSelectedCategory(category) ? "text-black" : "hover:text-red-800"].join(
+									" "
+								)}
 							>
 								{category.replaceAll("-", " ")}
 							</h2>

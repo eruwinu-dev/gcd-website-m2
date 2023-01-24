@@ -15,10 +15,12 @@ const NewsGalleryGroup = ({ selectedArticles }: Props) => {
 	return (
 		<div key={(category || "all") as string} className="news-gallery-group">
 			{selectedArticles.length ? (
-				selectedArticles.map((article) => <NewsGalleryItem key={article._id} article={article} />)
+				selectedArticles.map((article) => (
+					<NewsGalleryItem key={article._id} article={article} redirect="./news/" />
+				))
 			) : (
-				<div className="col-span-2 text-center">
-					<h3 className="text-xl">No articles under this category.</h3>
+				<div className="news-gallery-no-articles">
+					<h3>No articles under this category.</h3>
 				</div>
 			)}
 		</div>

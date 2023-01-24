@@ -40,7 +40,7 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 			</Link>
 			<div className="portfolio-gallery-item-caption">
 				<h2>{project.name}</h2>
-				<h3 className="italic">{project.address}</h3>
+				<h3>{project.address}</h3>
 			</div>
 		</motion.div>
 	)

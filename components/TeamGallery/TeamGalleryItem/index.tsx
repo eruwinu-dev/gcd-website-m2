@@ -23,7 +23,7 @@ const TeamGalleryItem = ({ member, order }: Props) => {
 			<div className="team-gallery-item">
 				<Link href={`about/${member.slug}`}>
 					<motion.div
-						className="relative lg:w-full md:w-full w-3/5 h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center"
+						className="team-gallery-item-container"
 						variants={memberVariants}
 						initial="start"
 						whileInView="go"
@@ -42,8 +42,12 @@ const TeamGalleryItem = ({ member, order }: Props) => {
 						) : null}
 					</motion.div>
 				</Link>
-				<h3 className="mt-2 text-center text-lg font-semibold">{member.name}</h3>
-				<div className="text-center italic">{member.role}</div>
+				<Link href={`about/${member.slug}`}>
+					<h3>{member.name}</h3>
+				</Link>
+				<div>
+					<span className="text-base text-center italic">{member.role}</span>
+				</div>
 			</div>
 			<div className={order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
 		</>

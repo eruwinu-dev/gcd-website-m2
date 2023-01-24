@@ -12,17 +12,18 @@ import client from "../../../lib/client"
 
 type Props = {
 	article: ArticleItemType
+	redirect: string
 }
 
-const NewsGalleryItem = ({ article }: Props) => {
+const NewsGalleryItem = ({ article, redirect }: Props) => {
 	const imageProps = useNextSanityImage(client, article.mainImage)
 
-	const redirectPath = `./news/${article.slug}`
+	const redirectPath = `${redirect}${article.slug}`
 	const readTime = article.wordCount ? Math.round(article.wordCount / 180) : 10
 
 	return (
 		<motion.div
-			className="news-gallery-item"
+			className="news-gallery-item group"
 			variants={galleryItemVariants}
 			initial="start"
 			whileInView="go"
@@ -38,29 +39,26 @@ const NewsGalleryItem = ({ article }: Props) => {
 							layout="fill"
 							objectFit="cover"
 							objectPosition="center"
+							className="generic-transition hover:scale-105"
 						/>
 					) : null}
 				</div>
 			</Link>
-			<div className="w-full pt-4 flex flex-col bg-white space-y-4">
-				<div className="w-full flex-row items-center justify-start space-x-4">
-					<span className="text-sm">{readTime} minute read</span>
+			<div className="news-gallery-item-text">
+				<div className="news-gallery-item-intro">
+					<span>{readTime} minute read</span>
 					<span>/</span>
-					<span className="text-sm uppercase text-gray-500">
-						{article.publishedAt ? article.publishedAt : ""}
-					</span>
+					<span>{article.publishedAt}</span>
 				</div>
 				<Link href={redirectPath}>
-					<h3 className="text-2xl cursor-pointer">{article.title}</h3>
+					<h3>{article.title}</h3>
 				</Link>
-				<p className="w-full lg:line-clamp-3 md:line-clamp-3 line-clamp-2 lg:text-base md:text-base text-sm">
-					{article.description ? article.description : ""}
-				</p>
-				<ul className="flex flex-row space-x-4">
+				<p>{article.description ? article.description : ""}</p>
+				<ul className="news-article-hashtags">
 					{article.categories.map((category) => (
-						<li key={category} className="text-base text-gray-500 hover:text-red-700 generic-transition">
-							<Link href={`?category=${category}`}>
-								<span className="cursor-pointer">#{category}</span>
+						<li key={category}>
+							<Link href={`${redirect}?category=${category}`}>
+								<span>#{category}</span>
 							</Link>
 						</li>
 					))}
