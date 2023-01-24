@@ -51,9 +51,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 					</span>
 				</div>
 				<Link href={redirectPath}>
-					<a>
-						<h3 className="text-2xl">{article.title}</h3>
-					</a>
+					<h3 className="text-2xl cursor-pointer">{article.title}</h3>
 				</Link>
 				<p className="w-full lg:line-clamp-3 md:line-clamp-3 line-clamp-2 lg:text-base md:text-base text-sm">
 					{article.description ? article.description : ""}
@@ -70,6 +68,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 						</li>
 					))}
 				</ul>
+					*/}
 			</div>
 		</motion.div>
 	)
