@@ -5,7 +5,7 @@ import { ArticleCategoryType } from "../../types/article"
 import { motion } from "framer-motion"
 
 type Props = {
-	categories: ArticleCategoryType[]
+	categories: string[]
 }
 
 const NewsCategoriesList = ({ categories }: Props) => {

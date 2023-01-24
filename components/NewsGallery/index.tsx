@@ -1,92 +1,94 @@
-import React from "react"
+import React, { MouseEvent, useMemo } from "react"
 
 import { useRouter } from "next/router"
 import { motion, AnimatePresence } from "framer-motion"
 
-import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
+import type { ArticleItemType } from "../../types/article"
 
 import NewsGalleryItem from "./NewsGalleryItem"
-import LoadMoreArticles from "./LoadMoreArticles"
+import NewsGalleryGroup from "./NewsGalleryGroup"
 
 type Props = {
-	articles?: ArticleItemType[]
-	categories?: ArticleCategoryType[]
-	recos?: ArticleItemType[]
+	articles: ArticleItemType[]
+	categories: string[]
 }
 
-const NewsGallery = ({ categories = [], articles = [], recos }: Props) => {
+const NewsGallery = ({ articles, categories }: Props) => {
 	const {
-		pathname,
 		query: { category },
+		push,
 	} = useRouter()
 
-	const selectedArticles: ArticleItemType[] =
-		typeof recos === "undefined"
-			? articles.filter((article: ArticleItemType) =>
-					category
-						? article.categories
-							? article.categories
-									.map((category: ArticleCategoryType) => category.title)
-									.includes(category as string)
-							: article
-						: article
-			  )
-			: recos
+	const categoriesList = useMemo(() => categories, [])
 
-	const realCategory = category || "all"
-	const articlesInCategoryCount =
-		categories.find((categoryItem: ArticleCategoryType) => categoryItem.title === realCategory)?.count || 0
+	const selectedArticles = useMemo(
+		() =>
+			category && typeof !category.length
+				? articles.filter((article) => article.categories.includes(category as string))
+				: articles,
+		[category]
+	)
+
+	const isSelectedCategory = (slug: string) => {
+		if (slug === "all" && !category) return true
+		else if (slug === category) return true
+		else return false
+	}
+
+	const changeCategory = (slug: string) => (event: MouseEvent<HTMLLIElement>) => {
+		push(
+			{
+				pathname: "/news",
+				query: slug !== "all" ? { category: slug } : {},
+			},
+			undefined,
+			{ shallow: true }
+		)
+	}
 
 	return (
-		<AnimatePresence mode="wait">
-			<>
-				<motion.div
-					variants={galleryVariants}
-					initial="start"
-					animate="go"
-					key={(category as string) || "all"}
-					className={[
-						"min-h-fit max-h-fit mx-auto grid grid-flow-row pb-16 md:grid-cols-2 grid-cols-1",
-						pathname === "/news"
-							? "w-10/12 lg:grid-cols-2 pt-8 px-2 gap-4"
-							: "w-full lg:grid-cols-3 pt-8 gap-8",
-					].join(" ")}
-				>
-					{selectedArticles.length ? (
-						selectedArticles.map((article: ArticleItemType) => (
-							<NewsGalleryItem article={article} key={article.slug.current} />
-						))
-					) : (
-						<div className="col-span-2 mx-auto inline-flex items-center justify-center">
-							<h3>No articles for this category.</h3>
-						</div>
-					)}
-				</motion.div>
-				{pathname === "/news" ? (
-					selectedArticles.length < articlesInCategoryCount ? (
-						<LoadMoreArticles />
-					) : null
-				) : null}
-			</>
-		</AnimatePresence>
+		<div className="news-gallery-container">
+			<nav className="news-category-nav">
+				<ul>
+					{categoriesList.map((category) => (
+						<li key={category} onClick={changeCategory(category)}>
+							<h2
+								className={[
+									"text-lg font-normal capitalize cursor-pointer",
+									isSelectedCategory(category) ? "text-black" : "hover:text-red-800",
+								].join(" ")}
+							>
+								{category.replaceAll("-", " ")}
+							</h2>
+							{isSelectedCategory(category) ? (
+								<motion.div className="news-category-tab" layoutId="news-category-tab" />
+							) : null}
+						</li>
+					))}
+				</ul>
+			</nav>
+			<AnimatePresence mode="wait">
+				<NewsGalleryGroup selectedArticles={selectedArticles} />
+			</AnimatePresence>
+		</div>
 	)
 }
 
-const galleryVariants = {
-	start: {
-		y: 10,
-		opacity: 0,
-	},
-	go: {
-		y: 0,
-		opacity: 1,
-		transition: {
-			delay: 0.0001,
-			when: "beforeChildren",
-			staggerChildren: 0.1,
-		},
-	},
-}
+// const galleryVariants = {
+// 	start: {
+// 		y: 10,
+// 		opacity: 0,
+// 	},
+// 	go: {
+// 		y: 0,
+// 		opacity: 1,
+// 		transition: {
+// 			delay: 0.0001,
+// 			when: "beforeChildren",
+// 			staggerChildren: 0.1,
+// 		},
+// 	},
+// }
 
 export default NewsGallery
 

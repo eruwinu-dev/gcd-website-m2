@@ -2,14 +2,12 @@ import React from "react"
 
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/router"
 
 import { motion } from "framer-motion"
 
 import type { ArticleItemType } from "../../../types/article"
 
 import { formatDateFromISO } from "../../../lib/dates"
-import NewsArticleCategories from "../../NewsArticleCategories"
 import { useNextSanityImage } from "next-sanity-image"
 import client from "../../../lib/client"
 
@@ -18,15 +16,19 @@ type Props = {
 }
 
 const NewsGalleryItem = ({ article }: Props) => {
-	const { pathname } = useRouter()
-
 	const imageProps = useNextSanityImage(client, article.mainImage)
 
-	const redirectPath = pathname === "/news" ? `./news/${article.slug.current}` : `../news/${article.slug.current}`
+	const redirectPath = `./news/${article.slug}`
 
 	return (
-		<motion.div variants={articleVariants} className="w-10/12 h-full flex flex-col mx-auto" key={article.title}>
-			<motion.div
+		<motion.div
+			className="news-gallery-item"
+			variants={galleryItemVariants}
+			initial="start"
+			whileInView="go"
+			viewport={{ once: true }}
+		>
+			{/* <motion.div
 				className="w-full h-full flex flex-col items-center justify-start pb-16"
 				initial="rest"
 				whileHover="hover"
@@ -51,17 +53,13 @@ const NewsGalleryItem = ({ article }: Props) => {
 					</div>
 				</Link>
 				<motion.div className="w-full pt-4 flex flex-col bg-white space-y-4" variants={textVariants}>
-					{pathname == "/news" ? (
-						<div className="w-full flex-row items-center justify-start space-x-4">
-							<span className="text-sm">{Math.round((article?.wordCount || 0) / 180)} minute read</span>
-							<span>/</span>
-							<span className="text-sm uppercase text-gray-500">
-								{formatDateFromISO(article?.publishedAt)}
-							</span>
-						</div>
-					) : (
-						<></>
-					)}
+					<div className="w-full flex-row items-center justify-start space-x-4">
+						<span className="text-sm">{Math.round((article?.wordCount || 0) / 180)} minute read</span>
+						<span>/</span>
+						<span className="text-sm uppercase text-gray-500">
+							{formatDateFromISO(article?.publishedAt)}
+						</span>
+					</div>
 					<Link href={redirectPath}>
 						<a>
 							<motion.h3 variants={headerVariants} className="text-2xl">
@@ -69,61 +67,31 @@ const NewsGalleryItem = ({ article }: Props) => {
 							</motion.h3>
 						</a>
 					</Link>
-
 					<p className="w-full lg:line-clamp-3 md:line-clamp-3 line-clamp-2 lg:text-base md:text-base text-sm">
 						{article?.description}
 					</p>
-					{article.categories && pathname === "/news" && (
-						<NewsArticleCategories categories={article.categories} />
-					)}
+					<ul className="flex flex-row space-x-4">
+						{article.categories.map((category) => (
+							<li
+								key={category}
+								className="text-base cursor-pointer text-gray-500 hover:text-red-700 generic-transition"
+							>
+								<Link href={`?category=${category}`}>
+									<a>#{category}</a>
+								</Link>
+							</li>
+						))}
+					</ul>
 				</motion.div>
-			</motion.div>
+			</motion.div> */}
+			{article.title}
 		</motion.div>
 	)
 }
 
-const articleVariants = {
-	start: {
-		opacity: 0,
-	},
-	go: {
-		opacity: 1,
-		transition: {
-			duration: 0.2,
-			ease: "easeInOut",
-		},
-	},
-}
-
-const headerVariants = {
-	rest: {
-		textDecoration: "none",
-		transition: {
-			duration: 0.2,
-		},
-	},
-	hover: {
-		textDecoration: "underline",
-		transition: {
-			duration: 0.2,
-		},
-	},
-}
-
-const textVariants = {
-	rest: {
-		transition: {
-			duration: 0.2,
-			ease: "easeInOut",
-		},
-	},
-	hover: {
-		transition: {
-			duration: 0.2,
-			type: "spring",
-			ease: "easeInOut",
-		},
-	},
+const galleryItemVariants = {
+	start: { opacity: 0 },
+	go: { opacity: 1, transition: { duration: 0.3 } },
 }
 
 export default NewsGalleryItem

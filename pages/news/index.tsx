@@ -1,31 +1,22 @@
 import React from "react"
-import dynamic from "next/dynamic"
 
 import type { GetStaticProps } from "next"
 
-import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
+import type { ArticleItemType } from "../../types/article"
 
-import { getArticlesCategoriesQuery } from "../../lib/grocQueries"
+import { getArticles } from "../../lib/grocQueries"
 
 import MetaHead from "../../components/MetaHead"
 import NewsPageHeader from "../../components/NewsPageHeader"
-import NewsCategoriesList from "../../components/NewsCategoriesList"
+import NewsGallery from "../../components/NewsGallery"
 
 import client from "../../lib/client"
 import { headerTitle } from "../../lib/title"
 
 type Props = {
 	articles: ArticleItemType[]
-	categories: ArticleCategoryType[]
+	categories: string[]
 }
-
-const DynamicNewsGallery = dynamic(() => import("../../components/NewsGallery"), {
-	loading: () => <div>Loading ...</div>,
-})
-
-const NewsGalleryCaller = ({ articles, categories }: Props) => (
-	<DynamicNewsGallery categories={categories} articles={articles} />
-)
 
 const News = ({ articles, categories }: Props) => {
 	return (
@@ -37,30 +28,21 @@ const News = ({ articles, categories }: Props) => {
 				siteName={`News | ${headerTitle}`}
 			/>
 			<NewsPageHeader />
-			<NewsCategoriesList categories={categories} />
-			<NewsGalleryCaller categories={categories} articles={articles} />
+			<NewsGallery categories={categories} articles={articles} />
 		</>
 	)
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const { articles, categories, total } = (await client.fetch(getArticlesCategoriesQuery)) as {
+	const { articles, categories } = (await client.fetch(getArticles)) as {
 		articles: ArticleItemType[]
-		categories: ArticleCategoryType[]
-		total: number
+		categories: string[]
 	}
 
 	return {
 		props: {
 			articles,
-			categories: [
-				{
-					title: "all",
-					description: "All blogs",
-					count: total,
-				},
-				...categories,
-			],
+			categories: ["all", ...categories],
 		},
 	}
 }

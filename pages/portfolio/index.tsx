@@ -22,7 +22,6 @@ const Portfolio = ({ projects, categories }: Props) => {
 				siteName={`Portfolio | ${headerTitle}`}
 			/>
 			<div className="portfolio-section">
-				{" "}
 				<PortfolioGallery projects={projects} categories={categories} />
 			</div>
 		</>

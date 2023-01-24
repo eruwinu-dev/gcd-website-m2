@@ -21,12 +21,6 @@ interface StaticParams extends ParsedUrlQuery {
 	slug: string
 }
 
-const DynamicRecosGallery = dynamic(() => import("../../components/NewsGallery"), {
-	loading: () => <div>Loading ...</div>,
-})
-
-const NewsGalleryCaller = ({ recos }: { recos: ArticleItemType[] }) => <DynamicRecosGallery recos={recos} />
-
 const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] }) => {
 	const imageProps = useNextSanityImage(client, post.mainImage)
 
@@ -35,11 +29,11 @@ const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] 
 			<MetaHead
 				title={`${post.title} - Blog | ${headerTitle}`}
 				description={post.description || "A blog post by G. Charles Design"}
-				url={process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug.current}
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug}
 				siteName={`${post.title} - Blog | ${headerTitle}`}
 				image={imageProps.src}
 			/>
-			<NewsArticleHeader post={post} />
+			{/* <NewsArticleHeader post={post} />
 			<div className="w-10/12 min-h-screen max-h-fit flex lg:flex-row flex-col items-start justify-center mx-auto">
 				<NewsArticleText body={post.body} />
 				<SocialMediaShare post={post} />
@@ -47,7 +41,7 @@ const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] 
 			<div className="w-10/12 mx-auto lg:pt-16 pt-8 space-y-4 flex flex-col items-center border-t-2">
 				<h2>You May Also Like</h2>
 				<NewsGalleryCaller recos={recos} />
-			</div>
+			</div> */}
 		</>
 	)
 }

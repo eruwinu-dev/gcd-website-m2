@@ -1,6 +1,6 @@
-import React, { memo, MouseEvent } from "react"
+import React, { memo } from "react"
 import Image from "next/image"
-import { useRouter } from "next/router"
+import Link from "next/link"
 
 import { useNextSanityImage } from "next-sanity-image"
 import { motion } from "framer-motion"
@@ -13,12 +13,6 @@ type Props = {
 }
 
 const PortfolioGalleryItem = ({ project }: Props) => {
-	const { push } = useRouter()
-
-	const goToProject = (event: MouseEvent<HTMLDivElement>) => {
-		push(`./portfolio/${project.slug}`)
-	}
-
 	const imageProps = useNextSanityImage(client, project.imageList[0])
 
 	return (
@@ -29,19 +23,21 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 			whileInView="go"
 			viewport={{ once: true }}
 		>
-			<div className="portfolio-gallery-item-image" onClick={goToProject}>
-				{imageProps ? (
-					<Image
-						src={imageProps.src}
-						loader={imageProps.loader}
-						alt={`The main image for ${project.name}, one of the projects by G. Charles Design`}
-						layout="fill"
-						objectFit="cover"
-						objectPosition="top"
-						className="hover:scale-105 generic-transition"
-					/>
-				) : null}
-			</div>
+			<Link href={`./portfolio/${project.slug}`}>
+				<div className="portfolio-gallery-item-image">
+					{imageProps ? (
+						<Image
+							src={imageProps.src}
+							loader={imageProps.loader}
+							alt={`The main image for ${project.name}, one of the projects by G. Charles Design`}
+							layout="fill"
+							objectFit="cover"
+							objectPosition="top"
+							className="hover:scale-105 generic-transition"
+						/>
+					) : null}
+				</div>
+			</Link>
 			<div className="portfolio-gallery-item-caption">
 				<h5>{project.name}</h5>
 				<span className="italic">{project.address}</span>

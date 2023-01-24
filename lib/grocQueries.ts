@@ -126,16 +126,19 @@ export const getArticleBySlug = groq`*[_type == "post" && slug.current == $slug]
 	},
   }`
 
-export const getArticlesQuery = groq`*[_type == "post"] | order(publishedAt desc) {
-	_id,
-	publishedAt,
-	title,
-	slug,
-	description,
-	mainImage,
-	"author": author -> {name, slug, image, "blogBio": blogbio},
-	"categories": categories[] -> {title, description},
-	"wordCount": round(length(pt::text(body)) / 5),
+export const getArticles = groq`{
+	"articles": *[_type == "post"] | order(publishedAt desc) {
+		_id,
+		publishedAt,
+		title,
+		"slug": slug.current,
+		description,
+		mainImage,
+		"author": author -> {name, "slug": slug.current, image, "blogBio": blogbio},
+		"categories": categories[] -> title,
+		"wordCount": round(length(pt::text(body)) / 5),
+	},
+	"categories": *[_type == "category"].title
 }`
 
 export const getArticleSlugs = groq`*[_type == "post"] | order(publishedAt desc) {
