@@ -10,7 +10,7 @@ type Props = {
 }
 
 const SocialMediaShare = ({ post }: Props) => {
-	const shareUrl = process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug.current
+	const shareUrl = process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug
 
 	const source = "Glen Charles Design - Client Focused Architecture"
 
@@ -24,7 +24,7 @@ const SocialMediaShare = ({ post }: Props) => {
 					className="hover:scale-110  generic-transition"
 					url={shareUrl}
 					quote={post.title}
-					hashtag={post?.categories ? "#" + post.categories[0].title : ""}
+					hashtag={post?.categories ? "#" + post.categories[0] : ""}
 				>
 					<FacebookIcon />
 				</FacebookShareButton>
@@ -32,7 +32,7 @@ const SocialMediaShare = ({ post }: Props) => {
 					className="hover:scale-110  generic-transition"
 					url={shareUrl}
 					title={post.title}
-					hashtags={post?.categories?.map((category: ArticleCategoryType) => category.title) || []}
+					hashtags={post?.categories?.map((category) => category) || []}
 				>
 					<TwitterIcon />
 				</TwitterShareButton>

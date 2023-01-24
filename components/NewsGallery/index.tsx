@@ -74,21 +74,5 @@ const NewsGallery = ({ articles, categories }: Props) => {
 	)
 }
 
-// const galleryVariants = {
-// 	start: {
-// 		y: 10,
-// 		opacity: 0,
-// 	},
-// 	go: {
-// 		y: 0,
-// 		opacity: 1,
-// 		transition: {
-// 			delay: 0.0001,
-// 			when: "beforeChildren",
-// 			staggerChildren: 0.1,
-// 		},
-// 	},
-// }
-
 export default NewsGallery
 

@@ -5,11 +5,9 @@ import { motion } from "framer-motion"
 
 import useStateContext from "../../context/State"
 
-import { ProjectLinkType } from "../../types/project"
-
 type Props = {
-	previous: ProjectLinkType | null
-	next: ProjectLinkType | null
+	previous: string
+	next: string
 }
 
 const ProjectBottomNav = ({ previous, next }: Props) => {
@@ -33,9 +31,9 @@ const ProjectBottomNav = ({ previous, next }: Props) => {
 						exit="hidden"
 					>
 						<label className="cursor-pointer">Previous Project</label>
-						<Link href={`./${previous.slug.current}`}>
-							<a onClick={resetProjectState}>
-								<div>{previous.name}</div>
+						<Link href={`./${previous}`}>
+							<a className="capitalize" onClick={resetProjectState}>
+								<div>{previous.replaceAll("-", " ")}</div>
 							</a>
 						</Link>
 						<motion.div className="absolute -bottom-1 right-0 h-1 bg-red-700" variants={lineVariants} />
@@ -54,9 +52,9 @@ const ProjectBottomNav = ({ previous, next }: Props) => {
 						exit="hidden"
 					>
 						<label className="cursor-pointer">Next Project</label>
-						<Link href={`./${next.slug.current}`}>
-							<a onClick={resetProjectState}>
-								<div>{next.name}</div>
+						<Link href={`./${next}`}>
+							<a className="capitalize" onClick={resetProjectState}>
+								<div>{next.replaceAll("-", " ")}</div>
 							</a>
 						</Link>
 						<motion.div className="absolute -bottom-1 lefet-0 h-1 bg-red-700" variants={lineVariants} />

@@ -7,7 +7,7 @@ import { ParsedUrlQuery } from "querystring"
 
 import type { GetStaticPaths, GetStaticProps } from "next"
 
-import type { ModeType, ProjectType, ProjectLinkType } from "../../types/project"
+import type { ModeType, ProjectType } from "../../types/project"
 
 import ProjectStory from "../../components/ProjectStory"
 import ProjectGallery from "../../components/ProjectGallery"
@@ -23,8 +23,8 @@ import client from "../../lib/client"
 
 type Props = {
 	project: ProjectType
-	previous: ProjectLinkType | null
-	next: ProjectLinkType | null
+	previous: string | null
+	next: string | null
 }
 
 interface StaticParams extends ParsedUrlQuery {
@@ -77,7 +77,7 @@ const Project = ({ project, previous, next }: Props) => {
 				) : (
 					<ProjectDescription project={project} />
 				)}
-				<ProjectBottomNav previous={previous} next={next} />
+				<ProjectBottomNav previous={previous || ""} next={next || ""} />
 			</div>
 		</>
 	)
@@ -95,8 +95,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { slug = "" } = params as StaticParams
 	const { next, previous, ...project } = (await client.fetch(getProjectBySlug, { slug })) as {
-		next: ProjectLinkType | null
-		previous: ProjectLinkType | null
+		next: string | null
+		previous: string | null
 		project: ProjectType
 	}
 

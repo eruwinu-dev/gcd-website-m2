@@ -22,15 +22,10 @@ export const getProjectBySlug = groq`*[_type == "project" && slug.current == $sl
 	"categories": categories[] -> slug.current,
 	team,
 	body,
-	"previous":*[_type == "project" && order == (^.order) - 1][0]{
 	name,
-    slug,
-  },
-  "next":*[_type == "project" && order == (^.order) + 1][0]{
-	name,
-    slug,
-  },
-}`
+	"previous":*[_type == "project" && order == (^.order) - 1][0].slug.current,
+	"next":*[_type == "project" && order == (^.order) + 1][0].slug.current,
+  }`
 
 export const getMembers = groq`*[_type == "author" && order > 0] | order(order asc){
 	_id,
