@@ -7,7 +7,6 @@ import type { ArticleCategoryType, ArticleItemType } from "../../types/article"
 
 import NewsGalleryItem from "./NewsGalleryItem"
 import LoadMoreArticles from "./LoadMoreArticles"
-import useStateContext from "../../context/State"
 
 type Props = {
 	articles?: ArticleItemType[]

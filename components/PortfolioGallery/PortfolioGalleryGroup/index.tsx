@@ -1,12 +1,12 @@
 import React from "react"
 import { useRouter } from "next/router"
 
-import type { ProjectType } from "../../../types/project"
+import type { PortfolioProjectType } from "../../../types/project"
 
 import PortfolioGalleryItem from "./PortfolioGalleryItem"
 
 type Props = {
-	selectedProjects: ProjectType[]
+	selectedProjects: PortfolioProjectType[]
 }
 
 const PortfolioGalleryGroup = ({ selectedProjects }: Props) => {
@@ -16,7 +16,7 @@ const PortfolioGalleryGroup = ({ selectedProjects }: Props) => {
 
 	return (
 		<div key={(category || "all") as string} className="portfolio-gallery-group">
-			{selectedProjects.map((project: ProjectType) => (
+			{selectedProjects.map((project) => (
 				<PortfolioGalleryItem key={project._id} project={project} />
 			))}
 		</div>

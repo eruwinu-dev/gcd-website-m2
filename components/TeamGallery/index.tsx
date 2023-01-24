@@ -1,5 +1,5 @@
-import React, { useRef } from "react"
-import type { MemberType } from "../../types/member"
+import React, { memo, useRef } from "react"
+import type { MemberListType } from "../../types/member"
 import { useRect } from "@reach/rect"
 
 import TeamGalleryItem from "./TeamGalleryItem"
@@ -8,7 +8,7 @@ import { getMediaSize } from "../../lib/media"
 
 type Props = {
 	width: number
-	members: MemberType[]
+	members: MemberListType[]
 }
 
 const TeamGallery = ({ width, members }: Props) => {
@@ -33,8 +33,8 @@ const TeamGallery = ({ width, members }: Props) => {
 						<TeamGalleryText sticky />
 					</div>
 					<div className="team-gallery" ref={boxRef}>
-						{members.map((member: MemberType) => (
-							<TeamGalleryItem member={member} key={member._id} />
+						{members.map((member, index) => (
+							<TeamGalleryItem member={member} order={index + 1} key={member._id} />
 						))}
 					</div>
 				</>
@@ -42,8 +42,8 @@ const TeamGallery = ({ width, members }: Props) => {
 				<>
 					<TeamGalleryText />
 					<div className="team-gallery" ref={boxRef}>
-						{members.map((member: MemberType) => (
-							<TeamGalleryItem member={member} key={member._id} />
+						{members.map((member, index) => (
+							<TeamGalleryItem member={member} order={index + 1} key={member._id} />
 						))}
 					</div>
 				</>
@@ -52,5 +52,5 @@ const TeamGallery = ({ width, members }: Props) => {
 	)
 }
 
-export default TeamGallery
+export default memo(TeamGallery)
 

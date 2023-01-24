@@ -10,15 +10,18 @@ export interface CategoryType {
 	description?: string
 }
 
-export interface ProjectType {
+export interface PortfolioProjectType {
 	_id: string
 	name: string
-	slug: SlugType
-	address?: string
-	team?: string
+	slug: string
+	address: string
 	imageList: SanityImageSource[]
+	categories: string[]
+}
+
+export interface ProjectType extends PortfolioProjectType {
+	team?: string
 	body?: TypedObject
-	category: CategoryType
 }
 
 export interface ProjectLinkType {

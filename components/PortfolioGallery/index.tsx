@@ -2,40 +2,28 @@ import React, { MouseEvent, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/router"
 
-import type { CategoryType, ProjectType } from "../../types/project"
+import type { PortfolioProjectType } from "../../types/project"
 
 import PortfolioGalleryGroup from "./PortfolioGalleryGroup"
 
 type Props = {
-	projects: ProjectType[]
+	projects: PortfolioProjectType[]
+	categories: string[]
 }
 
-const PortfolioGallery = ({ projects }: Props) => {
+const PortfolioGallery = ({ projects, categories }: Props) => {
 	const {
 		query: { category },
 		push,
 	} = useRouter()
 
-	const categories: CategoryType[] = useMemo(
-		() =>
-			["all", ...new Set(projects.map((project: ProjectType) => project.category.slug.current))].map(
-				(category: string) =>
-					projects.find((project: ProjectType) => project.category.slug.current === category)?.category || {
-						_id: "all",
-						name: "All",
-						slug: {
-							_type: "slug",
-							current: "all",
-						},
-						description: "",
-					}
-			),
-
-		[projects]
-	)
+	const categoriesList = useMemo(() => categories, [projects])
 
 	const selectedProjects = useMemo(
-		() => (category ? projects.filter((project) => project.category.slug.current === category) : projects),
+		() =>
+			category && typeof !category.length
+				? projects.filter((project) => project.categories.includes(category as string))
+				: projects,
 		[category]
 	)
 
@@ -60,19 +48,19 @@ const PortfolioGallery = ({ projects }: Props) => {
 		<div className="portfolio-gallery-container">
 			<nav className="portfolio-category-nav">
 				<ul>
-					{categories.map((category: CategoryType) => (
-						<li key={category.slug.current}>
+					{categoriesList.map((category) => (
+						<li key={category}>
 							<button
 								type="button"
-								onClick={changeCategory(category.slug.current)}
+								onClick={changeCategory(category)}
 								className={[
-									"w-full generic-transition",
-									isSelectedCategory(category.slug.current) ? "text-black" : "hover:text-red-800",
+									"w-full generic-transition capitalize",
+									isSelectedCategory(category) ? "text-black" : "hover:text-red-800",
 								].join(" ")}
 							>
-								{category.name}
+								{category.replaceAll("-", " ")}
 							</button>
-							{isSelectedCategory(category.slug.current) ? (
+							{isSelectedCategory(category) ? (
 								<motion.div className="portfolio-category-nav-tab" layoutId="portfolio-nav-tab" />
 							) : null}
 						</li>

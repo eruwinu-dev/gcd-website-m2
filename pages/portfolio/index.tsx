@@ -5,13 +5,14 @@ import PortfolioGallery from "../../components/PortfolioGallery"
 import client from "../../lib/client"
 import { getProjects } from "../../lib/grocQueries"
 import { headerTitle } from "../../lib/title"
-import { ProjectType } from "../../types/project"
+import { PortfolioProjectType } from "../../types/project"
 
 type Props = {
-	projects: ProjectType[]
+	projects: PortfolioProjectType[]
+	categories: string[]
 }
 
-const Portfolio = ({ projects }: Props) => {
+const Portfolio = ({ projects, categories }: Props) => {
 	return (
 		<>
 			<MetaHead
@@ -21,18 +22,24 @@ const Portfolio = ({ projects }: Props) => {
 				siteName={`Portfolio | ${headerTitle}`}
 			/>
 			<div className="portfolio-section">
-				<PortfolioGallery projects={projects} />
+				{" "}
+				<PortfolioGallery projects={projects} categories={categories} />
 			</div>
 		</>
 	)
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const projects = (await client.fetch(getProjects)) as ProjectType[]
+	const projects = (await client.fetch(getProjects)) as PortfolioProjectType[]
+	const categories = [
+		"all",
+		...new Set(projects.reduce((group: string[], project) => [...group, ...project.categories], [])),
+	]
 
 	return {
 		props: {
 			projects,
+			categories,
 		},
 	}
 }

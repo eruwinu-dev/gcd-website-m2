@@ -1,16 +1,18 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import { SlugType } from "./slug"
 
-export interface MemberType {
+export interface MemberListType {
 	_id: string
 	name: string
-	slug: SlugType
-	order: number
-	role?: string
+	slug: string
+	role: string
+	blogBio: string
 	image: SanityImageSource
+}
+
+export interface MemberType extends MemberListType {
 	otherImages?: string
 	bio?: TypedObject
-	blogBio: string
 }
 
 export interface TeamType {

@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import Image from "next/image"
 import { GetStaticProps } from "next"
 
-import type { MemberType } from "../../types/member"
+import type { MemberListType } from "../../types/member"
 
 import AboutCollage from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
@@ -16,7 +16,7 @@ import MetaHead from "../../components/MetaHead"
 import { useRect } from "@reach/rect"
 
 type Props = {
-	members: MemberType[]
+	members: MemberListType[]
 }
 
 const About = ({ members }: Props) => {
@@ -105,7 +105,7 @@ const About = ({ members }: Props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const members = (await client.fetch(getMembers)) as MemberType[]
+	const members = (await client.fetch(getMembers)) as MemberListType[]
 
 	return {
 		props: {

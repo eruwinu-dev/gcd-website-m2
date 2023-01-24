@@ -2,24 +2,26 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
+import { useNextSanityImage } from "next-sanity-image"
 import { motion } from "framer-motion"
 
-import type { MemberType } from "../../../types/member"
-import { useNextSanityImage } from "next-sanity-image"
+import type { MemberListType } from "../../../types/member"
+
 import client from "../../../lib/client"
 
 type Props = {
-	member: MemberType
+	member: MemberListType
+	order: number
 }
 
-const TeamGalleryItem = ({ member }: Props) => {
+const TeamGalleryItem = ({ member, order }: Props) => {
 	const imageProps = useNextSanityImage(client, member.image)
 
 	return (
 		<>
-			<div className={member.order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
+			<div className={order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
 			<div className="team-gallery-item">
-				<Link href={`about/${member.slug.current}`}>
+				<Link href={`about/${member.slug}`}>
 					<motion.div
 						className="relative lg:w-full md:w-full w-3/5 h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center"
 						variants={memberVariants}
@@ -43,7 +45,7 @@ const TeamGalleryItem = ({ member }: Props) => {
 				<h3 className="mt-2 text-center text-lg font-semibold">{member.name}</h3>
 				<div className="text-center italic">{member.role}</div>
 			</div>
-			<div className={member.order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
+			<div className={order === 1 ? "lg:flex md:flex hidden" : "hidden"} />
 		</>
 	)
 }

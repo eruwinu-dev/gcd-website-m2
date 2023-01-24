@@ -11,7 +11,7 @@ import type { MemberType } from "../../types/member"
 import { CustomArticleComponents } from "../../components/CustomPTComponents"
 import MetaHead from "../../components/MetaHead"
 
-import { getMemberBySlug, getMembers } from "../../lib/grocQueries"
+import { getMemberBySlug, getMemberSlugs } from "../../lib/grocQueries"
 import client from "../../lib/client"
 import Link from "next/link"
 
@@ -31,7 +31,7 @@ const Member = ({ member }: Props) => {
 			<MetaHead
 				title={`${member.name} | G.Charles Design`}
 				description={member.blogBio}
-				url={process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug.current}
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug}
 				siteName={`${member.name} | "G Charles" Design`}
 				image={imageProps.src}
 			/>
@@ -68,10 +68,9 @@ const Member = ({ member }: Props) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const members = (await client.fetch(getMembers)) as MemberType[]
-
+	const paths = await client.fetch(getMemberSlugs)
 	return {
-		paths: members.map((member: MemberType) => ({ params: { slug: member.slug.current } })),
+		paths,
 		fallback: false,
 	}
 }

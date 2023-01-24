@@ -5,18 +5,18 @@ import { useRouter } from "next/router"
 import { useNextSanityImage } from "next-sanity-image"
 import { motion } from "framer-motion"
 
-import type { ProjectType } from "../../../../types/project"
+import type { PortfolioProjectType } from "../../../../types/project"
 import client from "../../../../lib/client"
 
 type Props = {
-	project: ProjectType
+	project: PortfolioProjectType
 }
 
 const PortfolioGalleryItem = ({ project }: Props) => {
 	const { push } = useRouter()
 
 	const goToProject = (event: MouseEvent<HTMLDivElement>) => {
-		push(`./portfolio/${project.slug.current}`)
+		push(`./portfolio/${project.slug}`)
 	}
 
 	const imageProps = useNextSanityImage(client, project.imageList[0])

@@ -1,25 +1,25 @@
 import React from "react"
+import { useRouter } from "next/router"
+
+import { motion } from "framer-motion"
+import { useNextSanityImage } from "next-sanity-image"
+import { ParsedUrlQuery } from "querystring"
 
 import type { GetStaticPaths, GetStaticProps } from "next"
 
-import type { ModeType, ProjectType } from "../../types/project"
+import type { ModeType, ProjectType, ProjectLinkType } from "../../types/project"
 
 import ProjectStory from "../../components/ProjectStory"
 import ProjectGallery from "../../components/ProjectGallery"
 import ProjectViewMode from "../../components/ProjectViewMode"
 import ProjectCarousel from "../../components/ProjectCarousel"
-
 import ProjectBottomNav from "../../components/ProjectBottomNav"
 import ProjectDescription from "../../components/ProjectDescription"
-import { motion } from "framer-motion"
-import { headerTitle } from "../../lib/title"
-import { useRouter } from "next/router"
-import { getProjectBySlug, getProjects } from "../../lib/grocQueries"
-import client from "../../lib/client"
-import { ParsedUrlQuery } from "querystring"
-import { ProjectLinkType } from "../../types/project"
 import MetaHead from "../../components/MetaHead"
-import { useNextSanityImage } from "next-sanity-image"
+
+import { headerTitle } from "../../lib/title"
+import { getProjectBySlug, getProjectSlugs } from "../../lib/grocQueries"
+import client from "../../lib/client"
 
 type Props = {
 	project: ProjectType
@@ -44,7 +44,7 @@ const Project = ({ project, previous, next }: Props) => {
 			<MetaHead
 				title={`${project.name} | ${headerTitle}`}
 				description={project.name + " - a project by G. Charles Design"}
-				url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio/" + project.slug.current}
+				url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio/" + project.slug}
 				siteName={`${project.name} | ${headerTitle}`}
 				image={imageProps.src}
 			/>
@@ -84,10 +84,10 @@ const Project = ({ project, previous, next }: Props) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const projects = (await client.fetch(getProjects)) as ProjectType[]
+	const paths = await client.fetch(getProjectSlugs)
 
 	return {
-		paths: projects.map((project: ProjectType) => ({ params: { slug: project.slug.current } })),
+		paths,
 		fallback: false,
 	}
 }

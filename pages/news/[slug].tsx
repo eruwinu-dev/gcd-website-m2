@@ -3,13 +3,11 @@ import dynamic from "next/dynamic"
 
 import type { GetStaticPaths, GetStaticProps } from "next"
 
-import groq from "groq"
 import { useNextSanityImage } from "next-sanity-image"
 
 import type { ParsedUrlQuery } from "querystring"
 import type { ArticleItemType, ArticleType } from "../../types/article"
 
-import NewsGallery from "../../components/NewsGallery"
 import NewsArticleText from "../../components/NewsArticleText"
 import NewsArticleHeader from "../../components/NewsArticleHeader"
 import SocialMediaShare from "../../components/SocialMediaShare"
@@ -17,7 +15,7 @@ import MetaHead from "../../components/MetaHead"
 
 import client from "../../lib/client"
 import { headerTitle } from "../../lib/title"
-import { getArticleBySlug } from "../../lib/grocQueries"
+import { getArticleBySlug, getArticleSlugs } from "../../lib/grocQueries"
 
 interface StaticParams extends ParsedUrlQuery {
 	slug: string
@@ -55,9 +53,9 @@ const Article = ({ post, recos }: { post: ArticleType; recos: ArticleItemType[] 
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = await client.fetch(groq`*[_type == "post" && defined(slug.current)][].slug.current`)
+	const paths = await client.fetch(getArticleSlugs)
 	return {
-		paths: paths.map((slug: string) => ({ params: { slug } })),
+		paths,
 		fallback: false,
 	}
 }
