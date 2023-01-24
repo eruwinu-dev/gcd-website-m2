@@ -49,9 +49,11 @@ const NewsGalleryItem = ({ article }: Props) => {
 					<span className="text-sm uppercase text-gray-500">
 						{article.publishedAt ? formatDateFromISO(article.publishedAt) : "NaN"}
 					</span>
-				</div> */}
+				</div>
 				<Link href={redirectPath}>
-					<h3 className="text-2xl cursor-pointer">{article.title}</h3>
+					<a>
+						<h3 className="text-2xl">{article.title}</h3>
+					</a>
 				</Link>
 				<p className="w-full lg:line-clamp-3 md:line-clamp-3 line-clamp-2 lg:text-base md:text-base text-sm">
 					{article.description ? article.description : ""}
@@ -63,7 +65,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 							className="text-base cursor-pointer text-gray-500 hover:text-red-700 generic-transition"
 						>
 							<Link href={`?category=${category}`}>
-								<span className="cursor-pointer">#{category}</span>
+								<a>#{category}</a>
 							</Link>
 						</li>
 					))}
