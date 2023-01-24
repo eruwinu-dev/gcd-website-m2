@@ -8,7 +8,6 @@ import { useNextSanityImage } from "next-sanity-image"
 
 import type { ArticleItemType } from "../../../types/article"
 
-import { formatDateFromISO } from "../../../lib/dates"
 import client from "../../../lib/client"
 
 type Props = {
@@ -19,8 +18,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 	const imageProps = useNextSanityImage(client, article.mainImage)
 
 	const redirectPath = `./news/${article.slug}`
-
-	let readTime = article.wordCount ? Math.round(article.wordCount / 180) : 10
+	const readTime = article.wordCount ? Math.round(article.wordCount / 180) : 10
 
 	return (
 		<motion.div
@@ -48,9 +46,9 @@ const NewsGalleryItem = ({ article }: Props) => {
 				<div className="w-full flex-row items-center justify-start space-x-4">
 					<span className="text-sm">{readTime} minute read</span>
 					<span>/</span>
-					{/* <span className="text-sm uppercase text-gray-500">
-						{article.publishedAt ? formatDateFromISO(article.publishedAt) : "NaN"}
-					</span> */}
+					<span className="text-sm uppercase text-gray-500">
+						{article.publishedAt ? article.publishedAt : ""}
+					</span>
 				</div>
 				<Link href={redirectPath}>
 					<h3 className="text-2xl cursor-pointer">{article.title}</h3>

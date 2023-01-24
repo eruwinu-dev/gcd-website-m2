@@ -12,6 +12,7 @@ import NewsGallery from "../../components/NewsGallery"
 
 import client from "../../lib/client"
 import { headerTitle } from "../../lib/title"
+import { formatDateFromISO } from "../../lib/dates"
 
 type Props = {
 	articles: ArticleItemType[]
@@ -41,7 +42,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 	return {
 		props: {
-			articles,
+			articles: articles.map((article) => ({
+				...article,
+				publishedAt: article.publishedAt ? formatDateFromISO(article.publishedAt) : "NaN",
+			})),
 			categories: ["all", ...categories],
 		},
 	}
