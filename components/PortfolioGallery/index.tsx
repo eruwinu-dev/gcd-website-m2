@@ -58,7 +58,7 @@ const PortfolioGallery = ({ projects, categories }: Props) => {
 									isSelectedCategory(category) ? "text-black" : "hover:text-red-800",
 								].join(" ")}
 							>
-								{category.replaceAll("-", " ")}
+								<h1 className="text-base font-normal">{category.replaceAll("-", " ")}</h1>
 							</button>
 							{isSelectedCategory(category) ? (
 								<motion.div className="portfolio-category-nav-tab" layoutId="portfolio-nav-tab" />

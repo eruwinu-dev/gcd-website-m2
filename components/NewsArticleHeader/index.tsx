@@ -4,7 +4,6 @@ import Image from "next/image"
 
 import type { ArticleType } from "../../types/article"
 
-import NewsArticleCategories from "../NewsArticleCategories"
 
 import { formatDateFromISO } from "../../lib/dates"
 import NewsArticleAuthor from "./NewsArticleAuthor"
@@ -31,7 +30,7 @@ const NewsArticleHeader = ({ post }: Props) => {
 					{post.description}
 				</p>
 				<NewsArticleAuthor post={post} />
-				{post.categories && <NewsArticleCategories categories={post.categories} />}
+				{/* {post.categories && <NewsArticleCategories categories={post.categories} />} */}
 			</div>
 			<div className="w-full flex flex-col items-center mx-auto">
 				<div className="relative w-full h-auto lg:aspect-video md:aspect-video aspect-square bg-gray-100">

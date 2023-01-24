@@ -39,8 +39,8 @@ const PortfolioGalleryItem = ({ project }: Props) => {
 				</div>
 			</Link>
 			<div className="portfolio-gallery-item-caption">
-				<h5>{project.name}</h5>
-				<span className="italic">{project.address}</span>
+				<h2>{project.name}</h2>
+				<h3 className="italic">{project.address}</h3>
 			</div>
 		</motion.div>
 	)

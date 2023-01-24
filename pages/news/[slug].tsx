@@ -8,9 +8,9 @@ import { useNextSanityImage } from "next-sanity-image"
 import type { ParsedUrlQuery } from "querystring"
 import type { ArticleItemType, ArticleType } from "../../types/article"
 
-import NewsArticleText from "../../components/NewsArticleText"
-import NewsArticleHeader from "../../components/NewsArticleHeader"
-import SocialMediaShare from "../../components/SocialMediaShare"
+// import NewsArticleText from "../../components/NewsArticleText"
+// import NewsArticleHeader from "../../components/NewsArticleHeader"
+// import SocialMediaShare from "../../components/SocialMediaShare"
 import MetaHead from "../../components/MetaHead"
 
 import client from "../../lib/client"
