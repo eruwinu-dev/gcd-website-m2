@@ -49,7 +49,7 @@ const NewsGalleryItem = ({ article }: Props) => {
 					<span className="text-sm uppercase text-gray-500">
 						{article.publishedAt ? formatDateFromISO(article.publishedAt) : "NaN"}
 					</span>
-				</div>
+				</div> */}
 				<Link href={redirectPath}>
 					<h3 className="text-2xl cursor-pointer">{article.title}</h3>
 				</Link>
@@ -58,17 +58,13 @@ const NewsGalleryItem = ({ article }: Props) => {
 				</p>
 				<ul className="flex flex-row space-x-4">
 					{article.categories.map((category) => (
-						<li
-							key={category}
-							className="text-base cursor-pointer text-gray-500 hover:text-red-700 generic-transition"
-						>
+						<li key={category} className="text-base text-gray-500 hover:text-red-700 generic-transition">
 							<Link href={`?category=${category}`}>
-								<a>#{category}</a>
+								<span className="cursor-pointer">#{category}</span>
 							</Link>
 						</li>
 					))}
 				</ul>
-					*/}
 			</div>
 		</motion.div>
 	)
