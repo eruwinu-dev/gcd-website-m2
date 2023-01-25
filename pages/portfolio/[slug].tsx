@@ -42,7 +42,7 @@ const Project = ({ project, previous, next }: Props) => {
 	return (
 		<>
 			<MetaHead
-				title={`${project.name} | ${headerTitle}`}
+				title={`${project.name} - Portfolio | ${headerTitle}`}
 				description={project.name + " - a project by G. Charles Design"}
 				url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio/" + project.slug}
 				siteName={`${project.name} | ${headerTitle}`}

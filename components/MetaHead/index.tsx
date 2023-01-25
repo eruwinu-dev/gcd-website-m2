@@ -15,6 +15,7 @@ const MetaHead = ({ defaultSeo = false, title, description, url, siteName, image
 		<Head>
 			{!defaultSeo ? <title>{title}</title> : null}
 			<link rel="canonical" href={url} />
+			<link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 			<meta name="description" content={description} />
 			<meta name="og:title" content={title} />
 			<meta name="og:description" content={description} />

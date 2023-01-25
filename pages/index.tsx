@@ -21,7 +21,7 @@ const Home = (props: Props) => {
 	return (
 		<>
 			<MetaHead
-				title={`Home | ${headerTitle}`}
+				title={`Home | ${headerTitle} - Client Focused Architecture`}
 				description="G. Charles Design is an architecture firm licensed in California, Nevada and Arizona with authentic architecture services catered to the client's needs."
 				url={process.env.NEXT_PUBLIC_SITE_URL || ""}
 				siteName={`Home | ${headerTitle}`}
