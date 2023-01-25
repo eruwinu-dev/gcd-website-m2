@@ -36,11 +36,11 @@ export const getMembers = groq`*[_type == "author" && order > 0] | order(order a
 	"blogBio": blogbio,
   }`
 
-export const getMemberSlugs = groq`*[_type == "author"] | order(order asc) {
+export const getMemberSlugs = groq`*[_type == "author" && order > 0] | order(order asc) {
 	"params": {"slug": slug.current}
   }`
 
-export const getMemberBySlug = groq`*[_type == "author" && slug.current == $slug][0]{
+export const getMemberBySlug = groq`*[_type == "author" && order > 0 && slug.current == $slug][0]{
 	_id,
 	name,
 	"slug": slug.current,

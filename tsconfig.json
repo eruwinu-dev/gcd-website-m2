@@ -17,6 +17,6 @@
     "incremental": true,
     "downlevelIteration": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/sitemap.xml.tsx"],
   "exclude": ["node_modules"]
 }
