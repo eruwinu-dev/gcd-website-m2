@@ -75,6 +75,19 @@ const About = ({ members }: Props) => {
 				</div>
 			</section>
 			<TeamGallery width={widthRect ? widthRect.width : 0} members={members} />
+			<section className="relative w-full h-screen translate-y-0 aspect-video lg:mb-16 md:mb-8 mb-4">
+				<div className="relative w-11/12 aspect-video mx-auto">
+					<Image
+						src={groupImage}
+						alt="A photo of the team members behind G. Charles Design. Book a consult now!"
+						loader={sanityImageLoader}
+						layout="fill"
+						objectFit="cover"
+						objectPosition="center"
+						priority
+					/>
+				</div>
+			</section>
 			<section className="relative w-full h-screen translate-y-0 aspect-video">
 				<Image
 					src={bookImage}
@@ -119,5 +132,9 @@ const aboutImage =
 
 const bookImage =
 	"https://cdn.sanity.io/images/1apv929p/production/86a4e15150bc9160b16c2e60f866276be927a88e-1280x720.jpg"
+
+const groupImage =
+	"https://cdn.sanity.io/images/1apv929p/production/50304d9ba53eb08bedd1c7a84fe3e6820a5155ff-2048x1365.jpg"
+
 export default About
 
