@@ -81,8 +81,8 @@ export const CustomPTComponents: Partial<PortableTextReactComponents | PortableT
 		},
 	},
 	list: {
-		bullet: ({ children }) => <ul className="news-article-pt-list">{children}</ul>,
-		number: ({ children }) => <ol className="news-article-pt-list">{children}</ol>,
+		bullet: ({ children }) => <ul className="news-portable-text-component news-article-pt-list">{children}</ul>,
+		number: ({ children }) => <ol className="news-portable-text-component news-article-pt-list">{children}</ol>,
 	},
 	listItem: {
 		bullet: ({ children }) => <li style={{ listStyleType: "disc" }}>{children}</li>,
