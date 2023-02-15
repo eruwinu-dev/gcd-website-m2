@@ -523,7 +523,7 @@
 
 	/*News/[slug]*/
 	.news-portable-text-component {
-		@apply lg:w-9/12 w-full my-8 text-left leading-loose;
+		@apply lg:w-9/12 w-full mt-4 text-left leading-9;
 	}
 	.news-article-text-container {
 		@apply w-10/12 min-h-screen max-h-fit flex lg:flex-row flex-col items-start justify-center mx-auto;
@@ -547,7 +547,7 @@
 		@apply lg:text-5xl md:text-4xl lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-center;
 	}
 	.news-article-header > p {
-		@apply lg:text-lg md:text-lg sm:text-base text-base lg:w-9/12 md:w-10/12 w-full lg:text-left md:text-left text-justify;
+		@apply h-fit lg:w-9/12 md:w-10/12 w-full lg:text-lg md:text-lg sm:text-base text-base lg:text-left md:text-left text-justify leading-10;
 	}
 	.news-article-header-image {
 		@apply w-full flex flex-col items-center mx-auto;
