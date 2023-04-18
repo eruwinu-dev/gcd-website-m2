@@ -34,7 +34,7 @@ const TeamGalleryItem = ({ member, order }: Props) => {
                             <Image
                                 src={imageProps.src}
                                 loader={imageProps.loader}
-                                alt={member.blogBio}
+                                alt={member.bio}
                                 layout="fill"
                                 objectFit="cover"
                                 objectPosition="bottom"
