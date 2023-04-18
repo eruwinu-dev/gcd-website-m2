@@ -1,47 +1,42 @@
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import React from "react"
 import MetaHead from "../../components/MetaHead"
 import PortfolioGallery from "../../components/PortfolioGallery"
-import client from "../../lib/client"
-import { getProjects } from "../../lib/grocQueries"
+import { getProjects } from "../../lib/project/getProjects"
 import { headerTitle } from "../../lib/title"
-import { PortfolioProjectType } from "../../types/project"
+import { QueryClient, dehydrate } from "@tanstack/react-query"
 
-type Props = {
-	projects: PortfolioProjectType[]
-	categories: string[]
+type Props = {}
+
+const Portfolio = ({}: Props) => {
+    return (
+        <>
+            <MetaHead
+                title={`Portfolio | ${headerTitle}`}
+                description="G. Charles Design has completed many projects shown in this portfolio gallery."
+                url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio"}
+                siteName={`Portfolio | ${headerTitle}`}
+            />
+            <div className="portfolio-section">
+                <PortfolioGallery />
+            </div>
+        </>
+    )
 }
 
-const Portfolio = ({ projects, categories }: Props) => {
-	return (
-		<>
-			<MetaHead
-				title={`Portfolio | ${headerTitle}`}
-				description="G. Charles Design has completed many projects shown in this portfolio gallery."
-				url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio"}
-				siteName={`Portfolio | ${headerTitle}`}
-			/>
-			<div className="portfolio-section">
-				<PortfolioGallery projects={projects} categories={categories} />
-			</div>
-		</>
-	)
-}
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+    const queryClient = new QueryClient()
 
-export const getStaticProps: GetStaticProps = async () => {
-	const projects = (await client.fetch(getProjects)) as PortfolioProjectType[]
-	const categories = [
-		"all",
-		...new Set(projects.reduce((group: string[], project) => [...group, ...project.categories], [])),
-	]
+    await queryClient.prefetchQuery({
+        queryKey: ["projects"],
+        queryFn: async () => getProjects(),
+    })
 
-	return {
-		props: {
-			projects,
-			categories,
-		},
-	}
+    return {
+        props: {
+            dehydratedState: dehydrate(queryClient),
+        },
+    }
 }
 
 export default Portfolio
-

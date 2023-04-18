@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 import { useNextSanityImage } from "next-sanity-image"
 import { ParsedUrlQuery } from "querystring"
 
-import type { GetStaticPaths, GetStaticProps } from "next"
+import type { GetServerSideProps } from "next"
 
-import type { ModeType, ProjectType } from "../../types/project"
+import type { ModeType } from "../../types/project"
 
 import ProjectStory from "../../components/ProjectStory"
 import ProjectGallery from "../../components/ProjectGallery"
@@ -18,107 +18,130 @@ import ProjectDescription from "../../components/ProjectDescription"
 import MetaHead from "../../components/MetaHead"
 
 import { headerTitle } from "../../lib/title"
-import { getProjectBySlug, getProjectSlugs } from "../../lib/grocQueries"
-import client from "../../lib/client"
+
+import sanityClient from "../../lib/sanityClient"
+
+import { getProject } from "../../lib/project/getProject"
+import { getAdjacentProjects } from "../../lib/project/getAdjacentProjects"
+import { QueryClient, dehydrate } from "@tanstack/react-query"
+import { useGetProject } from "../../hooks/project/useGetProject"
+import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
 type Props = {
-	project: ProjectType
-	previous: string | null
-	next: string | null
+    slug: string
+    image: SanityImageSource
 }
 
 interface StaticParams extends ParsedUrlQuery {
-	slug: string
+    slug: string
 }
 
-const Project = ({ project, previous, next }: Props) => {
-	const {
-		query: { mode },
-	} = useRouter()
-	const imageProps = useNextSanityImage(client, project.imageList[0])
+const Project = ({ slug, image }: Props) => {
+    const {
+        query: { mode },
+    } = useRouter()
+    const imageProps = useNextSanityImage(sanityClient, image)
 
-	const viewMode = (mode || "story") as ModeType
+    const viewMode = (mode || "story") as ModeType
 
-	return (
-		<>
-			<MetaHead
-				title={`${project.name} - Portfolio | ${headerTitle}`}
-				description={project.name + " - a project by G. Charles Design"}
-				url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio/" + project.slug}
-				siteName={`${project.name} | ${headerTitle}`}
-				image={imageProps.src}
-			/>
-			<section className={[viewMode === "carousel" ? "translate-y-0" : "", "generic-transition h-fit"].join(" ")}>
-				<motion.div
-					className={["w-full h-fit"].join(" ")}
-					variants={sectionVariants}
-					initial="story"
-					animate={viewMode}
-					transition={{
-						ease: "easeInOut",
-						duration: 0.5,
-					}}
-				>
-					<div className="project-view-mode-container">
-						{viewMode === "story" ? (
-							<ProjectStory project={project} />
-						) : project.imageList.length ? (
-							<ProjectCarousel images={project.imageList} title={project.name} />
-						) : null}
-						<ProjectViewMode />
-					</div>
-				</motion.div>
-			</section>
-			<div className="portfolio-section">
-				{viewMode === "story" ? (
-					project.imageList.length ? (
-						<ProjectGallery title={project.name} images={project.imageList} />
-					) : null
-				) : (
-					<ProjectDescription project={project} />
-				)}
-				<ProjectBottomNav previous={previous || ""} next={next || ""} />
-			</div>
-		</>
-	)
+    const { data } = useGetProject(slug)
+
+    if (!data) return <></>
+
+    return (
+        <>
+            <MetaHead
+                title={`${data.project.name} - Portfolio | ${headerTitle}`}
+                description={
+                    data.project.name + " - a project by G. Charles Design"
+                }
+                url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio/" + slug}
+                siteName={`${data.project.name} | ${headerTitle}`}
+                image={imageProps.src}
+            />
+            <section
+                className={[
+                    viewMode === "carousel" ? "translate-y-0" : "",
+                    "generic-transition h-fit",
+                ].join(" ")}
+            >
+                <motion.div
+                    className={["w-full h-fit"].join(" ")}
+                    variants={sectionVariants}
+                    initial="story"
+                    animate={viewMode}
+                    transition={{
+                        ease: "easeInOut",
+                        duration: 0.5,
+                    }}
+                >
+                    <div className="project-view-mode-container">
+                        {viewMode === "story" ? (
+                            <ProjectStory project={data.project} />
+                        ) : data.project.images.length ? (
+                            <ProjectCarousel
+                                images={data.project.images}
+                                title={data.project.name}
+                            />
+                        ) : null}
+                        <ProjectViewMode />
+                    </div>
+                </motion.div>
+            </section>
+            <div className="portfolio-section">
+                {viewMode === "story" ? (
+                    data.project.images.length ? (
+                        <ProjectGallery
+                            title={data.project.name}
+                            images={data.project.images}
+                        />
+                    ) : null
+                ) : (
+                    <ProjectDescription project={data.project} />
+                )}
+                <ProjectBottomNav previous={data.previous} next={data.next} />
+            </div>
+        </>
+    )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = await client.fetch(getProjectSlugs)
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+    const { slug = "" } = params as StaticParams
 
-	return {
-		paths,
-		fallback: false,
-	}
-}
+    const project = await getProject(slug)
+    const [previous, next] = await getAdjacentProjects(slug)
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const { slug = "" } = params as StaticParams
-	const { next, previous, ...project } = (await client.fetch(getProjectBySlug, { slug })) as {
-		next: string | null
-		previous: string | null
-		project: ProjectType
-	}
+    if (!project) {
+        return {
+            notFound: true,
+        }
+    }
 
-	return {
-		props: {
-			project,
-			next,
-			previous,
-		},
-	}
+    const queryClient = new QueryClient()
+
+    await queryClient.prefetchQuery({
+        queryKey: ["projects", slug],
+        queryFn: async () => ({ project, next, previous }),
+    })
+
+    return {
+        props: {
+            slug: project.slug,
+            image: project.images[0],
+            dehydratedState: dehydrate(queryClient),
+        },
+    }
 }
 
 const sectionVariants = {
-	story: {
-		width: "100%",
-		x: "0vw",
-	},
-	carousel: {
-		width: "96vw",
-		x: "2vw",
-	},
+    story: {
+        width: "100%",
+        x: "0vw",
+    },
+    carousel: {
+        width: "96vw",
+        x: "2vw",
+    },
 }
 
 export default Project
-

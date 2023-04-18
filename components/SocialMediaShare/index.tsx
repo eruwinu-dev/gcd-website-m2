@@ -1,51 +1,55 @@
 import React from "react"
 
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from "react-share"
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    LinkedinShareButton,
+} from "react-share"
 import { FacebookIcon, LinkedinIcon, TwitterIcon } from "../../lib/icons"
 
-import type { ArticleType } from "../../types/article"
+import { Post } from "../../types/post"
 
 type Props = {
-	article: ArticleType
+    post: Post
 }
 
-const SocialMediaShare = ({ article }: Props) => {
-	const shareUrl = process.env.NEXT_PUBLIC_SITE_URL + "/news/" + article.slug
+const SocialMediaShare = ({ post }: Props) => {
+    const shareUrl = process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug
+    const source = "G. Charles Design - Client Focused Architecture"
 
-	const source = "Glen Charles Design - Client Focused Architecture"
-
-	return (
-		<div className="social-media-container">
-			<div>
-				<span>Share this</span>
-			</div>
-			<div className="social-media-buttons">
-				<FacebookShareButton
-					url={shareUrl}
-					quote={article.title}
-					hashtag={article?.categories ? "#" + article.categories[0] : ""}
-				>
-					<FacebookIcon />
-				</FacebookShareButton>
-				<TwitterShareButton
-					url={shareUrl}
-					title={article.title}
-					hashtags={article?.categories?.map((category) => category) || []}
-				>
-					<TwitterIcon />
-				</TwitterShareButton>
-				<LinkedinShareButton
-					url={shareUrl}
-					title={article.title}
-					summary={article?.description || ""}
-					source={source}
-				>
-					<LinkedinIcon />
-				</LinkedinShareButton>
-			</div>
-		</div>
-	)
+    return (
+        <div className="social-media-container">
+            <div>
+                <span>Share this</span>
+            </div>
+            <div className="social-media-buttons">
+                <FacebookShareButton
+                    url={shareUrl}
+                    quote={post.title}
+                    hashtag={post?.categories ? "#" + post.categories[0] : ""}
+                >
+                    <FacebookIcon />
+                </FacebookShareButton>
+                <TwitterShareButton
+                    url={shareUrl}
+                    title={post.title}
+                    hashtags={
+                        post?.categories?.map((category) => category) || []
+                    }
+                >
+                    <TwitterIcon />
+                </TwitterShareButton>
+                <LinkedinShareButton
+                    url={shareUrl}
+                    title={post.title}
+                    summary={post?.description || ""}
+                    source={source}
+                >
+                    <LinkedinIcon />
+                </LinkedinShareButton>
+            </div>
+        </div>
+    )
 }
 
 export default SocialMediaShare
-

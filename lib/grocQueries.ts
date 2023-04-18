@@ -78,7 +78,7 @@ export const getArticleBySlug = groq`{
 	  "slug": slug.current,
 	  description,
 	  mainImage,
-	  "author": author -> {name, "slug": slug.current, image, "blogBio": blogbio},
+	  "author": author -> {_id, name, "slug": slug.current, image, blogBio},
 	  "categories": categories[] -> title,
 	  "wordCount": round(length(pt::text(body)) / 5),
 	  body,
@@ -95,4 +95,3 @@ export const getArticleBySlug = groq`{
 		  "wordCount": round(length(pt::text(body)) / 5),
 	  },
   }`
-

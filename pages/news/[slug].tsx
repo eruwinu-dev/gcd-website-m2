@@ -1,83 +1,89 @@
 import React from "react"
-import dynamic from "next/dynamic"
 
-import type { GetStaticPaths, GetStaticProps } from "next"
+import type { GetServerSideProps } from "next"
 
 import { useNextSanityImage } from "next-sanity-image"
 
 import type { ParsedUrlQuery } from "querystring"
-import type { ArticleItemType, ArticleType } from "../../types/article"
 
 import NewsArticleText from "../../components/NewsArticleText"
 import NewsArticleHeader from "../../components/NewsArticleHeader"
 import SocialMediaShare from "../../components/SocialMediaShare"
 import MetaHead from "../../components/MetaHead"
 
-import client from "../../lib/client"
 import { headerTitle } from "../../lib/title"
-import { getArticleBySlug, getArticleSlugs } from "../../lib/grocQueries"
-import { formatDateFromISO } from "../../lib/dates"
 import NewsArticleRecos from "../../components/NewsArticleRecos"
+import { getPost } from "../../lib/post/getPost"
+import { QueryClient, dehydrate } from "@tanstack/react-query"
+import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import sanityClient from "../../lib/sanityClient"
+import { Post } from "../../types/post"
+import { useGetPost } from "../../hooks/post/useGetPost"
 
-type Props = { article: ArticleType; recos: ArticleItemType[] }
+type Props = { slug: string; image: SanityImageSource }
 
 interface StaticParams extends ParsedUrlQuery {
-	slug: string
+    slug: string
 }
 
-const Article = ({ article, recos }: Props) => {
-	const imageProps = useNextSanityImage(client, article.mainImage)
+const Article = ({ slug, image }: Props) => {
+    const imageProps = useNextSanityImage(sanityClient, image)
 
-	return (
-		<>
-			<MetaHead
-				title={`${article.title} - Blog | ${headerTitle}`}
-				description={article.description || "A blog post by G. Charles Design"}
-				url={process.env.NEXT_PUBLIC_SITE_URL + "/news/" + article.slug}
-				siteName={`${article.title} - Blog | ${headerTitle}`}
-				image={imageProps.src}
-			/>
-			<NewsArticleHeader article={article} />
-			<div className="news-article-text-container">
-				<NewsArticleText body={article.body} />
-				<SocialMediaShare article={article} />
-			</div>
-			<div className="news-recos-container">
-				<h2>You May Also Like</h2>
-				<NewsArticleRecos recos={recos} />
-			</div>
-		</>
-	)
+    const { data } = useGetPost(slug)
+
+    if (!data) return <></>
+
+    return (
+        <>
+            <MetaHead
+                title={`${data.post.title} - Blog | ${headerTitle}`}
+                description={
+                    data.post.description || "A blog post by G. Charles Design"
+                }
+                url={
+                    process.env.NEXT_PUBLIC_SITE_URL + "/news/" + data.post.slug
+                }
+                siteName={`${data.post.title} - Blog | ${headerTitle}`}
+                image={imageProps.src}
+            />
+            <NewsArticleHeader post={data.post} />
+            <div className="news-article-text-container">
+                <NewsArticleText body={data.post.body} />
+                <SocialMediaShare post={data.post} />
+            </div>
+            <div className="news-recos-container">
+                <h2>You May Also Like</h2>
+                <NewsArticleRecos recos={data.recos} />
+            </div>
+        </>
+    )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = await client.fetch(getArticleSlugs)
-	return {
-		paths,
-		fallback: false,
-	}
-}
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+    const { slug = "" } = params as StaticParams
 
-export const getStaticProps: GetStaticProps = async (context) => {
-	const { slug = "" } = context.params as StaticParams
-	const { article, recos } = (await client.fetch(getArticleBySlug, { slug })) as {
-		article: ArticleType
-		recos: ArticleItemType[]
-	}
+    const { post, recos } = await getPost(slug)
 
-	return {
-		props: {
-			article: { ...article, publishedAt: article.publishedAt ? formatDateFromISO(article.publishedAt) : "NaN" },
-			recos: recos
-				.sort(() => 0.5 - Math.random())
-				.slice(0, 3)
-				.map((reco) => ({
-					...reco,
-					publishedAt: reco.publishedAt ? formatDateFromISO(reco.publishedAt) : "NaN",
-				})),
-		},
-	}
+    if (!post) {
+        return {
+            notFound: true,
+        }
+    }
+
+    const queryClient = new QueryClient()
+
+    await queryClient.prefetchQuery({
+        queryKey: ["posts", slug],
+        queryFn: async () => ({ post, recos }),
+    })
+
+    return {
+        props: {
+            slug: post.slug,
+            image: post.mainImage,
+            dehydratedState: dehydrate(queryClient),
+        },
+    }
 }
 
 export default Article
-

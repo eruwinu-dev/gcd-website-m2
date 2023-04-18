@@ -1,20 +1,23 @@
 import React from "react"
-import { ArticleItemType } from "../../types/article"
 import NewsGalleryItem from "../NewsGallery/NewsGalleryItem"
+import { BasePost } from "../../types/post"
 
 type Props = {
-	recos: ArticleItemType[]
+    recos: BasePost[]
 }
 
 const NewsArticleRecos = ({ recos }: Props) => {
-	return (
-		<div className="news-recos">
-			{recos.map((article) => (
-				<NewsGalleryItem key={article._id} article={article} redirect="../news/" />
-			))}
-		</div>
-	)
+    return (
+        <div className="news-recos">
+            {recos.map((post) => (
+                <NewsGalleryItem
+                    key={post._id}
+                    post={post}
+                    redirect="../news/"
+                />
+            ))}
+        </div>
+    )
 }
 
 export default NewsArticleRecos
-

@@ -2,29 +2,32 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
 export type ModeType = "story" | "carousel"
 
-export interface CategoryType {
-	_id: string
-	name: string
-	slug: string
-	description?: string
+export interface ProjectMember {
+    name: string
+    role: string
 }
 
-export interface PortfolioProjectType {
-	_id: string
-	name: string
-	slug: string
-	address: string
-	imageList: SanityImageSource[]
-	categories: string[]
+export interface AdjacentProject {
+    name: string
+    slug: string
 }
 
-export interface ProjectType extends PortfolioProjectType {
-	team?: string
-	body?: TypedObject
+export interface BaseProject {
+    _id: string
+    name: string
+    slug: string
+    categories: string[]
 }
 
-export interface ProjectTeamType {
-	name: string
-	position: string
+export interface ProjectLink extends BaseProject {
+    address: string
+    members: ProjectMember[]
+    mainImage: SanityImageSource
 }
 
+export interface Project extends BaseProject {
+    address: string
+    members: ProjectMember[]
+    images: SanityImageSource[]
+    body: TypedObject
+}
