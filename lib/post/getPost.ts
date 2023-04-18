@@ -13,7 +13,7 @@ export const getPost = async (slug: string) => {
             "slug": slug.current,
             description,
             mainImage,
-            "author": author -> {name, "slug": slug.current, image, "blogBio": blogbio},
+            "author": author -> {name, "slug": slug.current, image, blogBio},
             "categories": categories[] -> slug.current,
             "wordCount": round(length(pt::text(body)) / 5),
             body,

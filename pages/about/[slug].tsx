@@ -35,7 +35,7 @@ const Member = ({ slug, image }: Props) => {
         <>
             <MetaHead
                 title={`${member.name} | G.Charles Design`}
-                description={member.blogBio}
+                description={member.name}
                 url={process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug}
                 siteName={`${member.name} | "G Charles" Design`}
             />
@@ -46,7 +46,7 @@ const Member = ({ slug, image }: Props) => {
                             <Image
                                 src={imageProps.src}
                                 loader={imageProps.loader}
-                                alt={member.blogBio}
+                                alt={member.name}
                                 layout="fill"
                                 objectFit="cover"
                                 objectPosition="bottom"
