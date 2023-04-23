@@ -6,10 +6,16 @@ import ProcessTimeline from "../components/ProcessTimeline"
 import { headerTitle } from "../lib/title"
 import { sanityImageLoader } from "../lib/sanityImageLoader"
 import MetaHead from "../components/MetaHead"
+import { GetStaticProps } from "next"
+import { getPlaceholders } from "../lib/images/getPlaceholders"
+import { processImage } from "../utils/banners"
+import { steps } from "../lib/steps"
 
-type Props = {}
+type Props = {
+    placeholders: string[]
+}
 
-const Process = (props: Props) => {
+const Process = ({ placeholders }: Props) => {
     return (
         <>
             <MetaHead
@@ -31,6 +37,9 @@ const Process = (props: Props) => {
                     objectFit="cover"
                     objectPosition="left"
                     priority
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    placeholder="blur"
+                    blurDataURL={placeholders[0]}
                 />
                 <div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
                     <div className="banner-spacer" />
@@ -53,11 +62,22 @@ const Process = (props: Props) => {
                     getting plans approved by various jurisdictions.
                 </h2>
             </section>
-            <ProcessTimeline />
+            <ProcessTimeline placeholders={placeholders.slice(0)} />
         </>
     )
 }
 
-const processImage =
-    "https://cdn.sanity.io/images/d0yhnc23/production/f07ddafe01db7857dbf2ada96f766bb74a172b14-3072x2048.jpg"
+export const getStaticProps: GetStaticProps = async () => {
+    const placeholders = await getPlaceholders([
+        processImage,
+        ...steps.map((step) => step.photo),
+    ])
+
+    return {
+        props: {
+            placeholders,
+        },
+    }
+}
+
 export default Process

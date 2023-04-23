@@ -9,6 +9,7 @@ import SocialsList from "../components/SocialsList"
 
 import { headerTitle } from "../lib/title"
 import MetaHead from "../components/MetaHead"
+import { TranslateIcon } from "../lib/icons"
 
 type Props = {}
 
@@ -34,6 +35,12 @@ const Contact = (props: Props) => {
                         <h1>Get In Touch</h1>
                         <ContactList size="large" />
                         <SocialsList />
+                        <div className="contact-language">
+                            We speak{" "}
+                            <span className="font-semibold">English</span>,{" "}
+                            <span className="font-semibold">Tagalog</span>, and{" "}
+                            <span className="font-semibold">Spanish</span>.
+                        </div>
                     </div>
                 </div>
 

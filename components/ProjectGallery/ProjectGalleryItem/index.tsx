@@ -1,87 +1,54 @@
-import React, { MouseEvent, useEffect, useState } from "react"
+import React, { MouseEvent, memo } from "react"
 import { useRouter } from "next/router"
 import Image from "next/image"
 
-import { motion, useAnimation } from "framer-motion"
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import { useNextSanityImage } from "next-sanity-image"
-import client from "../../../lib/client"
+import { SanityImageWithMetaData } from "../../../types/image"
+import sanityClient from "../../../lib/sanityClient"
 
 type Props = {
-	title: string
-	photo: SanityImageSource
-	index: number
+    title: string
+    image: SanityImageWithMetaData
+    index: number
 }
 
-const ProjectGalleryItem = ({ title, photo, index }: Props) => {
-	const router = useRouter()
-	const { asPath } = router
-	const controls = useAnimation()
-	const [load, setLoad] = useState<boolean>(false)
+const ProjectGalleryItem = ({ title, image, index }: Props) => {
+    const { asPath, push } = useRouter()
 
-	const imageProps = useNextSanityImage(client, photo)
+    const imageProps = useNextSanityImage(sanityClient, image)
 
-	useEffect(() => {
-		if (load) {
-			controls.start("visible")
-		}
-		return () => {}
-	}, [load, controls])
+    const viewGalleryItem = (index: number) => async (event: MouseEvent) => {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+        push(
+            {
+                pathname: asPath.split("?")[0],
+                query: { mode: "carousel", photo: index },
+            },
+            undefined,
+            { shallow: true }
+        )
+    }
 
-	useEffect(() => {
-		setLoad(false)
-	}, [asPath])
-
-	const viewGalleryItem = (index: number) => (event: MouseEvent) => {
-		router.push(
-			{
-				pathname: asPath.split("?")[0],
-				query: { mode: "carousel", photo: index },
-			},
-			undefined,
-			{ shallow: true }
-		)
-		window.scrollTo(0, 0)
-	}
-
-	return (
-		<div
-			className={["project-gallery-item", !load ? "animate-pulse bg-gray-200" : ""].join(" ")}
-			onClick={viewGalleryItem(index)}
-		>
-			<motion.div
-				className="project-gallery-item-image"
-				variants={itemVariants}
-				initial="hidden"
-				animate={controls}
-			>
-				{imageProps ? (
-					<Image
-						src={imageProps.src}
-						loader={imageProps.loader}
-						alt={`A photo from ${title}, a project of G. Charles Design`}
-						layout="fill"
-						quality={80}
-						objectFit="cover"
-						objectPosition="center"
-						onLoadingComplete={() => setLoad(true)}
-					/>
-				) : null}
-			</motion.div>
-		</div>
-	)
+    return (
+        <div className="project-gallery-item" onClick={viewGalleryItem(index)}>
+            <div className="project-gallery-item-image">
+                {imageProps ? (
+                    <Image
+                        src={imageProps.src}
+                        loader={imageProps.loader}
+                        alt={`A photo from ${title}, a project of G. Charles Design`}
+                        layout="fill"
+                        quality={50}
+                        objectFit="cover"
+                        objectPosition="center"
+                        sizes="(max-width: 800px) 100vw, 800px"
+                        placeholder="blur"
+                        blurDataURL={image.asset.metadata.lqip}
+                    />
+                ) : null}
+            </div>
+        </div>
+    )
 }
 
-const itemVariants = {
-	hidden: { opacity: 0 },
-	visible: {
-		opacity: 1,
-		transition: {
-			duration: 0.3,
-			ease: "easeInOut",
-		},
-	},
-}
-
-export default ProjectGalleryItem
-
+export default memo(ProjectGalleryItem)

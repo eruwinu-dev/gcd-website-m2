@@ -4,15 +4,15 @@ import { useRouter } from "next/router"
 import { AnimatePresence, motion } from "framer-motion"
 import { useRect } from "@reach/rect"
 
-import type { ProcessType } from "../../types/process"
-
 import ProcessTimelineItem from "./ProcessTimelineItem"
 
 import { steps } from "../../lib/steps"
 
-type Props = {}
+type Props = {
+    placeholders: string[]
+}
 
-const ProcessTimeline = (props: Props) => {
+const ProcessTimeline = ({ placeholders }: Props) => {
     const {
         query: { step = "1" },
         push,
@@ -69,7 +69,7 @@ const ProcessTimeline = (props: Props) => {
                     }}
                 />
                 <ul className="process-timeline-ul">
-                    {steps.map((processItem: ProcessType, index: number) => (
+                    {steps.map((processItem, index) => (
                         <li key={processItem.phase}>
                             <motion.div
                                 className="process-timeline-circle"
@@ -99,7 +99,10 @@ const ProcessTimeline = (props: Props) => {
                 </ul>
             </nav>
             <AnimatePresence mode="wait">
-                <ProcessTimelineItem process={steps[Number(step) - 1]} />
+                <ProcessTimelineItem
+                    process={steps[Number(step) - 1]}
+                    placeholder={placeholders[Number(step) - 1]}
+                />
             </AnimatePresence>
         </div>
     )

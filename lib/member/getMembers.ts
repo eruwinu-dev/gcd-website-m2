@@ -11,8 +11,19 @@ export const getMembers = async () => {
           "slug": slug.current,
           "licenses": licenses[],
           role,
-          image,
-        }
+          image {
+                ...,
+                asset->{
+                    _id,
+                    url,
+                    originalFilename,
+                    metadata {
+                        dimensions,
+                        lqip,
+
+                    }
+                }
+            },        }
     }`)) as Partial<{ authors: MemberLink[] }>
     return result?.authors || []
 }

@@ -1,24 +1,28 @@
 import React from "react"
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
 import ProjectGalleryItem from "./ProjectGalleryItem"
+import { SanityImageWithMetaData } from "../../types/image"
 
 type Props = {
-	images: SanityImageSource[]
-	title: string
+    images: SanityImageWithMetaData[]
+    title: string
 }
 
 const ProjectGallery = ({ images, title }: Props) => {
-	return (
-		<div className="project-gallery">
-			<div className="project-gallery-list">
-				{images.map((photo: SanityImageSource, index: number) => (
-					<ProjectGalleryItem title={title} photo={photo} key={index} index={index} />
-				))}
-			</div>
-		</div>
-	)
+    return (
+        <div className="project-gallery">
+            <div className="project-gallery-list">
+                {images.map((image, index) => (
+                    <ProjectGalleryItem
+                        title={title}
+                        image={image}
+                        key={index}
+                        index={index}
+                    />
+                ))}
+            </div>
+        </div>
+    )
 }
 
 export default ProjectGallery
-

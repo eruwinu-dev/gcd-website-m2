@@ -2,8 +2,6 @@ import React from "react"
 
 import type { GetServerSideProps } from "next"
 
-import { useNextSanityImage } from "next-sanity-image"
-
 import type { ParsedUrlQuery } from "querystring"
 
 import NewsArticleText from "../../components/NewsArticleText"
@@ -15,45 +13,34 @@ import { headerTitle } from "../../lib/title"
 import NewsArticleRecos from "../../components/NewsArticleRecos"
 import { getPost } from "../../lib/post/getPost"
 import { QueryClient, dehydrate } from "@tanstack/react-query"
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
-import sanityClient from "../../lib/sanityClient"
-import { Post } from "../../types/post"
-import { useGetPost } from "../../hooks/post/useGetPost"
+import { BasePost, Post } from "../../types/post"
 
-type Props = { slug: string; image: SanityImageSource }
+type Props = { post: Post; recos: BasePost[] }
 
 interface StaticParams extends ParsedUrlQuery {
     slug: string
 }
 
-const Article = ({ slug, image }: Props) => {
-    const imageProps = useNextSanityImage(sanityClient, image)
-
-    const { data } = useGetPost(slug)
-
-    if (!data) return <></>
-
+const Article = ({ post, recos }: Props) => {
     return (
         <>
             <MetaHead
-                title={`${data.post.title} - Blog | ${headerTitle}`}
+                title={`${post.title} - Blog | ${headerTitle}`}
                 description={
-                    data.post.description || "A blog post by G. Charles Design"
+                    post.description || "A blog post by G. Charles Design"
                 }
-                url={
-                    process.env.NEXT_PUBLIC_SITE_URL + "/news/" + data.post.slug
-                }
-                siteName={`${data.post.title} - Blog | ${headerTitle}`}
-                image={imageProps.src}
+                url={process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug}
+                siteName={`${post.title} - Blog | ${headerTitle}`}
+                image={post.mainImage.asset.url}
             />
-            <NewsArticleHeader post={data.post} />
+            <NewsArticleHeader post={post} />
             <div className="news-article-text-container">
-                <NewsArticleText body={data.post.body} />
-                <SocialMediaShare post={data.post} />
+                <NewsArticleText body={post.body} />
+                <SocialMediaShare post={post} />
             </div>
             <div className="news-recos-container">
                 <h2>You May Also Like</h2>
-                <NewsArticleRecos recos={data.recos} />
+                <NewsArticleRecos recos={recos} />
             </div>
         </>
     )
@@ -79,8 +66,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     return {
         props: {
-            slug: post.slug,
-            image: post.mainImage,
+            post,
+            recos,
             dehydratedState: dehydrate(queryClient),
         },
     }

@@ -12,7 +12,19 @@ export const getProjects = async () => {
               "slug": slug.current,
               "categories": categories[] -> slug.current,
               address,
-              "mainImage": images[0],
+              "mainImage": images[0] {
+                ...,
+                asset->{
+                    _id,
+                    url,
+                    originalFilename,
+                    metadata {
+                        dimensions,
+                        lqip,
+
+                    }
+                }
+              },
             },
             "categories": *[_type == "category" && categoryType == "project"] {
                 title,

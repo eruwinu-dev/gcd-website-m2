@@ -10,7 +10,19 @@ export const getMember = async (slug: string) => {
             "slug": slug.current,
             "licenses": licenses[],
             role,
-            image,
+            image {
+                ...,
+                asset->{
+                    _id,
+                    url,
+                    originalFilename,
+                    metadata {
+                        dimensions,
+                        lqip,
+
+                    }
+                }
+            },
             blogBio,
             bio
           }`,

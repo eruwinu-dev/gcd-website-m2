@@ -3,26 +3,19 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { useNextSanityImage } from "next-sanity-image"
-import { motion } from "framer-motion"
 
 import type { ProjectLink } from "../../../../types/project"
-import client from "../../../../lib/client"
+import sanityClient from "../../../../lib/sanityClient"
 
 type Props = {
     project: ProjectLink
 }
 
 const PortfolioGalleryItem = ({ project }: Props) => {
-    const imageProps = useNextSanityImage(client, project.mainImage)
+    const imageProps = useNextSanityImage(sanityClient, project.mainImage)
 
     return (
-        <motion.div
-            className="portfolio-gallery-item"
-            variants={galleryItemVariants}
-            initial="start"
-            whileInView="go"
-            viewport={{ once: true }}
-        >
+        <div className="portfolio-gallery-item">
             <Link href={`./portfolio/${project.slug}`}>
                 <div className="portfolio-gallery-item-image">
                     {imageProps ? (
@@ -34,6 +27,9 @@ const PortfolioGalleryItem = ({ project }: Props) => {
                             objectFit="cover"
                             objectPosition="top"
                             className="hover:scale-105 generic-transition"
+                            sizes="(max-width: 800px) 100vw, 800px"
+                            placeholder="blur"
+                            blurDataURL={project.mainImage.asset.metadata.lqip}
                         />
                     ) : null}
                 </div>
@@ -42,13 +38,8 @@ const PortfolioGalleryItem = ({ project }: Props) => {
                 <h2>{project.name}</h2>
                 <h3>{project.address}</h3>
             </div>
-        </motion.div>
+        </div>
     )
-}
-
-const galleryItemVariants = {
-    start: { opacity: 0 },
-    go: { opacity: 1, transition: { duration: 0.3 } },
 }
 
 export default memo(PortfolioGalleryItem)

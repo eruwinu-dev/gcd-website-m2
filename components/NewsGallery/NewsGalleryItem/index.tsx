@@ -3,7 +3,6 @@ import React, { memo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { motion } from "framer-motion"
 import { useNextSanityImage } from "next-sanity-image"
 
 import { BasePost } from "../../../types/post"
@@ -21,13 +20,7 @@ const NewsGalleryItem = ({ post, redirect }: Props) => {
     const readTime = post.wordCount ? Math.round(post.wordCount / 180) : 10
 
     return (
-        <motion.div
-            className="news-gallery-item group"
-            variants={galleryItemVariants}
-            initial="start"
-            whileInView="go"
-            viewport={{ once: true }}
-        >
+        <div className="news-gallery-item group">
             <Link href={redirectPath}>
                 <div className="news-gallery-item-image">
                     {imageProps ? (
@@ -39,6 +32,9 @@ const NewsGalleryItem = ({ post, redirect }: Props) => {
                             objectFit="cover"
                             objectPosition="center"
                             className="generic-transition hover:scale-105"
+                            sizes="(max-width: 800px) 100vw, 800px"
+                            placeholder="blur"
+                            blurDataURL={post.mainImage.asset.metadata.lqip}
                         />
                     ) : null}
                 </div>
@@ -63,13 +59,8 @@ const NewsGalleryItem = ({ post, redirect }: Props) => {
                     ))}
                 </ul>
             </div>
-        </motion.div>
+        </div>
     )
-}
-
-const galleryItemVariants = {
-    start: { opacity: 0 },
-    go: { opacity: 1, transition: { duration: 0.3 } },
 }
 
 export default memo(NewsGalleryItem)

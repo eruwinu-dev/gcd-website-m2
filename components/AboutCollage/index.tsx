@@ -1,19 +1,20 @@
 import React from "react"
 import Image from "next/image"
 
-import type { CollageType } from "../../types/collage"
 import { sanityImageLoader } from "../../lib/sanityImageLoader"
 import { getMediaSize } from "../../lib/media"
+import { aboutCollage } from "../../utils/collages"
 
 type Props = {
     width: number
+    placeholders: string[]
 }
 
-const AboutCollage = ({ width }: Props) => {
+const AboutCollage = ({ width, placeholders }: Props) => {
     let breakpoint = getMediaSize(width)
     return (
         <div className="about-collage">
-            {collages.map((tile: CollageType, index: number) => (
+            {aboutCollage.map((tile, index) => (
                 <div
                     className={[
                         "relative w-full aspect-video",
@@ -29,35 +30,16 @@ const AboutCollage = ({ width }: Props) => {
                         layout="fill"
                         objectFit="cover"
                         objectPosition="center"
-                        priority
+                        sizes="(max-width: 768px) 100vw,
+						(max-width: 1280px) 50vw,
+						33vw"
+                        placeholder="blur"
+                        blurDataURL={placeholders[index]}
                     />
                 </div>
             ))}
         </div>
     )
 }
-
-const collages: CollageType[] = [
-    {
-        picture:
-            "https://cdn.sanity.io/images/d0yhnc23/production/a0f5de31cb92fb58fb4e808aef2bcdaf87b4cfb3-1140x760.jpg",
-        format: "col-span-3 row-span-2",
-    },
-    {
-        picture:
-            "https://cdn.sanity.io/images/d0yhnc23/production/37871578d92f2ab0b65ad81881279f62e045a666-2000x3008.jpg",
-        format: "col-span-2 row-span-3",
-    },
-    {
-        picture:
-            "https://cdn.sanity.io/images/d0yhnc23/production/421143931a7386de1b78a91e821f79284de9e938-2000x1125.jpg",
-        format: "col-span-3 row-span-3",
-    },
-    {
-        picture:
-            "https://cdn.sanity.io/images/d0yhnc23/production/7c61367581882ea7af0c9daaa2f7d3d19288fceb-2678x1899.jpg",
-        format: "col-span-2 row-span-2",
-    },
-]
 
 export default AboutCollage

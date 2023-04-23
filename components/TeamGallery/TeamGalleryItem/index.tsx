@@ -3,10 +3,9 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { useNextSanityImage } from "next-sanity-image"
-import { motion } from "framer-motion"
 
-import client from "../../../lib/client"
 import { MemberLink } from "../../../types/member"
+import sanityClient from "../../../lib/sanityClient"
 
 type Props = {
     member: MemberLink
@@ -14,7 +13,7 @@ type Props = {
 }
 
 const TeamGalleryItem = ({ member, order }: Props) => {
-    const imageProps = useNextSanityImage(client, member.image)
+    const imageProps = useNextSanityImage(sanityClient, member.image)
 
     return (
         <>
@@ -23,13 +22,7 @@ const TeamGalleryItem = ({ member, order }: Props) => {
             />
             <div className="team-gallery-item">
                 <Link href={`about/${member.slug}`}>
-                    <motion.div
-                        className="team-gallery-item-container"
-                        variants={memberVariants}
-                        initial="start"
-                        whileInView="go"
-                        viewport={{ once: true }}
-                    >
+                    <div className="team-gallery-item-container">
                         {imageProps ? (
                             <Image
                                 src={imageProps.src}
@@ -39,9 +32,12 @@ const TeamGalleryItem = ({ member, order }: Props) => {
                                 objectFit="cover"
                                 objectPosition="bottom"
                                 className="generic-transition hover:scale-105 cursor-pointer"
+                                sizes="(max-width: 800px) 100vw, 800px"
+                                placeholder="blur"
+                                blurDataURL={member.image.asset.metadata.lqip}
                             />
                         ) : null}
-                    </motion.div>
+                    </div>
                 </Link>
                 <Link href={`about/${member.slug}`}>
                     <h3>{member.name}</h3>

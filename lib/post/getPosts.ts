@@ -11,7 +11,19 @@ export const getPosts = async () => {
                 title,
                 "slug": slug.current,
                 description,
-                mainImage,
+                mainImage {
+                    ...,
+                    asset->{
+                        _id,
+                        url,
+                        originalFilename,
+                        metadata {
+                            dimensions,
+                            lqip,
+
+                        }
+                    }
+                },                
                 publishedAt,
                 "categories": categories[] -> slug.current,
                 "wordCount": round(length(pt::text(body)) / 5),

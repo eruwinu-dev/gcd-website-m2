@@ -1,4 +1,4 @@
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { SanityImageWithMetaData } from "./image"
 
 export type ModeType = "story" | "carousel"
 
@@ -22,12 +22,12 @@ export interface BaseProject {
 export interface ProjectLink extends BaseProject {
     address: string
     members: ProjectMember[]
-    mainImage: SanityImageSource
+    mainImage: SanityImageWithMetaData
 }
 
 export interface Project extends BaseProject {
     address: string
     members: ProjectMember[]
-    images: SanityImageSource[]
+    images: SanityImageWithMetaData[]
     body: TypedObject
 }

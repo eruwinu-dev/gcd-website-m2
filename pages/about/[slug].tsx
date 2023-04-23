@@ -14,11 +14,11 @@ import Link from "next/link"
 import { getMember } from "../../lib/member/getMember"
 import { QueryClient, dehydrate } from "@tanstack/react-query"
 import { useGetMember } from "../../hooks/member/useGetMember"
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { SanityImageWithMetaData } from "../../types/image"
 
 type Props = {
     slug: string
-    image: SanityImageSource
+    image: SanityImageWithMetaData
 }
 
 interface StaticParams extends ParsedUrlQuery {
@@ -50,6 +50,9 @@ const Member = ({ slug, image }: Props) => {
                                 layout="fill"
                                 objectFit="cover"
                                 objectPosition="bottom"
+                                sizes="(max-width: 800px) 100vw, 800px"
+                                placeholder="blur"
+                                blurDataURL={image.asset.metadata.lqip}
                             />
                         ) : null}
                     </div>

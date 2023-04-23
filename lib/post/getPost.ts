@@ -12,8 +12,36 @@ export const getPost = async (slug: string) => {
             title,
             "slug": slug.current,
             description,
-            mainImage,
-            "author": author -> {name, "slug": slug.current, image, blogBio},
+            mainImage {
+                ...,
+                asset->{
+                    _id,
+                    url,
+                    originalFilename,
+                    metadata {
+                        dimensions,
+                        lqip,
+
+                    }
+                }
+            },
+            "author": author -> {
+                name,
+                "slug": slug.current,
+                image {
+                ...,
+                asset->{
+                    _id,
+                    url,
+                    originalFilename,
+                    metadata {
+                        dimensions,
+                        lqip,
+                        }
+                    }
+                },
+                blogBio
+                },
             "categories": categories[] -> slug.current,
             "wordCount": round(length(pt::text(body)) / 5),
             body,
@@ -23,7 +51,19 @@ export const getPost = async (slug: string) => {
             title,
             "slug": slug.current,
             description,
-            mainImage,
+            mainImage {
+                ...,
+                asset->{
+                    _id,
+                    url,
+                    originalFilename,
+                    metadata {
+                        dimensions,
+                        lqip,
+
+                    }
+                }
+            },
             publishedAt,
             "categories": categories[] -> slug.current,
             "wordCount": round(length(pt::text(body)) / 5),

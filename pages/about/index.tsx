@@ -13,10 +13,15 @@ import { useRect } from "@reach/rect"
 import { QueryClient, dehydrate } from "@tanstack/react-query"
 
 import { getMembers } from "../../lib/member/getMembers"
+import { getPlaceholders } from "../../lib/images/getPlaceholders"
+import { aboutBookImage, aboutImage, groupImage } from "../../utils/banners"
+import { aboutCollage } from "../../utils/collages"
 
-type Props = {}
+type Props = {
+    placeholders: string[]
+}
 
-const About = ({}: Props) => {
+const About = ({ placeholders }: Props) => {
     const widthRef = useRef<HTMLDivElement | null>(null)
     const widthRect = useRect(widthRef)
     return (
@@ -36,7 +41,10 @@ const About = ({}: Props) => {
                     layout="fill"
                     objectFit="cover"
                     objectPosition="left"
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    placeholder="blur"
                     priority
+                    blurDataURL={placeholders[0]}
                 />
                 <div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
                     <div className="banner-spacer" />
@@ -66,7 +74,10 @@ const About = ({}: Props) => {
                         all walks of life.
                     </p>
                 </div>
-                <AboutCollage width={widthRect ? widthRect.width : 0} />
+                <AboutCollage
+                    width={widthRect ? widthRect.width : 0}
+                    placeholders={placeholders.slice(2)}
+                />
             </section>
             <section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4">
                 <div className="lg:w-1/2 md:w-10/12  w-full h-auto flex flex-col items-center justify-center lg:p-16 p-8">
@@ -80,28 +91,32 @@ const About = ({}: Props) => {
                 </div>
             </section>
             <TeamGallery width={widthRect ? widthRect.width : 0} />
-            <section className="relative w-full h-screen translate-y-0 aspect-video lg:mb-16 md:mb-8 mb-4">
-                <div className="relative w-11/12 aspect-video mx-auto">
-                    <Image
-                        src={groupImage}
-                        alt="A photo of the team members behind G. Charles Design. Book a consult now!"
-                        loader={sanityImageLoader}
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="top"
-                        priority
-                    />
-                </div>
+            <section className="relative xl:block lg:block md:block hidden translate-y-0 aspect-video lg:mb-16 md:mb-8 mb-4">
+                <Image
+                    src={groupImage}
+                    alt="A photo of the team members behind G. Charles Design. Book a consult now!"
+                    loader={sanityImageLoader}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="top"
+                    priority
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    placeholder="blur"
+                    blurDataURL={placeholders[1]}
+                />
             </section>
             <section className="relative w-full h-screen translate-y-0 aspect-video">
                 <Image
-                    src={bookImage}
+                    src={aboutBookImage}
                     alt="A rendering of The Music Barn, a project of G. Charles Design. Book your consult now!"
                     loader={sanityImageLoader}
                     layout="fill"
                     objectFit="cover"
                     objectPosition="left"
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    placeholder="blur"
                     priority
+                    blurDataURL={placeholders[2]}
                 />
                 <div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
                     <div className="lg:flex md:flex hidden" />
@@ -125,6 +140,13 @@ const About = ({}: Props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
+    const placeholders = await getPlaceholders([
+        aboutImage,
+        groupImage,
+        aboutBookImage,
+        ...aboutCollage.map((collage) => collage.picture),
+    ])
+
     const queryClient = new QueryClient()
 
     await queryClient.prefetchQuery({
@@ -134,16 +156,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     return {
         props: {
+            placeholders,
             dehydratedState: dehydrate(queryClient),
         },
     }
 }
-
-const aboutImage =
-    "https://cdn.sanity.io/images/d0yhnc23/production/59da1ca9995434510b2d0980a4d9e14476f33a9c-3072x2048.jpg"
-const bookImage =
-    "https://cdn.sanity.io/images/d0yhnc23/production/86a4e15150bc9160b16c2e60f866276be927a88e-1280x720.jpg"
-const groupImage =
-    "https://cdn.sanity.io/images/d0yhnc23/production/86797c61bdb98d13a890fb616160e29ac9ee3a0f-2048x1365.jpg"
 
 export default About

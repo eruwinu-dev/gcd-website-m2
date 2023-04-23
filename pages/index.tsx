@@ -12,9 +12,18 @@ import { headerTitle } from "../lib/title"
 import { sanityImageLoader } from "../lib/sanityImageLoader"
 import MetaHead from "../components/MetaHead"
 import ServicesSection from "../components/ServicesSection"
-type Props = {}
+import { GetStaticProps } from "next"
 
-const Home = (props: Props) => {
+import { homeBookImage, landingImage } from "../utils/banners"
+import { getPlaceholders } from "../lib/images/getPlaceholders"
+import { services } from "../lib/services"
+import { landingCollage } from "../utils/collages"
+
+type Props = {
+    placeholders: string[]
+}
+
+const Home = ({ placeholders }: Props) => {
     const widthRef = useRef<HTMLDivElement | null>(null)
     const widthRect = useRect(widthRef)
 
@@ -36,6 +45,9 @@ const Home = (props: Props) => {
                     objectFit="cover"
                     objectPosition="left"
                     priority
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    placeholder="blur"
+                    blurDataURL={placeholders[0]}
                 />
                 <div className="banner-mask two-column">
                     <div className="banner-title-container">
@@ -50,7 +62,10 @@ const Home = (props: Props) => {
                     <div className="banner-spacer" />
                 </div>
             </section>
-            <ServicesSection width={widthRect ? widthRect.width : 0} />
+            <ServicesSection
+                width={widthRect ? widthRect.width : 0}
+                placeholders={placeholders.slice(1, 5)}
+            />
             <section className="landing-blockquote-section">
                 <div className="landing-blockquote-section-container">
                     <p>
@@ -102,18 +117,25 @@ const Home = (props: Props) => {
                         </div>
                     </div>
 
-                    <LandingCollage width={widthRect ? widthRect.width : 0} />
+                    <LandingCollage
+                        width={widthRect ? widthRect.width : 0}
+                        placeholders={placeholders.slice(6)}
+                    />
                 </div>
             </section>
             <section className="consult-section">
                 <Image
-                    src={bookImage}
+                    src={homeBookImage}
                     loader={sanityImageLoader}
                     alt="A picture of the Modern Barn, a project of G. Charles Design. Book a consult now!"
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
                     className="saturate-50"
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    placeholder="blur"
+                    priority
+                    blurDataURL={placeholders[1]}
                 />
                 <div className="consult-backdrop">
                     <div className="consult-spacer" />
@@ -131,9 +153,19 @@ const Home = (props: Props) => {
     )
 }
 
-const landingImage =
-    "https://cdn.sanity.io/images/d0yhnc23/production/d8026d1f0395c9b782bf26ca806c8684619bb943-2200x1100.jpg"
-const bookImage =
-    "https://cdn.sanity.io/images/d0yhnc23/production/e358b6cfee63720bac0e8357fe23fecf106f6e28-2048x1365.jpg"
+export const getStaticProps: GetStaticProps = async () => {
+    const placeholders = await getPlaceholders([
+        landingImage,
+        homeBookImage,
+        ...services.map((service) => service.photo),
+        ...landingCollage.map((collage) => collage.picture),
+    ])
+
+    return {
+        props: {
+            placeholders,
+        },
+    }
+}
 
 export default Home

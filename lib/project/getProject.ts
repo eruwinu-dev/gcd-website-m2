@@ -11,7 +11,18 @@ export const getProject = async (slug: string) => {
             "categories": categories[] -> slug.current,
             address,
             "members": members[] -> { name, role },
-            images,
+            "images": images[] {
+                asset->{
+                    _id,
+                    url,
+                    originalFilename,
+                    metadata {
+                        dimensions,
+                        lqip,
+
+                    }
+                }
+            },
             body,
           }`,
         { slug }

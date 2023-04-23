@@ -1,10 +1,10 @@
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { SanityImageWithMetaData } from "./image"
 
 export interface BaseMember {
     _id: string
     name: string
     slug: string
-    image: SanityImageSource
+    image: SanityImageWithMetaData
 }
 
 export interface MemberLink extends BaseMember {

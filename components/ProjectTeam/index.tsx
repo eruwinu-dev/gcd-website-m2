@@ -19,7 +19,7 @@ const ProjectTeam = ({ name, address, team }: Props) => {
             className={[
                 "project-team",
                 viewMode === "story"
-                    ? "items-start text-white text-left"
+                    ? "items-center text-white text-center"
                     : "items-center text-black text-center",
             ].join(" ")}
         >
@@ -27,7 +27,7 @@ const ProjectTeam = ({ name, address, team }: Props) => {
                 {name}
             </h1>
             <h2 className="text-base font-normal italic tracking-wider">
-                {address || "Project Address"}
+                {address}
             </h2>
             <div className="project-members">
                 {team.length ? (

@@ -1,13 +1,12 @@
 import React from "react"
 import { useRouter } from "next/router"
 
-import { motion } from "framer-motion"
 import { useNextSanityImage } from "next-sanity-image"
 import { ParsedUrlQuery } from "querystring"
 
 import type { GetServerSideProps } from "next"
 
-import type { ModeType } from "../../types/project"
+import type { AdjacentProject, ModeType, Project } from "../../types/project"
 
 import ProjectStory from "../../components/ProjectStory"
 import ProjectGallery from "../../components/ProjectGallery"
@@ -24,82 +23,75 @@ import sanityClient from "../../lib/sanityClient"
 import { getProject } from "../../lib/project/getProject"
 import { getAdjacentProjects } from "../../lib/project/getAdjacentProjects"
 import { QueryClient, dehydrate } from "@tanstack/react-query"
-import { useGetProject } from "../../hooks/project/useGetProject"
-import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
 type Props = {
-    slug: string
-    image: SanityImageSource
+    project: Project
+    next: AdjacentProject
+    previous: AdjacentProject
 }
 
 interface StaticParams extends ParsedUrlQuery {
     slug: string
 }
 
-const Project = ({ slug, image }: Props) => {
+const Project = ({ project, next, previous }: Props) => {
     const {
         query: { mode },
     } = useRouter()
-    const imageProps = useNextSanityImage(sanityClient, image)
+    const imageProps = useNextSanityImage(sanityClient, project.images[0])
 
     const viewMode = (mode || "story") as ModeType
-
-    const { data } = useGetProject(slug)
-
-    if (!data) return <></>
 
     return (
         <>
             <MetaHead
-                title={`${data.project.name} - Portfolio | ${headerTitle}`}
-                description={
-                    data.project.name + " - a project by G. Charles Design"
+                title={`${project.name} - Portfolio | ${headerTitle}`}
+                description={project.name + " - a project by G. Charles Design"}
+                url={
+                    process.env.NEXT_PUBLIC_SITE_URL +
+                    "/portfolio/" +
+                    project.slug
                 }
-                url={process.env.NEXT_PUBLIC_SITE_URL + "/portfolio/" + slug}
-                siteName={`${data.project.name} | ${headerTitle}`}
+                siteName={`${project.name} | ${headerTitle}`}
                 image={imageProps.src}
             />
             <section
                 className={[
                     viewMode === "carousel" ? "translate-y-0" : "",
-                    "generic-transition h-fit",
+                    "h-fit",
                 ].join(" ")}
             >
-                <motion.div
-                    className={["w-full h-fit"].join(" ")}
-                    variants={sectionVariants}
-                    initial="story"
-                    animate={viewMode}
-                    transition={{
-                        ease: "easeInOut",
-                        duration: 0.5,
-                    }}
-                >
-                    <div className="project-view-mode-container">
-                        {viewMode === "story" ? (
-                            <ProjectStory project={data.project} />
-                        ) : data.project.images.length ? (
-                            <ProjectCarousel
-                                images={data.project.images}
-                                title={data.project.name}
-                            />
-                        ) : null}
-                        <ProjectViewMode />
-                    </div>
-                </motion.div>
+                <div className={["w-full h-fit"].join(" ")}>
+                    {/* {viewMode === "story" ? (
+                        <ProjectStory project={project} />
+                    ) : project.images.length ? (
+                        <ProjectCarousel
+                            images={project.images}
+                            title={project.name}
+                        />
+                    ) : null} */}
+                    {viewMode === "story" && <ProjectStory project={project} />}
+                    {viewMode === "carousel" && project.images.length && (
+                        <ProjectCarousel
+                            images={project.images}
+                            title={project.name}
+                        />
+                    )}
+                    <ProjectViewMode />
+                </div>
             </section>
             <div className="portfolio-section">
                 {viewMode === "story" ? (
-                    data.project.images.length ? (
+                    project.images.length ? (
                         <ProjectGallery
-                            title={data.project.name}
-                            images={data.project.images}
+                            title={project.name}
+                            images={project.images}
                         />
                     ) : null
                 ) : (
-                    <ProjectDescription project={data.project} />
+                    <ProjectDescription project={project} />
                 )}
-                <ProjectBottomNav previous={data.previous} next={data.next} />
+                <ProjectBottomNav previous={previous} next={next} />
             </div>
         </>
     )
@@ -126,8 +118,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     return {
         props: {
-            slug: project.slug,
-            image: project.images[0],
+            project,
+            previous,
+            next,
             dehydratedState: dehydrate(queryClient),
         },
     }

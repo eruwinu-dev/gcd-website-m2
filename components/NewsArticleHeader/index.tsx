@@ -19,8 +19,8 @@ const NewsArticleHeader = ({ post }: Props) => {
             <div className="news-article-header">
                 <span>{post.publishedAt}</span>
                 <h1>{post.title}</h1>
-                <p>{post.description}</p>
                 <NewsArticleHeaderAuthor author={post.author} />
+                <p>{post.description}</p>
             </div>
             <div className="news-article-header-image">
                 <div>
@@ -33,6 +33,9 @@ const NewsArticleHeader = ({ post }: Props) => {
                             objectFit="cover"
                             objectPosition="center"
                             priority
+                            sizes="(max-width: 800px) 100vw, 800px"
+                            placeholder="blur"
+                            blurDataURL={post.mainImage.asset.metadata.lqip}
                         />
                     ) : null}
                 </div>

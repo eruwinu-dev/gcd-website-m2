@@ -25,6 +25,9 @@ const NewsArticleHeaderAuthor = ({ author }: Props) => {
                         objectFit="cover"
                         objectPosition="center"
                         className="rounded-full"
+                        sizes="(max-width: 800px) 40px, 40px"
+                        placeholder="blur"
+                        blurDataURL={author.image.asset.metadata.lqip}
                     />
                 ) : null}
             </div>
