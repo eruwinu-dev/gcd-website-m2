@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useRect } from "@reach/rect"
 
 import BookConsultButton from "../components/BookConsultButton"
-import LandingCollage from "../components/LandingCollage"
+import LandingCollage, { landingCollage } from "../components/LandingCollage"
 
 import { headerTitle } from "../lib/title"
 
@@ -17,7 +17,6 @@ import { GetStaticProps } from "next"
 import { homeBookImage, landingImage } from "../utils/banners"
 import { getPlaceholders } from "../lib/images/getPlaceholders"
 import { services } from "../lib/services"
-import { landingCollage } from "../utils/collages"
 
 type Props = {
     placeholders: string[]

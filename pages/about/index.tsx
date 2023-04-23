@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import Image from "next/image"
 import { GetServerSideProps } from "next"
 
-import AboutCollage from "../../components/AboutCollage"
+import AboutCollage, { aboutCollage } from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
 import TeamGallery from "../../components/TeamGallery"
 
@@ -15,7 +15,6 @@ import { QueryClient, dehydrate } from "@tanstack/react-query"
 import { getMembers } from "../../lib/member/getMembers"
 import { getPlaceholders } from "../../lib/images/getPlaceholders"
 import { aboutBookImage, aboutImage, groupImage } from "../../utils/banners"
-import { aboutCollage } from "../../utils/collages"
 
 type Props = {
     placeholders: string[]
