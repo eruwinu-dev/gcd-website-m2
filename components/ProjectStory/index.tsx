@@ -40,8 +40,9 @@ const ProjectStory = ({ project }: Props) => {
                     objectFit="cover"
                     objectPosition="left"
                     priority
+                    quality={100}
+                    unoptimized
                     className="hover:scale-105 generic-transition"
-                    sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
                     blurDataURL={project.images[0].asset.metadata.lqip}
                 />

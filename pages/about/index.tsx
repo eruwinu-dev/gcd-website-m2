@@ -97,8 +97,10 @@ const About = ({ placeholders }: Props) => {
                     loader={sanityImageLoader}
                     layout="fill"
                     objectFit="contain"
-                    objectPosition="top"
+                    unoptimized
+                    objectPosition="center"
                     priority
+                    quality={100}
                     sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
                     blurDataURL={placeholders[1]}

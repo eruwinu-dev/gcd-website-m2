@@ -29,7 +29,8 @@ const ProjectCarouselItem = ({ title, image }: Props) => {
                     objectFit="contain"
                     objectPosition="center"
                     priority
-                    sizes="(max-width: 800px) 100vw, 800px"
+                    unoptimized
+                    quality={100}
                     placeholder="blur"
                     blurDataURL={image.asset.metadata.lqip}
                 />

@@ -33,6 +33,7 @@ const NewsArticleHeader = ({ post }: Props) => {
                             objectFit="cover"
                             objectPosition="center"
                             priority
+                            quality={100}
                             sizes="(max-width: 800px) 100vw, 800px"
                             placeholder="blur"
                             blurDataURL={post.mainImage.asset.metadata.lqip}

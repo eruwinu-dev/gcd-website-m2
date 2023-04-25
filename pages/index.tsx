@@ -44,7 +44,6 @@ const Home = ({ placeholders }: Props) => {
                     objectFit="cover"
                     objectPosition="left"
                     priority
-                    sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
                     blurDataURL={placeholders[0]}
                 />
