@@ -26,11 +26,9 @@ const ProjectCarouselItem = ({ title, image }: Props) => {
                     src={imageProps.src}
                     loader={sanityImageLoader}
                     alt={`A picture from the photo gallery of ${title}, a project of G. Charles Design`}
-                    width={imageProps.width}
-                    height={imageProps.height}
+                    layout="fill"
                     objectFit="contain"
                     objectPosition="center"
-                    priority
                     unoptimized
                     quality={100}
                     placeholder="blur"
