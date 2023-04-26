@@ -62,6 +62,11 @@ const Member = ({ slug, image }: Props) => {
                         <div className="team-member-text-container">
                             <h1>{member.name}</h1>
                             <h2>{member.role}</h2>
+                            <span className="text-base font-semibold">
+                                {member.licenses
+                                    ? member.licenses.join(", ")
+                                    : ""}
+                            </span>
                         </div>
                         {member.bio ? (
                             <PortableText

@@ -30,7 +30,7 @@ const TeamGalleryItem = ({ member, order }: Props) => {
                                 alt={member.name}
                                 layout="fill"
                                 objectFit="cover"
-                                objectPosition="bottom"
+                                objectPosition="top"
                                 className="generic-transition hover:scale-105 cursor-pointer"
                                 sizes="(max-width: 800px) 100vw, 800px"
                                 placeholder="blur"
@@ -42,6 +42,11 @@ const TeamGalleryItem = ({ member, order }: Props) => {
                 <Link href={`about/${member.slug}`}>
                     <h3>{member.name}</h3>
                 </Link>
+                <div>
+                    <span className="text-base font-semibold">
+                        {member.licenses ? member.licenses.join(", ") : ""}
+                    </span>
+                </div>
                 <div>
                     <span className="text-base text-center italic">
                         {member.role}

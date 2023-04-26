@@ -14,7 +14,14 @@ import { QueryClient, dehydrate } from "@tanstack/react-query"
 
 import { getMembers } from "../../lib/member/getMembers"
 import { getPlaceholders } from "../../lib/images/getPlaceholders"
-import { aboutBookImage, aboutImage, groupImage } from "../../utils/banners"
+import {
+    aboutBookImage,
+    aboutBookPlaceHolder,
+    aboutImage,
+    aboutPlaceHolder,
+    groupImage,
+    groupPlaceHolder,
+} from "../../utils/banners"
 
 type Props = {
     placeholders: string[]
@@ -43,7 +50,7 @@ const About = ({ placeholders }: Props) => {
                     sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
                     priority
-                    blurDataURL={placeholders[0]}
+                    blurDataURL={aboutPlaceHolder}
                 />
                 <div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
                     <div className="banner-spacer" />
@@ -75,7 +82,7 @@ const About = ({ placeholders }: Props) => {
                 </div>
                 <AboutCollage
                     width={widthRect ? widthRect.width : 0}
-                    placeholders={placeholders.slice(2)}
+                    placeholders={placeholders}
                 />
             </section>
             <section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4">
@@ -90,20 +97,19 @@ const About = ({ placeholders }: Props) => {
                 </div>
             </section>
             <TeamGallery width={widthRect ? widthRect.width : 0} />
-            <section className="relative xl:block lg:block md:block hidden translate-y-0 aspect-video lg:mb-16 md:mb-8 mb-4">
+            <section className="relative xl:block lg:block md:block hidden translate-y-0 aspect-video">
                 <Image
                     src={groupImage}
                     alt="A photo of the team members behind G. Charles Design. Book a consult now!"
                     loader={sanityImageLoader}
                     layout="fill"
-                    objectFit="contain"
-                    unoptimized
+                    objectFit="cover"
                     objectPosition="center"
                     priority
                     quality={100}
                     sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
-                    blurDataURL={placeholders[1]}
+                    blurDataURL={groupPlaceHolder}
                 />
             </section>
             <section className="relative w-full h-screen translate-y-0 aspect-video">
@@ -117,7 +123,7 @@ const About = ({ placeholders }: Props) => {
                     sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
                     priority
-                    blurDataURL={placeholders[2]}
+                    blurDataURL={aboutBookPlaceHolder}
                 />
                 <div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
                     <div className="lg:flex md:flex hidden" />
@@ -142,9 +148,6 @@ const About = ({ placeholders }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
     const placeholders = await getPlaceholders([
-        aboutImage,
-        groupImage,
-        aboutBookImage,
         ...aboutCollage.map((collage) => collage.picture),
     ])
 
