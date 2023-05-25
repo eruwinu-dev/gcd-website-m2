@@ -27,8 +27,9 @@ const ProjectCarouselItem = ({ title, image }: Props) => {
                     alt={`A picture from the photo gallery of ${title}, a project of G. Charles Design`}
                     layout="fill"
                     objectFit="contain"
+                    loading="eager"
+                    priority
                     objectPosition="center"
-                    quality={100}
                     placeholder="blur"
                     blurDataURL={image.asset.metadata.lqip}
                 />

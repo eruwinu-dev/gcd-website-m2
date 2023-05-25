@@ -40,7 +40,6 @@ const ProjectStory = ({ project }: Props) => {
                     objectFit="cover"
                     objectPosition="left"
                     priority
-                    quality={100}
                     unoptimized
                     className="hover:scale-105 generic-transition"
                     placeholder="blur"
