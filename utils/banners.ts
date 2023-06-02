@@ -1,7 +1,7 @@
 export const landingImage =
-    "https://cdn.sanity.io/images/d0yhnc23/production/d8026d1f0395c9b782bf26ca806c8684619bb943-2200x1100.jpg"
+    "https://cdn.sanity.io/images/d0yhnc23/production/ab6c274bb0936e8fd177fd38eb12591292b53d24-1920x1080.jpg"
 export const homeBookImage =
-    "https://cdn.sanity.io/images/d0yhnc23/production/e358b6cfee63720bac0e8357fe23fecf106f6e28-2048x1365.jpg"
+    "https://cdn.sanity.io/images/d0yhnc23/production/358ec9a955716bd6f3941f49c5b49414df01d970-1920x1080.jpg"
 export const aboutImage =
     "https://cdn.sanity.io/images/d0yhnc23/production/59da1ca9995434510b2d0980a4d9e14476f33a9c-3072x2048.jpg"
 export const aboutBookImage =

@@ -49,22 +49,22 @@ const LandingCollage = ({ width, placeholders }: Props) => {
 export const landingCollage: CollageType[] = [
     {
         picture:
-            "https://cdn.sanity.io/images/d0yhnc23/production/b00986fcffc65f43d9a4d956fa49071e69bf4dd0-6016x4010.jpg",
+            "https://cdn.sanity.io/images/d0yhnc23/production/6e6ae70600a61d8ebfea27494bba331ccf524717-330x330.jpg",
         format: "col-span-2 row-span-2",
     },
     {
         picture:
-            "https://cdn.sanity.io/images/d0yhnc23/production/8094a7b6bfae5ab2af94148433597d7ae194c0e2-6698x4465.jpg",
+            "https://cdn.sanity.io/images/d0yhnc23/production/7f25236921026692e1bb7f2a20ac5c50dfeaf184-550x495.jpg",
         format: "col-span-3 row-span-4",
     },
     {
         picture:
-            "https://cdn.sanity.io/images/d0yhnc23/production/d6681788694ebc1934407bf8402502b6cfd3df24-3072x2048.jpg",
+            "https://cdn.sanity.io/images/d0yhnc23/production/26a6247fd09aaa9bf9a3a1416c37aefd73c0f0cb-350x525.jpg",
         format: "col-span-2 row-span-3",
     },
     {
         picture:
-            "https://cdn.sanity.io/images/d0yhnc23/production/6648120ab3666b52413c78f4312e7455733f1d12-3274x2183.jpg",
+            "https://cdn.sanity.io/images/d0yhnc23/production/e537686a98d9fadfc2b9470a43a06ad2f7135bd8-500x333.jpg",
         format: "col-span-3",
     },
 ]
