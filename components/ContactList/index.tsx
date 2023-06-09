@@ -19,12 +19,20 @@ const ContactList = ({ size }: Props) => {
 					<div className="w-6 h-6">
 						<MailIcon />
 					</div>
-					<span className={size == "large" ? "text-base" : ""}>inquiry@gcharlesdesign.com</span>
+					<span className={size === "large" ? "text-base" : ""}>inquiry@gcharlesdesign.com</span>
 				</a>
 			</div>
 			<div>
-				<PhoneIcon />
-				<span className={size == "large" ? "text-base" : ""}>(818) 578 5895</span>
+				<a
+					href="tel:+1818-578-5895"
+					aria-label="G. Charles Design Office Phone"
+					className="hover:text-red-700 hover:underline"
+				>
+					<div className="w-6 h-6">
+						<PhoneIcon />
+					</div>
+					<span className={size === "large" ? "text-base" : ""}>(818) 578 5895</span>
+				</a>
 			</div>
 			<div>
 				<a
