@@ -19,9 +19,13 @@ const PortfolioGalleryGroup = ({ projects }: Props) => {
             key={(category || "all") as string}
             className="portfolio-gallery-group"
         >
-            {projects.map((project) => (
+            {projects.length ? projects.map((project) => (
                 <PortfolioGalleryItem key={project._id} project={project} />
-            ))}
+            )) : (
+                <div className="portfololio-gallery-no-projects">
+                    <h3>No projects under this category.</h3>
+                </div>
+            )}
         </div>
     )
 }

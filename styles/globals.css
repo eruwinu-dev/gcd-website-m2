@@ -283,13 +283,13 @@
         @apply w-full min-h-screen max-h-fit flex flex-col items-center justify-start;
     }
     .portfolio-category-nav {
-        @apply mx-auto lg:w-7/12 md:w-4/5 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative px-2;
+        @apply mx-auto lg:w-7/12 md:w-9/12 w-full flex flex-col items-center lg:justify-center md:justify-center justify-start relative px-2;
     }
     .portfolio-category-nav > ul {
-        @apply flex flex-row lg:items-end md:items-end items-center h-fit lg:mt-16 md:mt-16 mt-8 lg:mb-8 md:mb-8 mb-4;
+        @apply flex lg:flex-row md:flex-row flex-col items-start h-fit lg:mt-16 md:mt-16 mt-8 lg:mb-8 md:mb-8 mb-4 w-full;
     }
     .portfolio-category-nav > ul > li {
-        @apply box-content flex flex-col items-center justify-center relative h-full lg:text-base md:text-base sm:text-sm text-xs;
+        @apply box-content flex flex-col items-center justify-center relative h-full lg:text-base md:text-base sm:text-sm text-xs w-full;
     }
     .portfolio-category-nav-tab {
         @apply h-1 border-0 absolute bottom-0 left-0 right-0 mx-auto lg:w-4/5 w-full bg-red-700;
@@ -311,6 +311,9 @@
     }
     .portfolio-gallery-item-caption > h3 {
         @apply text-center mb-1 text-base font-normal italic;
+    }
+    .portfololio-gallery-no-projects {
+        @apply col-span-2 text-center;
     }
 
     /*Portfolio/[slug]*/
