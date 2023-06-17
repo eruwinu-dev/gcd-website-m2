@@ -32,7 +32,7 @@ const NewsGalleryItem = ({ post, redirect }: Props) => {
                             objectFit="cover"
                             objectPosition="center"
                             className="generic-transition hover:scale-105"
-                            sizes="(max-width: 800px) 100vw, 800px"
+                            sizes="(max-width: 600px) 50vw, 100vw"
                             placeholder="blur"
                             blurDataURL={post.mainImage.asset.metadata.lqip}
                         />

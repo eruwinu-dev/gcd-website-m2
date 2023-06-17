@@ -32,7 +32,6 @@ const TeamGalleryItem = ({ member, order }: Props) => {
                                 objectFit="cover"
                                 objectPosition="top"
                                 className="generic-transition hover:scale-105 cursor-pointer"
-                                sizes="(max-width: 800px) 100vw, 800px"
                                 placeholder="blur"
                                 blurDataURL={member.image.asset.metadata.lqip}
                             />

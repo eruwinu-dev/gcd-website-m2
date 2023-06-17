@@ -62,14 +62,6 @@ const Project = ({ project, next, previous }: Props) => {
                 ].join(" ")}
             >
                 <div className={["w-full h-fit"].join(" ")}>
-                    {/* {viewMode === "story" ? (
-                        <ProjectStory project={project} />
-                    ) : project.images.length ? (
-                        <ProjectCarousel
-                            images={project.images}
-                            title={project.name}
-                        />
-                    ) : null} */}
                     {viewMode === "story" && <ProjectStory project={project} />}
                     {viewMode === "carousel" && project.images.length && (
                         <ProjectCarousel

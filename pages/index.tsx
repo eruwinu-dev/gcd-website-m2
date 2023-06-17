@@ -42,10 +42,11 @@ const Home = ({ placeholders }: Props) => {
                     alt="The landing image comes from The Farmasist, a project of G. Charles Design"
                     layout="fill"
                     objectFit="cover"
-                    objectPosition="left"
+                    objectPosition="center"
                     priority
                     placeholder="blur"
                     blurDataURL={placeholders[0]}
+                    quality={90}
                 />
                 <div className="banner-mask two-column">
                     <div className="banner-title-container">
@@ -130,10 +131,10 @@ const Home = ({ placeholders }: Props) => {
                     objectFit="cover"
                     objectPosition="center"
                     className="saturate-50"
-                    sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
                     priority
                     blurDataURL={placeholders[1]}
+                    quality={90}
                 />
                 <div className="consult-backdrop">
                     <div className="consult-spacer" />

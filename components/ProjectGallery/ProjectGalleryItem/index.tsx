@@ -41,7 +41,10 @@ const ProjectGalleryItem = ({ title, image, index }: Props) => {
                         quality={50}
                         objectFit="cover"
                         objectPosition="center"
-                        sizes="(max-width: 800px) 100vw, 800px"
+                        className="hover:scale-105 generic-transition"
+                        sizes="(max-width: 768px) 33vw,
+                            (max-width: 1280px) 33vw,
+                            33vw"
                         placeholder="blur"
                         blurDataURL={image.asset.metadata.lqip}
                     />

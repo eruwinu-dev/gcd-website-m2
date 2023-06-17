@@ -49,8 +49,7 @@ const Member = ({ slug, image }: Props) => {
                                 alt={member.name}
                                 layout="fill"
                                 objectFit="cover"
-                                objectPosition="bottom"
-                                sizes="(max-width: 800px) 100vw, 800px"
+                                objectPosition="top"
                                 placeholder="blur"
                                 blurDataURL={image.asset.metadata.lqip}
                             />

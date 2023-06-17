@@ -35,11 +35,11 @@ const Process = ({ placeholders }: Props) => {
                     }
                     layout="fill"
                     objectFit="cover"
-                    objectPosition="left"
+                    objectPosition="center"
                     priority
-                    sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
                     blurDataURL={placeholders[0]}
+                    quality={90}
                 />
                 <div className="banner-mask lg:grid-cols-2 md:grid-cols-2 grid-cols-1">
                     <div className="banner-spacer" />

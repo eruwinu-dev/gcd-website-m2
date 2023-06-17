@@ -30,10 +30,9 @@ const NewsArticleHeader = ({ post }: Props) => {
                             loader={imageProps.loader}
                             alt={`The main image for the article ${post.title} by ${post.author.name}, writer for G. Charles Design`}
                             layout="fill"
-                            objectFit="cover"
+                            objectFit="contain"
                             objectPosition="center"
                             priority
-                            sizes="(max-width: 800px) 100vw, 800px"
                             placeholder="blur"
                             blurDataURL={post.mainImage.asset.metadata.lqip}
                         />

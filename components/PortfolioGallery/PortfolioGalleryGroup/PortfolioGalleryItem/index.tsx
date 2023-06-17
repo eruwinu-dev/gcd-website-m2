@@ -27,7 +27,9 @@ const PortfolioGalleryItem = ({ project }: Props) => {
                             objectFit="cover"
                             objectPosition="top"
                             className="hover:scale-105 generic-transition"
-                            sizes="(max-width: 800px) 100vw, 800px"
+                            sizes="(max-width: 768px) 50vw,
+                            (max-width: 1280px) 50vw,
+                            50vw"
                             placeholder="blur"
                             blurDataURL={project.mainImage.asset.metadata.lqip}
                         />

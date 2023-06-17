@@ -40,10 +40,10 @@ const ProjectStory = ({ project }: Props) => {
                     objectFit="cover"
                     objectPosition="left"
                     priority
-                    unoptimized
                     className="hover:scale-105 generic-transition"
                     placeholder="blur"
                     blurDataURL={project.images[0].asset.metadata.lqip}
+                    quality={90}
                 />
             ) : null}
             <div className="relative w-full h-full bg-black/60 z-[2]">

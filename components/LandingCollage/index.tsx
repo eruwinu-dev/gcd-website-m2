@@ -34,9 +34,6 @@ const LandingCollage = ({ width, placeholders }: Props) => {
                         layout="fill"
                         objectFit="cover"
                         objectPosition="center"
-                        sizes="(max-width: 768px) 100vw,
-						(max-width: 1280px) 50vw,
-						33vw"
                         placeholder="blur"
                         blurDataURL={placeholders[index]}
                     />

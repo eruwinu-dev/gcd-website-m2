@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import Image from "next/image"
-import { GetServerSideProps } from "next"
+import { GetServerSideProps, GetStaticProps } from "next"
 
 import AboutCollage, { aboutCollage } from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
@@ -46,10 +46,10 @@ const About = ({ placeholders }: Props) => {
                     alt="A picture of the staircase from A Montecito Classic, a project by G. Charles Design.`"
                     layout="fill"
                     objectFit="cover"
-                    objectPosition="left"
-                    sizes="(max-width: 800px) 100vw, 800px"
+                    objectPosition="center"
                     placeholder="blur"
                     priority
+                    quality={90}
                     blurDataURL={aboutPlaceHolder}
                 />
                 <div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
@@ -145,7 +145,7 @@ const About = ({ placeholders }: Props) => {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
     const placeholders = await getPlaceholders([
         ...aboutCollage.map((collage) => collage.picture),
     ])

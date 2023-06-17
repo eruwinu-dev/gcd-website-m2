@@ -11,7 +11,7 @@ export const services: ServiceType[] = [
         title: "Acessory Dwelling Units (ADU)",
         description:
             "ADUs are the fastest growing segment of the housing market in the US today. We specialize in providing valuable expertise to assist clients in planning and construction.",
-        photo: "https://cdn.sanity.io/images/d0yhnc23/production/3f19d1601d9a6254245860082f5e49b2c71a470f-850x478.jpg",
+        photo: "https://cdn.sanity.io/images/d0yhnc23/production/54b995aca6f6abf15aee490c83117a7c5294ca1c-2048x1365.jpg",
     },
     {
         title: "SB 9s",

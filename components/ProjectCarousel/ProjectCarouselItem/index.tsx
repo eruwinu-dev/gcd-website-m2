@@ -32,6 +32,7 @@ const ProjectCarouselItem = ({ title, image }: Props) => {
                     objectPosition="center"
                     placeholder="blur"
                     blurDataURL={image.asset.metadata.lqip}
+                    quality={90}
                 />
             ) : null}
         </div>

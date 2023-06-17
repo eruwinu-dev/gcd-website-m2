@@ -41,7 +41,7 @@ const ProcessTimelineItem = ({ process, placeholder }: Props) => {
                         layout="fill"
                         objectFit="cover"
                         placeholder="blur"
-                        sizes="(max-width: 800px) 100vw, 800px"
+                        sizes="(max-width: 600px) 50vw, 100vw"
                         blurDataURL={placeholder}
                     />
                 </div>

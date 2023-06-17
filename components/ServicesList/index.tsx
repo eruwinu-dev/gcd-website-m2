@@ -22,9 +22,9 @@ const ServicesList = ({ placeholders }: Props) => {
                         objectFit="cover"
                         objectPosition="top"
                         alt={`${service.title} - ${service.description} - G. Charles Design`}
-                        sizes="(max-width: 768px) 100vw,
+                        sizes="(max-width: 768px) 50vw,
 						(max-width: 1280px) 50vw,
-						33vw"
+						50vw"
                         placeholder="blur"
                         blurDataURL={placeholders[index]}
                     />
