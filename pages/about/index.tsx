@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import Image from "next/image"
-import { GetServerSideProps, GetStaticProps } from "next"
+import { GetStaticProps } from "next"
 
 import AboutCollage, { aboutCollage } from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"

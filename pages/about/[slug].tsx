@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import type { GetServerSideProps } from "next"
+import type { GetStaticPaths, GetStaticProps } from "next"
 import type { ParsedUrlQuery } from "querystring"
 
 import { PortableText } from "@portabletext/react"
@@ -15,6 +15,7 @@ import { getMember } from "../../lib/member/getMember"
 import { QueryClient, dehydrate } from "@tanstack/react-query"
 import { useGetMember } from "../../hooks/member/useGetMember"
 import { SanityImageWithMetaData } from "../../types/image"
+import { getMembers } from "../../lib/member/getMembers"
 
 type Props = {
     slug: string
@@ -83,7 +84,15 @@ const Member = ({ slug, image }: Props) => {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+    const members = await getMembers()
+    return {
+        paths: members.map((member) => ({ params: { slug: member.slug } })),
+        fallback: false,
+    }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { slug = "" } = params as StaticParams
     const member = await getMember(slug)
 
