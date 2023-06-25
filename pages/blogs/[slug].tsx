@@ -25,22 +25,22 @@ const Article = ({ post, recos }: Props) => {
     return (
         <>
             <MetaHead
-                title={`${post.title} - Blog | ${headerTitle}`}
+                title={ `${post.title} - Blog | ${headerTitle}` }
                 description={
                     post.description || "A blog post by G. Charles Design"
                 }
-                url={process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug}
-                siteName={`${post.title} - Blog | ${headerTitle}`}
-                image={post.mainImage.asset.url}
+                url={ process.env.NEXT_PUBLIC_SITE_URL + "/blogs/" + post.slug }
+                siteName={ `${post.title} - Blog | ${headerTitle}` }
+                image={ post.mainImage.asset.url }
             />
-            <NewsArticleHeader post={post} />
+            <NewsArticleHeader post={ post } />
             <div className="news-article-text-container">
-                <NewsArticleText body={post.body} />
-                <SocialMediaShare post={post} />
+                <NewsArticleText body={ post.body } />
+                <SocialMediaShare post={ post } />
             </div>
             <div className="news-recos-container">
                 <h2>You May Also Like</h2>
-                <NewsArticleRecos recos={recos} />
+                <NewsArticleRecos recos={ recos } />
             </div>
         </>
     )

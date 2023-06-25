@@ -10,7 +10,7 @@ import { useGetPosts } from "../../hooks/post/useGetPosts"
 
 type Props = {}
 
-const NewsGallery = ({}: Props) => {
+const NewsGallery = ({ }: Props) => {
     const {
         query: { category },
         push,
@@ -21,9 +21,9 @@ const NewsGallery = ({}: Props) => {
     const { posts, categories } = data
         ? data
         : ({ posts: [], categories: [] } as {
-              posts: BasePost[]
-              categories: Category[]
-          })
+            posts: BasePost[]
+            categories: Category[]
+        })
 
     const selectedPosts = useMemo(
         () =>
@@ -45,7 +45,7 @@ const NewsGallery = ({}: Props) => {
         (slug: string) => (event: MouseEvent<HTMLLIElement>) => {
             push(
                 {
-                    pathname: "/news",
+                    pathname: "/blogs",
                     query: slug !== "all" ? { category: slug } : {},
                 },
                 undefined,
@@ -57,34 +57,34 @@ const NewsGallery = ({}: Props) => {
         <div className="news-gallery-container">
             <nav className="news-category-nav">
                 <ul>
-                    {[{ title: "All", slug: "all" }, ...categories].map(
+                    { [{ title: "All", slug: "all" }, ...categories].map(
                         (category) => (
                             <li
-                                key={category.slug}
-                                onClick={changeCategory(category.slug)}
+                                key={ category.slug }
+                                onClick={ changeCategory(category.slug) }
                             >
                                 <h2
-                                    className={[
+                                    className={ [
                                         isSelectedCategory(category.slug)
                                             ? "text-black"
                                             : "hover:text-red-800",
-                                    ].join(" ")}
+                                    ].join(" ") }
                                 >
-                                    {category.title}
+                                    { category.title }
                                 </h2>
-                                {isSelectedCategory(category.slug) ? (
+                                { isSelectedCategory(category.slug) ? (
                                     <motion.div
                                         className="news-category-tab"
                                         layoutId="news-category-tab"
                                     />
-                                ) : null}
+                                ) : null }
                             </li>
                         )
-                    )}
+                    ) }
                 </ul>
             </nav>
             <AnimatePresence mode="wait">
-                <NewsGalleryGroup posts={selectedPosts} />
+                <NewsGalleryGroup posts={ selectedPosts } />
             </AnimatePresence>
         </div>
     )

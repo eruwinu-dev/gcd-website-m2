@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import type { GetStaticPaths, GetStaticProps } from "next"
+import type { GetServerSideProps } from "next"
 import type { ParsedUrlQuery } from "querystring"
 
 import { PortableText } from "@portabletext/react"
@@ -15,7 +15,6 @@ import { getMember } from "../../lib/member/getMember"
 import { QueryClient, dehydrate } from "@tanstack/react-query"
 import { useGetMember } from "../../hooks/member/useGetMember"
 import { SanityImageWithMetaData } from "../../types/image"
-import { getMembers } from "../../lib/member/getMembers"
 
 type Props = {
     slug: string
@@ -35,45 +34,45 @@ const Member = ({ slug, image }: Props) => {
     return (
         <>
             <MetaHead
-                title={`${member.name} | G.Charles Design`}
-                description={member.name}
-                url={process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug}
-                siteName={`${member.name} | "G Charles" Design`}
+                title={ `${member.name} | G.Charles Design` }
+                description={ member.name }
+                url={ process.env.NEXT_PUBLIC_SITE_URL + "/about/" + member.slug }
+                siteName={ `${member.name} | "G Charles" Design` }
             />
             <section className="team-member-section">
                 <div className="team-member-image-layout">
                     <div className="team-member-image-container">
-                        {imageProps ? (
+                        { imageProps ? (
                             <Image
-                                src={imageProps.src}
-                                loader={imageProps.loader}
-                                alt={member.name}
+                                src={ imageProps.src }
+                                loader={ imageProps.loader }
+                                alt={ member.name }
                                 layout="fill"
                                 objectFit="cover"
                                 objectPosition="top"
                                 placeholder="blur"
-                                blurDataURL={image.asset.metadata.lqip}
+                                blurDataURL={ image.asset.metadata.lqip }
                             />
-                        ) : null}
+                        ) : null }
                     </div>
                 </div>
                 <div className="team-member-text">
                     <div className="team-member-text-layout">
                         <div className="team-member-text-container">
-                            <h1>{member.name}</h1>
-                            <h2>{member.role}</h2>
+                            <h1>{ member.name }</h1>
+                            <h2>{ member.role }</h2>
                             <span className="text-base font-semibold">
-                                {member.licenses
+                                { member.licenses
                                     ? member.licenses.join(", ")
-                                    : ""}
+                                    : "" }
                             </span>
                         </div>
-                        {member.bio ? (
+                        { member.bio ? (
                             <PortableText
-                                value={member.bio}
-                                components={CustomArticleComponents}
+                                value={ member.bio }
+                                components={ CustomArticleComponents }
                             />
-                        ) : null}
+                        ) : null }
                         <Link href="/about">
                             <h3 className="team-member-go-back">Go Back</h3>
                         </Link>
@@ -84,15 +83,7 @@ const Member = ({ slug, image }: Props) => {
     )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const members = await getMembers()
-    return {
-        paths: members.map((member) => ({ params: { slug: member.slug } })),
-        fallback: false,
-    }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const { slug = "" } = params as StaticParams
     const member = await getMember(slug)
 

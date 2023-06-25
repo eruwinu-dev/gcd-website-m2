@@ -14,14 +14,14 @@ const generateSiteMap = (
     <priority>0.9</priority>
     </url>
     ${members
-        .map(
-            (member) => `<url>
+            .map(
+                (member) => `<url>
       <loc>https://www.gcharlesdesign.com/about/${member}</loc>
       <changefreq>daily</changefreq>
       <priority>0.9</priority>
       </url>`
-        )
-        .join("")}
+            )
+            .join("")}
     <url>
     <loc>https://www.gcharlesdesign.com/process</loc>
     <changefreq>daily</changefreq>
@@ -38,38 +38,38 @@ const generateSiteMap = (
     <priority>0.9</priority>
     </url>
     <url>
-    <loc>https://www.gcharlesdesign.com/news</loc>
+    <loc>https://www.gcharlesdesign.com/blogs</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     </url>
     ${posts
-        .map(
-            (post) => `<url>
-        <loc>https://www.gcharlesdesign.com/news/${post}</loc>
+            .map(
+                (post) => `<url>
+        <loc>https://www.gcharlesdesign.com/blogs/${post}</loc>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
         </url>`
-        )
-        .join("")}
+            )
+            .join("")}
     <url>
     <loc>https://www.gcharlesdesign.com/portfolio</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     </url>
     ${projects
-        .map(
-            (projects) => `<url>
+            .map(
+                (projects) => `<url>
         <loc>https://www.gcharlesdesign.com/portfolio/${projects}</loc>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
         </url>`
-        )
-        .join("")}
+            )
+            .join("")}
   </urlset>
     `
 }
 
-const SiteMap = () => {}
+const SiteMap = () => { }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     const members = await getSlugs("author")

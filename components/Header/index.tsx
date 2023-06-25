@@ -110,7 +110,7 @@ const Header = (props: Props) => {
 								{[link.url].includes(pathname) ||
 								(link.url === "/portfolio" && pathname === "/portfolio/[project]") ||
 								(link.url === "/about" && pathname === "/about/[member]") ||
-								(link.url === "/news" && pathname === "/news/[slug]") ? (
+								(link.url === "/blogs" && pathname === "/blogs/[slug]") ? (
 									<div
 										className={[
 											"absolute left-0 right-0 bottom-0 translate-y-2 w-full h-1 border-0",

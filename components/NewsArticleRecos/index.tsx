@@ -13,7 +13,7 @@ const NewsArticleRecos = ({ recos }: Props) => {
                 <NewsGalleryItem
                     key={post._id}
                     post={post}
-                    redirect="../news/"
+                    redirect="../blogs/"
                 />
             ))}
         </div>

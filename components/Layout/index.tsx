@@ -5,12 +5,14 @@ import CustomMain from "../CustomMain"
 import Footer from "../Footer"
 import Header from "../Header"
 import HeaderDashboard from "../Header/HeaderDashboard"
+import Loader from "../Loader"
 
 type Props = {
 	children: ReactNode
+	loading: boolean
 }
 
-const Layout = ({ children }: Props) => {
+const Layout = ({ children, loading }: Props) => {
 	return (
 		<Provider>
 			<Head>
@@ -30,7 +32,8 @@ const Layout = ({ children }: Props) => {
 			<CustomMain>
 				<Header />
 				<HeaderDashboard />
-				{children}
+				<Loader loading={ loading } />
+				{ children }
 				<Footer />
 			</CustomMain>
 		</Provider>

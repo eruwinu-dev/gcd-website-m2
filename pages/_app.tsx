@@ -9,18 +9,20 @@ import {
     type DehydratedState,
 } from "@tanstack/react-query"
 import { useState } from "react"
+import { usePageLoading } from "../hooks/generic/usePageLoading"
 
 function MyApp({
     Component,
     pageProps,
 }: AppProps<{ dehydratedState: DehydratedState }>) {
     const [queryClient] = useState(() => new QueryClient())
+    const { loading } = usePageLoading();
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <Hydrate state={pageProps.dehydratedState}>
-                <Layout>
-                    <Component {...pageProps} />
+        <QueryClientProvider client={ queryClient }>
+            <Hydrate state={ pageProps.dehydratedState }>
+                <Layout loading={ loading }>
+                    <Component { ...pageProps } />
                 </Layout>
             </Hydrate>
         </QueryClientProvider>

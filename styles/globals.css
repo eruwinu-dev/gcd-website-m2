@@ -66,6 +66,18 @@
 
 @layer components {
     /* Generic Classes */
+    .loading {
+        @apply w-screen h-full absolute top-0 left-0 z-[99] bg-transparent/20 flex flex-col items-center justify-center;
+    }
+    .loading-spinner-container {
+        @apply w-fit h-full relative;
+    }
+    .loading-spinner {
+        @apply sticky top-[40%];
+    }
+    .loading-spinner-svg {
+        @apply inline w-16 h-16 text-transparent animate-spin dark:text-transparent fill-red-700;
+    }
     .generic-transition {
         @apply transition-all ease-linear duration-200;
     }
@@ -530,7 +542,7 @@
         @apply text-sm uppercase text-gray-500;
     }
 
-    /*News/[slug]*/
+    /*Blogs/[slug]*/
     .news-portable-text-component {
         @apply lg:w-9/12 w-full mt-4 text-left leading-9;
     }

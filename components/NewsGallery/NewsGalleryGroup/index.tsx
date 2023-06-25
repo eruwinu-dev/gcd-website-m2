@@ -13,20 +13,20 @@ const NewsGalleryGroup = ({ posts }: Props) => {
         query: { category },
     } = useRouter()
     return (
-        <div key={(category || "all") as string} className="news-gallery-group">
-            {posts.length ? (
+        <div key={ (category || "all") as string } className="news-gallery-group">
+            { posts.length ? (
                 posts.map((post) => (
                     <NewsGalleryItem
-                        key={post._id}
-                        post={post}
-                        redirect="./news/"
+                        key={ post._id }
+                        post={ post }
+                        redirect="./blogs/"
                     />
                 ))
             ) : (
                 <div className="news-gallery-no-articles">
                     <h3>No articles under this category.</h3>
                 </div>
-            )}
+            ) }
         </div>
     )
 }

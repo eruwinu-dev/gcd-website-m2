@@ -12,14 +12,14 @@ import { getPosts } from "../../lib/post/getPosts"
 
 type Props = {}
 
-const News = ({}: Props) => {
+const News = ({ }: Props) => {
     return (
         <>
             <MetaHead
-                title={`News | ${headerTitle}`}
+                title={ `News | ${headerTitle}` }
                 description="Our knowledge of architecture is informed through years of education and experience. GCD Blog shares our process and things you want to know."
-                url={process.env.NEXT_PUBLIC_SITE_URL + "/news"}
-                siteName={`News | ${headerTitle}`}
+                url={ process.env.NEXT_PUBLIC_SITE_URL + "/blogs" }
+                siteName={ `News | ${headerTitle}` }
             />
             <NewsPageHeader />
             <NewsGallery />

@@ -14,7 +14,7 @@ type Props = {
 }
 
 const SocialMediaShare = ({ post }: Props) => {
-    const shareUrl = process.env.NEXT_PUBLIC_SITE_URL + "/news/" + post.slug
+    const shareUrl = process.env.NEXT_PUBLIC_SITE_URL + "/blogs/" + post.slug
     const source = "G. Charles Design - Client Focused Architecture"
 
     return (

@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import Image from "next/image"
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 
 import AboutCollage, { aboutCollage } from "../../components/AboutCollage"
 import BookConsultButton from "../../components/BookConsultButton"
@@ -33,24 +33,24 @@ const About = ({ placeholders }: Props) => {
     return (
         <>
             <MetaHead
-                title={`About | ${headerTitle}`}
+                title={ `About | ${headerTitle}` }
                 description="In G. Charles Design, we design for our clients, not for our portfolio."
-                url={process.env.NEXT_PUBLIC_SITE_URL + "/about"}
-                siteName={`About | ${headerTitle}`}
-                image={process.env.NEXT_PUBLIC_SITE_URL + "/about.jpg"}
+                url={ process.env.NEXT_PUBLIC_SITE_URL + "/about" }
+                siteName={ `About | ${headerTitle}` }
+                image={ process.env.NEXT_PUBLIC_SITE_URL + "/about.jpg" }
             />
-            <section className="banner-section" ref={widthRef}>
+            <section className="banner-section" ref={ widthRef }>
                 <Image
-                    src={aboutImage}
-                    loader={sanityImageLoader}
+                    src={ aboutImage }
+                    loader={ sanityImageLoader }
                     alt="A picture of the staircase from A Montecito Classic, a project by G. Charles Design.`"
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
                     placeholder="blur"
                     priority
-                    quality={90}
-                    blurDataURL={aboutPlaceHolder}
+                    quality={ 90 }
+                    blurDataURL={ aboutPlaceHolder }
                 />
                 <div className="banner-mask lg:grid-cols-4 md:grid-cols-4 grid-cols-1">
                     <div className="banner-spacer" />
@@ -81,8 +81,8 @@ const About = ({ placeholders }: Props) => {
                     </p>
                 </div>
                 <AboutCollage
-                    width={widthRect ? widthRect.width : 0}
-                    placeholders={placeholders}
+                    width={ widthRect ? widthRect.width : 0 }
+                    placeholders={ placeholders }
                 />
             </section>
             <section className="w-full h-full flex flex-row items-center justify-center bg-black lg:py-16 md:py-8 py-4">
@@ -96,33 +96,33 @@ const About = ({ placeholders }: Props) => {
                     </p>
                 </div>
             </section>
-            <TeamGallery width={widthRect ? widthRect.width : 0} />
+            <TeamGallery width={ widthRect ? widthRect.width : 0 } />
             <section className="relative xl:block lg:block md:block hidden translate-y-0 aspect-video">
                 <Image
-                    src={groupImage}
+                    src={ groupImage }
                     alt="A photo of the team members behind G. Charles Design. Book a consult now!"
-                    loader={sanityImageLoader}
+                    loader={ sanityImageLoader }
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
                     priority
                     sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
-                    blurDataURL={groupPlaceHolder}
+                    blurDataURL={ groupPlaceHolder }
                 />
             </section>
             <section className="relative w-full h-screen translate-y-0 aspect-video">
                 <Image
-                    src={aboutBookImage}
+                    src={ aboutBookImage }
                     alt="A rendering of The Music Barn, a project of G. Charles Design. Book your consult now!"
-                    loader={sanityImageLoader}
+                    loader={ sanityImageLoader }
                     layout="fill"
                     objectFit="cover"
                     objectPosition="left"
                     sizes="(max-width: 800px) 100vw, 800px"
                     placeholder="blur"
                     priority
-                    blurDataURL={aboutBookPlaceHolder}
+                    blurDataURL={ aboutBookPlaceHolder }
                 />
                 <div className="absolute w-full h-full top-0 left-0 bg-black/60 z-[2] grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 grid-flow-row px-8 py-16 text-center">
                     <div className="lg:flex md:flex hidden" />
@@ -145,7 +145,7 @@ const About = ({ placeholders }: Props) => {
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const placeholders = await getPlaceholders([
         ...aboutCollage.map((collage) => collage.picture),
     ])
