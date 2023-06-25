@@ -67,7 +67,7 @@
 @layer components {
     /* Generic Classes */
     .loading {
-        @apply w-screen h-full absolute top-0 left-0 z-[99] bg-transparent/20 flex flex-col items-center justify-center;
+        @apply w-full h-full absolute top-0 left-0 z-[99] bg-transparent/20 flex flex-col items-center justify-center;
     }
     .loading-spinner-container {
         @apply w-fit h-full relative;

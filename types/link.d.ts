@@ -1,4 +1,5 @@
 export type LinkType = {
-	name: string
-	url: string
+    name: string
+    url: string
+    rendering: "static" | "ssr"
 }
