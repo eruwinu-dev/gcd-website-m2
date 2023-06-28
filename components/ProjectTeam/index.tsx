@@ -30,7 +30,7 @@ const ProjectTeam = ({ name, address, team }: Props) => {
                 {address}
             </h2>
             <div className="project-members">
-                {team.length ? (
+                {team && team.length ? (
                     team.map((member, index) => (
                         <div
                             key={index}
