@@ -18,42 +18,42 @@ const TeamGalleryItem = ({ member, order }: Props) => {
     return (
         <>
             <div
-                className={order === 1 ? "lg:flex md:flex hidden" : "hidden"}
+                className={ order === 1 ? "lg:flex md:flex hidden" : "hidden" }
             />
             <div className="team-gallery-item">
-                <Link href={`about/${member.slug}`}>
+                <Link href={ `about/${member.slug}` }>
                     <div className="team-gallery-item-container">
-                        {imageProps ? (
+                        { imageProps ? (
                             <Image
-                                src={imageProps.src}
-                                loader={imageProps.loader}
-                                alt={member.name}
+                                src={ imageProps.src }
+                                loader={ imageProps.loader }
+                                alt={ member.name }
                                 layout="fill"
                                 objectFit="cover"
                                 objectPosition="top"
                                 className="generic-transition hover:scale-105 cursor-pointer"
                                 placeholder="blur"
-                                blurDataURL={member.image.asset.metadata.lqip}
+                                blurDataURL={ member.image.asset.metadata.lqip }
                             />
-                        ) : null}
+                        ) : null }
                     </div>
                 </Link>
-                <Link href={`about/${member.slug}`}>
-                    <h3>{member.name}</h3>
+                <Link href={ `about/${member.slug}` }>
+                    <h3>{ member.name }</h3>
                 </Link>
                 <div>
                     <span className="text-base font-semibold">
-                        {member.licenses ? member.licenses.join(", ") : ""}
+                        { member.licenses ? member.licenses.join(", ") : "" }
                     </span>
                 </div>
                 <div>
                     <span className="text-base text-center italic">
-                        {member.role}
+                        { member.role }
                     </span>
                 </div>
             </div>
             <div
-                className={order === 1 ? "lg:flex md:flex hidden" : "hidden"}
+                className={ order === 1 ? "lg:flex md:flex hidden" : "hidden" }
             />
         </>
     )
