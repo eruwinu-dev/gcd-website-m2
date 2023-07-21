@@ -205,7 +205,7 @@
         @apply lg:col-span-2 md:col-span-2 col-span-1;
     }
     .team-gallery-item-container {
-        @apply relative block w-full h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center border-2;
+        @apply relative block w-full h-auto aspect-[1/1.4] overflow-hidden space-y-4 flex flex-col items-center;
     }
     .meet-the-team-container {
         @apply flex flex-col items-center justify-center w-full h-auto mb-8 py-8 space-y-8;
