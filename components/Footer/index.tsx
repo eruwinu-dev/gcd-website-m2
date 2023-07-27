@@ -1,6 +1,6 @@
 import Image from "next/image"
 import React from "react"
-import ContactList from "../ContactList"
+import SocialMediaList from "../SocialMediaList"
 
 type Props = {}
 
@@ -16,7 +16,7 @@ const Footer = (props: Props) => {
 						objectFit="contain"
 						loading="eager"
 						unoptimized
-						loader={({ src }) => src}
+						loader={ ({ src }) => src }
 					/>
 				</div>
 				<span className="text-sm italic">
@@ -26,7 +26,7 @@ const Footer = (props: Props) => {
 			</div>
 			<div className="contact-list-container">
 				<h4 className="text-xl">Reach Us</h4>
-				<ContactList />
+				<SocialMediaList />
 			</div>
 		</footer>
 	)
