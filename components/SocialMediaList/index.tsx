@@ -36,7 +36,7 @@ const SocialMediaList = (props: Props) => {
       </div>
       <div>
         <a
-          href="https://www.facebook.com/profile.php?id=100078064703101"
+          href="https://web.facebook.com/people/G-Charles-Design/100087183115146/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-red-700 hover:underline"
