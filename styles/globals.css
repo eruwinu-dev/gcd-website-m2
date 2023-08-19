@@ -427,7 +427,7 @@
         @apply sticky flex flex-col items-center justify-center w-4/5 h-auto aspect-square space-y-8 px-8 mb-8 generic-transition top-32;
     }
     .contact-landing-mobile-container {
-        @apply h-fit my-8;
+        @apply h-fit my-8 px-4;
     }
     .contact-landing-mobile-container > h1 {
         @apply mb-4;
