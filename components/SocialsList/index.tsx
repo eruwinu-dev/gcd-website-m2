@@ -5,7 +5,7 @@ type Props = {}
 
 const SocialsList = (props: Props) => {
 	return (
-		<div className="w-3/5 h-fit grid grid-cols-3 grid-flow-row gap-4 text-center p-4">
+		<div className="socials-list">
 			<div className="flex flex-col items-center">
 				<a
 					href="https://www.instagram.com/gcharlesdesign/"

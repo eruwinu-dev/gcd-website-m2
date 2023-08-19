@@ -158,7 +158,7 @@
         @apply leading-loose lg:w-4/5 md:w-11/12 w-full text-left;
     }
     .license-icons-container {
-        @apply lg:w-3/4 md:w-11/12 w-full flex lg:flex-row md:flex-row flex-col items-center justify-center;
+        @apply lg:w-3/4 md:w-11/12 w-full flex flex-row items-center justify-center;
     }
     .aia-icon-container {
         @apply relative w-auto lg:h-[9rem] md:h-[7rem] h-[5rem] aspect-[460/193] overflow-hidden;
@@ -418,13 +418,22 @@
 
     /*Contact*/
     .contact-landing-section {
-        @apply h-fit translate-y-0 lg:flex md:flex hidden flex-row items-start justify-center;
+        @apply h-fit translate-y-0 flex lg:flex-row md:flex-row flex-col items-start justify-center;
     }
     .contact-landing-list-sticky-container {
         @apply w-full flex flex-col items-center justify-start;
     }
     .contact-landing-list-container {
         @apply sticky flex flex-col items-center justify-center w-4/5 h-auto aspect-square space-y-8 px-8 mb-8 generic-transition top-32;
+    }
+    .contact-landing-mobile-container {
+        @apply h-fit my-8;
+    }
+    .contact-landing-mobile-container > h1 {
+        @apply mb-4;
+    }
+    .contact-landing-mobile-container > .contact-language {
+        @apply mt-4;
     }
     .contact-landing-scroll-container {
         @apply w-full h-fit flex flex-col items-center justify-start space-y-2 pb-8;
@@ -451,7 +460,7 @@
         @apply flex-1;
     }
     .contact-form {
-        @apply lg:w-4/5 w-11/12 h-auto aspect-square flex flex-col items-start justify-center space-y-2 lg:px-8 px-4 lg:py-16 md:py-8 py-4  border-2 border-gray-400 lg:mx-8 mx-4;
+        @apply lg:w-4/5 w-11/12 h-auto aspect-square flex flex-col items-start justify-center space-y-2 lg:px-8 px-4 lg:py-16 md:py-8 py-4 border-2 border-gray-400 lg:mx-8 mx-4 lg:my-0 md:my-0 my-8;
     }
     .contact-form > h2,
     .contact-form > h3 {
@@ -586,6 +595,9 @@
         @apply text-base text-center font-semibold;
     }
 
+    .socials-list {
+        @apply w-3/5 h-fit grid grid-cols-3 grid-flow-row gap-4 text-center p-4 lg:mt-0 md:mt-0 mt-4;
+    }
     .social-media-container {
         @apply sticky top-36 lg:pt-20 md:pt-10 pt-6 pb-16 lg:w-2/12 w-full flex flex-col items-center justify-center space-y-8;
     }
