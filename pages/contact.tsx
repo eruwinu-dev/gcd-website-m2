@@ -113,7 +113,7 @@ const Contact = (props: Props) => {
                     </>
                 ) }
             </section>
-            <ContactModal />
+            <input type="password" className="hidden" id="contact-gclid" placeholder="Google Click Identifier" />
         </>
     )
 }
