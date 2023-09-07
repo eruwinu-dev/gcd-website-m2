@@ -91,10 +91,9 @@ const ContactForm = ({ }: Props) => {
                     <button type="submit">
                         <h3 className="text-base font-normal">Submit</h3>
                     </button>
-                    <Field
+                    <input
                         type="password"
-                        autocomplete="off"
-                        as="input"
+                        autoComplete="off"
                         id="contact-gclid"
                         placeholder="Google Click Identifier"
                         className="hidden"
