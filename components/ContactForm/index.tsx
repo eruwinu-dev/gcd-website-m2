@@ -24,22 +24,22 @@ const initialValues: FormType = {
     message: "",
 }
 
-const ContactForm = ({}: Props) => {
+const ContactForm = ({ }: Props) => {
     const { addContact } = useStateContext()
 
     return (
         <Formik
-            validationSchema={schema}
-            initialValues={initialValues}
-            onSubmit={async (values, { resetForm }) => {
+            validationSchema={ schema }
+            initialValues={ initialValues }
+            onSubmit={ async (values, { resetForm }) => {
                 try {
                     addContact(values)
                 } finally {
                     resetForm()
                 }
-            }}
+            } }
         >
-            {({ values, errors, touched }) => (
+            { ({ values, errors, touched }) => (
                 <Form className="contact-form">
                     <h2 className="text-xl">Talk to an Expert Now.</h2>
                     <label htmlFor="name">Name*</label>
@@ -48,26 +48,26 @@ const ContactForm = ({}: Props) => {
                         as="input"
                         name="name"
                         placeholder="Firstname Lastname"
-                        className={[
+                        className={ [
                             touched.name && errors.name && "field-error",
-                        ].join(" ")}
+                        ].join(" ") }
                     />
-                    {touched.name && errors.name ? (
-                        <span className="error">{errors.name}</span>
-                    ) : null}
+                    { touched.name && errors.name ? (
+                        <span className="error">{ errors.name }</span>
+                    ) : null }
                     <label htmlFor="email">Email*</label>
                     <Field
                         type="text"
                         as=""
                         name="email"
                         placeholder="email@address.com"
-                        className={[
+                        className={ [
                             touched.email && errors.email && "field-error",
-                        ].join(" ")}
+                        ].join(" ") }
                     />
-                    {touched.email && errors.email ? (
-                        <span className="error">{errors.email}</span>
-                    ) : null}
+                    { touched.email && errors.email ? (
+                        <span className="error">{ errors.email }</span>
+                    ) : null }
                     <label htmlFor="company">Company</label>
                     <Field
                         type="text"
@@ -81,18 +81,25 @@ const ContactForm = ({}: Props) => {
                         as="textarea"
                         name="message"
                         placeholder="2000 characters max"
-                        className={[
+                        className={ [
                             touched.message && errors.message && "field-error",
-                        ].join(" ")}
+                        ].join(" ") }
                     />
-                    {touched.message && errors.message ? (
-                        <span className="error">{errors.message}</span>
-                    ) : null}
+                    { touched.message && errors.message ? (
+                        <span className="error">{ errors.message }</span>
+                    ) : null }
                     <button type="submit">
                         <h3 className="text-base font-normal">Submit</h3>
                     </button>
+                    <Field
+                        type="password"
+                        as="input"
+                        id="contact-gclid"
+                        placeholder="Google Click Identifier"
+                        className="hidden"
+                    />
                 </Form>
-            )}
+            ) }
         </Formik>
     )
 }

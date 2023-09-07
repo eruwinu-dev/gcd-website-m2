@@ -4,7 +4,6 @@ import { useRect } from "@reach/rect"
 
 import ContactForm from "../components/ContactForm"
 import ContactList from "../components/ContactList"
-import ContactModal from "../components/ContactModal"
 import SocialsList from "../components/SocialsList"
 
 import { headerTitle } from "../lib/title"
@@ -113,7 +112,6 @@ const Contact = (props: Props) => {
                     </>
                 ) }
             </section>
-            <input type="password" className="hidden" id="contact-gclid" placeholder="Google Click Identifier" />
         </>
     )
 }
